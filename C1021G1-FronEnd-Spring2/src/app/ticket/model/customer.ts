@@ -1,5 +1,3 @@
-import {Car} from "../../car/model/car";
-
 export interface Customer {
   id:number;
   code:string;
@@ -11,6 +9,8 @@ export interface Customer {
   address:string;
   gender:boolean;
   delFlag:boolean;
-  car:Car;
+  account:any;
+  ward:any;
+
 
 }
