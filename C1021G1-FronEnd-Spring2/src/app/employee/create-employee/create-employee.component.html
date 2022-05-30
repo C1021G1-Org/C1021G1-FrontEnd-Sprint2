@@ -1,0 +1,221 @@
+<body>
+<div id="container">
+  <!--  <div class="wrapper d-flex align-items-stretch">-->
+  <!--    <nav id="sidebar">-->
+  <!--      <div class="custom-menu">-->
+  <!--        <button type="button" id="sidebarCollapse" class="btn btn-primary" onclick="swap()">-->
+  <!--          <i class="fa fa-bars"></i>-->
+  <!--          <span class="sr-only">Toggle Menu</span>-->
+  <!--        </button>-->
+  <!--      </div>-->
+  <!--      <div class="p-4">-->
+  <!--        <h1><a class="logo">Chức năng</a></h1>-->
+  <!--        <ul class="list-unstyled components mb-5">-->
+  <!--          <li class="active">-->
+  <!--            <a href="#"><span class="fa fa-home mr-3"></span>Trang chủ</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-user mr-3"></span>Quản lý khách hàng</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-user mr-3"></span>Quản lý Nhân Viên</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fas fa-car mr-3"></span>Quản lý xe ra/vào</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-line-chart mr-3"></span>Thống kê</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-credit-card mr-3"></span>Quản lý vé xe</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-parking mr-3"></span>Quản lý Bãi Đỗ Xe</a>-->
+  <!--          </li>-->
+
+  <!--        </ul>-->
+  <!--        <h3 class="h6 mb-3">Khác</h3>-->
+  <!--        <ul class="list-unstyled components mb-5">-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-calendar mr-3"></span>Lịch</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-cloud mr-3"></span>Dự báo thời tiết</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-building mr-3"></span>Bất Động Sản</a>-->
+  <!--          </li>-->
+  <!--          <li>-->
+  <!--            <a href="#"><span class="fa fa-bar-chart-o mr-3"></span>Chứng Khoán</a>-->
+  <!--          </li>-->
+  <!--        </ul>-->
+
+  <!--      </div>-->
+  <!--    </nav>-->
+
+  <!--  </div>-->
+  <form class="form">
+    <div class="layout layout-active layout-deactivate">
+      <h1 class="title">
+        <strong>Thêm mới nhân viên</strong>
+      </h1>
+      <div class="row">
+        <div class="col-6">
+          <label for="name">Họ tên (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
+            <input type="text" id="name" name="name" class="form-control" required
+                   placeholder="VD: Nguyễn Văn A"><span class="bar"></span></div>
+        </div>
+        <div class="col-6">
+
+          <label for="code">Mã nhân viên (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
+            <input type="text" id="code" class="form-control" placeholder="VD: NV-0000">
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label>Giới tính (<span style="color: red">*</span>)</label>
+
+          <label class="gender">
+            <input type="radio" name="gender" value="1" checked>
+          </label> Nam <i class="fa-solid fa-mars"></i>
+          <label class="gender">
+            <input type="radio" name="gender" value="0">
+          </label> Nữ <i class="fa-solid fa-venus"></i>
+          <label class="gender">
+            <input type="radio" name="gender" value="null">
+          </label> Khác <i class="fa-solid fa-venus-mars"></i>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="birthday">Ngày sinh (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-cake-candles"></i></a>
+            <input type="date" class="form-control" id="birthday" value="birthday">
+          </div>
+
+        </div>
+        <div class="col-4">
+
+          <label for="phone">Số điện thoại (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
+            <input type="tel" class="form-control text-end" id="phone" placeholder="VD: 0909123123">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="position">Chức vụ (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user-tie"></i></a>
+            <select id="position" class="form-select">
+              <option selected>- Chọn -</option>
+              <option *ngFor="let item of listPosition">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-7">
+          <label for="email">Email (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-envelope"></i></a>
+            <input type="email" class="form-control" id="email" placeholder="VD: codegym@gmail.com">
+          </div>
+        </div>
+
+        <div class="col-5">
+          <label for="password">Mật khẩu (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-key"></i></a>
+            <input type="password" class="form-control" id="password" value="123123123">
+            <a class="input-group-text" style="background-color: white"
+               onmouseover="showPassword()" onmouseleave="hidePassword()">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="province">Thành phố/Tỉnh (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="province" class="form-select">
+              <option selected>- Chọn -</option>
+              <option>Đà Nẵng</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="district">Quận/Huyện (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="district" class="form-select">
+              <option selected>- Chọn -</option>
+              <option>Hải Châu</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="ward">Phường/Xã (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="ward" class="form-select">
+              <option selected>- Chọn -</option>
+              <option>Thanh Bình</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <label for="address">Số nhà, tên đường (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
+            <input type="text" class="form-control" id="address" placeholder="VD: 295 Nguyễn Tất Thành">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 text-end">
+          <button class="btn button-cancel">Huỷ</button>
+        </div>
+        <div class="col-6">
+          <button class="btn button-confirm" type="submit">Thêm mới</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+<script>
+  function showPassword() {
+    document.getElementById('password').setAttribute('type', 'text')
+  }
+
+  function hidePassword() {
+    document.getElementById('password').setAttribute('type', 'password')
+  }
+
+  function swap() {
+    let value = document.getElementById('sidebar').getAttribute('class')
+    console.log(value)
+
+  }
+</script>
+</body>
