@@ -19,6 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
+import {TicketModule} from './ticket/ticket.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {CdkTableModule} from '@angular/cdk/table';
     BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
+    TicketModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
