@@ -5,6 +5,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {DeleteEmployeeComponent} from "../delete-employee/delete-employee.component";
+import {DetailsEmployeeComponent} from "../details-employee/details-employee.component";
 
 @Component({
   selector: 'app-list-employee',
@@ -132,6 +133,16 @@ export class ListEmployeeComponent implements OnInit {
 
   openDialog(id) {
     const dialogRef = this.dialog.open(DeleteEmployeeComponent, {
+      width: '500px',
+      data: {datal: id},
+    });
+    dialogRef.afterClosed().subscribe(next => {
+      this.ngOnInit();
+    });
+  }
+
+  openDetails(id) {
+    const dialogRef = this.dialog.open(DetailsEmployeeComponent, {
       width: '500px',
       data: {datal: id},
     });

@@ -1,18 +1,20 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {EmployeeService} from "../employee.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-delete-employee',
-  templateUrl: './delete-employee.component.html',
-  styleUrls: ['./delete-employee.component.css']
+  selector: 'app-details-employee',
+  templateUrl: './details-employee.component.html',
+  styleUrls: ['./details-employee.component.css']
 })
-export class DeleteEmployeeComponent implements OnInit {
+export class DetailsEmployeeComponent implements OnInit {
+
+
   employeeID: number
   id: any;
   employee: any;
-  constructor(private dialog: MatDialogRef<DeleteEmployeeComponent>,
+  constructor(private dialog: MatDialogRef<DetailsEmployeeComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private employeeService: EmployeeService,
               private snackBar: MatSnackBar
@@ -27,15 +29,5 @@ export class DeleteEmployeeComponent implements OnInit {
       console.log(data + 'gia tri')
       this.employee = data;
     });
-  }
-
-  deleteEmployee() {
-    this.employeeService.deleteEmployee(this.id).subscribe(() => {
-        this.dialog.close()
-        this.snackBar.open('Đã xóa nhân viên thành công !', 'OK');
-      },() =>{
-        this.snackBar.open('Xóa không thành công!', 'error');
-      }
-    )
   }
 }

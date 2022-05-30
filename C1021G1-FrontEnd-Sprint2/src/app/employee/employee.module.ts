@@ -9,10 +9,11 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { DetailsEmployeeComponent } from './details-employee/details-employee.component';
 
 
 @NgModule({
-    declarations: [ListEmployeeComponent, UpdateEmployeeComponent, CreateEmployeeComponent, DeleteEmployeeComponent],
+    declarations: [ListEmployeeComponent, UpdateEmployeeComponent, CreateEmployeeComponent, DeleteEmployeeComponent, DetailsEmployeeComponent],
     exports: [
         ListEmployeeComponent
     ],

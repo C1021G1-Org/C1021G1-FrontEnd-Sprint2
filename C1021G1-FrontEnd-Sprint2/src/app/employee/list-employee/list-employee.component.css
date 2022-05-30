@@ -73,7 +73,7 @@ body {
 }
 
 .tb-header {
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: -webkit-linear-gradient(top, #1abc9c 60%, rgba(26,188,156,.85));
   font-size: 1.2em;
   text-align: center;
 
