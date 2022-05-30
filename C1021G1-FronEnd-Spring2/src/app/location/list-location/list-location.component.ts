@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LocationService} from "../location.service";
 import {LocationList} from "../model/LocationList";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Floor} from "../model/floor";
 
 @Component({
   selector: 'app-list-location',
@@ -10,36 +11,46 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class ListLocationComponent implements OnInit {
   LocationList: LocationList[];
+  floorList: Floor[];
   code: string = "";
   id: string = "";
   index: number = 0;
   totalPagination: number;
-  number: number=0;
+  number: number = 0;
 
   constructor(private locationService: LocationService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
-    this.search();
-  }
-
-  search() {
-    this.locationService.getAllLocationAndFloor(this.code, this.id, this.index).subscribe(data => {
-      this.LocationList = data['content'];
-      this.totalPagination = data['totalPages'];
+    this.locationService.getAllFloor().subscribe(data => {
+      this.floorList = data;
+      console.log(this.floorList)
+      this.search();
     }, error => {
       this.snackBar.open("Lỗi hệ thống", "Cảnh báo", {duration: 2000})
     })
   }
 
-  back(){
+  search() {
+    this.locationService.getAllLocationAndFloor(this.code, this.id, this.index).subscribe(data => {
+      this.LocationList = data['content'];
+      console.log(this.LocationList)
+      this.totalPagination = data['totalPages'];
+    }, error => {
+      this.snackBar.open("Tìm kiếm không hợp lệ!", "Cảnh báo", {duration: 2000})
+    })
+  }
+
+  back() {
     this.index--;
     this.search();
   }
-  next(){
+
+  next() {
     this.index++;
     this.search();
   }
+
   previousPage() {
     this.index = 0;
     this.search();
@@ -69,4 +80,5 @@ export class ListLocationComponent implements OnInit {
     this.index = number;
     this.search();
   }
+
 }
