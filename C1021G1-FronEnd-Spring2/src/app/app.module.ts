@@ -13,12 +13,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {CdkTableModule} from '@angular/cdk/table';
+import {MapParkingModule} from "./map-parking/map-parking.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {CdkTableModule} from "@angular/cdk/table";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {CdkTableModule} from '@angular/cdk/table';
     BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
+    MapParkingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
