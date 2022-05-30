@@ -19,6 +19,8 @@ import {MatInputModule} from "@angular/material/input";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {CdkTableModule} from "@angular/cdk/table";
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import {CKEditorModule} from "ckeditor4-angular";
+import {NewModule} from "./new/new.module";
 
 @NgModule({
   declarations: [
@@ -30,21 +32,24 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     SignUpComponent,
     SidebarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    MatSnackBarModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatInputModule,
-    DragDropModule,
-    BrowserAnimationsModule,
-    NgxPaginationModule,
-    CdkTableModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        MatSnackBarModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatInputModule,
+        DragDropModule,
+        BrowserAnimationsModule,
+        NgxPaginationModule,
+        CdkTableModule,
+        CKEditorModule,
+        NewModule,
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
