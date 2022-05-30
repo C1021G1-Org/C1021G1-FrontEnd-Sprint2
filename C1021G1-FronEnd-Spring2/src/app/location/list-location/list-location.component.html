@@ -1,1 +1,68 @@
-<p>list-location works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="table-responsive[-sm|-md|-lg|-xl] col-8 table-responsive">
+      <table class=" table-bordered border-primary table table-hover">
+
+        <thead class="tb-header">
+        <tr>
+          <th scope="col" style=" width: 5%;text-align: center">STT</th>
+          <th scope="col" style=" width: 20%;text-align: center">Vị trí</th>
+          <th scope="col" style=" width: 20%;text-align: center">Tầng</th>
+          <th scope="col" colspan="3" style=" width: 30%;text-align: center">Thao Tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let lf of LocationList,index as i">
+          <td>{{i + 1}}</td>
+          <td>{{lf.code}}</td>
+          <td>{{lf.floorName}}</td>
+          <td class="text-center">
+            <a class="btn btn-warning" role="button"><span class="fa fa-pencil"></span></a>
+          </td>
+          <td class="text-center">
+            <a class="btn btn-danger" role="button"><span class="fa fa-trash"></span></a>
+          </td>
+          <td class="text-center">
+            <a class="btn btn-outline-secondary" role="button"><span class="fa fa-eye"></span></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-2"></div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-4 pagination">
+        <li class="page-item"><a class="page-link" style="color: black">{{index + 1}}</a></li>
+        <li class="page-item" ><a class="page-link" style="color: black">/</a></li>
+        <li class="page-item"><a class="page-link" style="color: black">{{totalPagination}}</a></li>
+        <li class="page-item b">
+      </div>
+      <div class="col-8">
+        <div class="pagination">
+          <a (click)="previousPage()" ><span class="fa fa-angle-double-left"></span></a>
+          <a (click)="back()"><span class="fa fa-angle-left"></span></a>
+          <a (click)="loadList(index-1)" >
+          {{index-1}}
+          </a>
+          <a (click)="loadList1(index-1)">
+            {{index}}
+          </a>
+          <a  class="active">
+            {{index+1}}
+          </a>
+          <a (click)="loadList2(index+1)">
+            {{index+2}}
+          </a>
+          <a (click)="movingNext()">{{index+3}}</a>
+          <a (click)="next()"><span class="fa fa-angle-right"></span></a>
+          <a (click)="lastPage()"><span class="fa fa-angle-double-right"></span></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
+
