@@ -7,13 +7,20 @@ import { CreateLocationComponent } from './create-location/create-location.compo
 import { UpdateLocationComponent } from './update-location/update-location.component';
 import { DeleteLocationComponent } from './delete-location/delete-location.component';
 import { DetailLocationComponent } from './detail-location/detail-location.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [ListLocationComponent, CreateLocationComponent, UpdateLocationComponent, DeleteLocationComponent, DetailLocationComponent],
+  exports: [
+    ListLocationComponent
+  ],
   imports: [
     CommonModule,
-    LocationRoutingModule
+    LocationRoutingModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
   ]
 })
 export class LocationModule { }
