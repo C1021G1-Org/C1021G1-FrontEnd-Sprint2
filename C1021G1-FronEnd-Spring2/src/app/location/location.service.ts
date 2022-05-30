@@ -1,19 +1,24 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {LocationList} from "./model/LocationList";
+import {Floor} from "./model/floor";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
 
-  private readonly URL_BE = 'http://localhost:8080/api/location';
+  private readonly URL_BE = 'http://localhost:8080/api/';
 
   constructor(private httpClient: HttpClient) {
 
   }
 
   getAllLocationAndFloor(code: string, id: string, index: number) {
-    return this.httpClient.get<LocationList[]>(this.URL_BE + "/list?code=" + code + "&id=" + id + "&page=" + index)
+    return this.httpClient.get<LocationList[]>(this.URL_BE + "location/list?code=" + code + "&id=" + id + "&page=" + index)
+  }
+
+  getAllFloor() {
+    return this.httpClient.get<Floor[]>(this.URL_BE + "floor/list")
   }
 }
