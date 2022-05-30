@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
@@ -21,6 +20,13 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
 import {LocationModule} from "./location/location.module";
 
+import {MapParkingModule} from "./map-parking/map-parking.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {CdkTableModule} from "@angular/cdk/table";
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +52,8 @@ import {LocationModule} from "./location/location.module";
     NgxPaginationModule,
     CdkTableModule,
     LocationModule,
+    MapParkingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
