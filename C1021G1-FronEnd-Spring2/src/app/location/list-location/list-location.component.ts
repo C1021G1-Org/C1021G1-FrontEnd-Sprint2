@@ -97,9 +97,5 @@ export class ListLocationComponent implements OnInit {
       });
     });
   }
-
-
-  Reset() {
-  }
 }
 
