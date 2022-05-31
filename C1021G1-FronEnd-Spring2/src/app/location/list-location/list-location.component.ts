@@ -1,8 +1,11 @@
+
 import {Component, OnInit} from '@angular/core';
 import {LocationService} from "../location.service";
 import {LocationList} from "../model/LocationList";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Floor} from "../model/floor";
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteLocationComponent } from '../delete-location/delete-location.component';
 
 @Component({
   selector: 'app-list-location',
@@ -18,7 +21,9 @@ export class ListLocationComponent implements OnInit {
   totalPagination: number;
   number: number = 0;
 
-  constructor(private locationService: LocationService, private snackBar: MatSnackBar) {
+  constructor(private locationService: LocationService,
+              private snackBar: MatSnackBar,
+              private dialog : MatDialog) {
   }
 
   ngOnInit(): void {
@@ -80,5 +85,16 @@ export class ListLocationComponent implements OnInit {
     this.index = number;
     this.search();
   }
-
+  openDialog(id: number) {
+    this.locationService.findLocationById(id).subscribe(data => {
+      const dialogRef = this.dialog.open(DeleteLocationComponent, {
+        width: '500px',
+        data: {datal: data},
+      });
+      dialogRef.afterClosed().subscribe(next => {
+        this.ngOnInit();
+      });
+    });
+  }
 }
+

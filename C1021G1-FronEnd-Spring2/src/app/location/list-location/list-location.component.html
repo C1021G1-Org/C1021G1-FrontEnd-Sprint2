@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
   <h2 class="text-center">Danh Sách Vị Trí Bãi Đậu Xe Ô Tô</h2>
   <br>
@@ -49,14 +50,19 @@
             <td>{{i + 1}}</td>
             <td>{{lf.code}}</td>
             <td>{{lf.floorName}}</td>
+
             <td class="text-end">
               <a class="btn btn-warning" role="button" ><span class="fa fa-pencil"></span></a>
+
+            <td class="text-end" >
+              <a class="btn btn-warning" role="button"><span class="fa fa-pencil" ></span></a>
+
             </td>
             <td class="text-center">
-              <a class="btn btn-danger" role="button"><span class="fa fa-trash"></span></a>
+              <a class="btn btn-danger" role="button" (click)="openDialog(lf.id)"><span class="fa fa-trash"></span></a>
             </td>
-            <td class="text-start">
-              <a class="btn btn-outline-secondary" role="button"><span class="fa fa-eye"></span></a>
+            <td class="text-start" >
+              <a class="btn btn-outline-secondary" role="button" [routerLink]="['/location-detail/',lf.id]"><span class="fa fa-eye"></span></a>
             </td>
           </tr>
           </tbody>
@@ -112,3 +118,4 @@
     </div>
   </div>
 </div>
+
