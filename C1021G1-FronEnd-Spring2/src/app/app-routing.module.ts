@@ -5,13 +5,14 @@ import {SignInComponent} from './login/sign-in/sign-in.component';
 
 
 const routes: Routes = [
+
   {
     path: 'sign-up', component: SignUpComponent
   },
   {
     path: 'sign-in', component: SignInComponent
-  }
-
+  },
+  {path: 'employee', loadChildren: () => import ('./employee/employee.module').then(module => module.EmployeeModule)},
 
 ];
 
