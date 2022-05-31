@@ -224,12 +224,16 @@
       </td>
 
       <td>
+<<<<<<< HEAD
         <a routerLink="/customer/update/{{customer.id}}"><span
+=======
+        <a  role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
+>>>>>>> c2fec8f292eb1432818e7b50562da20f52758d1d
           class="fas fa-pencil" style="font-size:24px"></span></a>
       </td>
 
       <td>
-        <a  role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
+        <a (click)="openDetailCustomer(customer.id)"><span
           class="fas fa-eye" style="font-size:24px"></span></a>
       </td>
 
@@ -261,9 +265,12 @@
 
 </div>
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> c2fec8f292eb1432818e7b50562da20f52758d1d
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

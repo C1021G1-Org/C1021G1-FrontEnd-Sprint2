@@ -7,4 +7,5 @@ export interface Ward {
   prefix? : string,
   district? : District,
   province? : Province
+
 }

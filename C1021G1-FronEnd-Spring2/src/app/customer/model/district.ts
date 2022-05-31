@@ -5,4 +5,5 @@ export interface District {
   name? : string,
   prefix? : string,
   province? : Province
+
 }

@@ -1,4 +1,5 @@
-import {Car} from "../../car/model/car";
+
+import {Ward} from "./ward";
 
 export interface Customer {
   id ?:number;
@@ -11,4 +12,5 @@ export interface Customer {
   address?: string;
   gender ?: boolean;
   delFlag ?: boolean;
+  ward ?: Ward
 }

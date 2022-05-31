@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Optional} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 import {Customer} from "./model/customer";
@@ -18,7 +18,6 @@ export class CustomerService {
 
   private URL = 'http://localhost:8080/api';
   private API_CUSTOMER = 'http://localhost:8080/api/customer';
-
 
   constructor(private httpClient : HttpClient) { }
 
@@ -40,7 +39,8 @@ export class CustomerService {
   }
 
   getListWard() {
-    return this.httpClient.get<Ward[]>(this.URL + '/ward/ward-list');
+    return this.httpClient.get<Ward[]>(this.URL + '/ward/ward-list')
+
   }
 
   getListCustomer(page : any) : Observable<any>{
@@ -48,6 +48,14 @@ export class CustomerService {
     return  this.httpClient.get<any>( this.API_CUSTOMER + '/list?page=' + page);
 
   }
+  getCardByIdCustomer(id:number){
+    return this.httpClient.get<Car[]>(this.API_CUSTOMER + "/" + id);
+  }
+  getCustomerById(id:number){
+    return this.httpClient.get<Customer>(this.API_CUSTOMER + "/detail/" + id);
+
+  }
+
 
 }
 
