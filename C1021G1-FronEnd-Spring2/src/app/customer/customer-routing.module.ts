@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import {ListCustomerComponent} from "./list-customer/list-customer.component";
 
 
-const routes: Routes = [{
-  path : 'list', component : ListCustomerComponent
-}];
+const routes: Routes = [
+  {path : 'list', component : ListCustomerComponent}
+];
 
 
 @NgModule({

@@ -3,14 +3,12 @@
   <!--    container-fluid-title-->
   <div class="row he-tex mt-3 ">
     <div class="col-md-12 text-center">
-      <h3>Danh Sách Vé</h3>
+      <h3>Danh Sách Khách Hàng</h3>
     </div>
-
-
 
   </div>
 
-  <form action="" class="mb-3 mt-2 row">
+  <form action="" [formGroup]="formSearchCustomer" (ngSubmit)="search('')" class="mb-3 mt-2 row">
     <div class="form-box">
       <!--            <div class="d-flex justify-content-between">-->
 
@@ -25,7 +23,7 @@
 
           <div class="form-group">
 
-            <input class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
+            <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
                    onblur="(this.type = 'text')">
           </div>
         </div>
@@ -34,7 +32,7 @@
 
           <div class="form-group">
 
-            <input class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
+            <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
                    onblur="(this.type = 'text')">
           </div>
         </div>
@@ -42,14 +40,14 @@
 
         <div class="col-right-1">
           <div class="form-group">
-            <input type="text"
+            <input type="text" formControlName="name"
                    class="form-control" placeholder="Họ và tên">
           </div>
         </div>
 
         <div class="col-right-1">
           <div class="form-group">
-            <input type="text"
+            <input type="text" formControlName="code"
                    class="form-control" placeholder="Mã Khách hàng">
 
           </div>
@@ -57,15 +55,15 @@
 
         <div class="col-right-1">
           <div class="form-group">
-            <input type="text"
+            <input type="text" formControlName="phone"
                    class="form-control" placeholder="Số Điện Thoại">
 
           </div>
         </div>
         <div class="col-right-1">
-          <a class="btn btn-success " >
+          <button type="submit" class="btn btn-success " >
             <span class="fa fa-search"></span>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -224,79 +222,73 @@
       </td>
 
       <td>
-        <a (click)="openDetailCustomer(customer.id)" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
+        <a  role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
           class="fas fa-pencil" style="font-size:24px"></span></a>
       </td>
 
       <td>
-        <a  role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
+        <a (click)="openDetailCustomer(customer.id)" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
           class="fas fa-eye" style="font-size:24px"></span></a>
       </td>
 
     </tbody>
 
   </table>
-
-  <div class="row text-center">
-    <div class="col-md-12">
-      <div class="pagination">
-        <a href="#"><span class="fa fa-angle-double-left"></span></a>
-        <a href="#"><span class="fa fa-angle-left"></span></a>
-        <a href="#">1</a>
-        <a href="#" class="active">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#"><span class="fa fa-angle-right"></span></a>
-
-        <a href="#"><span class="fa fa-angle-double-right"></span></a>
+<!--  // phan trang-->
+  <div class="container-fluid">
+    <div class="row">
 
 
+      <div class="col-10">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-2">
+
+            </div>
+<!--            <div class="mx-3 col-3">-->
+<!--              Hiển thị trang <span class="font-monospace">{{index + 1}}</span> trong tổng số <span-->
+<!--              class="font-monospace">{{totalPagination}}</span> trang-->
+<!--            </div>-->
+<!--            thanh phan trang-->
+            <div class="col-6 pagination ">
+              <button [disabled]="indexPage < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
+              </button>
+              <button [disabled]="indexPage < 1" (click)="back()"><span class="fa fa-angle-left"></span></button>
+              <button [hidden]="indexPage < 2" (click)="loadList(indexPage-1)">
+                {{indexPage - 1}}
+              </button>
+              <button [hidden]="indexPage == 0" (click)="loadList1(indexPage-1)">
+                {{indexPage}}
+              </button>
+              <button class="active">
+                {{indexPage + 1}}
+              </button>
+              <button [hidden]="indexPage >= totalPagination - 1" (click)="loadList2(indexPage+1)">
+                {{indexPage + 2}}
+              </button>
+              <button [hidden]="indexPage >= totalPagination - 2" (click)="movingNext()">{{indexPage + 3}}</button>
+              <button [disabled]="indexPage == totalPagination - 1" (click)="next()"><span
+                class="fa fa-angle-right"></span>
+              </button>
+              <button [disabled]="indexPage == totalPagination - 1" (click)="lastPage()"><span
+                class="fa fa-angle-double-right"></span></button>
+
+<!--              <div>-->
+
+<!--                <input type="number" #page>-->
+<!--                <button (click)="go(page.value)">GO</button>-->
+<!--              </div>-->
+            </div>
+
+
+          </div>
+        </div>
       </div>
+
     </div>
-
-
+    <div class="col-2"></div>
   </div>
 
 </div>
 
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa vé xe</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">Xác nhận xóa vé</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h3>Bạn có chắc xóa vé xe <span class="text-danger font-weight-normal">SV-001</span> với biển số xe
-          <span class="text-danger font-weight-normal">99-H7 7777</span></h3>
-        <p class="text-danger font-weight-normal">(Lưu ý thao tác này không thể hoàng tác lại)</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn button-cancel" data-bs-dismiss="modal">HỦY</button>
-        <button type="button" class="btn button-confirm" data-bs-dismiss="modal">Đồng Ý</button>
-      </div>
-    </div>
-  </div>
-</div>
 
