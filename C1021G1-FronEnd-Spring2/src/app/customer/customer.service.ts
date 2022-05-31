@@ -7,6 +7,7 @@ import {Ward} from "./model/ward";
 import {District} from "./model/district";
 import {Province} from "./model/province";
 import { Observable } from 'rxjs';
+import {Car} from "../car/model/car";
 
 
 @Injectable({
@@ -22,34 +23,24 @@ export class CustomerService {
   constructor(private httpClient : HttpClient) { }
 
   getInfo(id : number) {
-    const token = sessionStorage.getItem('token');
-    const header = {
-      'content-type': 'application/json',
-      'Authorization': `Bearer${token}`
-    };
-    return this.httpClient.get<Customer>(this.API_CUSTOMER + "/" + id,{headers: header})
+    return this.httpClient.get<Car[]>(this.API_CUSTOMER + "/" + id)
   }
 
   //TrongHD sửa thông tin khách hàng
   updateCustomer(id: number, data) {
-    const token = sessionStorage.getItem('token');
-    const header = {
-      'content-type': 'application/json',
-      'Authorization': `Bearer${token}`
-    };
-    return this.httpClient.patch<CustomerDtoUpdate>(this.API_CUSTOMER + '/update/' + id, data,{headers: header});
+    return this.httpClient.patch<CustomerDtoUpdate>(this.API_CUSTOMER + '/update/' + id, data);
   }
 
   getListProvince() {
-    return this.httpClient.get<Province[]>(this.URL + "/province/province-list");
+    return this.httpClient.get<Province[]>(this.URL + '/province/province-list');
   }
 
   getListDistrict() {
-    return this.httpClient.get<District[]>(this.URL + "/district/district-list");
+    return this.httpClient.get<District[]>(this.URL + '/district/district-list');
   }
 
   getListWard() {
-    return this.httpClient.get<Ward[]>(this.URL + "/ward/ward-list");
+    return this.httpClient.get<Ward[]>(this.URL + '/ward/ward-list');
   }
 
   getListCustomer(page : any) : Observable<any>{

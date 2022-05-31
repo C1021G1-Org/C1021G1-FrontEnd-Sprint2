@@ -1,6 +1,7 @@
+import {Ward} from "../model/ward";
+
 export interface CustomerDtoUpdate {
   id? : number,
-  code? : string,
   name? : string,
   birthday? : string,
   idCard? : string,

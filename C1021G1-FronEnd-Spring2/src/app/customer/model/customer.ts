@@ -1,3 +1,5 @@
+import {Car} from "../../car/model/car";
+
 export interface Customer {
   id ?:number;
   code?: string;
