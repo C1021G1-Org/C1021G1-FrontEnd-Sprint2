@@ -1,4 +1,4 @@
-<div id="container">
+<div id="container" *ngIf="ticket">
 
   <form class="form" [formGroup]="ticketForm">
     <div class="layout">
@@ -11,13 +11,13 @@
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
             <input readonly type="text" id="name" name="name" class="form-control" required
-                   value="{{ticket.car.customer.name}}"><span class="bar"></span></div>
+                   [value]="ticket.car.customer.name"><span class="bar"></span></div>
         </div>
         <div class="col-6">
           <label for="code">Mã vé: </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
-            <input readonly type="text" id="code" class="form-control" value="{{ticket.code}}">
+            <input readonly type="text" id="code" class="form-control" [value]="ticket.code">
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <label for="bsx">Biển Số Xe:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-car"></i></a>
-            <input readonly type="text" class="form-control" id="bsx" value="{{ticket.car.carPlate}}">
+            <input readonly type="text" class="form-control" id="bsx" [value]="ticket.car.carPlate">
           </div>
 
         </div>
@@ -35,7 +35,7 @@
           <label for="phone">Số điện thoại:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
-            <input readonly type="text" class="form-control" id="phone" value="{{ticket.car.customer.phone}}">
+            <input readonly type="text" class="form-control" id="phone" [value]="ticket.car.customer.phone">
           </div>
         </div>
 
@@ -46,7 +46,7 @@
           <label for="date">Thời gian vé có hiệu lực:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-calendar-alt"></i></a>
-            <input readonly type="text" class="form-control" id="date" value="{{ticket.startDate | date: 'dd-MM-yyy'}}">
+            <input readonly type="text" class="form-control" id="date" [value]="ticket.startDate | date: 'dd-MM-yyy'">
           </div>
 
         </div>
@@ -54,7 +54,7 @@
           <label for="date1">Thời gian vé hết hiệu lực:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-calendar-alt"></i></a>
-            <input readonly type="text" class="form-control" id="date1" value="{{ticket.endDate | date: 'dd-MM-yyy'}}">
+            <input readonly type="text" class="form-control" id="date1" [value]="ticket.endDate | date: 'dd-MM-yyy'">
           </div>
 
         </div>
@@ -65,8 +65,9 @@
           <label for="floor">Tầng: </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-building"></i></a>
-            <select formControlName="floor" id="floor" class="form-control">
-              <option *ngFor="let item of floors" [ngValue]="item.id" >
+            <select formControlName="floor" id="floor" class="form-control" *ngIf="floors" (change)="readListLocation()">
+              <option *ngFor="let item of floors" [ngValue]="item.id"
+                      [selected]="ticketForm.get('floor').value==item.id">
                 {{item.name}}
               </option>
             </select>
@@ -77,11 +78,10 @@
           <label for="location">Vị Trí: </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-parking"></i></a>
-            <select formControlName="location" id="location" class="form-control">
-              <option *ngFor="let item of locations" [ngValue]="item"
-                      [selected]="item.id == ticketForm.get('location').value.id ">
+            <select formControlName="location" id="location" class="form-control" *ngIf="locations">
+              <option *ngFor="let item of locations" [ngValue]="item.id"
+                      [selected]="ticketForm.get('location').value==item.id">
                 {{item.number}}
-
             </select>
           </div>
         </div>
@@ -106,9 +106,9 @@
           <label for="ticket">Loại Vé: </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-ticket-alt"></i></a>
-            <select formControlName="ticketType" id="ticket" class="form-control">
-              <option *ngFor="let item of ticketTypes" [ngValue]="item"
-                      [selected]="item.id == ticketForm.get('ticketType').value.id ">
+            <select formControlName="ticketType" id="ticket" class="form-control" *ngIf="ticketTypes">
+              <option *ngFor="let item of ticketTypes" [ngValue]="item.id"
+                      [selected]="item.id == ticketForm.get('ticketType').value">
                 {{item.name}}
             </select>
           </div>
@@ -120,7 +120,7 @@
           <label for="extend">Ngày Gia Hạn:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-calendar-alt"></i></a>
-            <input type="date" class="form-control" id="extend" value="{{ticket.endDate | date: 'dd-MM-yyy'}}}">
+            <input type="date" class="form-control" id="extend" formControlName="endDate">
           </div>
         </div>
       </div>

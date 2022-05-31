@@ -1,13 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Ticket} from '../model/ticket';
 import {TicketService} from '../ticket.service';
 import {Customer} from '../model/customer';
 
-import {TicketType} from '../model/ticketType';
-import {Car} from '../model/car';
+
+import {ICar} from '../model/ICar';
 import {Floor} from '../model/floor';
-import {ILocation} from '../model/ilocation';
+import {ILocation} from "../model/ILocation";
+import {TicketType} from "../model/ticket-type";
 
 
 @Component({
@@ -18,14 +19,13 @@ import {ILocation} from '../model/ilocation';
 export class UpdateTicketComponent implements OnInit {
 
 
-
-  ticketTypes: TicketType[]=[];
-  locations: ILocation[];
-  ticket: Ticket;
+  ticketTypes: TicketType[] = [];
+  locations: ILocation[] = [];
+  ticket: Ticket = null;
   customer: Customer[];
   floors: Floor[];
-  car: Car[];
-  idTicket = 1;
+  car: ICar[];
+  idTicket: number = 0;
   validation_message = {
     sumPrice: [
       {type: 'required', message: 'Vui lòng không để trống'},
@@ -34,74 +34,73 @@ export class UpdateTicketComponent implements OnInit {
   };
 
 
-
   constructor(private ticketService: TicketService) {
   }
 
   ngOnInit(): void {
-    this.getAllCar();
-    this.getTicketById();
-    this.getAllTicketType();
-    this.getAllLocation();
-    this.getAllFloors();
-
+    this.idTicket = this.ticketService.idTicketUpDate;
+    console.log(this.idTicket)
+    this.getListFloor()
+    this.getInForTicket();
 
   }
 
   ticketForm = new FormGroup({
+    id: new FormControl(''),
     floor: new FormControl('',),
     location: new FormControl('',),
     sumPrice: new FormControl('',),
     ticketType: new FormControl('',),
     endDate: new FormControl('',)
   });
-  getAllFloors() {
-    this.ticketService.getAllFloor().subscribe(data => {
-      this.floors = data;
-    });
-  }
 
-  getTicketById() {
-
+  getInForTicket() {
     this.ticketService.findById(this.idTicket).subscribe((data) => {
-      this.ticket = data['content'];
-      console.log(this.ticket);
+      this.ticket = data;
+      console.log(this.ticket)
+
+      this.ticketForm.patchValue({floor: this.ticket.location.floor.id})
+      this.ticketForm.patchValue({location: this.ticket.location.id})
+      this.ticketForm.patchValue({ticketType: this.ticket.ticketType.id})
+      this.ticketForm.patchValue({endDate: this.ticket.endDate})
+      this.ticketForm.patchValue({sumPrice: this.ticket.sumPrice})
+      this.ticketForm.patchValue({id: this.ticket.id})
+      console.log(this.ticketForm.value)
+      this.getListLocation();
+    }, () => {
+    }, () => {
+
+      this.getListTicketType();
     })
   }
-    getAllTicketType() {
-      this.ticketService.getAllTicketType().subscribe((listType) => {
-        this.ticketTypes = listType;
-      })
-    }
-    getAllLocation() {
-      this.ticketService.getAllLocation().subscribe((listLocation) => {
-        this.locations = listLocation;
-      })
-    }
-    getAllCar() {
-      this.ticketService.getAllCar().subscribe((listCar) => {
-        this.car = listCar;
-      })
-    }
+
+  getListFloor() {
+    this.ticketService.getListFloor().subscribe((data) => {
+      this.floors = data;
+      console.log(this.floors)
+    })
+  }
 
 
+  getListLocation() {
+    this.ticketService.getAllLocation().subscribe((data) => {
+      this.locations = data
+    })
+  }
+
+  getListTicketType() {
+    this.ticketService.getListTypeTicket().subscribe((data) => {
+      this.ticketTypes = data;
+    })
+  }
 
   update() {
 
   }
-  checkCurrentDate(birthdayCurrent: AbstractControl) {
-    // console.log(birthdayCurrent.value);
-    // const birth = new Date(birthdayCurrent.value);
-    // const births = Date.now() - birth.getTime() - 86400000;
-    // const time = new Date(births);
-    // console.log(time.getUTCFullYear());
-    // const current = time.getUTCFullYear() - 1970;
-    // console.log(current);
-    // if (current <= 30) {
-    //   return {'currentDate': true};
-    // }
-    // return null;
+
+  readListLocation() {
+    this.ticketService.getAllLocationByFloor(this.ticketForm.get('floor').value).subscribe((data) => {
+      this.locations = data
+    })
   }
-
-
 }
