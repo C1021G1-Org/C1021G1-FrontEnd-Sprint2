@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from "../model/customer";
 import {CustomerService} from "../customer.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -12,6 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./list-customer.component.css']
 })
 export class ListCustomerComponent implements OnInit {
+
   customerList : Customer[];
   formSearchCustomer : FormGroup;
   isSearch : boolean;
@@ -138,14 +139,13 @@ export class ListCustomerComponent implements OnInit {
   }
 
   openDetailCustomer(id: number) {
-    const dialogRef = this.dialog.open(DetailCustomerComponent, {
-      //ThangDBX kích thước dialog
-      width: '500px',
-      data: {datal : id}
-    })
-    dialogRef.afterClosed().subscribe(next =>{
-      this.ngOnInit();
-    })
+      const dialogRef = this.dialog.open(DetailCustomerComponent, {
+        width: '100%',
+        data: id,
+      })
+      dialogRef.afterClosed().subscribe(next => {
+        this.ngOnInit();
+      })
   }
 
 
