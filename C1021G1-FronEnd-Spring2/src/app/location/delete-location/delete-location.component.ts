@@ -31,20 +31,20 @@ export class DeleteLocationComponent implements OnInit {
     this.dialogRef.close();
 
   }
-  // deleteLocation(){
-  //   this.locationService.DeleteLocationById(this.id).subscribe(()=>{
-  //     this.snackBar.open("Xóa Thành công!",'ok',{
-  //       duration:2000,
-  //       verticalPosition:"top"
-  //     })
-  //     this.dialogRef.close();
-  //   },error => {
-  //     this.snackBar.open("đang có người ở vị trí này nên không xóa được!",'error',{
-  //       duration:2000
-  //     })
-  //     this.dialogRef.close();
-  //   })
-  // }
+  deleteLocation(){
+    this.locationService.DeleteLocationById(this.id).subscribe(()=>{
+      this.snackBar.open("Xóa Thành công!",'ok',{
+        duration:2000,
+        verticalPosition:"top"
+      })
+      this.dialogRef.close();
+    },error => {
+      this.snackBar.open("đang có người ở vị trí này nên không xóa được!",'error',{
+        duration:2000
+      })
+      this.dialogRef.close();
+    })
+  }
 
 
 }

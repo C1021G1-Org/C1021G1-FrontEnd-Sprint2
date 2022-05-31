@@ -18,7 +18,9 @@ export class DetailLocationComponent implements OnInit {
   ngOnInit(): void {
     this.id = Number(this.activatedRoute.snapshot.paramMap.get('id'))
     this.service.getDetailLocationById(this.id).subscribe(data=>{
+      console.log(data);
       this.locationDetail =data
+
     })
   }
 
