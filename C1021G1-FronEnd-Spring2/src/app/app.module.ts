@@ -19,6 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
+import { ForgottenPasswordComponent } from './login/forgotted-password/forgotten-password.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     HeaderComponent,
     SignInComponent,
     SignUpComponent,
-    SidebarComponent
+    SidebarComponent,
+    ForgottenPasswordComponent
   ],
   imports: [
     BrowserModule,
