@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {TicketService} from "../ticket.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Ticket} from "../model/ticket";
 
 @Component({
   selector: 'app-delete-ticket',
@@ -6,10 +11,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-ticket.component.css']
 })
 export class DeleteTicketComponent implements OnInit {
+  idTicket: number = 0
+  inForTicket: Ticket
 
-  constructor() { }
+  constructor(private  ticketService: TicketService,
+              private router: Router,
+              private snackBar: MatSnackBar,
+              private dialogRef: MatDialogRef<DeleteTicketComponent>,
+              @Inject(MAT_DIALOG_DATA) public data1: any) {
+  }
 
   ngOnInit(): void {
+    this.idTicket = this.data1;
+    this.getInForTicket();
+    console.log(this.inForTicket)
+  }
+
+  getInForTicket() {
+    this.ticketService.getInForById(this.idTicket).subscribe((data) => {
+      this.inForTicket = data;
+    })
   }
 
 }

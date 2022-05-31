@@ -4,6 +4,11 @@ import {Ticket} from "../model/ticket";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Floor} from "../model/floor";
 import {TicketType} from "../model/ticket-type";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatDialog} from "@angular/material/dialog";
+import {DeleteTicketComponent} from "../delete-ticket/delete-ticket.component";
+import {UpdateTicketComponent} from "../update-ticket/update-ticket.component";
 
 
 @Component({
@@ -29,7 +34,9 @@ export class ListTicketComponent implements OnInit {
     phoneCustomer: new FormControl('')
   })
 
-  constructor(private  ticketService: TicketService) {
+  constructor(private  ticketService: TicketService, private router: Router,
+              private snackBar: MatSnackBar,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -108,4 +115,51 @@ export class ListTicketComponent implements OnInit {
     this.getListTicket();
     console.log(this.searchForm.value)
   }
+
+  gotoPage(num: number) {
+    this.page = num
+    if (this.page <= 0) {
+      this.page = 0
+    } else if (this.page > this.totalPages - 1) {
+      this.page = this.totalPages - 1;
+    }
+    this.getListTicket();
+  }
+
+  indexPaginationChage(value: any) {
+    this.page = value - 1;
+    if (this.page <= 0) {
+      this.page = 0
+    } else if (this.page >= this.totalPages - 1) {
+      this.page = this.totalPages - 1;
+    }
+    this.getListTicket();
+  }
+
+  openDeleteDialog(id: number) {
+
+    const x = this.dialog.open(DeleteTicketComponent, {
+      width: '700px',
+      data: {data1: id},
+    })
+    x.afterClosed().subscribe(() => {
+      console.log("dong dailog")
+      this.ngOnInit();
+    })
+
+  }
+
+  openUpdateDialog(id: number) {
+
+    const x = this.dialog.open(UpdateTicketComponent, {
+      width: '700px',
+      data: {data1: id},
+    })
+    x.afterClosed().subscribe(() => {
+      console.log("dong dailog")
+      this.ngOnInit();
+    })
+
+  }
+
 }

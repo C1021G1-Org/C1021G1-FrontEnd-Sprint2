@@ -91,13 +91,13 @@
       <td class="text-center" *ngIf="item.flagExpire"><span class="fa fa-remove"> Đã Hết Hạn</span></td>
       <td class="text-center" *ngIf="!item.flagExpire"><span class="fa fa-check"> Còn Hạn</span></td>
       <td>
-        <a role="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><span
+        <a role="button" (click)="openDeleteDialog(item.id)"><span
           class="fa fa-trash text-danger" style="font-size:24px"></span></a>
 
 
       </td>
       <td>
-        <a role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
+        <a role="button" (click)="openUpdateDialog(item.id)"><span
           class="fa fa-pencil" style="font-size:24px"></span></a>
       </td>
 
@@ -115,19 +115,21 @@
 
   <div class="row text-center">
     <div class="col-md-12">
-      <div class="pagination">
+      <div class="pagination d-inline-flex">
         <button (click)="firstPage()"><span class="fa fa-angle-double-left"></span></button>
         <button (click)="previousPage()"><span class="fa fa-angle-left"></span></button>
-        <!--        <button [class.active]="page+1==1">1</button>-->
-        <!--        <button [class.active]="page+1==2">2</button>-->
-        <!--        <button [class.active]="page+1==3">3</button>-->
-        <!--        <button [class.active]="page+1==4">4</button>-->
-        <!--        <button [class.active]="page+1==5">5</button>-->
-        <!--        <button [class.active]="page+1==5">6</button>-->
-        <!--        <button  *ngFor="let numPage of totalPages" [class.active]="page+1==numPage">{{numPage}}</button>-->
-        <ng-container *ngIf="totalPages>0">
-       
-        </ng-container>
+        <button (click)="gotoPage(number)" [class.active]="page+1==number">{{number}}</button>
+        <button (click)="gotoPage(number)">{{number + 1}}</button>
+        <button (click)="gotoPage(number+2)">{{number + 2}}</button>
+        <div class="input-group ">
+          <input type="number" min="1" [max]="totalPages" class="form-control text-right rounded-0"
+                 placeholder="2" aria-label="Username"
+                 aria-describedby="basic-addon1" [value]="page+1"
+                 (change)="indexPaginationChage($event.target.value)">
+          <div class="w-auto max-height">
+            <span class="input-group-text" id="basic-addon1">{{totalPages}}</span>
+          </div>
+        </div>
         <button (click)="nextPage()"><span class="fa fa-angle-right"></span></button>
         <button (click)="lastPage()"><span class="fa fa-angle-double-right"></span></button>
 
@@ -138,44 +140,42 @@
 
   </div>
 
-</div>
 
+  <!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+  <!--  <div class="modal-dialog">-->
+  <!--    <div class="modal-content">-->
+  <!--      <div class="modal-header">-->
+  <!--        <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa vé xe</h5>-->
+  <!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+  <!--      </div>-->
+  <!--      <div class="modal-body">-->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa vé xe</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+  <!--      </div>-->
+  <!--      <div class="modal-footer">-->
+  <!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+  <!--        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">Xác nhận xóa vé</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h3>Bạn có chắc xóa vé xe <span class="text-danger font-weight-normal">SV-001</span> với biển số xe
-          <span class="text-danger font-weight-normal">99-H7 7777</span></h3>
-        <p class="text-danger font-weight-normal">(Lưu ý thao tác này không thể hoàng tác lại)</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn button-cancel" data-bs-dismiss="modal">HỦY</button>
-        <button type="button" class="btn button-confirm" data-bs-dismiss="modal">Đồng Ý</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <!--<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+  <!--  <div class="modal-dialog">-->
+  <!--    <div class="modal-content">-->
+  <!--      <div class="modal-header">-->
+  <!--        <h5 class="modal-title" id="exampleModalLabel2">Xác nhận xóa vé</h5>-->
+  <!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+  <!--      </div>-->
+  <!--      <div class="modal-body">-->
+  <!--        <h3>Bạn có chắc xóa vé xe <span class="text-danger font-weight-normal">SV-001</span> với biển số xe-->
+  <!--          <span class="text-danger font-weight-normal">99-H7 7777</span></h3>-->
+  <!--        <p class="text-danger font-weight-normal">(Lưu ý thao tác này không thể hoàng tác lại)</p>-->
+  <!--      </div>-->
+  <!--      <div class="modal-footer">-->
+  <!--        <button type="button" class="btn button-cancel" data-bs-dismiss="modal">HỦY</button>-->
+  <!--        <button type="button" class="btn button-confirm" data-bs-dismiss="modal">Đồng Ý</button>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
 

@@ -31,6 +31,9 @@ export class TicketService {
   getListTypeTicket(){
     return this.httpClient.get<TicketType[]>(`${this.URL_BE}/getTypeTicket`)
   }
+  getInForById(id:number){
+    return this.httpClient.get<Ticket>(`${this.URL_BE}/edit/`+id)
+  }
   //tam end
 
 
