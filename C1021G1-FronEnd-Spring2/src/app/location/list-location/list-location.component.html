@@ -19,12 +19,11 @@
       <div class="col-4 col-lg-4 col-md-4 col-sm-4 " style="right:100px">
         <div class="container">
           <div class="row">
-            <div class="col-8 input-group" >
+            <div class="col-8 input-group">
               <input (keyup.enter)="search()" (change)="code = $event.target.value" type="search" placeholder="Nhập vị trí" class="form-control" (keyup)="index=0">
               <span (click)="search()" role="button" class="fa fa-search btn btn-success input-group-text"></span>
             </div>
             <div class="col-4">
-
             </div>
           </div>
         </div>
@@ -51,8 +50,13 @@
             <td>{{i + 1}}</td>
             <td>{{lf.code}}</td>
             <td>{{lf.floorName}}</td>
+
+            <td class="text-end">
+              <a class="btn btn-warning" role="button" ><span class="fa fa-pencil"></span></a>
+
             <td class="text-end" >
               <a class="btn btn-warning" role="button"><span class="fa fa-pencil" ></span></a>
+
             </td>
             <td class="text-center">
               <a class="btn btn-danger" role="button" (click)="openDialog(lf.id)"><span class="fa fa-trash"></span></a>

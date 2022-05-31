@@ -30,13 +30,12 @@ export class LocationService {
   DeleteLocationById(id): Observable<LocationList> {
     console.log(id);
     return this.httpClient.delete<LocationList>(this.URL_BE + 'location/delete/' + id )
-  }
 
-
+  //TinhHD lay list va tim kiem
   getAllLocationAndFloor(code: string, id: string, index: number) {
     return this.httpClient.get<LocationList[]>(this.URL_BE + "location/list?code=" + code + "&id=" + id + "&page=" + index)
   }
-
+  //TinhHD lay list floor
   getAllFloor() {
     return this.httpClient.get<Floor[]>(this.URL_BE + "floor/list")
   }
