@@ -1,6 +1,7 @@
+
 import {TicketType} from "./ticket-type";
-import {Car} from "./car";
-import {Location} from "./location";
+import {ICar} from "./ICar";
+import {ILocation} from "./ILocation";
 
 export interface Ticket {
   id: number;
@@ -15,8 +16,9 @@ export interface Ticket {
   isDoing: boolean;
   sumPrice: number;
   ticketType: TicketType;
-  location: Location
-  car: Car;
+  location: ILocation
+  car: ICar;
   flagExpire: boolean;
+
 
 }

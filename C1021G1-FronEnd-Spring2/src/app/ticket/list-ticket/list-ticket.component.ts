@@ -150,15 +150,8 @@ export class ListTicketComponent implements OnInit {
   }
 
   openUpdateDialog(id: number) {
-
-    const x = this.dialog.open(UpdateTicketComponent, {
-      width: '700px',
-      data: {data1: id},
-    })
-    x.afterClosed().subscribe(() => {
-      console.log("dong dailog")
-      this.ngOnInit();
-    })
+    this.ticketService.idTicketUpDate = id
+    this.router.navigateByUrl("/update-ticket")
 
   }
 

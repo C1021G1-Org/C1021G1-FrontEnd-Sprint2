@@ -1,4 +1,5 @@
-import {Car} from "./car";
+
+
 
 export interface Employee {
   id: number;
@@ -11,4 +12,5 @@ export interface Employee {
   ward: any;
   position: any;
   account: any;
+
 }

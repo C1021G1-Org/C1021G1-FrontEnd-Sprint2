@@ -28,7 +28,7 @@ export class DeleteTicketComponent implements OnInit {
   }
 
   getInForTicket() {
-    this.ticketService.getInForById(this.idTicket).subscribe((data) => {
+    this.ticketService.findById(this.idTicket).subscribe((data) => {
       this.inForTicket = data;
     })
   }

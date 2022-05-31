@@ -18,6 +18,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 
+
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
@@ -28,6 +29,9 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
+import {CdkTableModule} from "@angular/cdk/table";
+import {TicketModule} from "./ticket/ticket.module";
+
 
 
 @NgModule({
@@ -60,7 +64,12 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatDatepickerModule,
     MatSnackBarModule,
     NgxPaginationModule,
+
     MatDialogModule,
+
+    CdkTableModule,
+    TicketModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
