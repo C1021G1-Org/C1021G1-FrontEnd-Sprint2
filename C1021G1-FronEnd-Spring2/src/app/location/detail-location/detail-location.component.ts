@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LocationService} from '../location.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {LocationDto} from '../model/location-dto';
 
 @Component({
   selector: 'app-detail-location',
@@ -9,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class DetailLocationComponent implements OnInit {
   id: number;
-  locationDetail: any;
+  locationDetail: LocationDto;
 
   constructor(private service: LocationService,
               private router : Router,
@@ -20,8 +21,6 @@ export class DetailLocationComponent implements OnInit {
     this.service.getDetailLocationById(this.id).subscribe(data=>{
       console.log(data);
       this.locationDetail =data
-
     })
   }
-
 }
