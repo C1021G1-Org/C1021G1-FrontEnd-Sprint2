@@ -1,16 +1,31 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {ListLocationComponent} from "./list-location/list-location.component";
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {DetailLocationComponent} from './detail-location/detail-location.component';
+import {DeleteLocationComponent} from './delete-location/delete-location.component';
+import {ListLocationComponent} from './list-location/list-location.component';
 
 
 const routes: Routes = [
+
   {
-    path: "location-list",component : ListLocationComponent
-  }
-];
+    path: 'location-list',
+    component: ListLocationComponent
+  },
+    {
+      path: 'location-detail/:id',
+      component: DetailLocationComponent
+    },
+
+    {
+      path: 'location-delete/:id',
+      component: DeleteLocationComponent
+    }]
+
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LocationRoutingModule { }
+export class LocationRoutingModule {
+}
