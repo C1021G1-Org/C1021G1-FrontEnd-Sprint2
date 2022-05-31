@@ -7,6 +7,7 @@ import {Ward} from "./model/ward";
 import {Customer} from "./model/customer";
 import {Car} from "../car/model/car";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,7 @@ export class CustomerService {
   private API_CUSTOMER = 'http://localhost:8080/api/customer';
 
   constructor(private httpClient: HttpClient) {
+
   }
 
   getListProvince() {
@@ -38,7 +40,9 @@ export class CustomerService {
   }
   getCustomerById(id:number){
     return this.httpClient.get<Customer>(this.API_CUSTOMER + "/detail/" + id);
+
   }
+
 }
 
 
