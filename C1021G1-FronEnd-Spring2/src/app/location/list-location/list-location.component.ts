@@ -37,7 +37,7 @@ export class ListLocationComponent implements OnInit {
   }
 
   search() {
-    this.locationService.getAllLocationAndFloor(this.code, this.id, this.index).subscribe(data => {
+    this.locationService.getAllLocationAndFloor(this.code.trim(), this.id.trim(), this.index).subscribe(data => {
       this.LocationList = data['content'];
       console.log(this.LocationList)
       this.totalPagination = data['totalPages'];
@@ -67,7 +67,7 @@ export class ListLocationComponent implements OnInit {
   }
 
   movingNext() {
-    this.index = 2;
+    this.index = 3;
     this.search();
   }
 
@@ -85,6 +85,7 @@ export class ListLocationComponent implements OnInit {
     this.index = number;
     this.search();
   }
+  //trong ta hien thi dialog
   openDialog(id: number) {
     this.locationService.findLocationById(id).subscribe(data => {
       const dialogRef = this.dialog.open(DeleteLocationComponent, {
@@ -95,6 +96,10 @@ export class ListLocationComponent implements OnInit {
         this.ngOnInit();
       });
     });
+  }
+
+
+  Reset() {
   }
 }
 

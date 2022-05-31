@@ -6,16 +6,17 @@ import {ListLocationComponent} from './list-location/list-location.component';
 
 
 const routes: Routes = [
-
+  //tinhhd
   {
     path: 'location-list',
     component: ListLocationComponent
   },
+  //trong ta
     {
       path: 'location-detail/:id',
       component: DetailLocationComponent
     },
-
+  //trongta
     {
       path: 'location-delete/:id',
       component: DeleteLocationComponent
