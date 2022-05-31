@@ -8,6 +8,7 @@
 
   </div>
 
+
   <form action="" [formGroup]="formSearchCustomer" (ngSubmit)="search('')" class="mb-3 mt-2 row">
     <div class="form-box">
       <!--            <div class="d-flex justify-content-between">-->
@@ -19,24 +20,47 @@
       </div>
       <div class="box-right ">
 
-        <div class="col-right-1">
+<!--  <form action="" class="mb-3 mt-2 row">-->
+<!--    <div class="form-box">-->
+<!--      &lt;!&ndash;            <div class="d-flex justify-content-between">&ndash;&gt;-->
 
-          <div class="form-group">
+
+<!--      <div class="box-left">-->
+<!--        <button type="button" class="btn btn-primary">-->
+<!--          <span class="fa fa-plus-circle mt-1"></span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="box-right ">-->
+
+<!--        <div class="col-right-1">-->
+
 
             <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
                    onblur="(this.type = 'text')">
           </div>
         </div>
 
-        <div class="col-right-1">
+<!--          <div class="form-group">-->
 
-          <div class="form-group">
+<!--            <input class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"-->
+<!--                   onblur="(this.type = 'text')">-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="col-right-1">-->
+
 
             <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
                    onblur="(this.type = 'text')">
           </div>
-        </div>
 
+<!--          <div class="form-group">-->
+
+
+<!--            <input class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"-->
+<!--                   onblur="(this.type = 'text')">-->
+<!--          </div>-->
+<!--        </div>-->
 
         <div class="col-right-1">
           <div class="form-group">
@@ -50,8 +74,20 @@
             <input type="text" formControlName="code"
                    class="form-control" placeholder="Mã Khách hàng">
 
-          </div>
-        </div>
+
+<!--        <div class="col-right-1">-->
+<!--          <div class="form-group">-->
+<!--            <input type="text"-->
+<!--                   class="form-control" placeholder="Họ và tên">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="col-right-1">-->
+<!--          <div class="form-group">-->
+<!--            <input type="text"-->
+<!--                   class="form-control" placeholder="Mã Khách hàng">-->
+
 
         <div class="col-right-1">
           <div class="form-group">
@@ -67,10 +103,27 @@
         </div>
       </div>
 
-    </div>
+<!--          </div>-->
+<!--        </div>-->
 
-    <!--        </div>-->
-  </form>
+<!--        <div class="col-right-1">-->
+<!--          <div class="form-group">-->
+<!--            <input type="text"-->
+<!--                   class="form-control" placeholder="Số Điện Thoại">-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-right-1">-->
+<!--          <a class="btn btn-success " >-->
+<!--            <span class="fa fa-search"></span>-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--  </form>-->
   <!--    <div class="d-flex justify-content-between mb-3">-->
   <!--        <div class="">-->
   <!--            <button type="button" class="btn btn-primary">-->
@@ -222,7 +275,11 @@
       </td>
 
       <td>
-        <a  role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
+
+        <a routerLink="/customer/update/{{customer.id}}"><span
+
+
+
           class="fas fa-pencil" style="font-size:24px"></span></a>
       </td>
 
@@ -308,8 +365,5 @@
       </div>
     </div>
   </div>
-
 </div>
-
-
 </div>
