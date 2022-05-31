@@ -1,3 +1,5 @@
+import {Ward} from "./ward";
+
 export interface Customer {
   id ?:number;
   code?: string;
@@ -9,4 +11,5 @@ export interface Customer {
   address?: string;
   gender ?: boolean;
   delFlag ?: boolean;
+  ward ?: Ward
 }
