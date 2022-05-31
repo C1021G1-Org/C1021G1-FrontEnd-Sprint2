@@ -1,3 +1,4 @@
+
 import {Ward} from "./ward";
 
 export interface Customer {
