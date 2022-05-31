@@ -4,6 +4,7 @@ import {Car} from "./model/car";
 import {TicketType} from "./model/ticketType";
 import {Ticket} from "./model/ticket";
 import {Floor} from "./model/floor";
+import {ILocation} from './model/ilocation';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class TicketService {
     return this.httpClient.patch<Ticket[]>(this.URL_BE + '/update/' + id, data)
   }
   getAllLocation() {
-    return this.httpClient.get<Location[]>(this.URL_BE + '/location')
+    return this.httpClient.get<ILocation[]>(this.URL_BE + '/location')
   }
   getAllCar() {
     return this.httpClient.get<Car[]>(this.URL_BE + '/car')

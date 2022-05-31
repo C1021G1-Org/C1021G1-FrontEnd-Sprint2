@@ -15679,7 +15679,7 @@ location-crosshairs:
     - 6.0.0-beta1
     - 6.0.0-beta2
     - 6.0.0-beta3
-  label: Location Crosshairs
+  label: Ilocation Crosshairs
   search:
     terms: []
   styles:
@@ -15697,7 +15697,7 @@ location-dot:
     - 5.0.0
     - 6.0.0-beta1
     - 6.0.0-beta3
-  label: Location dot
+  label: Ilocation dot
   search:
     terms: []
   styles:
@@ -15717,7 +15717,7 @@ location-pin:
     - 6.0.0-beta1
     - 6.0.0-beta2
     - 6.0.0-beta3
-  label: Location
+  label: Ilocation
   search:
     terms: []
   styles:
@@ -15727,7 +15727,7 @@ location-pin:
 location-pin-lock:
   changes:
     - 6.1.0
-  label: Location Pin-lock
+  label: Ilocation Pin-lock
   search:
     terms: []
   styles:
