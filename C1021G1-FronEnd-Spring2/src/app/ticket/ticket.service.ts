@@ -7,7 +7,9 @@ import {SearchDto} from "./dto/search-dto";
 import {Floor} from "./model/floor";
 import {TicketType} from "./model/ticket-type";
 import {ICar} from "./model/ICar";
-import {ILocation} from './model/ilocation';
+import {ILocation} from './model/ILocation';
+import {TicketUpdateDto} from './dto/ticket-update-dto';
+
 
 
 @Injectable({
@@ -29,13 +31,13 @@ export class TicketService {
     return this.httpClient.post<DataPageable>(`${this.URL_BE}/search?page=`+page ,searchDto)
   }
 
-  getListFloor(){
-    return this.httpClient.get<Floor[]>(`${this.URL_BE}/getFloor`)
-  }
-
-  getListTypeTicket(){
-    return this.httpClient.get<TicketType[]>(`${this.URL_BE}/getTypeTicket`)
-  }
+  // getListFloor(){
+  //   return this.httpClient.get<Floor[]>(`${this.URL_BE}/getFloor`)
+  // }
+  //
+  // getListTypeTicket(){
+  //   return this.httpClient.get<TicketType[]>(`${this.URL_BE}/getTypeTicket`)
+  // }
 
   //tam end
 
@@ -46,8 +48,8 @@ export class TicketService {
   findById(id: number) {
     return this.httpClient.get<Ticket>(this.URL_BE + '/edit/' + id)
   }
-  updateTicket(id: number, data: Ticket) {
-    return this.httpClient.patch<Ticket[]>(this.URL_BE + '/update/' + id, data)
+  updateTicket( data: TicketUpdateDto) {
+    return this.httpClient.patch(this.URL_BE + '/update', data)
   }
   getAllLocation() {
     return this.httpClient.get<ILocation[]>(this.URL_BE + '/location')

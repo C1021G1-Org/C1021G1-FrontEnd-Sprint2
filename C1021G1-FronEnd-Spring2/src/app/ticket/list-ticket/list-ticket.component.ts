@@ -99,13 +99,13 @@ export class ListTicketComponent implements OnInit {
   }
 
   getListFloor() {
-    this.ticketService.getListFloor().subscribe((data) => {
+    this.ticketService.getAllFloor().subscribe((data) => {
       this.listFloor = data;
     })
   }
 
   getListTypeTicket() {
-    this.ticketService.getListTypeTicket().subscribe((data) => {
+    this.ticketService.getAllTicketType().subscribe((data) => {
       this.listTypeTicket = data;
     })
   }

@@ -92,7 +92,7 @@
           <label for="price">Giá: </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-money-bill-alt"></i></a>
-            <input type="text" formControlName="sumPrice" id="price" class="form-control">
+            <input readonly type="text" formControlName="sumPrice" id="price" class="form-control">
             <div class="text-danger" *ngFor="let validation of validation_message.sumPrice">
               <p class="valid"
                  *ngIf="ticketForm.get('sumPrice').hasError(validation.type) && ticketForm.get('sumPrice').touched">
@@ -106,8 +106,8 @@
           <label for="ticket">Loại Vé: </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-ticket-alt"></i></a>
-            <select formControlName="ticketType" id="ticket" class="form-control" *ngIf="ticketTypes">
-              <option *ngFor="let item of ticketTypes" [ngValue]="item.id"
+            <select formControlName="ticketType" id="ticket" class="form-control" *ngIf="ticketTypes" (change)="changeDate()">
+              <option   *ngFor="let item of ticketTypes" [ngValue]="item.id"
                       [selected]="item.id == ticketForm.get('ticketType').value">
                 {{item.name}}
             </select>
@@ -120,7 +120,7 @@
           <label for="extend">Ngày Gia Hạn:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-calendar-alt"></i></a>
-            <input type="date" class="form-control" id="extend" formControlName="endDate">
+            <input readonly type="date" class="form-control" id="extend"  formControlName="endDate" placeholder="dd-MM-yyyy">
           </div>
         </div>
       </div>
