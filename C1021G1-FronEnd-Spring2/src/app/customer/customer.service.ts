@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+
 import {Customer} from "./model/customer";
 import {CustomerDtoUpdate} from "./dto/customer-dto-update";
 import {Ward} from "./model/ward";
 import {District} from "./model/district";
 import {Province} from "./model/province";
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CustomerService {
 
-  private baseURL = 'http://localhost:8080/api/customer';
-  private baseURLWard = 'http://localhost:8080/api/ward';
-  private baseURLProvince = 'http://localhost:8080/api/province';
-  private baseURLDistrict = 'http://localhost:8080/api/district';
+  private URL = 'http://localhost:8080/api';
+  private API_CUSTOMER = 'http://localhost:8080/api/customer';
 
 
-  constructor(private http : HttpClient) { }
+  constructor(private httpClient : HttpClient) { }
 
   getInfo(id : number) {
     const token = sessionStorage.getItem('token');
@@ -25,7 +27,7 @@ export class CustomerService {
       'content-type': 'application/json',
       'Authorization': `Bearer${token}`
     };
-    return this.http.get<Customer>(this.baseURL + "/" + id,{headers: header})
+    return this.httpClient.get<Customer>(this.API_CUSTOMER + "/" + id,{headers: header})
   }
 
   //TrongHD sửa thông tin khách hàng
@@ -35,22 +37,27 @@ export class CustomerService {
       'content-type': 'application/json',
       'Authorization': `Bearer${token}`
     };
-    return this.http.patch<CustomerDtoUpdate>(this.baseURL + '/update/' + id, data,{headers: header});
+    return this.httpClient.patch<CustomerDtoUpdate>(this.API_CUSTOMER + '/update/' + id, data,{headers: header});
   }
 
-  //TrongHD lấy list ward
-  getWard() {
-    return this.http.get<Ward[]>(this.baseURL + '/ward-list')
+  getListProvince() {
+    return this.httpClient.get<Province[]>(this.URL + "/province/province-list");
   }
 
-  //TrongHD lấy list district
-  getDistrict() {
-    return this.http.get<District[]>(this.baseURL + '/district-list')
+  getListDistrict() {
+    return this.httpClient.get<District[]>(this.URL + "/district/district-list");
   }
 
-  //TrongHD lấy list province
-  getProvince() {
-    return this.http.get<Province[]>(this.baseURL + '/province-list')
+  getListWard() {
+    return this.httpClient.get<Ward[]>(this.URL + "/ward/ward-list");
+  }
+
+  getListCustomer(page : any) : Observable<any>{
+    console.log('da ket noi den BE')
+    return  this.httpClient.get<any>( this.API_CUSTOMER + '/list?page=' + page);
+
   }
 
 }
+
+

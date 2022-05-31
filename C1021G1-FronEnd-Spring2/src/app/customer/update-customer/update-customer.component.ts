@@ -56,19 +56,19 @@ export class UpdateCustomerComponent implements OnInit {
   })
 
   getWard() {
-    this.customerService.getWard().subscribe(data => {
+    this.customerService.getListWard().subscribe(data => {
       this.wards = data;
     })
   }
 
   getDistrict() {
-    this.customerService.getDistrict().subscribe(data => {
+    this.customerService.getListDistrict().subscribe(data => {
       this.districts = data;
     })
   }
 
   getProvince() {
-    this.customerService.getProvince().subscribe(data => {
+    this.customerService.getListProvince().subscribe(data => {
       this.provinces = data;
     })
   }
