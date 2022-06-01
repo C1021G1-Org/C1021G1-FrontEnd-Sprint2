@@ -8,7 +8,6 @@ const API_NEWS = "http://localhost:8080/api/news"
   providedIn: 'root'
 })
 export class NewsService {
-
   constructor(private http: HttpClient) { }
 
   getAllNews(){
@@ -20,7 +19,7 @@ export class NewsService {
     return this.http.post<INewsDto>(`${API_NEWS}` + "/createNews", data)
   }
 
-   findTicketById(id: number){
+   findNewsById(id: number){
       return this.http.get<any>(`${API_NEWS}` + `/findNews/` + id)
    }
 
