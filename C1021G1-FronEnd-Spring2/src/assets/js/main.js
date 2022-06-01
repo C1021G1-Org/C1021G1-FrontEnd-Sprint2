@@ -1,19 +1,25 @@
-(function($) {
+(function ($) {
 
-	"use strict";
+    "use strict";
 
-	var fullHeight = function() {
+    let fullHeight = function () {
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
+        $('.js-fullHeight').css('width', $(window).width());
+        $(window).resize(function () {
+            $('.js-fullHeight').css('width', $(window).width());
+        });
 
-	};
-	fullHeight();
+    };
+    fullHeight();
 
-	$('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
-  });
+    if ($('sidebar').hasClass('active'))
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('deactivate');
+        });
+    else
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
 
 })(jQuery);

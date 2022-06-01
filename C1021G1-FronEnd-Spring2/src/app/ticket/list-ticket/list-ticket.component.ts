@@ -155,16 +155,27 @@ export class ListTicketComponent implements OnInit {
         console.log(data)
         const x = this.dialog.open(DeleteTicketComponent, {
           width: '900px',
-          height:'200px',
+          height: '200px',
           data: {data1: id},
         })
         x.afterClosed().subscribe(() => {
           console.log("dong dailog")
+          this.ticketService.updateNullUser(this.roleEmail, id).subscribe(data => {
+
+          }, (errors) => {
+            this.snackBar.open(errors.error.messageEros, 'OK', {
+              duration: 3000,
+
+            })
+          })
           this.ngOnInit();
         })
 
-      }, error => {
-        console.log(error)
+      }, (errors) => {
+        this.snackBar.open(errors.error.messageEros, 'OK', {
+          duration: 3000,
+
+        })
       })
 
     } else {
@@ -177,8 +188,18 @@ export class ListTicketComponent implements OnInit {
   }
 
   openUpdateDialog(id: number) {
-    this.ticketService.idTicketUpDate = id
-    this.router.navigateByUrl("/update-ticket")
+
+    this.ticketService.updateUserTicket(this.roleEmail, id).subscribe(data => {
+      console.log(data)
+      this.ticketService.idTicketUpDate = id
+      this.router.navigateByUrl("/update-ticket")
+    }, (errors) => {
+      this.snackBar.open(errors.error.messageEros, 'OK', {
+        duration: 3000,
+
+      })
+    })
+
 
   }
 

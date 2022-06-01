@@ -49,6 +49,12 @@ export class DeleteTicketComponent implements OnInit {
 
       })
       this.dialogRef.close();
+    },(errors)=>{
+      console.log(errors)
+      this.snackBar.open(errors.error.messageEros, 'OK', {
+        duration: 3000,
+
+      })
     })
   }
 }

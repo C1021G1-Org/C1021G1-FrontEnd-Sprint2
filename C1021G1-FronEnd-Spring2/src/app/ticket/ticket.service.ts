@@ -7,8 +7,10 @@ import {SearchDto} from "./dto/search-dto";
 import {Floor} from "./model/floor";
 import {TicketType} from "./model/ticket-type";
 import {ICar} from "./model/ICar";
-import {ILocation} from './model/ilocation';
 import {UserRole} from "./dto/user-role";
+import {TicketUpdateDto} from "./dto/ticket-update-dto";
+import {ILocation} from "./model/ILocation";
+
 
 
 @Injectable({
@@ -30,6 +32,7 @@ export class TicketService {
     return this.httpClient.post<DataPageable>(`${this.URL_BE}/search?page=`+page ,searchDto)
   }
 
+
   updateUserTicket(updateUserEmailDto:UserRole,id:number){
     return this.httpClient.patch<any>(`${this.URL_BE}/updateUserEmail/`+id,updateUserEmailDto)
   }
@@ -40,6 +43,10 @@ export class TicketService {
   deleteTicket(updateUserEmailDto:UserRole,id:number){
     return this.httpClient.patch(`${this.URL_BE}/delete/`+id,updateUserEmailDto)
   }
+
+  updateNullUser(updateUserEmailDto:UserRole,id:number){
+    return this.httpClient.patch(`${this.URL_BE}/updateUserNull/`+id,updateUserEmailDto)
+  }
   // getSearchList(searchDto:SearchDto,page:number){
   //   return this.httpClient.get<DataPageable>(`${this.URL_BE}/search?page=`+page ,searchDto)
   // }
@@ -49,6 +56,14 @@ export class TicketService {
 
   // getListTypeTicket(){
   //   return this.httpClient.get<TicketType[]>(`${this.URL_BE}/ticketType`)
+
+  // getListFloor(){
+  //   return this.httpClient.get<Floor[]>(`${this.URL_BE}/getFloor`)
+  // }
+  //
+  // getListTypeTicket(){
+  //   return this.httpClient.get<TicketType[]>(`${this.URL_BE}/getTypeTicket`)
+
   // }
 
   //tam end
@@ -60,8 +75,8 @@ export class TicketService {
   findById(id: number) {
     return this.httpClient.get<Ticket>(this.URL_BE + '/edit/' + id)
   }
-  updateTicket(id: number, data: Ticket) {
-    return this.httpClient.patch<Ticket[]>(this.URL_BE + '/update/' + id, data)
+  updateTicket( data: TicketUpdateDto) {
+    return this.httpClient.patch(this.URL_BE + '/update', data)
   }
   getAllLocation() {
     return this.httpClient.get<ILocation[]>(this.URL_BE + '/location')
