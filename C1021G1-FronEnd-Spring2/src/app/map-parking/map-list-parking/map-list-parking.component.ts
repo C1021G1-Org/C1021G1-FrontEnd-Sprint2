@@ -4,7 +4,6 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MapWarningComponent} from "../map-warning/map-warning.component";
 import {UpdateMapParkingComponent} from "../update-map-parking/update-map-parking.component";
-import {ConfirmMapParkingComponent} from "../confirm-map-parking/confirm-map-parking.component";
 
 @Component({
   selector: 'app-map-list-parking',
@@ -16,7 +15,9 @@ export class MapListParkingComponent implements OnInit {
   listLocation: Location[];
   checkRoleAdmin: boolean;
   checkColor: boolean;
-
+   public index: number = 0;
+  totalPagination: number;
+   number: number = 0;
   constructor(private mapService: MapParkingService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar) {
@@ -24,15 +25,15 @@ export class MapListParkingComponent implements OnInit {
 
   ngOnInit(): void {
     // this.checkRoleAdmin = sessionStorage.getItem('email').includes('admin')?true:false;
-    this.mapService.getAllLocation().subscribe((data: any) => {
-      this.listLocation = data.content;
-      console.log(this.listLocation)
-    })
+  this.list()
   }
-
+list(){
+  this.mapService.getAllLocation(this.index).subscribe((data: any) => {
+    this.listLocation = data['content'];
+    this.totalPagination=data['totalPages'];
+  })
+}
   openDialog(item ,e) {
-    console.log(item.isEmpty==true)
-    console.log(item)
     if (item.isEmpty == true) {
       const dialogRef = this.dialog.open(MapWarningComponent, {
         width: '500px',
@@ -55,5 +56,44 @@ export class MapListParkingComponent implements OnInit {
     }
   }
 
+  back() {
+    this.index--;
+    this.list()
+  }
+
+  next() {
+    this.index++;
+    this.list()
+  }
+
+  previousPage() {
+    this.index = 0;
+    this.list()
+  }
+
+  lastPage() {
+    this.index = this.totalPagination - 1;
+    this.list()
+  }
+
+  movingNext() {
+    this.index = 2;
+    this.list()
+  }
+
+  loadList(number: number) {
+    this.index = number - 1;
+    this.list()
+  }
+
+  loadList1(number: number) {
+    this.index = number;
+    this.list()
+  }
+
+  loadList2(number: number) {
+    this.index = number;
+    this.list()
+  }
 
 }
