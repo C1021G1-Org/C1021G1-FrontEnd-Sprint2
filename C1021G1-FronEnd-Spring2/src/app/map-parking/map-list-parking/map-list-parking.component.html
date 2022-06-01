@@ -10,7 +10,7 @@
 <h1 class="d-flex justify-content-center" style="color:#f5deb3;">Bản đồ vị trí Bãi đỗ xe&nbsp;
   <i class='fa fa-car' style='font-size:48px;color: red'></i>
 </h1>
-<div class="container">
+<div class="container" >
   <div style="font-weight: bold; color: white">
     Số vị trí còn trống: 86
   </div>
@@ -30,7 +30,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container opacity-75" style="background: #ffffff">
   <div class="row">
     <div class="col-1" *ngFor="let item of listLocation" (click)="openDialog(item, $event)">
       <div class="d-flex align-items-center m-1 ">
@@ -39,9 +39,52 @@
               [style.background]="item.isEmpty ? 'red':'green'">
          <span class='fa fa-car' style='font-size:24px'></span>
         </span>
+          <span class="d-flex justify-content-center">{{item.code}}</span>
         </a>
       </div>
     </div>
   </div>
 </div>
 
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-10">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2">
+          </div>
+          <div class="mx-3 col-3" style="color: #ffffff">
+            Tầng <span class="font-monospace" style="color: red; font-weight: bold; font-size:22px">{{index + 1}}</span> trong tổng số <span
+            class="font-monospace" style="color: red; font-weight: bold ; font-size:22px">{{totalPagination}}</span> tầng
+          </div>
+          <div class="col-6 pagination">
+            <button [disabled]="index < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
+            </button>
+            <button [disabled]="index < 1" (click)="back()"><span class="fa fa-angle-left"></span></button>
+            <button [hidden]="index < 2" (click)="loadList(index-1)">
+              {{index - 1}}
+            </button>
+            <button [hidden]="index == 0" (click)="loadList1(index-1)">
+              {{index}}
+            </button>
+            <button class="active">
+              {{index + 1}}
+            </button>
+            <button [hidden]="index >= totalPagination - 1" (click)="loadList2(index+1)">
+              {{index + 2}}
+            </button>
+            <button [hidden]="index >= totalPagination - 2" (click)="movingNext()">{{index + 3}}</button>
+            <button [disabled]="index == totalPagination - 1" (click)="next()"><span
+              class="fa fa-angle-right"></span>
+            </button>
+            <button [disabled]="index == totalPagination - 1" (click)="lastPage()"><span
+              class="fa fa-angle-double-right"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
