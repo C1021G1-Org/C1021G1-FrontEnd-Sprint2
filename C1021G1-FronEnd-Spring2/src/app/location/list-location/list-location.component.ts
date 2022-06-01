@@ -67,7 +67,7 @@ export class ListLocationComponent implements OnInit {
   }
 
   movingNext() {
-    this.index = 3;
+    this.index += 2;
     this.search();
   }
 
