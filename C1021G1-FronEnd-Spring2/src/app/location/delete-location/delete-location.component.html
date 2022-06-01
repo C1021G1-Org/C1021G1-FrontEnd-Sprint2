@@ -1,1 +1,28 @@
-<p>delete-location works!</p>
+<div class="container-fluid">
+  <table class="table table-bordered">
+    <thead class="table-danger">
+    <tr>
+      <th class="text-center" colspan="2">
+        <h2>Cảnh báo</h2>
+      </th>
+    </tr>
+    </thead>
+    <tbody class="table-borderless">
+    <tr>
+      <td colspan="2" class="table-borderless">
+        Bạn có chắc chắn muốn xoá vị trí đỗ xe có:
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">Mã vị trí đỗ: <strong>{{code}}</strong></td>
+      <td class="text-center">Tên tầng: <strong>{{floorName}}</strong></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="text-center">
+        <a class="btn btn-secondary" (click)="onNoClick()">Không</a>
+        <a class="btn btn-danger" (click)="deleteLocation()">Có</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

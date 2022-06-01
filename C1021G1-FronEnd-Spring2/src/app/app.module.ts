@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
@@ -18,8 +17,15 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
-import {MatDialogModule} from "@angular/material/dialog";
+import {LocationModule} from './location/location.module';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { MapParkingModule } from './map-parking/map-parking.module';
+
+
+
+
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -31,6 +37,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
+
 
 
 
@@ -68,7 +75,13 @@ import {TicketModule} from "./ticket/ticket.module";
     MatDialogModule,
 
     CdkTableModule,
+
+    MatDialogModule,
+    LocationModule,
+    MapParkingModule,
+
     TicketModule,
+
 
   ],
   providers: [],
