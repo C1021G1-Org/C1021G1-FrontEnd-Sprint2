@@ -18,235 +18,56 @@
           <span class="fa fa-plus-circle mt-1"></span>
         </button>
       </div>
+
       <div class="box-right ">
+        <div class="col-right-1">
+          <div class="form-group">
+        <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
+               onblur="(this.type = 'text')">
 
-<!--  <form action="" class="mb-3 mt-2 row">-->
-<!--    <div class="form-box">-->
-<!--      &lt;!&ndash;            <div class="d-flex justify-content-between">&ndash;&gt;-->
-
-
-<!--      <div class="box-left">-->
-<!--        <button type="button" class="btn btn-primary">-->
-<!--          <span class="fa fa-plus-circle mt-1"></span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="box-right ">-->
-
-<!--        <div class="col-right-1">-->
-
-
-            <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
-                   onblur="(this.type = 'text')">
           </div>
         </div>
 
-<!--          <div class="form-group">-->
-
-<!--            <input class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"-->
-<!--                   onblur="(this.type = 'text')">-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="col-right-1">-->
-
+        <div class="col-right-1">
+          <div class="form-group">
 
             <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
                    onblur="(this.type = 'text')">
           </div>
-
-<!--          <div class="form-group">-->
-
-
-<!--            <input class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"-->
-<!--                   onblur="(this.type = 'text')">-->
-<!--          </div>-->
-<!--        </div>-->
-
-        <div class="col-right-1">
-          <div class="form-group">
-            <input type="text" formControlName="name"
-                   class="form-control" placeholder="Họ và tên">
-          </div>
         </div>
 
         <div class="col-right-1">
           <div class="form-group">
-            <input type="text" formControlName="code"
-                   class="form-control" placeholder="Mã Khách hàng">
-
-
-<!--        <div class="col-right-1">-->
-<!--          <div class="form-group">-->
-<!--            <input type="text"-->
-<!--                   class="form-control" placeholder="Họ và tên">-->
-<!--          </div>-->
-<!--        </div>-->
-
-
-<!--        <div class="col-right-1">-->
-<!--          <div class="form-group">-->
-<!--            <input type="text"-->
-<!--                   class="form-control" placeholder="Mã Khách hàng">-->
-
+            <input type="text" formControlName="code" class="form-control" placeholder="Mã Khách hàng">
+          </div>
+        </div>
 
         <div class="col-right-1">
           <div class="form-group">
             <input type="text" formControlName="phone"
                    class="form-control" placeholder="Số Điện Thoại">
-
           </div>
         </div>
+
         <div class="col-right-1">
-          <button type="submit" class="btn btn-success " >
-            <span class="fa fa-search"></span>
-          </button>
+          <div class="form-group">
+            <input type="text" formControlName="idCard"
+                   class="form-control" placeholder="CMND">
+          </div>
         </div>
+
+          <div class="col-right-1">
+            <button type="submit" class="btn btn-success " >
+              <span class="fa fa-search"></span>
+            </button>
+          </div>
+         </div>
+      <div>
       </div>
-
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="col-right-1">-->
-<!--          <div class="form-group">-->
-<!--            <input type="text"-->
-<!--                   class="form-control" placeholder="Số Điện Thoại">-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-right-1">-->
-<!--          <a class="btn btn-success " >-->
-<!--            <span class="fa fa-search"></span>-->
-<!--          </a>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-
-<!--    &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--  </form>-->
-  <!--    <div class="d-flex justify-content-between mb-3">-->
-  <!--        <div class="">-->
-  <!--            <button type="button" class="btn btn-primary">-->
-
-  <!--                <span class="fa fa-plus-circle mt-1"> Thêm Vé</span>-->
-  <!--            </button>-->
-  <!--        </div>-->
-  <!--        &lt;!&ndash;        <div class="col-md-10">&ndash;&gt;-->
-  <!--        <div class="d-flex justify-content-end">-->
-  <!--            &lt;!&ndash;            <div class="">&ndash;&gt;-->
-  <!--            <div class="form-group">-->
-  <!--                <input type="text"-->
-  <!--                       class="form-control" placeholder="Họ và tên">-->
-  <!--            </div>-->
-  <!--            &lt;!&ndash;            </div>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <div class="">&ndash;&gt;-->
-  <!--            <div class="form-group me-1 ms-1 col-md-2">-->
-  <!--                <input type="text"-->
-  <!--                       class="form-control" placeholder="Số Điện Thoại">-->
-
-  <!--            </div>-->
-  <!--            &lt;!&ndash;            </div>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <div class="">&ndash;&gt;-->
-  <!--            <div class="form-group ">-->
-  <!--                <select class="form-control">-->
-  <!--                    <option selected disabled>-Tầng-</option>-->
-  <!--                    <option>1</option>-->
-  <!--                    <option>2</option>-->
-  <!--                    <option>3</option>-->
-  <!--                    <option>4</option>-->
-  <!--                </select>-->
-  <!--            </div>-->
-  <!--            &lt;!&ndash;            </div>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <div class="">&ndash;&gt;-->
-  <!--            <div class="form-group me-1 ms-1 ">-->
-  <!--                <select class="form-control">-->
-  <!--                    <option disabled selected>-Loại Vé-</option>-->
-  <!--                    <option>Tháng</option>-->
-  <!--                    <option>Quý</option>-->
-  <!--                    <option>Năm</option>-->
-  <!--                </select>-->
-  <!--            </div>-->
-  <!--            &lt;!&ndash;            </div>&ndash;&gt;-->
-  <!--            &lt;!&ndash;            <div class="">&ndash;&gt;-->
-  <!--            <div class="form-group ">-->
-  <!--                <input type="date" class="form-control" placeholder="">-->
-
-  <!--            </div>-->
-  <!--            <div class="">-->
-  <!--                <button class="btn btn-success ms-1">-->
-  <!--                    <span class="fa fa-search"></span>-->
-  <!--                </button>-->
-  <!--            </div>-->
-
-  <!--            &lt;!&ndash;            </div>&ndash;&gt;-->
-  <!--        </div>-->
-  <!--        &lt;!&ndash;        </div>&ndash;&gt;-->
-  <!--    </div>-->
-  <!--    <div class="col-md-2 ">-->
-
-  <!--    </div>-->
+    </div>
+  </form>
 
 
-  <!--            <a href="#"><i class="fa fa-search"></i></a>-->
-  <!--            <i class="fa-solid fa-octagon-plus"></i>-->
-
-
-  <!--    <table class="table  table-responsive table-borderless">-->
-  <!--        <tr class="d-flex justify-content-end">-->
-  <!--            <td>-->
-  <!--                <button type="button" class="btn btn-primary  w-auto">-->
-  <!--                    <span class="fa fa-plus-circle mt-1"> Thêm Vé</span>-->
-  <!--                </button>-->
-  <!--            </td>-->
-
-  <!--            <td>-->
-  <!--                <div class="form-group  w-auto">-->
-  <!--                    <input type="text"-->
-  <!--                           class="form-control" placeholder="Họ và tên">-->
-  <!--                </div>-->
-  <!--            </td>-->
-  <!--            <td>-->
-  <!--                &lt;!&ndash;                me-1 ms-1 col-md-2&ndash;&gt;-->
-  <!--                <div class="form-group  w-auto">-->
-  <!--                    <input type="text"-->
-  <!--                           class="form-control" placeholder="Số Điện Thoại">-->
-
-  <!--                </div>-->
-  <!--            </td>-->
-  <!--            <td>-->
-  <!--                <div class="form-group  w-auto">-->
-  <!--                    <select class="form-control">-->
-  <!--                        <option selected disabled>-Tầng-</option>-->
-  <!--                        <option>1</option>-->
-  <!--                        <option>2</option>-->
-  <!--                        <option>3</option>-->
-  <!--                        <option>4</option>-->
-  <!--                    </select>-->
-  <!--                </div>-->
-  <!--            </td>-->
-  <!--            <td>-->
-  <!--                &lt;!&ndash;                me-1 ms-1 col-md-1&ndash;&gt;-->
-  <!--                <div class="form-group  w-auto">-->
-  <!--                    <select class="form-control">-->
-  <!--                        <option disabled selected>-Loại Vé-</option>-->
-  <!--                        <option>Tháng</option>-->
-  <!--                        <option>Quý</option>-->
-  <!--                        <option>Năm</option>-->
-  <!--                    </select>-->
-  <!--                </div>-->
-  <!--            </td>-->
-  <!--            <td>-->
-  <!--                <div class="form-group  w-auto">-->
-  <!--                    <input type="date" class="form-control" placeholder="">-->
-  <!--                </div>-->
-  <!--            </td>-->
-  <!--            <td>-->
-  <!--                <button class="btn btn-success  w-auto">-->
-  <!--                    <span class="fa fa-search"></span>-->
-  <!--                </button>-->
-  <!--            </td>-->
-  <!--        </tr>-->
-  <!--    </table>-->
 
   <table class="table  table-responsive table-striped text-center table-border">
     <thead class="text-white tb-header">
@@ -254,7 +75,6 @@
       <th>STT</th>
       <th>Mã Khách Hàng</th>
       <th>Tên Khách Hàng</th>
-      <!--            <th>Mã Khách Hàng</th>-->
       <th>Số Điện Thoại</th>
       <th>CMND</th>
       <th colspan="3">Thao Tác</th>
@@ -262,6 +82,28 @@
     </tr>
     </thead>
     <tbody class=" table-side-bar">
+
+        <tr *ngFor="let customer of customerList, index as i">
+          <td>{{i+ 1}}</td>
+          <td>{{customer.code}}</td>
+          <td>{{customer.name}}</td>
+          <!--            <td>CS-001</td>-->
+          <td>{{customer.phone}}</td>
+          <td>{{customer.idCard}}</td>
+          <td>
+            <a (click)="openDeleteCustomer(customer.id)"  role="button" ><span
+              class="fa fa-trash text-danger" style="font-size:24px"></span></a>
+          </td>
+
+          <td>
+            <a  role="button" ><span class="fas fa-pencil" style="font-size:24px"></span></a>
+          </td>
+
+          <td>
+            <a (click)="openDetailCustomer(customer.id)"><span class="fas fa-eye" style="font-size:24px"></span></a>
+          </td>
+        </tr>
+
     <tr *ngFor="let customer of customerList, index as i">
       <td>{{i+ 1}}</td>
       <td>{{customer.code}}</td>
@@ -288,24 +130,33 @@
         <a (click)="openDetailCustomer(customer.id)"><span class="fas fa-eye" style="font-size:24px"></span></a>
       </td>
 
-    </tbody>
 
+    </tbody>
   </table>
+
+  <div *ngIf="customerList == null" class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h2  style="text-align: center" >
+        Không tìm thấy kết quả <a class="btn btn-success" (click)="resetListCustomer()"> Trờ về </a>
+      </h2>
+    </div>
+    <div class="col-3"></div>
+
+  </div>
 <!--  // phan trang-->
   <div class="container-fluid">
     <div class="row">
 
 
-      <div class="col-10">
+      <div class="col-10" [hidden]="customerList == null">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-2">
 
+            <div class="mx-3 col-5" [hidden]="totalPagination == 0">
+              Hiển thị trang thứ <span class="font-monospace">{{indexPage + 1}}</span> trong tổng số <span
+              class="font-monospace">{{totalPagination}}</span> trang
             </div>
-<!--            <div class="mx-3 col-3">-->
-<!--              Hiển thị trang <span class="font-monospace">{{index + 1}}</span> trong tổng số <span-->
-<!--              class="font-monospace">{{totalPagination}}</span> trang-->
-<!--            </div>-->
 <!--            thanh phan trang-->
             <div class="col-6 pagination ">
               <button [disabled]="indexPage < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
@@ -342,10 +193,14 @@
           </div>
         </div>
       </div>
-
+      <div class="col-2"></div>
     </div>
-    <div class="col-2"></div>
+
+
   </div>
+
+
+
 
 
 </div>
@@ -370,4 +225,5 @@
     </div>
   </div>
 </div>
-</div>
+
+
