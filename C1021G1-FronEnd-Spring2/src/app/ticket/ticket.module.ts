@@ -16,9 +16,10 @@ import {MatDialogModule} from "@angular/material/dialog";
 @NgModule({
   declarations: [ListTicketComponent, CreateTicketComponent, DeleteTicketComponent, UpdateTicketComponent],
 
-  exports: [
-    UpdateTicketComponent
-  ],
+    exports: [
+        UpdateTicketComponent,
+        ListTicketComponent
+    ],
     imports: [
         CommonModule,
         TicketRoutingModule,

@@ -6,7 +6,7 @@ import {UpdateTicketComponent} from "./update-ticket/update-ticket.component";
 
 
 const routes: Routes = [
-  {path:'list',component:ListTicketComponent},
+  {path:'',component:ListTicketComponent},
   {path: 'update-ticket', component: UpdateTicketComponent}
   ]
 

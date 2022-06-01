@@ -26,6 +26,7 @@ export class ListTicketComponent implements OnInit {
   totalElements: number = 0
   number: number = 0
   size: number = 0
+  checkError: boolean = false;
   listFloor: Floor[] = []
   listTypeTicket: TicketType[] = []
   searchForm = new FormGroup({
@@ -69,9 +70,16 @@ export class ListTicketComponent implements OnInit {
       this.totalElements = data.totalElements;
       this.size = data.size;
       this.number = data.number + 1;
-    }, (error) => {
+      this.checkError = false;
+    }, (errors) => {
       console.log("có lỗi khi lấy list")
-      console.log(error)
+      console.log(errors)
+      this.snackBar.open(errors.error.messageEros, 'OK', {
+        duration: 3000,
+
+      })
+
+      this.checkError = true;
     })
   }
 
@@ -203,4 +211,7 @@ export class ListTicketComponent implements OnInit {
 
   }
 
+  goBack() {
+    this.router.navigateByUrl("/ticket")
+  }
 }
