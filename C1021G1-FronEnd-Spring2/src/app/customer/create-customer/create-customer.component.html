@@ -136,7 +136,7 @@
         </div>
         <div class="col-6">
           <div class="input-group d-flex justify-content-end">
-            <a class="btn btn-primary"><i title="Thêm Xe" class="fa-solid fa-circle-plus"></i></a>
+            <a class="btn btn-primary" (click)="openDialogAddCar()"><i title="Thêm Xe" class="fa-solid fa-circle-plus"></i></a>
           </div>
 
         </div>
@@ -167,35 +167,7 @@
               <td>19/06/2022</td>
               <td>
 
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="fa-solid fa-trash-can icon"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>Xe-002</td>
-              <td>BMW i8</td>
-              <td>Tháng</td>
-              <td>43D1-29442</td>
-              <td>19/05/2022</td>
-              <td>19/06/2022</td>
-              <td>
-
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="fa-solid fa-trash-can icon"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>Xe-003</td>
-              <td>Audi Q8</td>
-              <td>Tháng</td>
-              <td>43D1-29443</td>
-              <td>19/05/2022</td>
-              <td>19/06/2022</td>
-              <td>
-
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                <a  class="delete" (click)="openDialogDeleteCar()">
                   <i class="fa-solid fa-trash-can icon"></i>
                 </a>
               </td>

@@ -22,9 +22,9 @@
 
 .layout{
   /*margin: 3em 15em;*/
-  /*padding: 2em 7em;*/
-  background: rgb(162, 233, 252);
-  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);
+  padding: 2em 7em;
+  /*background: rgb(162, 233, 252);*/
+  /*background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);*/
   font-family: Bahnschrift, sans-serif;
   font-size: 17px;
   /*border-radius: 1.25rem;*/
@@ -153,8 +153,4 @@ button {
   cursor: pointer;
 }
 
-.mat-dialog-container{
-  background: rgb(162, 233, 252) !important;
-  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%) !important;
-}
 
