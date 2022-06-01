@@ -22,7 +22,10 @@
     </tr>
     <tr>
       <td class="text-center">Chức vụ: <strong>{{employee.position.name}}</strong></td>
-      <td class="text-center">Ngày sinh: <strong>{{employee.birthday}}</strong></td>
+      <td class="text-center">Ngày sinh: <strong>{{employee.birthday | date: 'dd/MM/yyyy'}}</strong></td>
+    </tr>
+    <tr>
+      <td class="text-center" colspan="2">Địa chỉ: <strong>{{employee.address}},{{employee.ward.district.name}},{{employee.ward.province.name}}</strong></td>
     </tr>
 
     <tr>

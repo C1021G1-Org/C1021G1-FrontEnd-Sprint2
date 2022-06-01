@@ -48,7 +48,7 @@ export class ListEmployeeComponent implements OnInit {
       toBirthday: [''],
       name: [''],
       code: [''],
-  });
+    });
   }
 
 
@@ -59,7 +59,7 @@ export class ListEmployeeComponent implements OnInit {
     }
     this.employeeService.search(this.searchEmployee.value.formBirthday, this.searchEmployee.value.toBirthday, this.searchEmployee.value.name,
       this.searchEmployee.value.code,this.searchEmployee.value.address, pageNumber).subscribe((data: any) => {
-      console.log(data+'search')
+        console.log(data+'search')
         this.employeeList = data.content;
         this.totalPagination = data['totalPages'];
         this.snackBar.open('Đã tìm kiếm thành công', 'OK')
@@ -131,6 +131,29 @@ export class ListEmployeeComponent implements OnInit {
   }
 
 
+  movingNext() {
+    this.indexPagination = 2;
+    this.getEmployeePerPage(this.indexPagination);
+
+  }
+
+  loadList(number: number) {
+    this.indexPagination = number - 1;
+    this.getEmployeePerPage(this.indexPagination);
+  }
+
+  loadList1(number: number) {
+    this.indexPagination = number;
+    this.getEmployeePerPage(this.indexPagination);
+  }
+
+  loadList2(number: number) {
+    this.indexPagination = number;
+    this.getEmployeePerPage(this.indexPagination);
+
+  }
+
+
   openDialog(id) {
     const dialogRef = this.dialog.open(DeleteEmployeeComponent, {
       width: '500px',
@@ -157,16 +180,127 @@ export class ListEmployeeComponent implements OnInit {
 
 
 
+  // search() {
+  //   this.employeeService.search(this.fromBirthday, this.toBirthday, this.name, this.code, this.address, this.index).subscribe(data => {
+  //     this.employeeList = data['content'];
+  //     console.log(data)
+  //     this.totalPagination = data['totalPages'];
+  //   }, error => {
+  //     this.snackBar.open("Tìm kiếm không hợp lệ!", "Cảnh báo", {duration: 2000})
+  //   })
+  // }
 
 
+  // checkFormNull() {
+  //   if (this.searchEmployee.get('formBirthday').value == ''
+  //     && this.searchEmployee.get('toBirthday').value == ''
+  //     && this.searchEmployee.get('name').value == ''
+  //     && this.searchEmployee.get('code').value == ''
+  //     && this.searchEmployee.get('address').value == '') {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  //
+  // }
 
 
+  // back() {
+  //   this.index--;
+  //   this.search()
+  // }
+  //
+  // next() {
+  //   this.index++;
+  //   this.search()
+  // }
+  //
+  // previousPage() {
+  //   this.index = 0;
+  //   this.search()
+  // }
+  //
+  // lastPage() {
+  //   this.index = this.totalPagination - 1;
+  //   this.search()
+  // }
+  //
+  // movingNext() {
+  //   this.index += 2;
+  //   this.search()
+  // }
+  //
+  // loadList(number: number) {
+  //   this.index = number - 1;
+  //   this.search()
+  // }
+  //
+  // loadList1(number: number) {
+  //   this.index = number;
+  //   this.search()
+  // }
+  //
+  // loadList2(number: number) {
+  //   this.index = number;
+  //   this.search()
+  // }
 
 
+  // firtPage() {
+  //   this.indexPagination = 0;
+  //   this.ngOnInit();
+  // }
+  //
+  // nextPage() {
+  //   if (this.indexPagination < this.totalPagination - 1) {
+  //     this.indexPagination++;
+  //     console.log(this.indexPagination)
+  //     this.getEmployeePerPage(this.indexPagination);
+  //   } else {
+  //     console.log('het trang nextPage')
+  //   }
+  //
+  // }
+  //
+  // previousPage() {
+  //   if (this.indexPagination > 0) {
+  //     this.indexPagination--;
+  //     console.log(this.indexPagination)
+  //     this.getEmployeePerPage(this.indexPagination);
+  //   } else {
+  //     console.log('het trang  previous')
+  //   }
+  // }
+  //
+  // lastPage() {
+  //   this.indexPagination = this.totalPagination - 1;
+  //   console.log(this.totalPagination)
+  //   this.getEmployeePerPage(this.indexPagination);
+  // }
 
 
-
-
+//   openDialog(id) {
+//     const dialogRef = this.dialog.open(DeleteEmployeeComponent, {
+//       width: '500px',
+//       data: {datal: id},
+//     });
+//     dialogRef.afterClosed().subscribe(next => {
+//       this.ngOnInit();
+//     });
+//   }
+//
+//   openDetails(id) {
+//     const dialogRef = this.dialog.open(DetailsEmployeeComponent, {
+//       width: '500px',
+//       data: {datal: id},
+//     });
+//     dialogRef.afterClosed().subscribe(next => {
+//       this.ngOnInit();
+//     });
+//   }
+//
+//
+// }
 
 
 // getAll() {
@@ -212,7 +346,6 @@ export class ListEmployeeComponent implements OnInit {
 //   // this.employeeService.search(name.trim(),code.trim(),email.trim(),this.totalEmployee).subscribe(data => {
 //   //   this.employeeList = data['content'];
 // }
-
 
 
 //
