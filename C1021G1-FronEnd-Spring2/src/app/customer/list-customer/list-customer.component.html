@@ -5,65 +5,69 @@
     <div class="col-md-12 text-center">
       <h3>Danh Sách Khách Hàng</h3>
     </div>
-
   </div>
 
 
   <form action="" [formGroup]="formSearchCustomer" (ngSubmit)="search('')" class="mb-3 mt-2 row">
     <div class="form-box">
-      <!--            <div class="d-flex justify-content-between">-->
 
-      <div class="box-left">
+        <div class="box-left">
         <button type="button" class="btn btn-primary">
           <span class="fa fa-plus-circle mt-1"></span>
         </button>
       </div>
 
-      <div class="box-right ">
-        <div class="col-right-1">
-          <div class="form-group">
-        <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
-               onblur="(this.type = 'text')">
+        <div class="box-right ">
+          <div class="col-right-1">
+            <div class="form-group">
+          <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
+                 onblur="(this.type = 'text')">
 
+            </div>
           </div>
-        </div>
-
-        <div class="col-right-1">
-          <div class="form-group">
-
-            <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
-                   onblur="(this.type = 'text')">
-          </div>
-        </div>
-
-        <div class="col-right-1">
-          <div class="form-group">
-            <input type="text" formControlName="code" class="form-control" placeholder="Mã Khách hàng">
-          </div>
-        </div>
-
-        <div class="col-right-1">
-          <div class="form-group">
-            <input type="text" formControlName="phone"
-                   class="form-control" placeholder="Số Điện Thoại">
-          </div>
-        </div>
-
-        <div class="col-right-1">
-          <div class="form-group">
-            <input type="text" formControlName="idCard"
-                   class="form-control" placeholder="CMND">
-          </div>
-        </div>
 
           <div class="col-right-1">
-            <button type="submit" class="btn btn-success " >
-              <span class="fa fa-search"></span>
-            </button>
+            <div class="form-group">
+
+              <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
+                     onblur="(this.type = 'text')">
+            </div>
           </div>
-         </div>
-      <div>
-      </div>
+
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="code" class="form-control" placeholder="Mã Khách hàng">
+            </div>
+          </div>
+
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="phone"
+                     class="form-control" placeholder="Số Điện Thoại">
+            </div>
+          </div>
+
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="idCard"
+                     class="form-control" placeholder="CMND">
+            </div>
+          </div>
+
+         <div class="col-right-1">
+          <button type="submit" class="btn btn-success " >
+            <span class="fa fa-search"></span>
+          </button>
+
+           <button type="submit" class="btn btn-success " (click)="resetListCustomer()">
+             <span class="fa-solid fa-arrow-rotate-right"></span>
+           </button>
+        </div>
+
+
+
+        </div>
+
     </div>
   </form>
 
@@ -114,7 +118,6 @@
       </h2>
     </div>
     <div class="col-3"></div>
-
   </div>
 <!--  // phan trang-->
   <div class="container-fluid">
@@ -172,30 +175,7 @@
   </div>
 
 
-
-
-
 </div>
 
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">Xác nhận xóa vé</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h3>Bạn có chắc xóa vé xe <span class="text-danger font-weight-normal">SV-001</span> với biển số xe
-          <span class="text-danger font-weight-normal">99-H7 7777</span></h3>
-        <p class="text-danger font-weight-normal">(Lưu ý thao tác này không thể hoàng tác lại)</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn button-cancel" data-bs-dismiss="modal">HỦY</button>
-        <button type="button" class="btn button-confirm" data-bs-dismiss="modal">Đồng Ý</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
