@@ -17,7 +17,7 @@ export class MapWarningComponent implements OnInit {
               private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.mapService.getAllLocation().subscribe((data: any) => {
+    this.mapService.getAllLocation(0).subscribe((data: any) => {
       this.listLocation = data.content;
     })
   }

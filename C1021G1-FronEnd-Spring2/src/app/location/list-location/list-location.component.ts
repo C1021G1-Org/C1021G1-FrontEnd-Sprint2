@@ -21,6 +21,7 @@ export class ListLocationComponent implements OnInit {
   totalPagination: number;
   number: number = 0;
 
+  isStatus: boolean = false;
   constructor(private locationService: LocationService,
               private snackBar: MatSnackBar,
               private dialog : MatDialog) {
@@ -33,16 +34,17 @@ export class ListLocationComponent implements OnInit {
       this.search();
     }, error => {
       this.snackBar.open("Lỗi hệ thống", "Cảnh báo", {duration: 2000})
+
     })
   }
 
   search() {
     this.locationService.getAllLocationAndFloor(this.code.trim(), this.id.trim(), this.index).subscribe(data => {
       this.LocationList = data['content'];
-      console.log(this.LocationList)
       this.totalPagination = data['totalPages'];
+
     }, error => {
-      this.snackBar.open("Tìm kiếm không hợp lệ!", "Cảnh báo", {duration: 2000})
+       this.isStatus = true;
     })
   }
 
