@@ -40,7 +40,14 @@ export class CustomerService {
 
   getListWard() {
     return this.httpClient.get<Ward[]>(this.URL + '/ward/ward-list')
+  }
 
+  getDistrict(id : number) {
+    return this.httpClient.get<District[]>(this.URL + '/district/' + id);
+  }
+
+  getWard(id : number) {
+    return this.httpClient.get<Ward[]>(this.URL + '/ward/' + id)
   }
 
   getListCustomer(page : any) : Observable<any>{

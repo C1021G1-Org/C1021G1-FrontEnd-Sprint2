@@ -155,9 +155,10 @@
           <label>Thành Phố/Tỉnh <span style="color: red">(*)</span>:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select class="form-control" required="">
+            <select class="form-control" required="" (change)="getDistrictById($event.target.value)">
               <option  *ngFor="let province of provinces"
-                       >{{province.name}}</option>
+                       [selected]="wards.province.id === province.id"
+                        value="{{province.id}}">{{province.prefix}} {{province.name}}</option>
             </select>
           </div>
         </div>
@@ -165,8 +166,9 @@
           <label>Quận/Huyện <span style="color: red">(*)</span>:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select class="form-control"  required="">
-              <option  *ngFor="let district of districts">{{district.name}}</option>
+            <select class="form-control"  required="" (change)="getWardById($event.target.value)">
+              <option  *ngFor="let district of districts"
+              [selected]="wards.district.id === district.id" value="{{district.id}}">{{district.prefix}} {{district.name}}</option>
             </select>
           </div>
         </div>
@@ -174,9 +176,9 @@
           <label >Phường/Xã <span style="color: red">(*)</span>:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select class="form-control" name="ward" required="">
-              <option  *ngFor="let ward of wards" [ngValue]="ward.id"
-                       [selected]="editCustomerForm.get('ward').value.id === ward.id">{{ward.name}}</option>
+            <select class="form-control" name="ward" formGroupName="ward" required="">
+              <option  *ngFor="let ward of wardList" [ngValue]="ward.id"
+                       [selected]="editCustomerForm.get('ward').value.id === ward.id">{{ward.prefix}} {{ward.name}}</option>
             </select>
           </div>
         </div>

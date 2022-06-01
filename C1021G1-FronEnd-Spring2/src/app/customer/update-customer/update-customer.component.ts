@@ -16,9 +16,10 @@ import {Car} from "../../car/model/car";
 })
 export class UpdateCustomerComponent implements OnInit {
 
-  wards : Ward[];
+  wardList : Ward[];
   districts : District[];
   provinces : Province[];
+  wards : any;
   id;
   car : Car[];
 
@@ -29,8 +30,8 @@ export class UpdateCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerService.getListWard().subscribe(data => {
-      this.wards = data;
-      console.log(this.wards)
+      this.wardList = data;
+      console.log(this.wardList)
     })
     this.customerService.getListDistrict().subscribe( data => {
       this.districts = data;
@@ -42,12 +43,17 @@ export class UpdateCustomerComponent implements OnInit {
     })
 
 
+
+
+
     this.activatedRoute.paramMap.subscribe((data: ParamMap) => {
       this.id = data.get('id');
       this.customerService.getInfo(this.id).subscribe(value => {
         console.log(value['0']['customer'])
         this.car = value;
         this.editCustomerForm.patchValue(this.car[0].customer);
+        this.wards = this.car[0].customer.ward;
+        console.log(this.wards)
       })
     });
 
@@ -89,6 +95,19 @@ export class UpdateCustomerComponent implements OnInit {
       return {'ageUnder': true};
     }
     return null;
+  }
+
+  getDistrictById(id : number) {
+    this.customerService.getDistrict(id).subscribe( data => {
+      this.districts = data;
+      console.log(this.districts)
+    })
+  }
+
+  getWardById(id : number) {
+    this.customerService.getWard(id).subscribe( data => {
+      this.wardList = data;
+    })
   }
 
 }
