@@ -4,6 +4,7 @@ import {MapParkingService} from "../service/map-parking.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
+import {MapParking} from '../model/map-parking';
 
 @Component({
   selector: 'app-update-map-parking',
@@ -11,39 +12,32 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./update-map-parking.component.css']
 })
 export class UpdateMapParkingComponent implements OnInit {
-  locationList: any;
-  formUpdate: FormGroup = new FormGroup({
-    id: new FormControl(''),
-    code : new FormControl(''),
-    number : new FormControl(''),
-    length : new FormControl(''),
-    width : new FormControl(''),
-    height : new FormControl(''),
-    delFlag : new FormControl(''),
-    isEmpty : new FormControl(''),
-    description : new FormControl('')
-  })
+  locationId: number
+  id: any;
+  list: any[];
   constructor(private dialog: MatDialogRef<UpdateMapParkingComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private mapParkingService: MapParkingService,
               private snackBar: MatSnackBar,
               private active: ActivatedRoute) {
+    this.locationId = this.data
   }
 
   ngOnInit(): void {
+    this.id = this.data.datal.id;
+  }
+  UpdateLocation() {
+    this.mapParkingService.updateColorLocation(this.id).subscribe(() => {
+      this.dialog.close()
+      this.snackBar.open('Đã đăng ký thành công', 'OK', {
+        duration:2000
+      });
+    })
+    this.getAll();
+  }
+  getAll() {
     this.mapParkingService.getAllLocation(0).subscribe((data: any) => {
-      this.locationList = data.content;
+      this.list = data.content
     })
   }
-
-
-  // updateMapParking() {
-  //   this.mapParkingService.updateColorLocation(Number(this.active.snapshot.paramMap.get('id')), this.formUpdate.value).subscribe(() => {
-  //     this.dialog.close()
-  //     this.snackBar.open('Đã đặt thành công vị trí', 'OK', {
-  //       duration:2000
-  //     });
-  //   })
-  //   this.ngOnInit();
-  // }
 }
