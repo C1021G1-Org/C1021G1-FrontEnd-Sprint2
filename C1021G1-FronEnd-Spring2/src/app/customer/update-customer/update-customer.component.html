@@ -1,1 +1,243 @@
-<p>update-customer works!</p>
+<div id="container">
+
+  <form class="form" [formGroup]="editCustomerForm" (ngSubmit)="updateCustomer()">
+    <div class="layout">
+      <h1>
+        <strong>Chỉnh Sửa Thông Tin Khách Hàng</strong>
+      </h1>
+      <div class="row">
+        <div class="col-6">
+          <label for="name">Họ Và Tên <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
+            <input type="text" id="name" name="name" formControlName="name" class="form-control" required
+                   ><span class="bar"></span>
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('name')?.errors?.required &&
+                      editCustomerForm.get('name').touched">
+            Không được để trống!
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('name')?.errors?.pattern &&
+                      editCustomerForm.get('name').touched">
+            Vui lòng nhập đúng định dạng. ([VJ|VN|BB|JT]XXXX) trong đó X là số từ (0-9)!
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('name')?.errors?.minlength &&
+                      editCustomerForm.get('name').touched">
+            Không được nhập ít hơn 5 ký tự!
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('name')?.errors?.maxlength &&
+                      editCustomerForm.get('name').touched">
+            Không được nhập nhiều hơn 40 ký tự!
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="email">Email <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-envelope"></i></a>
+            <input type="email" class="form-control" id="email" name="email" formControlName="email">
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('email')?.errors?.required &&
+                      editCustomerForm.get('email').touched">
+            Không được để trống!
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('email')?.errors?.email &&
+                      editCustomerForm.get('email').touched">
+            Vui lòng nhập đúng định dạng. Vd: abc@gmail.com!
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label>Giới Tính <span style="color: red">(*)</span>:</label>
+          <div class="mt-2" >
+            <label class="gender" formControlName="gender">
+              <input type="radio"  checked>
+            </label> Nam <i class="fa-solid fa-mars"></i>
+            <label class="gender">
+              <input type="radio" >
+            </label> Nữ <i class="fa-solid fa-venus"></i>
+            <label class="gender" >
+              <input type="radio" >
+            </label> Khác <i class="fa-solid fa-venus-mars"></i>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label for="birthday">Ngày Sinh <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-cake-candles"></i></a>
+            <input type="date" class="form-control" id="birthday" name="birthday" formControlName="birthday">
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('birthday')?.errors?.required &&
+                      editCustomerForm.get('birthday').touched">
+            Không được để trống!
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('birthday').hasError('ageUnder') &&
+                      editCustomerForm.get('birthday').touched">
+            Bạn chưa đủ 18 tuổi!
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+
+          <label for="phone">Số Điện Thoại <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
+            <input type="tel" class="form-control" id="phone" name="phone" formControlName="phone">
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('phone')?.errors?.required&&
+                      editCustomerForm.get('phone').touched">
+            Không được để trống!
+          </div>
+          <div class="alert alert-danger" role = "alert"
+               *ngIf ="editCustomerForm.get('phone')?.errors?.pattern &&
+                      editCustomerForm.get('phone').touched">
+            Vui lòng nhập đúng định dạng.
+            Bắt đầu là 0 và tiếp theo là đầu số |3|5|7|9. Ví dụ: 0905678123, 0352960280!
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label for="code">CMND/Passport <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
+            <input type="text" id="code" class="form-control" name="idCard" formControlName="idCard">
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('idCard')?.errors?.required&&
+                      editCustomerForm.get('idCard').touched">
+            Không được để trống!
+          </div>
+          <div class="alert alert-danger" role = "alert"
+                 *ngIf ="editCustomerForm.get('idCard')?.errors?.pattern &&
+                      editCustomerForm.get('idCard').touched">
+              Vui lòng nhập đúng định dạng. CMND/Passport 9 số hoặc 12 số!
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label for="address">Số Nhà, Tên Đường <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
+            <input type="text" class="form-control" id="address" name="address" formControlName="address">
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('address')?.errors?.required &&
+                      editCustomerForm.get('address').touched">
+            Không được để trống!
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('address')?.errors?.minlength &&
+                      editCustomerForm.get('address').touched">
+            Không được nhập ít hơn 5 ký tự!
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('address')?.errors?.maxlength &&
+                      editCustomerForm.get('address').touched">
+            Không được nhập nhiều hơn 40 ký tự!
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <label>Thành Phố/Tỉnh <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control" required="" (change)="getDistrictById($event.target.value)">
+              <option  *ngFor="let province of provinces"
+                       [selected]="wards.province.id === province.id"
+                        value="{{province.id}}">{{province.prefix}} {{province.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label>Quận/Huyện <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control"  required="" (change)="getWardById($event.target.value)">
+              <option  *ngFor="let district of districts"
+              [selected]="wards.district.id === district.id" value="{{district.id}}">{{district.prefix}} {{district.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label >Phường/Xã <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control" name="ward" formGroupName="ward" required="">
+              <option  *ngFor="let ward of wardList" [ngValue]="ward.id"
+                       [selected]="editCustomerForm.get('ward').value.id === ward.id">{{ward.prefix}} {{ward.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group">
+            <label class="title">Xe Đã Đăng Ký</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group d-flex justify-content-end">
+            <a class="btn button-add-car" id="openModal"><i title="Thêm Xe" class="fa-solid fa-circle-plus mt-2"></i></a>
+          </div>
+        </div>
+      </div>
+      <!--        table-->
+      <!--        <div class="container">-->
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <table class="table table-striped table-hover text-center " style="border: black 1px">
+            <thead>
+            <tr>
+              <th class="col-1">Mã Xe</th>
+              <th class="col-2">Tên Xe</th>
+              <th class="col-2">Hãng xe</th>
+              <th class="col-2">Biển Số Xe</th>
+              <th class="col-1">Loại xe</th>
+              <th class="col-2">Chức Năng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let c of car,index as i">
+              <td>{{c.code}}</td>
+              <td>{{c.name}}</td>
+              <td>{{c.carCompany}}</td>
+              <td>{{c.carPlate}}</td>
+              <td>{{c.carType.name}}</td>
+              <td>
+                <a class="delete" data-toggle="modal">
+                  <i class="fa-solid fa-trash-can icon" title="Xóa xe"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--            </div>-->
+      </div>
+      <!--        end table-->
+      <div class="row">
+        <div class="col-6 text-end">
+          <button class="btn button-cancel">Huỷ</button>
+        </div>
+        <div class="col-6">
+          <button class="btn button-confirm" type="submit">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
