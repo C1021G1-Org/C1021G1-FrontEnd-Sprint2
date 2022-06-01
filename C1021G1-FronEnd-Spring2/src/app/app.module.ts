@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
@@ -13,13 +12,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {MapParkingModule} from "./map-parking/map-parking.module";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatInputModule} from "@angular/material/input";
-import {DragDropModule} from "@angular/cdk/drag-drop";
-import {CdkTableModule} from "@angular/cdk/table";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {CdkTableModule} from '@angular/cdk/table';
+import {LocationModule} from './location/location.module';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { MapParkingModule } from './map-parking/map-parking.module';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import {CdkTableModule} from "@angular/cdk/table";
     BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
+    MatDialogModule,
+    LocationModule,
     MapParkingModule
   ],
   providers: [],

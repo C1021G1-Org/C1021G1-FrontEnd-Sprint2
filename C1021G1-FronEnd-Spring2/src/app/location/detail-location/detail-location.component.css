@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata');
+
+* {
+  box-sizing: border-box;
+  font-family: Bahnschrift, serif;
+  font-size: 18px;
+}
+
+body {
+  background-image: url("https://tcgland.vn/storage/upload/%E1%BA%A2nh%20d%E1%BB%B1%20%C3%A1n-02.jpg");
+  background-size: cover;
+  font-family: Bahnschrift, sans-serif;
+  font-size: 18px;
+
+}
+
+.tit {
+  text-align: center;
+  background-color: #ffffff;
+  font-size: 35px;
+}
+
+.container {
+  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);
+  margin-top: 5px;
+  margin-bottom: auto;
+  background-size: cover;
+  position: center;
+}
+.container-fluid-title {
+  margin-top: 10px;
+  table-layout: auto;
+  text-align: center;
+
+}
+
+.nen {
+  background-color: palevioletred;
+  color: beige;
+  box-sizing: border-box;
+  background-size: cover;
+  position: center;
+}
+
+.body1 {
+
+  color: black;
+  box-sizing: border-box;
+  background-size: cover;
+}
+
+.menu .col-sm-3 {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.note {
+  font-family: Bahnschrift, serif;
+  color: red;
+  background: white;
+}
+
+.container .title {
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+}
+
+.container .title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 70px;
+  background-color: #8BC6EC;
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
+  /*background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);*/
+}
+
+.container .title1 {
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+}
+#container {
+  display: block;
+  font-family: Bahnschrift, sans-serif;
+  font-size: 17px;
+
+}
+.container .title1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 300px;
+  background-color: #8BC6EC;
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+}
+#sidebar a {
+  text-decoration: none;
+}
+.warning {
+  border: black 1px dashed;
+  font-family: Bahnschrift, sans-serif;
+  font-size: 17px;
+  padding: 30px 50px 10px 50px;
+  border-radius: 1.25rem;
+  background: linear-gradient(120deg,whitesmoke, indianred);
+}
+.hi {
+  height: 100%;
+  width: 100%;
+}
+button{
+  height: 100%;
+  width: 150px;
+  outline: none;
+  color: #fff;
+  background: linear-gradient(120deg, #71b7e6,#9b59b6);
+  border: none;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.button-confirm:hover {
+  background: linear-gradient(120deg,#9b59b6, #71b7e6);
+}
+
+*{
+  text-decoration: none;
+}
+@media screen and (max-width: 1800px){
+  .layout {
+    margin: 3em 18em;
+    padding: 2em 5em;
+  }
+}
+
+@media screen and (max-width: 1700px){
+  .layout {
+    margin: 3em 15em;
+    padding: 2em 5em;
+  }
+}
+
+@media screen and (max-width: 1600px){
+  .layout {
+    margin: 3em 12em;
+    padding: 2em 2em;
+  }
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 1300px){
+  .layout {
+    margin: 3em 9em;
+    padding: 2em 2em;
+  }
+  .title {
+    font-size: 120px;
+  }
+}
+
+
+@media screen and (max-width: 1100px){
+  .layout {
+    margin: 3em 6em;
+    padding: 2em 1em;
+    font-size: 15px;
+  }
+  body {
+    font-size: 15px;
+
+  }
+
+}
+
+@media screen and (max-width: 768px){
+  .layout {
+    margin: 3em 0;
+    padding: 2em 1em;
+    font-size: 15px;
+  }
+  body {
+    font-size: 15px;
+  }
+
+  .input-group a {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 280px){
+  .layout {
+    margin: 3em 0;
+    padding: 2em 0;
+    font-size: 11px;
+  }
+  body {
+    font-size: 11px;
+  }
+
+  .input-group a {
+    display: none;
+  }
+
+}
+
+/*.layout{*/
+/*     margin: 3em 20em;*/
+/*     padding: 2em 7em;*/
+/*     background: rgb(162, 233, 252);*/
+/*     background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);*/
+/*     border-radius: 1.25rem;*/
+/*     position: relative;*/
+/* }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
