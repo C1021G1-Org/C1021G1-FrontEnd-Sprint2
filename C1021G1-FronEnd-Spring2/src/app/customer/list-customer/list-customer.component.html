@@ -21,51 +21,48 @@
           <div class="form-group">
             <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
                    onblur="(this.type = 'text')">
-
+            </div>
           </div>
-        </div>
 
-        <div class="col-right-1">
-          <div class="form-group">
+          <div class="col-right-1">
+            <div class="form-group">
 
-            <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
-                   onblur="(this.type = 'text')">
+              <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
+                     onblur="(this.type = 'text')">
+            </div>
           </div>
-        </div>
 
-        <div class="col-right-1">
-          <div class="form-group">
-            <input type="text" formControlName="code" class="form-control" placeholder="Mã Khách hàng">
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="code" class="form-control" placeholder="Mã Khách hàng">
+            </div>
           </div>
-        </div>
 
-        <div class="col-right-1">
-          <div class="form-group">
-            <input type="text" formControlName="phone"
-                   class="form-control" placeholder="Số Điện Thoại">
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="phone"
+                     class="form-control" placeholder="Số Điện Thoại">
+            </div>
           </div>
-        </div>
 
-        <div class="col-right-1">
-          <div class="form-group">
-            <input type="text" formControlName="idCard"
-                   class="form-control" placeholder="CMND">
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="idCard"
+                     class="form-control" placeholder="CMND">
+            </div>
           </div>
-        </div>
 
-        <div class="col-right-1">
+         <div class="col-right-1">
           <button type="submit" class="btn btn-success " >
             <span class="fa fa-search"></span>
           </button>
-        </div>
 
-        <div class="col-right-1">
-          <button type="submit" class="btn btn-success " >
-            <span class="fa fa-search"></span>
-          </button>
-        </div>
+           <button type="submit" class="btn btn-success " (click)="resetListCustomer()">
+             <span class="fa-solid fa-arrow-rotate-right"></span>
+           </button>
+          </div>
 
-      </div>
+        </div>
 
     </div>
   </form>
@@ -162,4 +159,9 @@
       <div class="col-2"></div>
     </div>
   </div>
+
 </div>
+
+
+
+
