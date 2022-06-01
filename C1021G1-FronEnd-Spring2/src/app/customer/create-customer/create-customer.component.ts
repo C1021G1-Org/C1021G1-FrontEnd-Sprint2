@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {CustomerService} from "../customer.service";
 import {MatDialog} from "@angular/material/dialog";
-import {DetailCustomerComponent} from "../detail-customer/detail-customer.component";
 import {CreateCarComponent} from "../../car/create-car/create-car.component";
 import {DeleteCarComponent} from "../../car/delete-car/delete-car.component";
 
