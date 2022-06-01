@@ -6,100 +6,7 @@
       <h2>Danh sách nhân viên</h2>
     </div>
   </div>
-  <!--  <form action="" class="mb-3 mt-2 row">-->
-  <!--    <div class="form-box">-->
-  <!--      &lt;!&ndash;            <div class="d-flex justify-content-between">&ndash;&gt;-->
 
-  <!--      <div class="box-left">-->
-  <!--        <button type="button" class="btn btn-primary">-->
-  <!--          <span class="fa fa-plus-circle mt-1"></span>-->
-  <!--        </button>-->
-  <!--      </div>-->
-  <!--      <div class="box-right">-->
-  <!--        <div class="col-right-2 col-right-select ">-->
-  <!--          <div class="form-group ">-->
-  <!--            <select class="form-control">-->
-  <!--              <option selected disabled>-Tầng-</option>-->
-  <!--              <option>1</option>-->
-  <!--              <option>2</option>-->
-  <!--              <option>3</option>-->
-  <!--              <option>4</option>-->
-  <!--            </select>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--        <div class="col-right-2 col-right-select">-->
-  <!--          <div class="form-group ">-->
-  <!--            <select class="form-control">-->
-  <!--              <option disabled selected>-Loại Vé-</option>-->
-  <!--              <option>Tháng</option>-->
-  <!--              <option>Quý</option>-->
-  <!--              <option>Năm</option>-->
-  <!--            </select>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--        <div class="col-right-1">-->
-
-  <!--          <div class="form-group">-->
-
-  <!--            <input class="form-control" type="text" placeholder="ngày kết thúc" onfocus="(this.type = 'date')"-->
-  <!--                   onblur="(this.type = 'text')">-->
-
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--        <div class="col-right-1">-->
-  <!--          <div class="form-group">-->
-  <!--            <input type="text"-->
-  <!--                   class="form-control" placeholder="Họ và tên">-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--        <div class="col-right-1">-->
-  <!--          <div class="form-group">-->
-  <!--            <input type="text"-->
-  <!--                   class="form-control" placeholder="Số Điện Thoại">-->
-
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--        <div class="col-right-2">-->
-  <!--          <a class="btn btn-success col-right-button" >-->
-  <!--            <span class="fa fa-search"></span>-->
-  <!--          </a>-->
-  <!--        </div>-->
-  <!--      </div>-->
-
-  <!--    </div>-->
-  <!--&lt;!&ndash;  </form>&ndash;&gt;-->
-  <!--  <form [formGroup]="searchEmployee"  (ngSubmit)="search('')">-->
-  <!--              <div class="row">-->
-  <!--                <div class="col-md-1" style="margin-top: 30px">-->
-  <!--                  <button class="btn btn-primary"><i class='fas fa-user-plus' style='font-size:23px'></i></button>-->
-  <!--                </div>-->
-  <!--                <div class="col-md-2">-->
-  <!--                  <label for="stn">Sinh từ ngày</label>-->
-  <!--                  <input type="date" id="stn" formControlName="formBirthday" class="form-control">-->
-  <!--                </div>-->
-  <!--                <div class="col-md-2">-->
-  <!--                  <label for="dn">Đến ngày</label>-->
-  <!--                  <input type="date" id="dn"  formControlName="toBirthday" class="form-control">-->
-  <!--                </div>-->
-  <!--                <div class="col-md-2">-->
-  <!--                  <label for="hvt">Họ tên</label>-->
-  <!--                  <input type="text" id="hvt" formControlName="name" class="form-control"  >-->
-  <!--                </div>-->
-  <!--                <div class="col-md-2">-->
-  <!--                  <label for="mnv">Mã nhân viên</label>-->
-  <!--                  <input type="text" id="mnv" formControlName="code" class="form-control"  >-->
-  <!--                </div>-->
-  <!--                <div class="col-md-2">-->
-  <!--                  <label for="dia">Địa chỉ</label>-->
-  <!--                  <input type="text" id="dia" formControlName="address" class="form-control" >-->
-  <!--                </div>-->
-  <!--                <div class="col-md-1" >-->
-  <!--                  <button class="btn btn-primary" type="submit"  style="margin-top: 32px" >-->
-  <!--                    <i class='fas fa-search' style='font-size:23px'></i>-->
-  <!--                  </button>-->
-  <!--                </div>-->
-  <!--              </div>-->
-  <!--            </form>-->
 
   <form [formGroup]="searchEmployee" (ngSubmit)="search('')" class="mb-3 mt-2 row">
     <div class="form-box">
@@ -232,18 +139,14 @@
              </li>
 
              <li class="page-item">
-               <button class="page-link text-black"   [hidden]="indexPagination >= totalPagination - 1 && indexPagination<= totalPagination" (click)="loadList2(indexPagination+1)">
+               <button class="page-link text-black"   [hidden]="indexPagination >= totalPagination - 1 " (click)="loadList2(indexPagination+1)">
                  {{indexPagination + 2}}
                </button>
              </li>
 
              <li class="page-item">
-               <button  class="page-link text-black"  [hidden]="indexPagination >= totalPagination - 1 && indexPagination<= totalPagination " (click)="movingNext()">{{indexPagination + 3}}</button>
+               <button  class="page-link text-black"  [hidden]="indexPagination >= totalPagination - 2  " (click)="movingNext()">{{indexPagination + 3}}</button>
              </li>
-
-
-
-
 
 <!--             <li class="page-item"><a class="page-link" style="color: black">{{totalPagination}}</a></li>-->
 

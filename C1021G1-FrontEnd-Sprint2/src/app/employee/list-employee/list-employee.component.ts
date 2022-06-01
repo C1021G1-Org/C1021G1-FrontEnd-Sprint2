@@ -93,7 +93,8 @@ export class ListEmployeeComponent implements OnInit {
         this.totalPagination = data['totalPages']
       });
     } else {
-      this.search(pageNumber);
+
+      this.search(this.indexPagination);
 
     }
   }
@@ -149,7 +150,10 @@ export class ListEmployeeComponent implements OnInit {
 
   loadList2(number: number) {
     this.indexPagination = number;
-    this.getEmployeePerPage(this.indexPagination);
+    if(this.indexPagination <= this.totalPagination){
+      this.getEmployeePerPage(this.indexPagination);
+
+    }
 
   }
 
