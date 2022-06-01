@@ -1,6 +1,5 @@
 <div id="container">
-
-  <form class="form">
+  <form [formGroup]="creatCustomerForm">
     <div class="layout">
       <h1>
         <strong>Thêm mới khách hàng</strong>
@@ -71,49 +70,35 @@
       </div>
       <div class="row">
         <div class="col-4">
-          <label for="province">Thành phố/Tỉnh (<span style="color: red">*</span>):</label>
+          <label>Thành Phố/Tỉnh <span style="color: red">(*)</span>:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select id="province" class="form-select">
-              <option selected>Tỉnh/Thành Phố</option>
-              <option >Đà Nẵng</option>
-              <option>Quảng Trị</option>
-              <option>Quảng Bình</option>
-              <option>Quảng Nam</option>
-              <option>Thừa Thiên - Huế</option>
+            <select class="form-control" required="" (change)="getDistrictById($event.target.value)">
+              <option value="" selected>Chọn Tỉnh/Thành phố</option>
+              <option  *ngFor="let province of provinces"
+                       value="{{province.id}}">{{province.name}}</option>
             </select>
           </div>
         </div>
         <div class="col-4">
-          <label for="district">Quận/Huyện (<span style="color: red">*</span>):</label>
+          <label>Quận/Huyện <span style="color: red">(*)</span>:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select id="district" class="form-select">
-              <option selected>Quận/Huyện</option>
-              <option >Hải Châu</option>
-              <option>Hoà Vang</option>
-              <option>Thanh Khê</option>
-              <option>Sơn Trà</option>
-              <option>Ngũ Hành Sơn</option>
+            <select class="form-control"  required="" (change)="getWardById($event.target.value)">
+              <option value="" selected>Chọn Quận/Huyện</option>
+              <option  *ngFor="let district of districts"
+                       value="{{district.id}}">{{district.name}}</option>
             </select>
           </div>
         </div>
         <div class="col-4">
-          <label for="ward">Phường/Xã (<span style="color: red">*</span>):</label>
+          <label >Phường/Xã <span style="color: red">(*)</span>:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select id="ward" class="form-select">
-              <option selected>Phường/Xã</option>
-              <option >Thanh Bình</option>
-              <option>Thuận Phước</option>
-              <option>Thạch Thang</option>
-              <option>Hải Châu I</option>
-              <option>Hải Châu II</option>
-              <option>Bình Hiên</option>
-              <option>Hoà Thuận Đông</option>
-              <option>Hoà Thuận Tây</option>
-              <option>Hoà Cường Bắc</option>
-              <option>Hoà Cường Nam</option>
+            <select class="form-control" name="ward" formGroupName="ward" required="">
+              <option value="" selected>Chọn Phường/Xã</option>
+              <option  *ngFor="let ward of wardList" [ngValue]="ward.id"
+                       >{{ward.name}}</option>
             </select>
           </div>
         </div>
@@ -136,7 +121,7 @@
         </div>
         <div class="col-6">
           <div class="input-group d-flex justify-content-end">
-            <a class="btn btn-primary"><i title="Thêm Xe" class="fa-solid fa-circle-plus"></i></a>
+            <a class="btn btn-primary" (click)="openDialogAddCar()"><i title="Thêm Xe" class="fa-solid fa-circle-plus"></i></a>
           </div>
 
         </div>
@@ -146,7 +131,7 @@
       <div class="table-responsive">
         <div class="table-wrapper">
           <table class="table table-striped table-hover text-center " style="border: black 1px">
-            <thead>
+            <thead class="text-white tb-header">
             <tr>
               <th class="col-1">Mã xe</th>
               <th class="col-2">Tên xe</th>
@@ -167,35 +152,7 @@
               <td>19/06/2022</td>
               <td>
 
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="fa-solid fa-trash-can icon"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>Xe-002</td>
-              <td>BMW i8</td>
-              <td>Tháng</td>
-              <td>43D1-29442</td>
-              <td>19/05/2022</td>
-              <td>19/06/2022</td>
-              <td>
-
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="fa-solid fa-trash-can icon"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>Xe-003</td>
-              <td>Audi Q8</td>
-              <td>Tháng</td>
-              <td>43D1-29443</td>
-              <td>19/05/2022</td>
-              <td>19/06/2022</td>
-              <td>
-
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                <a  class="delete" (click)="openDialogDeleteCar()">
                   <i class="fa-solid fa-trash-can icon"></i>
                 </a>
               </td>
@@ -208,7 +165,7 @@
       <!--        end table-->
       <div class="row">
         <div class="col-6 text-end">
-          <button class="btn button-cancel">Huỷ</button>
+          <button class="btn button-cancel" routerLink="/customer/list">Huỷ</button>
 
         </div>
         <div class="col-6">

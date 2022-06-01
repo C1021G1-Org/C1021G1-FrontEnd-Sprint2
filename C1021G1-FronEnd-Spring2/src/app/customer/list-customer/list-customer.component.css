@@ -1,8 +1,3 @@
-/** {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-
-/*}*/
 
 body {
   background-size: auto;
@@ -109,16 +104,12 @@ body {
 
 }
 
-
 .box-left {
   padding: 1em 0;
   font-size: 15px;
 }
 
-/*.box-right{*/
-/*    padding: 2em 0;*/
-/*    font-size: 15px;*/
-/*}*/
+
 .col-right-1 {
   padding: 1em 0;
   font-size: 15px;
@@ -130,43 +121,6 @@ body {
 }
 
 @media only screen and (min-width: 768px) {
-  /* For desktop: */
-  /*.tb-header {*/
-  /*    background: linear-gradient(135deg, #65b8ee, #bd64e2);*/
-  /*    text-align: center;*/
-  /*    font-size: 1.2em;*/
-  /*}*/
-  /*.col-right-1 {*/
-  /*    width: 18%;*/
-  /*    padding: 1em 0;*/
-  /*    font-size: 13px;*/
-  /*}*/
-  /*.form-box {*/
-  /*    display: flex;*/
-  /*    justify-content: space-between;*/
-  /*}*/
-  /*.box-left {*/
-  /*    width: 8%;*/
-  /*    font-size: 13px;*/
-  /*}*/
-  /*.box-right {*/
-  /*    width: 90%;*/
-  /*    display: flex;*/
-  /*    justify-content: space-between;*/
-  /*    float: right;*/
-  /*}*/
-  /*.col-right-name{*/
-  /*    width: 15%;*/
-  /*}*/
-  /*.col-right-phone{*/
-  /*    width: 16.5%;*/
-  /*}*/
-  /*.col-right-button {*/
-  /*    width: 100%;*/
-  /*    height: auto;*/
-  /*    text-align: center;*/
-  /*    float: right;*/
-  /*}*/
   .form-box {
     display: flex;
     justify-content: space-between;

@@ -12,7 +12,13 @@ body {
   border-radius: 1.25rem;
   color: white;
 }
+.tb-header {
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  /*font-size: 1.2em;*/
+  text-align: center;
+  color: white;
 
+}
 .layout{
   margin: 3em 15em;
   padding: 2em 7em;
