@@ -9,6 +9,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteTicketComponent} from "../delete-ticket/delete-ticket.component";
 import {UpdateTicketComponent} from "../update-ticket/update-ticket.component";
+import {UserRole} from "../dto/user-role";
 
 
 @Component({
@@ -18,6 +19,7 @@ import {UpdateTicketComponent} from "../update-ticket/update-ticket.component";
 })
 export class ListTicketComponent implements OnInit {
 
+  roleEmail: UserRole;
   ticketListFirst: Ticket[] = []
   page: number = 0;
   totalPages: number = 0
@@ -41,12 +43,22 @@ export class ListTicketComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.roleEmail = {role: sessionStorage.getItem('roles'), email: sessionStorage.getItem('email')}
+
     this.getListTicket();
     this.getListFloor();
     this.getListTypeTicket();
   }
 
   getListTicket() {
+    if (this.searchForm.get('nameCustomer').value != '') {
+      this.searchForm.patchValue({nameCustomer: this.searchForm.get('nameCustomer').value.trim()})
+    }
+    if (this.searchForm.get('phoneCustomer').value != '') {
+      this.searchForm.patchValue({phoneCustomer: this.searchForm.get('phoneCustomer').value.trim()})
+
+    }
+
     this.ticketService.getListSearch(this.searchForm.value, this.page).subscribe((data) => {
       this.ticketListFirst = data.content
       for (let ticketObj of this.ticketListFirst) {
@@ -99,13 +111,13 @@ export class ListTicketComponent implements OnInit {
   }
 
   getListFloor() {
-    this.ticketService.getListFloor().subscribe((data) => {
+    this.ticketService.getAllFloor().subscribe((data) => {
       this.listFloor = data;
     })
   }
 
   getListTypeTicket() {
-    this.ticketService.getListTypeTicket().subscribe((data) => {
+    this.ticketService.getAllTicketType().subscribe((data) => {
       this.listTypeTicket = data;
     })
   }
@@ -138,14 +150,29 @@ export class ListTicketComponent implements OnInit {
 
   openDeleteDialog(id: number) {
 
-    const x = this.dialog.open(DeleteTicketComponent, {
-      width: '700px',
-      data: {data1: id},
-    })
-    x.afterClosed().subscribe(() => {
-      console.log("dong dailog")
-      this.ngOnInit();
-    })
+    if (this.roleEmail.role.includes('EMPLOYEE') || this.roleEmail.role.includes('ADMIN')) {
+      this.ticketService.updateUserTicket(this.roleEmail, id).subscribe(data => {
+        console.log(data)
+        const x = this.dialog.open(DeleteTicketComponent, {
+          width: '900px',
+          height:'200px',
+          data: {data1: id},
+        })
+        x.afterClosed().subscribe(() => {
+          console.log("dong dailog")
+          this.ngOnInit();
+        })
+
+      }, error => {
+        console.log(error)
+      })
+
+    } else {
+      this.snackBar.open('Bạn không đủ thẩm quyền để xóa vé', 'OK', {
+        duration: 3000,
+
+      })
+    }
 
   }
 

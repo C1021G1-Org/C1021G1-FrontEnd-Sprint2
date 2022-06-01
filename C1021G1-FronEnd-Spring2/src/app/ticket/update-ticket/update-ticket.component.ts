@@ -75,7 +75,7 @@ export class UpdateTicketComponent implements OnInit {
   }
 
   getListFloor() {
-    this.ticketService.getListFloor().subscribe((data) => {
+    this.ticketService.getAllFloor().subscribe((data) => {
       this.floors = data;
       console.log(this.floors)
     })
@@ -89,7 +89,7 @@ export class UpdateTicketComponent implements OnInit {
   }
 
   getListTicketType() {
-    this.ticketService.getListTypeTicket().subscribe((data) => {
+    this.ticketService.getAllTicketType().subscribe((data) => {
       this.ticketTypes = data;
     })
   }

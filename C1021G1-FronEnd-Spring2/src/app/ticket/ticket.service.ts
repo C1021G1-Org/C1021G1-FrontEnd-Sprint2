@@ -8,6 +8,7 @@ import {Floor} from "./model/floor";
 import {TicketType} from "./model/ticket-type";
 import {ICar} from "./model/ICar";
 import {ILocation} from './model/ilocation';
+import {UserRole} from "./dto/user-role";
 
 
 @Injectable({
@@ -29,13 +30,26 @@ export class TicketService {
     return this.httpClient.post<DataPageable>(`${this.URL_BE}/search?page=`+page ,searchDto)
   }
 
-  getListFloor(){
-    return this.httpClient.get<Floor[]>(`${this.URL_BE}/getFloor`)
+  updateUserTicket(updateUserEmailDto:UserRole,id:number){
+    return this.httpClient.patch<any>(`${this.URL_BE}/updateUserEmail/`+id,updateUserEmailDto)
+  }
+  getTicketAction(updateUserEmailDto:UserRole,id:number){
+    return this.httpClient.post<Ticket>(`${this.URL_BE}/getTicketAction/`+id,updateUserEmailDto)
   }
 
-  getListTypeTicket(){
-    return this.httpClient.get<TicketType[]>(`${this.URL_BE}/getTypeTicket`)
+  deleteTicket(updateUserEmailDto:UserRole,id:number){
+    return this.httpClient.patch(`${this.URL_BE}/delete/`+id,updateUserEmailDto)
   }
+  // getSearchList(searchDto:SearchDto,page:number){
+  //   return this.httpClient.get<DataPageable>(`${this.URL_BE}/search?page=`+page ,searchDto)
+  // }
+  // getListFloor(){
+  //   return this.httpClient.get<Floor[]>(`${this.URL_BE}/getFloor`)
+  // }
+
+  // getListTypeTicket(){
+  //   return this.httpClient.get<TicketType[]>(`${this.URL_BE}/ticketType`)
+  // }
 
   //tam end
 
