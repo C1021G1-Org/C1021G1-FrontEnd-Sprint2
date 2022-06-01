@@ -8,7 +8,7 @@
         <a class="btn btn-secondary text-white" role="button" routerLink="/location-create"><span
           class="fa fa-plus"></span></a>
       </div>
-      <div class="col-3">
+      <div class="col-3" >
         <input #a (keyup.enter)="search()" (change)="id = $event.target.value" type="search" placeholder="Chọn Tầng"
                class="form-control input-group" list="datalistOptions" id="exampleDataList" (keyup)="index=0">
         <datalist id="datalistOptions" class="w-50" >
@@ -68,6 +68,7 @@
       </div>
       <div class="col-2"></div>
     </div>
+    <br>
     <div class="container-fluid">
       <div class="row">
 
@@ -79,7 +80,7 @@
 
               </div>
               <div class="mx-3 col-3">
-                Hiển thị trang <span class="font-monospace">{{index + 1}}</span> trong tổng số <span
+                Hiển thị trang thứ <span class="font-monospace">{{index + 1}}</span> trong tổng số <span
                 class="font-monospace">{{totalPagination}}</span> trang
               </div>
               <div class="col-6 pagination">
