@@ -8,11 +8,23 @@ import { DeleteTicketComponent } from './delete-ticket/delete-ticket.component';
 import { UpdateTicketComponent } from './update-ticket/update-ticket.component';
 
 
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from "@angular/material/dialog";
+
+
+
 @NgModule({
   declarations: [ListTicketComponent, CreateTicketComponent, DeleteTicketComponent, UpdateTicketComponent],
-  imports: [
-    CommonModule,
-    TicketRoutingModule
-  ]
+
+  exports: [
+    UpdateTicketComponent
+  ],
+    imports: [
+        CommonModule,
+        TicketRoutingModule,
+        ReactiveFormsModule,
+        MatDialogModule
+    ]
+
 })
 export class TicketModule { }
