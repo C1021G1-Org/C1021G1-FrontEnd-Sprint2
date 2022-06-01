@@ -103,34 +103,6 @@
             <a (click)="openDetailCustomer(customer.id)"><span class="fas fa-eye" style="font-size:24px"></span></a>
           </td>
         </tr>
-
-    <tr *ngFor="let customer of customerList, index as i">
-      <td>{{i+ 1}}</td>
-      <td>{{customer.code}}</td>
-      <td>{{customer.name}}</td>
-      <!--            <td>CS-001</td>-->
-      <td>{{customer.phone}}</td>
-      <td>{{customer.idCard}}</td>
-      <td>
-        <a  role="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><span
-          class="fa fa-trash text-danger" style="font-size:24px"></span></a>
-      </td>
-
-      <td>
-
-        <a routerLink="/customer/update/{{customer.id}}"><span></span></a>
-
-        <a  role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span
-
-
-          class="fas fa-pencil" style="font-size:24px"></span></a>
-      </td>
-
-      <td>
-        <a (click)="openDetailCustomer(customer.id)"><span class="fas fa-eye" style="font-size:24px"></span></a>
-      </td>
-
-
     </tbody>
   </table>
 
