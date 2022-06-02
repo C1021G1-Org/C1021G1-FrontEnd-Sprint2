@@ -26,8 +26,11 @@ export class CustomerService {
   }
 
   //TrongHD sửa thông tin khách hàng
-  updateCustomer(id: number, data) {
-    return this.httpClient.patch<CustomerDtoUpdate>(this.API_CUSTOMER + '/update/' + id, data);
+  updateCustomerDto(id: number, data) {
+    const header = {
+      'content-type': 'application/json',
+    };
+    return this.httpClient.patch<CustomerDtoUpdate>(this.API_CUSTOMER + '/update/' + id, JSON.stringify(data),{headers: header});
   }
 
   getListProvince() {

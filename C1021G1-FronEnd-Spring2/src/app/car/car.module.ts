@@ -5,13 +5,16 @@ import { CarRoutingModule } from './car-routing.module';
 import { ListCarComponent } from './list-car/list-car.component';
 import { CreateCarComponent } from './create-car/create-car.component';
 import { DeleteCarComponent } from './delete-car/delete-car.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [ListCarComponent, CreateCarComponent, DeleteCarComponent],
   imports: [
     CommonModule,
-    CarRoutingModule
+    CarRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CarModule { }

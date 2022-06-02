@@ -20,6 +20,7 @@ import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CustomerModule} from "./customer/customer.module";
+import {CarModule} from "./car/car.module";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {CustomerModule} from "./customer/customer.module";
     BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
-    CustomerModule
+    CustomerModule,
+    CarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
