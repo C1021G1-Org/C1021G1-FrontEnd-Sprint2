@@ -38,4 +38,8 @@ export class DeleteEmployeeComponent implements OnInit {
       }
     )
   }
+
+  onNoClick(): void {
+    this.dialog.close();
+  }
 }

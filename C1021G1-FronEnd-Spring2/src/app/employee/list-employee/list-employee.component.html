@@ -67,7 +67,7 @@
       <td class="text-center">{{(i+1) + indexPagination * 5}}</td>
       <td class="text-center">{{employee.code}}</td>
       <td class="text-center">{{employee.name}}</td>
-      <td class="text-center">{{employee.address}}</td>
+      <td class="text-center">{{employee.ward.province.name}}</td>
       <td class="text-center">{{employee.phone}}</td>
       <td class="text-center">
         <a  (click)="openDialog(employee.id)" ><i class="material-icons" style="font-size:25px;color:red">delete</i></a>
