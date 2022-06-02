@@ -1,1 +1,72 @@
-<p>search-car works!</p>
+<body>
+<div class="container">
+  <div class="title">Tìm kiếm xe </div>
+  <form [formGroup]="formGroup" >
+    <div class="user-details">
+      <div class="input-box">
+        <span class="details">Tên Khách Hàng </span>
+        <input type="text" placeholder="Vui lòng nhập tên khách hàng" formControlName="customerName" #customerName >
+      </div>
+      <div class="input-box">
+        <span class="details">Số điện thoại: </span>
+        <input type="text" placeholder="Vui lòng nhập số điện thoại" formControlName="phoneNumber" #phoneNumber>
+      </div>
+      <div class="input-box">
+        <span class="details">Biển số xe</span>
+        <input type="text" placeholder="Vui lòng nhập biển số xe" formControlName="carPlate" #carPlate>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <div class="button">
+          <input type="button" value="Tìm kiếm" (click)="searchCar(customerName.value, phoneNumber.value, carPlate.value)">
+        </div>
+      </div>
+      <div class="col4"></div>
+    </div>
+  </form>
+  <div class="table-responsive-sm">
+    <div class="title"> Bảng lựa chọn  </div>
+    <p *ngIf="check">Vui lòng tìm kiếm để hiển thị thông tin</p>
+    <table  class="table table-success table-striped mt-5 " style="border-radius: 5px" >
+      <thead>
+      <tr style="text-align: center">
+        <th>
+          Số thứ tự
+        </th>
+        <th>
+          Biến Số Xe
+        </th>
+        <th>
+          Tên Chủ xe
+        </th>
+        <th>
+          Số CMND
+        </th>
+        <th>
+          Số Điện Thoại
+        </th>
+        <th>
+          Chức Năng
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr style="text-align: center" *ngFor="let item of carTicket; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.carPlate}}</td>
+        <td>{{item.customerName}}</td>
+        <td>{{item.idCard}}</td>
+        <td>{{item.phoneNumber}}</td>
+        <td>
+          <div class="button">
+            <input type="button" value="Chọn" (click)="chooseCar(item.carPlate)">
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
