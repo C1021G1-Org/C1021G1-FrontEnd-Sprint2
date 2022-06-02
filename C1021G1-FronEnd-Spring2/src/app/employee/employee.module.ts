@@ -7,10 +7,13 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { DetailsComponent } from './details/details.component';
+
+
 
 
 @NgModule({
-  declarations: [ListEmployeeComponent, UpdateEmployeeComponent, CreateEmployeeComponent, DeleteEmployeeComponent],
+  declarations: [ListEmployeeComponent, UpdateEmployeeComponent, CreateEmployeeComponent, DeleteEmployeeComponent, DetailsComponent],
     imports: [
         CommonModule,
         EmployeeRoutingModule,
