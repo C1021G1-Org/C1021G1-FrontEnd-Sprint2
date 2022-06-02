@@ -15,7 +15,9 @@ export class SearchCarComponent implements OnInit {
   carTicket : CarTicket[];
   carChoose : CarChoose[];
   formGroup: FormGroup ;
+
   constructor( private carService: CarManagementService , private router : Router) { }
+
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -33,6 +35,7 @@ export class SearchCarComponent implements OnInit {
   }
 
   chooseCar(carPlate: string) {
+
     return this.carService.chooseCar(carPlate).subscribe((data) => {
       this.carChoose = data;
       if(data.length > 0) {
@@ -40,7 +43,5 @@ export class SearchCarComponent implements OnInit {
       }else{
         this.router.navigateByUrl('customer')
       }
-      console.log(this.carChoose);
-    })
   }
 }

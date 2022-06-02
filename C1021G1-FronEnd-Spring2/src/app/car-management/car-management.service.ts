@@ -8,7 +8,7 @@ import {CarChoose} from '../dto/CarChoose';
   providedIn: 'root'
 })
 export class CarManagementService {
- private readonly URL = "http://localhost:8080/api/car";
+private readonly URL = "http://localhost:8080/api/car";
   currentTicket: CarChoose;
   constructor(private httpClient: HttpClient ) { }
 
@@ -25,3 +25,6 @@ export class CarManagementService {
 
 
 }
+
+
+
