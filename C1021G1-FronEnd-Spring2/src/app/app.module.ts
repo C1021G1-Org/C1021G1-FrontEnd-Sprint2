@@ -21,6 +21,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CustomerModule} from "./customer/customer.module";
 import {CarModule} from "./car/car.module";
+import {ForgottenPasswordComponent} from './login/forgotted-password/forgotten-password.component';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import {CarModule} from "./car/car.module";
     HeaderComponent,
     SignInComponent,
     SignUpComponent,
-    SidebarComponent
+    SidebarComponent,
+    ForgottenPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import {CarModule} from "./car/car.module";
     NgxPaginationModule,
     CdkTableModule,
     CustomerModule,
-    CarModule
+    CarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 <div class="layout">
-  <span class="close">&times;</span>
+  <span class="close" (click)="close()">&times;</span>
   <h1>
     <strong>Thông tin khách hàng</strong>
   </h1>
@@ -23,14 +23,14 @@
     <div class="col-6">
       <label>Giới tính:</label>
       <div class="mt-2">
-        <label class="gender">
-          <input type="radio" name="gender" value="gender">
+        <label class="gender" *ngIf="customer.gender == true">
+          <input type="radio" name="gender" value="gender" checked>
         </label> Nam <i class="fa-solid fa-mars"></i>
-        <label class="gender">
-          <input type="radio" name="gender" value="gender">
+        <label class="gender" *ngIf="customer.gender == false">
+          <input type="radio" name="gender" value="gender" checked>
         </label> Nữ <i class="fa-solid fa-venus"></i>
-        <label class="gender">
-          <input type="radio" name="gender" value="gender">
+        <label class="gender" *ngIf="customer.gender == null">
+          <input type="radio" name="gender" value="gender" checked>
         </label> Khác <i class="fa-solid fa-venus-mars"></i>
       </div>
     </div>
@@ -141,4 +141,3 @@
   </div>
   <!--        end table-->
 </div>
-

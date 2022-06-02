@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {DetailCustomerComponent} from "../detail-customer/detail-customer.component";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {DeleteCustomerComponent} from "../delete-customer/delete-customer.component";
 
 @Component({
   selector: 'app-list-customer',
@@ -35,10 +36,20 @@ export class ListCustomerComponent implements OnInit {
     this.formSearchCustomer = this.formBuilder.group({
       fromDate: [''],
       toDate: [''],
-      name: [''],
       code: [''],
-      phone: ['']
+      phone: [''],
+      idCard:['']
     })
+  }
+
+  resetListCustomer() {
+    this.formSearchCustomer.value.fromDate = '';
+      this.formSearchCustomer.value.toDate = '';
+      this.formSearchCustomer.value.code = '';
+      this.formSearchCustomer.value.phone = '';
+      this.formSearchCustomer.value.idCard = '';
+
+      this.ngOnInit();
   }
 
   //ThangDBX phuong thuc tim kiem
@@ -50,11 +61,12 @@ export class ListCustomerComponent implements OnInit {
     }
     this.customerService.searchCustomer(this.formSearchCustomer.value.fromDate,
       this.formSearchCustomer.value.toDate,
-      this.formSearchCustomer.value.name,
-      this.formSearchCustomer.value.code,
-      this.formSearchCustomer.value.phone,
+      this.formSearchCustomer.value.code.trim(),
+      this.formSearchCustomer.value.phone.trim(),
+      this.formSearchCustomer.value.idCard.trim(),
       page).subscribe(data =>{
         if (data == null){
+          this.customerList = null;
           this.snackBar.open('không tìm thấy kết quả','',{
             duration: 3000
           })
@@ -65,7 +77,7 @@ export class ListCustomerComponent implements OnInit {
         }
 
     }, error => {
-        console.log('khong tim thay du lieu')
+        console.log('du lieu tra ve bi loi')
     })
   }
 
@@ -73,9 +85,9 @@ export class ListCustomerComponent implements OnInit {
   checkSeachForm(){
     if (this.formSearchCustomer.get('fromDate').value == ''
       && this.formSearchCustomer.get('toDate').value ==''
-      && this.formSearchCustomer.get('name').value == ''
       && this.formSearchCustomer.get('code').value == ''
-      && this.formSearchCustomer.get('phone').value ==''){
+      && this.formSearchCustomer.get('phone').value ==''
+      && this.formSearchCustomer.get('idCard').value == ''){
       return true;
     } else {
       return false;
@@ -113,12 +125,12 @@ export class ListCustomerComponent implements OnInit {
   }
 
   movingNext() {
-    this.indexPage=3;
+    this.indexPage= this.indexPage + 2;
     this.getListCustomerPerPage(this.indexPage)
   }
 
   loadList(number: number) {
-    this.indexPage =number -1;
+    this.indexPage = number -1;
     this.getListCustomerPerPage(this.indexPage)
   }
 
@@ -149,8 +161,19 @@ export class ListCustomerComponent implements OnInit {
   }
 
 
+  openDeleteCustomer(id: number){
+      const dialogRef = this.dialog.open(DeleteCustomerComponent, {
+        width: '100%',
+        data: id,
+      })
+      dialogRef.afterClosed().subscribe(next =>{
+        this.ngOnInit();
+      })
+  }
+
   // go(page: any) {
   //   this.indexPage = page;
   //   this.getListCustomerPerPage(this.indexPage)
   // }
+
 }

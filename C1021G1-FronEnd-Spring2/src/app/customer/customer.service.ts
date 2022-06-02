@@ -49,6 +49,9 @@ export class CustomerService {
     return this.httpClient.get<District[]>(this.URL + '/district/' + id);
   }
 
+
+
+
   getWard(id : number) {
     return this.httpClient.get<Ward[]>(this.URL + '/ward/' + id)
   }
@@ -58,11 +61,18 @@ export class CustomerService {
     return  this.httpClient.get<any>( this.API_CUSTOMER + '/list?page=' + page);
   }
 
-  deleteCustomer(id : any){
+  //ThangDBX xoa danh sach
+  deleteCustomer(id : any) : Observable<any>{
     console.log("da gui id");
-    this.httpClient.delete<any>(this.API_CUSTOMER + '/delete/' + id);
+    return  this.httpClient.delete<any>(this.API_CUSTOMER + '/delete/' + id);
   }
 
+  //ThangDBX hien thi list danh sach
+  checkCustomerId(id : any) : Observable<any>{
+    return this.httpClient.get<any>(this.API_CUSTOMER + '/find/' + id);
+  }
+
+  //ThangDBX tim kiem khach hang
   searchCustomer(startDate: string, endDate: string, code: string, phone: string, idCard: string, page): Observable<any>{
     console.log("da gui thong tin");
     console.log("startDate: " + startDate);
@@ -71,11 +81,13 @@ export class CustomerService {
     console.log("phone: " + phone);
     console.log("idcard: " + idCard);
 
-    return this.httpClient.get<any>(this.API_CUSTOMER +'/search?startDate=' + startDate +'&endDate=' + endDate +'&code=' +code+ '&phone=' + phone + '&id_card=' + idCard)
+    return this.httpClient.get<any>(this.API_CUSTOMER +'/search?startDate=' + startDate +'&endDate=' + endDate +'&code=' +code+ '&phone=' + phone + '&idCard=' + idCard + '&page='+ page)
   }
+
   getCardByIdCustomer(id:number){
     return this.httpClient.get<Car[]>(this.API_CUSTOMER + "/" + id);
   }
+
   getCustomerById(id:number){
     return this.httpClient.get<Customer>(this.API_CUSTOMER + "/detail/" + id);
 
