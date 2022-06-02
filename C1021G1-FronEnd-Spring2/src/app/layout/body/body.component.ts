@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NewsService} from "../../new/news.service";
 declare var WOW;
 @Component({
   selector: 'app-body',
@@ -7,12 +8,15 @@ declare var WOW;
 })
 export class BodyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private newsService: NewsService) { }
 
   ngOnInit(): void {
     this.wow();
   }
   wow() {
     new WOW().init();
+  }
+  getAll(){
+
   }
 }

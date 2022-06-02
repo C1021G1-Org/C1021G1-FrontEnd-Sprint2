@@ -12,6 +12,10 @@
   width: 100%;
   height: 75vh;
 }
+.carousel-inner{
+  width: 100% !important;
+  height: 75vh !important;;
+}
 
 .hero-section {
   align-items: flex-start;
