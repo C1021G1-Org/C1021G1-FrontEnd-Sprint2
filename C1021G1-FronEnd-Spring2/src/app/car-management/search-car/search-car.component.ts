@@ -3,6 +3,7 @@ import {CarManagementService} from '../car-management.service';
 import {CarTicket} from '../../dto/CarTicket';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CarChoose} from '../../dto/CarChoose';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-car',
@@ -14,7 +15,7 @@ export class SearchCarComponent implements OnInit {
   carTicket : CarTicket[];
   carChoose : CarChoose[];
   formGroup: FormGroup ;
-  constructor( private carService: CarManagementService) { }
+  constructor( private carService: CarManagementService , private router : Router) { }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
@@ -32,8 +33,13 @@ export class SearchCarComponent implements OnInit {
   }
 
   chooseCar(carPlate: string) {
-    return this.carService.chooseCar(carPlate).subscribe(data => {
+    return this.carService.chooseCar(carPlate).subscribe((data) => {
       this.carChoose = data;
+      if(data.length > 0) {
+        this.carService.currentTicket = data[0];
+      }else{
+        this.router.navigateByUrl('customer')
+      }
       console.log(this.carChoose);
     })
   }
