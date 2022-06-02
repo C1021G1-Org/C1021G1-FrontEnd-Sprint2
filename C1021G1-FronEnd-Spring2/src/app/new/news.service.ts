@@ -11,7 +11,6 @@ export class NewsService {
   constructor(private http : HttpClient) { }
 
   getAllNew(): Observable<any> {
-    let roles = sessionStorage.getItem('roles');
     return this.http.get<any>(API_TICKET + "list");
   }
 
