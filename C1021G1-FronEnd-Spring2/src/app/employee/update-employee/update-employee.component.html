@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chỉnh sửa thông tin nhân viên</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+  <script src="https://kit.fontawesome.com/f7a2676f00.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+          integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+          integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="container">
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary" onclick="">
+          <i class="fa fa-bars"></i>
+          <span class="sr-only">Toggle Menu</span>
+        </button>
+      </div>
+      <div class="p-4">
+        <h1><a class="logo">Chức năng</a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a href="#"><span class="fa fa-home mr-3"></span>Trang chủ</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-user mr-3"></span>Quản lý khách hàng</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-user mr-3"></span>Quản lý Nhân Viên</a>
+          </li>
+          <li>
+            <a href="#"><span class="fas fa-car mr-3"></span>Quản lý xe ra/vào</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-line-chart mr-3"></span>Thống kê</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-credit-card mr-3"></span>Quản lý vé xe</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-parking mr-3"></span>Quản lý Bãi Đỗ Xe</a>
+          </li>
+
+        </ul>
+        <h3 class="h6 mb-3">Khác</h3>
+        <ul class="list-unstyled components mb-5">
+          <li>
+            <a href="#"><span class="fa fa-calendar mr-3"></span>Lịch</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-cloud mr-3"></span>Dự báo thời tiết</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-building mr-3"></span>Bất Động Sản</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-bar-chart-o mr-3"></span>Chứng Khoán</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+  </div>
+
+  <form class="form">
+    <div class="layout">
+      <h1 class="title">
+        <strong>Chỉnh sửa thông tin nhân viên</strong>
+      </h1>
+      <div class="row">
+        <div class="col-6">
+          <label for="name">Họ tên (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
+            <input type="text" id="name" name="name" class="form-control" required
+                   value="Nguyễn Văn A"><span class="bar"></span></div>
+        </div>
+        <div class="col-6">
+
+          <label for="code">Mã nhân viên (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
+            <input type="text" id="code" class="form-control" value="NV-0001" disabled style="cursor: not-allowed">
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label>Giới tính (<span style="color: red">*</span>)</label>
+          <label class="gender">
+            <input type="radio" name="gender" value="gender" checked>
+          </label> Nam <i class="fa-solid fa-mars"></i>
+          <label class="gender">
+            <input type="radio" name="gender" value="gender">
+          </label> Nữ <i class="fa-solid fa-venus"></i>
+          <label class="gender">
+            <input type="radio" name="gender" value="gender">
+          </label> Khác <i class="fa-solid fa-venus-mars"></i>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="birthday">Ngày sinh (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-cake-candles"></i></a>
+            <input type="date" class="form-control" id="birthday" value="2000-01-01">
+          </div>
+
+        </div>
+        <div class="col-4">
+
+          <label for="phone">Số điện thoại (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
+            <input type="tel" class="form-control text-end" id="phone" value="0909123123">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="position">Chức vụ (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user-tie"></i></a>
+            <select id="position" class="form-select">
+              <option>- Chọn -</option>
+              <option>Bảo vệ</option>
+              <option>Nhân viên</option>
+              <option selected>Quản lý</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-7">
+          <label for="email">Email (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-envelope"></i></a>
+            <input type="email" class="form-control" id="email" value="codegym@gmail.com">
+          </div>
+        </div>
+
+        <div class="col-5">
+          <label for="password">Mật khẩu (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-key"></i></a>
+            <input type="password" class="form-control" id="password" value="nguyenvanA123">
+            <a class="input-group-text" style="background-color: white"
+               onmouseover="showPassword()" onmouseleave="hidePassword()">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="province">Thành phố/Tỉnh (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="province" class="form-select">
+              <option>- Chọn -</option>
+              <option selected>Đà Nẵng</option>
+              <option>Quảng Trị</option>
+              <option>Quảng Bình</option>
+              <option>Quảng Nam</option>
+              <option>Thừa Thiên - Huế</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="district">Quận/Huyện (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="district" class="form-select">
+              <option>- Chọn -</option>
+              <option selected>Hải Châu</option>
+              <option>Hoà Vang</option>
+              <option>Thanh Khê</option>
+              <option>Sơn Trà</option>
+              <option>Ngũ Hành Sơn</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="ward">Phường/Xã (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="ward" class="form-select">
+              <option>- Chọn -</option>
+              <option>Thanh Bình</option>
+              <option>Thuận Phước</option>
+              <option>Thạch Thang</option>
+              <option selected>Hải Châu I</option>
+              <option>Hải Châu II</option>
+              <option>Bình Hiên</option>
+              <option>Hoà Thuận Đông</option>
+              <option>Hoà Thuận Tây</option>
+              <option>Hoà Cường Bắc</option>
+              <option>Hoà Cường Nam</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <label for="address">Số nhà, tên đường (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
+            <input type="text" class="form-control" id="address" value="295 Nguyễn Tất Thành">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 text-end">
+          <button class="btn button-cancel">Huỷ</button>
+        </div>
+        <div class="col-6">
+          <button class="btn button-confirm" type="submit">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  function showPassword() {
+    document.getElementById('password').setAttribute('type', 'text')
+  }
+
+  function hidePassword() {
+    document.getElementById('password').setAttribute('type', 'password')
+  }
+
+  // $(document).ready(function () {
+  //     $('#sidebarCollapse').on('click', function () {
+  //         $('#sidebar').toggleClass('active');
+  //     });
+  // });
+  // $(document).ready(function () {
+  //     $('#close-sidebar').on('click', function () {
+  //         $('#sidebar').toggleClass('active');
+  //     });
+  // });
+
+</script>
+</body>
+</html>
