@@ -11,6 +11,7 @@ export class CarManagementService {
  private readonly URL = "http://localhost:8080/api/car";
   constructor(private httpClient: HttpClient ) { }
 
+
   findCar(customerName: string, phoneNumber: string,carPlate: string): Observable<CarTicket[]> {
     console.log(customerName);
     console.log(phoneNumber);
@@ -20,4 +21,5 @@ export class CarManagementService {
   chooseCar(carPlate: string ) : Observable<CarChoose[]>{
     return this.httpClient.get<CarChoose[]>( this.URL + '/chooseCar?plate='+carPlate)
   }
+
 }
