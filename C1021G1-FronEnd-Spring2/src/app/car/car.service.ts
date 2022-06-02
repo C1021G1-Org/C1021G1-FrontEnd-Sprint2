@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CarDtoCreate} from "./dto/car-dto-create";
+import {CarType} from "./model/car-type";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class CarService {
     const header = {'content-type': 'application/json'};
     const body = JSON.stringify(car);
     return this.httpClient.post<CarDtoCreate>(this.API_CAR + '/create', body, {headers: header});
+  }
+
+  getListCarType() {
+    return this.httpClient.get<CarType[]>(this.API_CAR + '/carType-list');
   }
 
 

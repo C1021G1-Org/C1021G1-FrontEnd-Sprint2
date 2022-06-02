@@ -11,7 +11,7 @@
     <div class="form-box">
 
       <div class="box-left">
-        <button type="button" routerLink="/customer/create" class="btn btn-primary">
+        <button type="button" routerLink="/create" class="btn btn-primary">
           <span class="fa fa-plus-circle mt-1"></span>
         </button>
       </div>
@@ -21,48 +21,48 @@
           <div class="form-group">
             <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
                    onblur="(this.type = 'text')">
-            </div>
           </div>
+        </div>
 
-          <div class="col-right-1">
-            <div class="form-group">
+        <div class="col-right-1">
+          <div class="form-group">
 
-              <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
-                     onblur="(this.type = 'text')">
-            </div>
+            <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
+                   onblur="(this.type = 'text')">
           </div>
+        </div>
 
-          <div class="col-right-1">
-            <div class="form-group">
-              <input type="text" formControlName="code" class="form-control" placeholder="Mã Khách hàng">
-            </div>
+        <div class="col-right-1">
+          <div class="form-group">
+            <input type="text" formControlName="code" class="form-control" placeholder="Mã Khách hàng">
           </div>
+        </div>
 
-          <div class="col-right-1">
-            <div class="form-group">
-              <input type="text" formControlName="phone"
-                     class="form-control" placeholder="Số Điện Thoại">
-            </div>
+        <div class="col-right-1">
+          <div class="form-group">
+            <input type="text" formControlName="phone"
+                   class="form-control" placeholder="Số Điện Thoại">
           </div>
+        </div>
 
-          <div class="col-right-1">
-            <div class="form-group">
-              <input type="text" formControlName="idCard"
-                     class="form-control" placeholder="CMND">
-            </div>
+        <div class="col-right-1">
+          <div class="form-group">
+            <input type="text" formControlName="idCard"
+                   class="form-control" placeholder="CMND">
           </div>
+        </div>
 
-         <div class="col-right-1">
+        <div class="col-right-1">
           <button type="submit" class="btn btn-success " >
             <span class="fa fa-search"></span>
           </button>
 
-           <button type="submit" class="btn btn-success " (click)="resetListCustomer()">
-             <span class="fa-solid fa-arrow-rotate-right"></span>
-           </button>
-          </div>
-
+          <button type="submit" class="btn btn-success " (click)="resetListCustomer()">
+            <span class="fa-solid fa-arrow-rotate-right"></span>
+          </button>
         </div>
+
+      </div>
 
     </div>
   </form>
@@ -96,7 +96,7 @@
       </td>
 
       <td>
-        <a  role="button" ><span class="fas fa-pencil" style="font-size:24px"></span></a>
+        <a  role="button" [routerLink]="['/update', customer.id]"><span class="fas fa-pencil" style="font-size:24px"></span></a>
       </td>
 
       <td>
@@ -161,7 +161,3 @@
   </div>
 
 </div>
-
-
-
-

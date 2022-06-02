@@ -1,96 +1,53 @@
 <div class="container">
-
-  <div class="modal-content layout" style="width: 70%">
-    <form action="#" class="action">
-      <span class="close">&times;</span>
+  <div class=" layout">
+    <form class="action" [formGroup]="createCarForm" (ngSubmit)="createCar()">
       <h2>Thêm Mới Xe</h2>
-      <div class="row">
-        <div class="col-4">
-          <label>Mã Xe <span style="color: red">(*)</span>:</label>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="VD: XE-001">
-          </div>
-          <div>
-            <span style="color: red">Không được để trống</span>
-          </div>
-        </div>
 
-        <div class="col-4">
+      <div class="row">
+        <div>
           <label>Hãng Xe <span style="color: red">(*)</span>:</label>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Nhập hãng xe">
-          </div>
-          <div>
-            <span style="color: red">Không được để trống</span>
+            <input type="text" class="form-control" formControlName="carCompany" placeholder="Nhập hãng xe">
           </div>
         </div>
+      </div>
 
-        <div class="col-4">
-          <label>Loại Vé <span style="color: red">(*)</span>:</label>
-          <div>
-            <select class="form-control">
-              <option value="">--Chọn Loại Vé--</option>
-              <option value="tháng">Vé Tháng</option>
-              <option value="ngày">Vé Ngày</option>
-            </select>
-          </div>
-          <div>
-            <span style="color: red">Không được để trống</span>
-          </div>
+      <div class="row mt-2">
+        <label>Tên Xe <span style="color: red">(*)</span>:</label>
+        <div class="input-group">
+          <input type="text" formControlName="name" class="form-control"
+                 placeholder="Nhập Tên xe"><span class="bar"></span>
         </div>
       </div>
-      <div class="row">
-        <div class="col-6">
-          <label >Loại Xe <span style="color: red">(*)</span>:</label>
-          <div>
-            <select class="form-control">
-              <option value="">--Chọn loại xe--</option>
-              <option value="Xe 4 chỗ">Xe 4 chỗ</option>
-              <option value="Xe 5 chỗ">Xe 5 chỗ</option>
-              <option value="Xe 7 chỗ">Xe 7 chỗ</option>
-              <option value="Xe 9 chỗ">Xe 9 chỗ</option>
-              <option value="Xe 12 chỗ">Xe 12 chỗ</option>
-            </select>
-          </div>
-          <div>
-            <span style="color: red">Không được để trống</span>
-          </div>
-        </div>
-        <div class="col-6">
-          <label>Biển Số Xe <span style="color: red">(*)</span>:</label>
-          <div class="input-group">
-            <input type="text" class="form-control"  placeholder="Nhập biển số xe">
-          </div>
-          <div>
-            <span style="color: red">Không được để trống</span>
-          </div>
+
+      <div class="row mt-2">
+        <label>Loại Xe <span style="color: red">(*)</span>:</label>
+        <div>
+          <select class="form-control" formControlName="carType">
+            <option value="">-- Chọn loại xe --</option>
+            <option *ngFor = "let carType of carTypeList" value="{{carType.id}}">{{carType.name}}</option>
+          </select>
         </div>
       </div>
-      <div class="row">
-        <div class="col-6">
-          <label>Tên Xe <span style="color: red">(*)</span>:</label>
-          <div class="input-group">
-            <input type="text"  name="name" class="form-control"
-                   placeholder="Nhập Tên xe"><span class="bar"></span>
-          </div>
-          <div>
-            <span style="color: red">Không được để trống</span>
-          </div>
-        </div>
-        <div class="col-6">
-          <label>Ngày Hết Hạn <span style="color: red">(*)</span>:</label>
-          <div class="input-group">
-            <input type="date" class="form-control" placeholder="Nhập ngày hết hạn">
-          </div>
-          <div>
-            <span style="color: red">Không được để trống</span>
-          </div>
+
+      <div class="row mt-2">
+        <label>Biển Số Xe <span style="color: red">(*)</span>:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="carPlate" placeholder="Nhập biển số xe">
         </div>
       </div>
+
       <br>
-      <div class="button text-center">
-        <button type="submit" class="btn button-confirm">Lưu</button>
+
+      <div class="row">
+        <div class="button text-end col-6">
+          <button class="btn button-cancel" (click)="closeDialog()">Hủy</button>
+        </div>
+        <div class=" col-6">
+          <button type="submit" class="btn button-confirm">Lưu</button>
+        </div>
       </div>
+
     </form>
   </div>
 
