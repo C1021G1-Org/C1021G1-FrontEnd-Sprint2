@@ -35,4 +35,11 @@ export class LoginService {
     const body = JSON.stringify(user);
     return this.httpClient.post<SignInResult>(this.SIGN_IN_URL,body,{headers: header});
   }
+
+  signUp(signUpForm:any){
+    const header = { 'content-type': 'application/json'};
+    const body = JSON.stringify(signUpForm);
+    return this.httpClient.post(this.SIGN_UP_URL,body,{headers:header})
+  }
 }
+

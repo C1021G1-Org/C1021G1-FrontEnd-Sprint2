@@ -1,6 +1,7 @@
+
 <div id="container">
 
-  <form class="form">
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
     <div class="layout">
       <h1>
         <strong>Thêm mới tài khoản</strong>
@@ -10,32 +11,39 @@
           <label for="name">Họ tên: <span style="color:red">(*)</span></label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
-            <input type="text" id="name" name="name" class="form-control" required
+            <input type="text" id="name" name="name" formControlName="name" class="form-control" required
                    placeholder="VD: Nguyễn Văn A"><span class="bar"></span></div>
-          <p style="color: red">Trường này không được để trống</p>
         </div>
         <div class="col-6">
           <label for="address">Số nhà, tên đường: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
-            <input type="text" class="form-control" id="address" placeholder="VD: 295 Nguyễn Tất Thành">
+            <input type="text" class="form-control" id="address" formControlName="address" placeholder="VD: 295 Nguyễn Tất Thành">
           </div>
-          <p style="color: red">Trường này không được để trống</p>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <label>Giới tính: <span style="color:red">(*)</span> </label>
+<!--          <label>Giới tính: <span style="color:red">(*)</span> </label>-->
+<!--          <label class="gender">-->
+<!--            <input type="radio" name="gender" value="gender" checked>-->
+<!--          </label> Nam <i class="fa-solid fa-mars"></i>-->
+<!--          <label class="gender">-->
+<!--              <input type="radio" name="gender" value="gender">-->
+<!--          </label> Nữ <i class="fa-solid fa-venus"></i>-->
+<!--          <label class="gender">-->
+<!--            <input type="radio" name="gender" value="gender">-->
+<!--          </label> Khác <i class="fa-solid fa-venus-mars"></i>-->
 
-          <label class="gender">
-            <input type="radio" name="gender" value="gender" checked>
-          </label> Nam <i class="fa-solid fa-mars"></i>
-          <label class="gender">
-            <input type="radio" name="gender" value="gender">
-          </label> Nữ <i class="fa-solid fa-venus"></i>
-          <label class="gender">
-            <input type="radio" name="gender" value="gender">
-          </label> Khác <i class="fa-solid fa-venus-mars"></i>
+              <p>Gender:</p>
+              <select name="" formControlName="gender" class="form-control">
+                <option value="" >Giới tính</option>
+                <option [ngValue]="true">Nam</option>
+                <option [ngValue]="false">Nữ</option>
+                <option [ngValue]="null">Khác</option>
+              </select>
+              <p style="color: red" *ngIf="signUpForm.get('gender').errors?.inputNull && signUpForm.get('gender').touched|| checkForm&&signUpForm.get('gender').errors?.inputNull">Trường này không được phép để trống.</p>
+
         </div>
 
       </div>
@@ -46,7 +54,6 @@
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-cake-candles"></i></a>
             <input type="date" class="form-control" id="birthday">
-            <p style="color: red">Trường này không được để trống</p>
           </div>
 
         </div>
@@ -56,7 +63,6 @@
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
             <input type="tel" class="form-control text-end" id="phone" placeholder="VD: 0909123123">
-            <p style="color: red">Trường này không được để trống</p>
           </div>
         </div>
 
@@ -78,7 +84,7 @@
             <a class="input-group-text"><i class="fa-solid fa-envelope"></i></a>
             <input type="email" class="form-control" id="email" placeholder="VD: codegym@gmail.com">
           </div>
-          <p style="color: red">Trường này không được để trống</p>
+
         </div>
 
         <div class="col-5">
@@ -91,7 +97,7 @@
               <i class="fa-solid fa-eye"></i>
             </a>
           </div>
-          <p style="color: red">Trường này không được để trống</p>
+
         </div>
       </div>
 
@@ -101,11 +107,7 @@
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
             <select id="province" class="form-select">
-              <option selected>Đà Nẵng</option>
-              <option>Quảng Trị</option>
-              <option>Quảng Bình</option>
-              <option>Quảng Nam</option>
-              <option>Thừa Thiên - Huế</option>
+
             </select>
           </div>
         </div>
@@ -114,11 +116,7 @@
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
             <select id="district" class="form-select">
-              <option selected>Hải Châu</option>
-              <option>Hoà Vang</option>
-              <option>Thanh Khê</option>
-              <option>Sơn Trà</option>
-              <option>Ngũ Hành Sơn</option>
+
             </select>
           </div>
         </div>
@@ -127,16 +125,6 @@
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
             <select id="ward" class="form-select">
-              <option selected>Thanh Bình</option>
-              <option>Thuận Phước</option>
-              <option>Thạch Thang</option>
-              <option>Hải Châu I</option>
-              <option>Hải Châu II</option>
-              <option>Bình Hiên</option>
-              <option>Hoà Thuận Đông</option>
-              <option>Hoà Thuận Tây</option>
-              <option>Hoà Cường Bắc</option>
-              <option>Hoà Cường Nam</option>
             </select>
           </div>
         </div>

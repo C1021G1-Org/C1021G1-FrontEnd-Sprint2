@@ -20,6 +20,8 @@ import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
 import { ForgottenPasswordComponent } from './login/forgotted-password/forgotten-password.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -32,21 +34,23 @@ import { ForgottenPasswordComponent } from './login/forgotted-password/forgotten
     SidebarComponent,
     ForgottenPasswordComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    MatSnackBarModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatInputModule,
-    DragDropModule,
-    BrowserAnimationsModule,
-    NgxPaginationModule,
-    CdkTableModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        MatSnackBarModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatInputModule,
+        DragDropModule,
+        BrowserAnimationsModule,
+        NgxPaginationModule,
+        CdkTableModule,
+        MatDialogModule,
+        MatIconModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

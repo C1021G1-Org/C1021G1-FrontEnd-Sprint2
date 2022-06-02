@@ -27,7 +27,8 @@ export class HeaderComponent implements OnInit {
   openDialogSignIn() {
     const dialogRef = this.matDialog.open(SignInComponent,{
       width:"500px",
-      data: {'invalid': 'false'}
+      data: {'invalid': 'false'},
+
     });
     dialogRef.afterClosed().subscribe(result => {
       this.email = sessionStorage.getItem('email');

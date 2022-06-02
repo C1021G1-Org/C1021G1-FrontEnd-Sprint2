@@ -132,7 +132,7 @@ button {
     width: 0em;
   }
 }
-/*!*datalist*!*/
+/*datalist*/
 /*option{*/
 /*    background: linear-gradient(-135deg, #71b7e6,#9b59b6);*/
 /*}*/
@@ -206,4 +206,7 @@ button {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+mat-dialog-container {
+  background-color: greenyellow !important;
 }

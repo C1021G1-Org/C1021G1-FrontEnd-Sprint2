@@ -109,7 +109,7 @@ export class SignInComponent implements OnInit {
 
   openDialog(): void {
     this.onNoClick();
-    const dialogRef = this.dialog.open(ForgottenPasswordComponent, {
+    const dialogRef = this.dialog.open(SignInComponent, {
       width: '500px',
     });
 
