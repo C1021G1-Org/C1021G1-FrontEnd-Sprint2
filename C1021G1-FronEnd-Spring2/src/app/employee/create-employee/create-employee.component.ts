@@ -5,7 +5,6 @@ import {Province} from '../model/province';
 import {District} from '../model/district';
 import {Ward} from '../model/ward';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {min} from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-employee',
@@ -91,7 +90,6 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   checkAge(birthday : AbstractControl){
-    console.log(birthday.value);
     const dayOfBirthObj = new Date(birthday.value)
     const dayOfBirth = Date.now() - dayOfBirthObj.getTime() - 8640000;
     const time = new Date(dayOfBirth);
