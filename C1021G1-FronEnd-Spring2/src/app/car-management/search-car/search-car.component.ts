@@ -27,9 +27,6 @@ export class SearchCarComponent implements OnInit {
   searchCar(customerName: string, phoneNumber: string,carPlate: string) {
     return this.carService.findCar( customerName.trim() , phoneNumber.trim(),carPlate.trim()).subscribe( data => {
       this.carTicket = data;
-      console.log(customerName);
-      console.log(phoneNumber);
-      console.log(carPlate);
       console.log(this.carTicket);
     })
   }
