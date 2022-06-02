@@ -1,1 +1,143 @@
-<p>sign-up works!</p>
+
+<div id="container">
+
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+    <div class="layout">
+      <h1>
+        <strong>Thêm mới tài khoản</strong>
+      </h1>
+      <div class="row">
+        <div class="col-6">
+          <label for="name">Họ tên: <span style="color:red">(*)</span></label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
+            <input type="text" id="name" name="name" formControlName="name" class="form-control" required
+                   placeholder="VD: Nguyễn Văn A"><span class="bar"></span></div>
+        </div>
+        <div class="col-6">
+          <label for="address">Số nhà, tên đường: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
+            <input type="text" class="form-control" id="address" formControlName="address" placeholder="VD: 295 Nguyễn Tất Thành">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+<!--          <label>Giới tính: <span style="color:red">(*)</span> </label>-->
+<!--          <label class="gender">-->
+<!--            <input type="radio" name="gender" value="gender" checked>-->
+<!--          </label> Nam <i class="fa-solid fa-mars"></i>-->
+<!--          <label class="gender">-->
+<!--              <input type="radio" name="gender" value="gender">-->
+<!--          </label> Nữ <i class="fa-solid fa-venus"></i>-->
+<!--          <label class="gender">-->
+<!--            <input type="radio" name="gender" value="gender">-->
+<!--          </label> Khác <i class="fa-solid fa-venus-mars"></i>-->
+
+              <p>Gender:</p>
+              <select name="" formControlName="gender" class="form-control">
+                <option value="" >Giới tính</option>
+                <option [ngValue]="true">Nam</option>
+                <option [ngValue]="false">Nữ</option>
+                <option [ngValue]="null">Khác</option>
+              </select>
+              <p style="color: red" *ngIf="signUpForm.get('gender').errors?.inputNull && signUpForm.get('gender').touched|| checkForm&&signUpForm.get('gender').errors?.inputNull">Trường này không được phép để trống.</p>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="birthday">Ngày sinh: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-cake-candles"></i></a>
+            <input type="date" class="form-control" id="birthday">
+          </div>
+
+        </div>
+        <div class="col-4">
+
+          <label for="phone">Số điện thoại: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
+            <input type="tel" class="form-control text-end" id="phone" placeholder="VD: 0909123123">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label>Id card: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user-tie"></i></a>
+          <input type="text" class="form-control text-end" id="idCard" placeholder="VD: 201-XXX-XXX">
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-7">
+          <label for="email">Email: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-envelope"></i></a>
+            <input type="email" class="form-control" id="email" placeholder="VD: codegym@gmail.com">
+          </div>
+
+        </div>
+
+        <div class="col-5">
+          <label for="password">Mật khẩu: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-key"></i></a>
+            <input type="password" class="form-control" id="password" value="123123123">
+            <a class="input-group-text" style="background-color: white"
+               onmouseover="showPassword()" onmouseleave="hidePassword()">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="province">Thành phố/Tỉnh: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="province" class="form-select">
+
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="district">Quận/Huyện: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="district" class="form-select">
+
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="ward">Phường/Xã: <span style="color:red">(*)</span> </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="ward" class="form-select">
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 text-end">
+          <button class="btn btn-danger">Huỷ</button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-dark" type="submit">Thêm mới</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
