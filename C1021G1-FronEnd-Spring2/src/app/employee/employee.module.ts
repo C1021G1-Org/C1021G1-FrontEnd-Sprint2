@@ -9,8 +9,9 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
 import {ReactiveFormsModule} from '@angular/forms';
 
 
+
 @NgModule({
-  declarations: [ListEmployeeComponent, UpdateEmployeeComponent, CreateEmployeeComponent, DeleteEmployeeComponent],
+  declarations: [ListEmployeeComponent, UpdateEmployeeComponent, CreateEmployeeComponent, DeleteEmployeeComponent, DeleteEmployeeComponent],
     imports: [
         CommonModule,
         EmployeeRoutingModule,

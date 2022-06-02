@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <table class="table table-bordered">
+    <thead class="table-success">
+    <tr>
+      <th class="text-center" colspan="2">
+        <h2>Chi tiết nhân viên</h2>
+      </th>
+    </tr>
+    </thead>
+    <tbody class="table-borderless">
+    <tr>
+      <td colspan="2" class="table-borderless">
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">Mã Nhân Viên: <strong>{{employee.code}}</strong></td>
+      <td class="text-center">Họ Tên: <strong>{{employee.name}}</strong></td>
+    </tr>
+    <tr>
+      <td class="text-center">Giới tính: <strong>{{employee.gender == true ? "Nam" : "Nữ"}}</strong></td>
+      <td class="text-center">Số điện thoại: <strong>{{employee.phone}}</strong></td>
+    </tr>
+    <tr>
+      <td class="text-center">Chức vụ: <strong>{{employee.position.name}}</strong></td>
+      <td class="text-center">Ngày sinh: <strong>{{employee.birthday | date: 'dd/MM/yyyy'}}</strong></td>
+    </tr>
+    <tr>
+      <td class="text-center" colspan="2">Địa chỉ: <strong>{{employee.address}},{{employee.ward.district.name}},{{employee.ward.province.name}}</strong></td>
+    </tr>
+
+    <tr>
+      <td colspan="3" class="text-center">
+        <a class="btn btn-dark m-3" mat-dialog-close >Trở lại</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
