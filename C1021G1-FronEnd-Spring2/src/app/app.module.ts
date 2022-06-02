@@ -19,6 +19,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
+import { StatisticComponent } from './statistic/statistic/statistic.component';
+import {HighchartsChartModule} from "highcharts-angular";
+
 
 @NgModule({
   declarations: [
@@ -28,9 +31,11 @@ import {CdkTableModule} from '@angular/cdk/table';
     HeaderComponent,
     SignInComponent,
     SignUpComponent,
-    SidebarComponent
+    SidebarComponent,
+    StatisticComponent
   ],
   imports: [
+    HighchartsChartModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
