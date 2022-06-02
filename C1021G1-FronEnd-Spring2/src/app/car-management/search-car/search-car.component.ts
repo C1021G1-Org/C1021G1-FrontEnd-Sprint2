@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {CarManagementService} from '../car-management.service';
+import {CarTicket} from '../../dto/CarTicket';
+import {FormControl, FormGroup} from '@angular/forms';
+import {CarChoose} from '../../dto/CarChoose';
 
 @Component({
   selector: 'app-search-car',
@@ -6,10 +10,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-car.component.css']
 })
 export class SearchCarComponent implements OnInit {
-
-  constructor() { }
+  check : boolean = false;
+  carTicket : CarTicket[];
+  carChoose : CarChoose[];
+  formGroup: FormGroup ;
+  constructor( private carService: CarManagementService) { }
 
   ngOnInit(): void {
+    this.formGroup = new FormGroup({
+        carPlate: new FormControl(''),
+        customerName: new FormControl(''),
+        phoneNumber: new FormControl('')
+    })
   }
 
+  searchCar(customerName: string, phoneNumber: string,carPlate: string) {
+    return this.carService.findCar( customerName.trim() , phoneNumber.trim(),carPlate.trim()).subscribe( data => {
+      this.carTicket = data;
+      console.log(customerName);
+      console.log(phoneNumber);
+      console.log(carPlate);
+      console.log(this.carTicket);
+    })
+  }
+
+  chooseCar(carPlate: string) {
+    return this.carService.chooseCar(carPlate).subscribe(data => {
+      this.carChoose = data;
+      console.log(this.carChoose);
+    })
+  }
 }

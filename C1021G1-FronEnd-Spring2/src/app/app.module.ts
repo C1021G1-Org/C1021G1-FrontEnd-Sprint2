@@ -19,6 +19,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
+import {CommonModule} from '@angular/common';
+import {CarManagementModule} from './car-management/car-management.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     HeaderComponent,
     SignInComponent,
     SignUpComponent,
-    SidebarComponent
+    SidebarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
+    CommonModule,
+    CarManagementModule
   ],
   providers: [],
   bootstrap: [AppComponent]
