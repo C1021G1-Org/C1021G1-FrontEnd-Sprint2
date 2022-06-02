@@ -1,1 +1,73 @@
-<p>sidebar works!</p>
+<div id="container">
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary" onclick="swap()">
+          <i class="fa fa-bars"></i>
+          <span class="sr-only">Toggle Menu</span>
+        </button>
+      </div>
+      <div class="p-4">
+        <h1><a href="" class="logo" style="color: black">Chức năng</a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a href="#" style="color: black"><span class="fa fa-home mr-3"></span>Trang chủ</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-user mr-3"></span>Quản lý khách hàng</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-user mr-3"></span>Quản lý nhân viên</a>
+          </li>
+          <li>
+            <a href="#"><span class="fas fa-car mr-3"></span>Quản lý xe ra/vào</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-line-chart mr-3"></span>Thống kê</a>
+          </li>
+          <li>
+            <a routerLink="/ticket/list"><span class="fa fa-credit-card mr-3"></span>Quản lý vé xe</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-parking mr-3"></span>Quản lý bãi đỗ xe</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-bell mr-3"></span>Bảng thông báo</a>
+          </li>
+
+        </ul>
+
+        <!--      <div class="mb-5">-->
+        <h3 class="h6 mb-3" style="color: black">Khác</h3>
+        <ul class="list-unstyled components mb-5">
+          <li>
+            <a href="https://www.24h.com.vn/lich-van-nien-c936.html" target="_blank"><span
+              class="fa fa-calendar mr-3"></span>Lịch</a>
+          </li>
+          <li>
+            <a href="https://weather.com/" target="_blank"><span class="fa fa-cloud-sun mr-3"></span>Dự báo thời
+              tiết</a>
+          </li>
+          <li>
+            <a href="https://vnsmartcity.com.vn/" target="_blank"><span class="fa fa-building mr-3"></span>Bất động sản</a>
+          </li>
+          <li>
+            <a href="https://vn.tradingview.com/chart/" target="_blank"><span class="fa fa-bar-chart-o mr-3"></span>Chứng
+              khoán</a>
+          </li>
+        </ul>
+
+        <!--      </div>-->
+
+        <!--      <div class="footer">-->
+        <!--        <p>&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+        <!--          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>-->
+        <!--          &lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;</p>-->
+        <!--      </div>-->
+
+      </div>
+    </nav>
+
+  </div>
+  <router-outlet></router-outlet>
+</div>

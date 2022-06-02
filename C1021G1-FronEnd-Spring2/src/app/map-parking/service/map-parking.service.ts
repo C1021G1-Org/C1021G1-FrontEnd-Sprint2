@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {MapParking} from '../model/map-parking';
 
 @Injectable({
   providedIn: 'root'
@@ -8,18 +9,24 @@ import {Observable} from "rxjs";
 export class MapParkingService {
 
   URL = "http://localhost:8080/"
-  constructor(private http : HttpClient) { }
 
-  getAllLocation():Observable<Location[]>{
-    return this.http.get<Location[]>(this.URL + 'api/location/map-parking/');
+  constructor(private http: HttpClient) {
   }
 
-  findLocationById(id : number):Observable<Location>{
-    return this.http.get<Location>(this.URL + 'api/location/map-parking/' + id);
+  getAllLocation(page: number): Observable<MapParking[]> {
+    return this.http.get<MapParking[]>(this.URL + 'api/location/map-parking?page=' +page);
   }
 
-  updateColorLocation(id : number){
-    return this.http.patch(this.URL + 'api/location/update-map-parking/'+id,null );
+  findLocationById(id: number): Observable<MapParking> {
+    return this.http.get<MapParking>(this.URL + 'api/location/map-parking/' + id);
+  }
+
+  updateColorLocation(id: number) {
+    return this.http.delete(this.URL + 'api/location/update-map-parking/' + id);
+  }
+
+  searchLocation(value: string, page: number) {
+    return this.http.get(this.URL + 'api/location/searchMap' + '?code=' + value + '&page=' + page);
   }
 
 }
