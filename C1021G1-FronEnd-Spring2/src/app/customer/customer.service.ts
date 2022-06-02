@@ -78,7 +78,7 @@ export class CustomerService {
     console.log("phone: " + phone);
     console.log("idcard: " + idCard);
 
-    return this.httpClient.get<any>(this.API_CUSTOMER +'/search?startDate=' + startDate +'&endDate=' + endDate +'&code=' +code+ '&phone=' + phone + '&id_card=' + idCard + '&page='+ page)
+    return this.httpClient.get<any>(this.API_CUSTOMER +'/search?startDate=' + startDate +'&endDate=' + endDate +'&code=' +code+ '&phone=' + phone + '&idCard=' + idCard + '&page='+ page)
   }
 
   getCardByIdCustomer(id:number){
