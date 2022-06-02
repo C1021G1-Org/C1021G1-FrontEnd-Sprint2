@@ -20,6 +20,9 @@ import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
 
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,7 @@ import {CdkTableModule} from '@angular/cdk/table';
     HeaderComponent,
     SignInComponent,
     SignUpComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import {CdkTableModule} from '@angular/cdk/table';
     BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -112,7 +112,10 @@
       <div class="row">
         <div class="col-4" align="center">
           <i class='fas fa-car' style='font-size:200px'></i>
-          <button style="border: none; background: #71b7e6; color: white;padding: 10px; border-radius: 3px">Quét ảnh</button>
+<!--          {{employee.genderEmployee ? 'Nam' : employee.genderEmployee == false ? 'Nữ' : 'Khác'}}-->
+          <img style="width: 200px;height: 200px" alt="avatar" id="imageNews" [src]="imageThis">
+          <input style=" border: none; padding: 10px; border-radius: 3px" type ="file"
+                 class = "form-control-file" (change)="showPreview($event)">
         </div>
 
 

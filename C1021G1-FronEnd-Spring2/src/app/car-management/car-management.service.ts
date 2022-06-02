@@ -10,4 +10,8 @@ export class CarManagementService {
     private http: HttpClient
   ) { }
   private baseURL = 'http://localhost:8080/api/ticket';
+
+  getListAll() {
+    return this.http.get(this.baseURL + "/list" );
+  }
 }
