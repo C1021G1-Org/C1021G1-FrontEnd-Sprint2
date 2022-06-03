@@ -16,11 +16,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-<<<<<<< HEAD
           <list size="11">
-=======
-          <list size="10">
->>>>>>> origin/parking-management
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -30,12 +26,12 @@
             <item index="6" class="java.lang.String" itemvalue="app-list-location" />
             <item index="7" class="java.lang.String" itemvalue="app-header" />
             <item index="8" class="java.lang.String" itemvalue="router-outlet" />
-<<<<<<< HEAD
             <item index="9" class="java.lang.String" itemvalue="min-device-width" />
             <item index="10" class="java.lang.String" itemvalue="max-device-width" />
-=======
             <item index="9" class="java.lang.String" itemvalue="app-footer" />
->>>>>>> origin/parking-management
+            <item index="9" class="java.lang.String" itemvalue="min-device-width" />
+            <item index="10" class="java.lang.String" itemvalue="max-device-width" />
+            <item index="9" class="java.lang.String" itemvalue="app-footer" />
           </list>
         </value>
       </option>
