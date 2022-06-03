@@ -75,6 +75,7 @@ import {TicketModule} from "./ticket/ticket.module";
     CdkTableModule,
     CommonModule,
     CarManagementModule,
+
     LocationModule,
     MapParkingModule,
     TicketModule,

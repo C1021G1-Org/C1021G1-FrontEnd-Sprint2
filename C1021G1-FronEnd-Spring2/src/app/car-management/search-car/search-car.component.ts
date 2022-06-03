@@ -45,8 +45,12 @@ export class SearchCarComponent implements OnInit {
         this.router.navigateByUrl('customer')
       }
     });
+
+  }
+
 }
-}
+
+
 
 
 
