@@ -31,7 +31,7 @@ export class DeleteLocationComponent implements OnInit {
     this.dialogRef.close();
 
   }
-  deleteLocation(){
+ deleteLocation(){
     this.locationService.DeleteLocationById(this.id).subscribe(()=>{
       this.snackBar.open("Xóa Thành công!",'ok',{
         duration:2000
