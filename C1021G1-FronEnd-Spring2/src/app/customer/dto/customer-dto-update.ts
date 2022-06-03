@@ -10,5 +10,5 @@ export interface CustomerDtoUpdate {
   phone? : string,
   address? : string,
   gender? : Boolean,
-  ward? : number
+  ward? : Ward
 }
