@@ -21,7 +21,7 @@
           <div style="color: red"
                *ngIf ="editCustomerForm.get('name')?.errors?.pattern &&
                       editCustomerForm.get('name').touched">
-            Vui lòng nhập đúng định dạng. ([VJ|VN|BB|JT]XXXX) trong đó X là số từ (0-9)!
+            Vui lòng nhập đúng định dạng!
           </div>
           <div style="color: red"
                *ngIf ="editCustomerForm.get('name')?.errors?.minlength &&
@@ -55,15 +55,15 @@
       <div class="row">
         <div class="col-6">
           <label>Giới Tính <span style="color: red">(*)</span>:</label>
-          <div class="mt-2" >
-            <label class="gender" formControlName="gender">
-              <input type="radio"  checked>
+          <div class="mt-2"  >
+            <label class="gender" >
+              <input type="radio" formControlName="gender" name="gender" [value]="true">
             </label> Nam <i class="fa-solid fa-mars"></i>
             <label class="gender">
-              <input type="radio" >
+              <input type="radio" formControlName="gender" name="gender" [value]="false">
             </label> Nữ <i class="fa-solid fa-venus"></i>
-            <label class="gender" >
-              <input type="radio" >
+            <label class="gender">
+              <input type="radio" formControlName="gender" name="gender" [value]="null">
             </label> Khác <i class="fa-solid fa-venus-mars"></i>
           </div>
         </div>
@@ -177,7 +177,7 @@
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
             <select class="form-control" name="ward" formGroupName="ward" required="">
-              <option  *ngFor="let ward of wardList" [ngValue]="ward.id"
+              <option  *ngFor="let ward of wardList" value="{{ward}}"
                        [selected]="editCustomerForm.get('ward').value.id === ward.id">{{ward.prefix}} {{ward.name}}</option>
             </select>
           </div>
@@ -192,7 +192,7 @@
         </div>
         <div class="col-6">
           <div class="input-group d-flex justify-content-end">
-            <a class="btn button-add-car" id="openModal"><i title="Thêm Xe" class="fa-solid fa-circle-plus mt-2"></i></a>
+            <a class="btn button-add-car" (click)="openDialog()"><i title="Thêm Xe" class="fa-solid fa-circle-plus mt-2"></i></a>
           </div>
         </div>
       </div>
@@ -232,7 +232,7 @@
       <!--        end table-->
       <div class="row">
         <div class="col-6 text-end">
-          <button class="btn button-cancel">Huỷ</button>
+          <button class="btn button-cancel" routerLink="/list">Huỷ</button>
         </div>
         <div class="col-6">
           <button class="btn button-confirm" type="submit">Lưu</button>

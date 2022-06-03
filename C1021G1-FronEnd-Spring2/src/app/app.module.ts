@@ -19,11 +19,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
-
 import {CustomerModule} from "./customer/customer.module";
-
+import {CarModule} from "./car/car.module";
 import {ForgottenPasswordComponent} from './login/forgotted-password/forgotten-password.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 
 
@@ -39,23 +37,23 @@ import {MatIconModule} from '@angular/material/icon';
     ForgottenPasswordComponent
   ],
   imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        MatSnackBarModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatInputModule,
-        DragDropModule,
-        BrowserAnimationsModule,
-        NgxPaginationModule,
-        CdkTableModule,
-        MatDialogModule,
-        MatIconModule,
-        CustomerModule,
-    ],
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    DragDropModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    CdkTableModule,
+    CustomerModule,
+    CarModule,
+    MatIconModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

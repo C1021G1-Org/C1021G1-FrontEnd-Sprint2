@@ -1,5 +1,6 @@
 import {Ward} from "../model/ward";
 
+
 export interface CustomerDtoUpdate {
   id? : number,
   name? : string,
