@@ -3,8 +3,6 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 import {Ticket} from '../model/ticket';
 import {TicketService} from '../ticket.service';
 import {Customer} from '../model/customer';
-
-
 import {ICar} from '../model/ICar';
 import {Floor} from '../model/floor';
 import {ILocation} from '../model/ILocation';
@@ -62,11 +60,6 @@ export class UpdateTicketComponent implements OnInit {
   });
 
   getInForTicket() {
-    //
-    //   this.inForTicket = data;
-    // },error => {
-    //   console.log(error)
-    // })
 
     this.ticketService.getTicketAction(this.roleEmail, this.idTicket).subscribe((data) => {
       this.ticket = data;

@@ -1,1 +1,31 @@
-<p>delete-location works!</p>
+
+  <table class="table table-bordered">
+    <thead class="table-danger">
+    <tr>
+      <th class="text-center1" colspan="2">
+        <h2 style="color: red">Cảnh Báo!</h2>
+      </th>
+    </tr>
+    </thead>
+    <tbody class="table-borderless">
+    <tr>
+      <td colspan="2" class="table-borderless">
+      <b>Bạn có chắc chắn muốn xoá vị trí đỗ xe có:</b>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center col-3">Mã vị trí đỗ: <strong style="color: red">{{code}}</strong></td>
+      <td class="text-center col-3">Tên tầng: <strong style="color: red">{{floorName}}</strong></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="text-center">
+        <a class="btn cancel col-2" (click)="onNoClick()">Hủy</a>
+        <a class="btn delete col-2" (click)="deleteLocation()">Xóa</a>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+  <p style="color: red">Lưu ý: Thao tác này không thể hoàn tác được! </p>
+
+

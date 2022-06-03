@@ -15,7 +15,13 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
-import {MatDialogModule} from "@angular/material/dialog";
+import { StatisticComponent } from './statistic/statistic/statistic.component';
+import {HighchartsChartModule} from "highcharts-angular";
+import {CommonModule} from '@angular/common';
+import {CarManagementModule} from './car-management/car-management.module';
+import {LocationModule} from './location/location.module';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MapParkingModule} from './map-parking/map-parking.module';
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -26,9 +32,6 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
 import {CdkTableModule} from "@angular/cdk/table";
-import {TicketModule} from "./ticket/ticket.module";
-
-
 
 @NgModule({
   declarations: [
@@ -39,8 +42,11 @@ import {TicketModule} from "./ticket/ticket.module";
     SignInComponent,
     SignUpComponent,
     SidebarComponent,
-  ],
+    StatisticComponent
+    ]
+,
   imports: [
+    HighchartsChartModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -62,6 +68,10 @@ import {TicketModule} from "./ticket/ticket.module";
     NgxPaginationModule,
     MatDialogModule,
     CdkTableModule,
+    CommonModule,
+    CarManagementModule,
+    LocationModule,
+    MapParkingModule,
 
 
   ],

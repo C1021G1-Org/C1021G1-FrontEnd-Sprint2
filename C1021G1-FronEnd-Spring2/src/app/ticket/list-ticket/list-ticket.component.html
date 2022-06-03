@@ -1,18 +1,13 @@
 <div class="ticket-body">
   <div class="container">
-
     <div class="row he-tex mt-3 ">
       <div class="col-md-12 text-center">
         <h3>Danh Sách Vé</h3>
       </div>
-
-
     </div>
 
     <form [formGroup]="searchForm" class="mb-3 mt-2 row">
       <div class="form-box">
-        <!--            <div class="d-flex justify-content-between">-->
-
         <div class="box-left">
           <button type="button" class="btn btn-primary" routerLink="/car">
             <span class="fa fa-plus-circle mt-1"></span>
@@ -67,7 +62,6 @@
 
       </div>
 
-      <!--        </div>-->
     </form>
 
     <table class="table table-striped text-center table-border">
@@ -76,11 +70,9 @@
         <th class="col-md-2 col-sm-2">Mã Vé</th>
         <th class="col-md-2 col-sm-2">Biển số Xe</th>
         <th class="col-md-2 col-sm-2">Tên Khách Hàng</th>
-        <!--            <th>Mã Khách Hàng</th>-->
         <th class="col-md-2 col-sm-2">Số Điện Thoại</th>
         <th class="col-md-2 col-sm-2">Trạng Thái</th>
         <th colspan="2" class="col-md-2 col-sm-2">Thao Tác</th>
-
       </tr>
       </thead>
       <tbody class=" table-side-bar">
@@ -115,9 +107,9 @@
         </tr>
       </ng-container>
       <tr *ngIf="checkError">
-                <td *ngIf="checkError" colspan="7" class="align-items-center">
-                  không tìm thấy <span><a (click)="goBack()">trở lại</a></span>
-                </td>
+        <td *ngIf="checkError" colspan="7" class="align-items-center">
+          không tìm thấy <span><a (click)="goBack()">trở lại</a></span>
+        </td>
       </tr>
       </tbody>
 

@@ -1,1 +1,99 @@
-<p>create-car works!</p>
+<div class="container-fluid layout">
+  <h1 align="center">Thống kê</h1>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border float-none w-auto p-2">Thời gian</legend>
+        <div class="d-flex justify-content-between">
+          <div class="control-group col-3">
+            <label>Tháng:</label>
+            <select class="form-control">
+              <option value="">----------Chọn----------</option>
+              <option value="">Tháng 1</option>
+              <option value="">Tháng 2</option>
+              <option value="">Tháng 3</option>
+              <option value="">Tháng 4</option>
+              <option value="">Tháng 5</option>
+              <option value="">Tháng 6</option>
+              <option value="">Tháng 7</option>
+              <option value="">Tháng 8</option>
+              <option value="">Tháng 9</option>
+              <option value="">Tháng 10</option>
+              <option value="">Tháng 11</option>
+              <option value="">Tháng 12</option>
+              <option value=""></option>
+            </select>
+          </div>
+          <div class="control-group col-3 ">
+            <label>Quý:</label>
+            <select class="form-control">
+              <option value="">----------Chọn----------</option>
+              <option value="">Quý 1</option>
+              <option value="">Quý 2</option>
+              <option value="">Quý 3</option>
+              <option value="">Quý 4</option>
+              <option value=""></option>
+            </select>
+          </div>
+          <div class="control-group col-3">
+            <label>Năm:</label>
+            <input class="form-control" type="date" required>
+
+          </div>
+          <div class="control-group col-3">
+            <label>Biểu đồ:</label>
+            <select class="form-control">
+              <option value="">----------Chọn----------</option>
+              <option value="hinhCot">Hình cột</option>
+              <option value="hinhTron">Hình tròn</option>
+              <option value="hìnhDuong">Hình đường</option>
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+
+      </fieldset>
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border float-none w-auto p-2">Biểu đồ</legend>
+        <figure class="highcharts-figure">
+          <div id="container"></div>
+        </figure>
+      </fieldset>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-12 mb-2">
+      <center>
+        <button class="btn btn-success m-3" type="button">In báo cáo</button>
+        <button data-bs-toggle="modal" href="#exampleModalToggle" role="button" type="button"
+                class="btn btn-primary m-3">Thống kê
+        </button>
+      </center>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+     tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 align="center" class="modal-title" id="exampleModalToggleLabel">Kết quả thống kê</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Thời gian: Từ 01/01/2022 đến: 02/01/2022</p>
+        <div id="container1"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                data-bs-dismiss="modal">Xác nhận
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

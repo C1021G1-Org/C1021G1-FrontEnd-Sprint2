@@ -1,1 +1,164 @@
-<p>detail-location works!</p>
+
+
+
+
+
+
+<!--<div class="wrapper d-flex align-items-stretch">-->
+<!--  <nav id="sidebar">-->
+<!--    <div class="custom-menu">-->
+<!--      <button type="button" id="sidebarCollapse" class="btn btn-primary" onclick="swap()">-->
+<!--        <i class="fa fa-bars"></i>-->
+<!--        <span class="sr-only">Toggle Menu</span>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--    <div class="p-4">-->
+<!--      <h1><a class="logo">Chức năng</a></h1>-->
+<!--      <ul class="list-unstyled components mb-5">-->
+<!--        <li class="active">-->
+<!--          <a href="#"><span class="fa fa-home mr-3"></span>Trang chủ</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-user mr-3"></span>Quản lý khách hàng</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-user mr-3"></span>Quản lý Nhân Viên</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fas fa-car mr-3"></span>Quản lý xe ra/vào</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-line-chart mr-3"></span>Thống kê</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-credit-card mr-3"></span>Quản lý vé xe</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-parking mr-3"></span>Quản lý Bãi Đỗ Xe</a>-->
+<!--        </li>-->
+
+<!--      </ul>-->
+<!--      <h3 class="h6 mb-3">Khác</h3>-->
+<!--      <ul class="list-unstyled components mb-5">-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-calendar mr-3"></span>Lịch</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-cloud mr-3"></span>Dự báo thời tiết</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-building mr-3"></span>Bất Động Sản</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#"><span class="fa fa-bar-chart-o mr-3"></span>Chứng Khoán</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+
+<!--    </div>-->
+<!--  </nav>-->
+
+<!--</div>-->
+<body>
+<div class="container">
+
+
+    <div class="row">
+      <h2 class="container tit">Thông Tin Chi Tiết Vị Trí Đỗ</h2>
+      <hr>
+      <div class="col-md-12 order-md-1">
+        <div class="col-md-12">
+          <table class="table">
+            <tfoot class="body1">
+            <tr>
+              <div class="title">
+                Vị trí đỗ
+              </div>
+            </tr>
+            </tfoot>
+          </table>
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <label for="index" class="col-sm-2 col-form-label menu"><b>Vị trí</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="index" value="{{locationDetail?.code}}">
+            </div>
+            <label for="flo" class="col-sm-2 col-form-label menu"><b>Tầng</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="flo"  value="{{locationDetail?.nameFloor}}">
+            </div>
+          </div>
+        </div>
+        <hr style="background: linear-gradient(120deg,#9b59b6, #71b7e6);">
+        <div class="col-md-12">
+          <table class="table">
+            <tfoot class="body1">
+            <tr>
+              <div class="title1">
+                Chi tiết thông tin khách hàng và xe
+              </div>
+            </tr>
+            </tfoot>
+          </table>
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <label for="name" class="col-sm-2 col-form-label menu"><b>Tên khách hàng</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="name" value="{{locationDetail?.nameCustomer}}">
+            </div>
+            <label for="birthday" class="col-sm-2 col-form-label menu"><b>Ngày sinh</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="birthday" value="{{locationDetail?.birthday}}">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <label for="email" class="col-sm-2 col-form-label menu"><b>Email</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="email" value="{{locationDetail?.email}}"></div>
+            <label for="phone" class="col-sm-2 col-form-label menu"><b>Số điện Thoại</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="phone" value="{{locationDetail?.phone}}">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <label for="typeCar" class="col-sm-2 col-form-label menu"><b>Loại xe</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="typeCar" value="{{locationDetail?.nameTypeCar}}">
+            </div>
+            <label for="componentCar" class="col-sm-2 col-form-label menu"><b>Hãng xe </b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="componentCar" value="{{locationDetail?.carCompany}}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <label for="nameCar" class="col-sm-2 col-form-label menu"><b>Tên xe</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="nameCar" value="{{locationDetail?.nameCar}}">
+            </div>
+            <label for="numberCar" class="col-sm-2 col-form-label menu"><b>Biển số xe </b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="numberCar" value="{{locationDetail?.carPlate}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-6 text-end">
+        <button class="btn button-confirm" type="submit" [routerLink]="['/location-list']">Trở về</button>
+      </div>
+    </div>
+    <br>
+</div>
+
+</body>
