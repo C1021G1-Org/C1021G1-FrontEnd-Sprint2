@@ -1,5 +1,6 @@
 <head>
   <meta charset="UTF-8">
+
   <title>Bản Đồ vị trí Bãi đổ xe</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -12,7 +13,7 @@
 </h1>
 <div class="container" >
   <div style="font-weight: bold; color: white">
-    Số vị trí còn trống: 86
+    Tổng vị trí: <span>{{totalLocation}}</span>
   </div>
   <div class="row mt-2">
     <div class="m-2" style="border:1px; background-color: #e70000; width: 140px; height: 30px; color: white">
@@ -21,15 +22,20 @@
     <div class="m-2" style="border:1px; background-color: #007800 ;width: 140px; height: 30px;color: white ">
       Còn trống.
     </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div style="font-weight: bold; color: white">
-      Chiều dài: 3m; Chiều rộng: 2.5m ; Chiều cao: 2m
+    <div class="col-3">
+      <form [formGroup]="searchForm" class="d-flex justify-content-between">
+        <input #keyword type="text" class="form-control" style="margin-right: 5px" placeholder="Nhập mã vị trí">
+        <button class="btn btn-success " type="submit"
+                (click)="searchLocationCode(keyword.value)">
+          <i class="fas fa-search" aria-hidden="true" ></i></button>
+      </form>
     </div>
   </div>
+
+
 </div>
+
+<br>
 <div class="container opacity-75" style="background: #ffffff">
   <div class="row">
     <div class="col-1" *ngFor="let item of listLocation" (click)="openDialog(item, $event)">
@@ -37,7 +43,7 @@
         <a style="text-decoration: none;">
         <span class="position-car full-border d-flex justify-content-center align-items-center btn btn-danger"
               [style.background]="item.isEmpty ? 'red':'green'">
-         <span class='fa fa-car' style='font-size:24px'></span>
+         <span class="fa fa-car" style="font-size:24px"></span>
         </span>
           <span class="d-flex justify-content-center">{{item.code}}</span>
         </a>
@@ -56,8 +62,8 @@
           <div class="col-2">
           </div>
           <div class="mx-3 col-3" style="color: #ffffff">
-            Tầng <span class="font-monospace" style="color: red; font-weight: bold; font-size:22px">{{index + 1}}</span> trong tổng số <span
-            class="font-monospace" style="color: red; font-weight: bold ; font-size:22px">{{totalPagination}}</span> tầng
+            Tầng <span class="font-monospace" style="color: #ffffff; font-weight: bold; font-size:22px">{{index + 1}}</span> trong tổng số <span
+            class="font-monospace" style="color: #ffffff; font-weight: bold ; font-size:22px">{{totalPagination}}</span> tầng
           </div>
           <div class="col-6 pagination">
             <button [disabled]="index < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>

@@ -11,23 +11,9 @@ import {UpdateMapParkingComponent} from "../update-map-parking/update-map-parkin
 })
 export class ConfirmMapParkingComponent implements OnInit {
 
-  constructor(private mapService: MapParkingService,
-              private dialog: MatDialog,
-              private snackBar: MatSnackBar) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  openDialog(id: number) {
-    this.mapService.findLocationById(id).subscribe(data => {
-      const dialogRef = this.dialog.open(UpdateMapParkingComponent, {
-        width: '500px',
-        data: {datal: data},
-      });
-      dialogRef.afterClosed().subscribe(next => {
-        this.ngOnInit();
-      });
-    });
   }
 
 

@@ -38,6 +38,7 @@ export class DeleteLocationComponent implements OnInit {
         verticalPosition:"top"
       })
       this.dialogRef.close();
+      
     },error => {
       this.snackBar.open("đang có người ở vị trí này nên không xóa được!",'error',{
         duration:2000
