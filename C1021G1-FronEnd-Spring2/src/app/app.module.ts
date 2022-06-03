@@ -18,6 +18,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { StatisticComponent } from './statistic/statistic/statistic.component';
+import {HighchartsChartModule} from "highcharts-angular";
+
+
 
 import {CommonModule} from '@angular/common';
 import {CarManagementModule} from './car-management/car-management.module';
@@ -50,8 +54,11 @@ import {TicketModule} from "./ticket/ticket.module";
     SignInComponent,
     SignUpComponent,
     SidebarComponent,
-  ],
+    StatisticComponent
+    ]
+,
   imports: [
+    HighchartsChartModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
