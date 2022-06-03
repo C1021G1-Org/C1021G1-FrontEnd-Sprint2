@@ -21,9 +21,7 @@
         <span (click)="search()" role="button" class="fa fa-search btn btn-success input-group-text"
               style="padding-top: 10px;height: 100%"> </span>
       </div>
-
       <div class="col-2">
-
         <button class="btn btn-secondary"
                 (click)="a.value='';b.value='';this.id='';this.code='';isStatus=false;this.search()">
           <span class="fa-solid fa-arrow-rotate-right"></span>
@@ -69,7 +67,7 @@
       <div class="col-2"></div>
     </div>
     <div class="d-flex justify-content-center" *ngIf="isStatus== true">
-      <td>Hiện tại không có dữ liệu !</td>
+      <span>Hiện tại không có dữ liệu !</span>
     </div>
     <div class="container-fluid" [hidden]="isStatus==true">
       <div class="row">
