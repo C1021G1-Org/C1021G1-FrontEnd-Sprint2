@@ -48,6 +48,11 @@
             <span class="fa fa-search"></span>
           </button>
         </div>
+        <div class="col-right-2 m-1">
+          <button (click)="reset()" class="btn btn-success col-right-button" >
+              <span class="fa-solid fa-arrow-rotate-right"></span>
+          </button>
+        </div>
       </div>
     </div>
   </form>
@@ -82,7 +87,6 @@
     <tr>
       <td *ngIf="checkNull == true" colspan="8" class = "text-center">
         Không tìm thấy !
-        <span><a routerLink="/employee/list">Trở lại</a></span>
       </td>
     </tr>
     </tbody>
