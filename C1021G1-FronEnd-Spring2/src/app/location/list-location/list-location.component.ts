@@ -42,7 +42,6 @@ export class ListLocationComponent implements OnInit {
     this.locationService.getAllLocationAndFloor(this.code.trim(), this.id.trim(), this.index).subscribe(data => {
       this.LocationList = data['content'];
       this.totalPagination = data['totalPages'];
-
     }, error => {
        this.isStatus = true;
     })
