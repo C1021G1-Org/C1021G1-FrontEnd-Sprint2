@@ -4,41 +4,64 @@
     <h1>
       <strong>Tạo mới tin tức</strong>
     </h1>
+
     <div class="row">
-      <div class="col-12">
+      <div class="mb-auto">
         <label for="name">Tên tác giả (<span style="color: red">*</span>):</label>
         <div class="input-group">
           <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
-          <input type="text" id="name" name="name" class="form-control" required
-                 placeholder="" formControlName="author"><span class="bar" ></span></div>
-        <!--                    <span style="text-align: center; color: red">Tên tác giả phải từ 5 - 50 kí tự</span>-->
+          <input type="text" id="name" name="name" class="form-control"
+                 placeholder="" formControlName="author"><span class="bar"></span>
+          <div style="width: 100%; color: red"
+               *ngIf="createForm.get('author').invalid && createForm.controls.author.touched">
+            <span *ngIf="createForm.get('author').errors.required">Vui lòng nhập tên tác giả</span>
+            <span *ngIf="createForm.get('author').errors.minlength">Tên tác giả phải từ 5 - 50 kí tự</span>
+            <span *ngIf="createForm.get('author').errors.maxlength">Tên tác giả phải từ 5 - 50 kí tự</span>
+            <span *ngIf="createForm.get('author').errors.pattern">Tên tác giả không được chứa số</span>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-12">
+      <div class="mb-auto">
         <label for="bsx">Tiêu đề (<span style="color: red">*</span>):</label>
         <div class="input-group">
           <a class="input-group-text"><i class="fas fa-book"></i></a>
           <input type="text" class="form-control" id="bsx" formControlName="title">
+          <div style="width: 100%; color: red"
+               *ngIf="createForm.get('title').invalid && createForm.controls.title.touched">
+            <span *ngIf="createForm.get('title').errors.required">Vui lòng nhập tiêu đề cho bài viết</span>
+            <span *ngIf="createForm.get('title').errors.minlength">Tiêu đề phải trên 3 kí tự</span>
+<!--            <span *ngIf="createForm.get('title').errors.noWhiteSpace">Tiêu đề không được chứa khoảng trắng</span>-->
+          </div>
         </div>
-        <!--                    <span style="text-align: center; color: red">Tiêu đề phải trên 3 kí tự</span>-->
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12">
-        <label for="date">Hình ảnh mô tả (<span style="color: red">*</span>) :</label>
+      <div class="mb-auto">
+        <label for="img">Hình ảnh mô tả (<span style="color: red">*</span>) :</label>
         <div class="input-group">
           <a class="input-group-text"><i class="fa-solid fa-images"></i></a>
-          <input type="file" class="form-control" id="date" value="" formControlName="img">
+          <input type="file" (change)="getImg($event)" class="form-control" id="img" formControlName="img">
         </div>
-        <!--                    <span style="text-align: center; color: red">Nội dung quá ngắn, nội dung phải trên 25 kí tự'</span>-->
+<!--        <label>Hoặc</label>-->
+<!--        <div class="input-group">-->
+<!--          <a class="input-group-text"><i class="fa-solid fa-images"></i></a>-->
+<!--          <input #input (change)="changeImg(input.value)" id="123" type="text" class="form-control" placeholder="Nhập đường dẫn hình ảnh"  formControlName="img" >-->
+<!--        </div>-->
 
+
+        <img [src]="thisImg"  style="width: 200px; height: 200px" alt="">
+      </div>
+      <div style="width: 100%; color: red" *ngIf="createForm.get('img').invalid && createForm.controls.img.touched">
+        <span *ngIf="createForm.get('img').errors.required">Vui lòng chọn hình ảnh mô tả</span>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12">
+      <div class="mb-auto">
         <label for="newsType">Loại tin (<span style="color: red">*</span>) : </label>
         <div class="input-group">
           <a class="input-group-text"><i class="fa-solid fa-caret-down"></i></a>
@@ -46,30 +69,34 @@
             <option value="" selected>----Chọn loại tin-----</option>
             <option *ngFor="let type of newsType" [ngValue]="type">{{type.name}}</option>
           </select>
+          <div style="width: 100%; color: red"
+               *ngIf="createForm.get('newsType').invalid && createForm.controls.newsType.touched">
+            <span *ngIf="createForm.get('newsType').errors.required">Vui lòng chọn loại tin tức</span>
+          </div>
         </div>
-        <!--                    <span style="text-align: center; color: red">Vui lòng chọn loại tin tức</span>-->
-
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12">
+      <div class="mb-auto">
         <label>Nội dung (<span style="color: red">*</span>) :</label>
      <ckeditor formControlName="description"></ckeditor>
+        <div style="width: 100%; color: red" *ngIf="createForm.get('description').invalid && createForm.controls.description.touched">
+          <span *ngIf="createForm.get('description').errors.required">Vui lòng nhập nội dung bài viết</span>
+          <span *ngIf="createForm.get('description').errors.minlength">Nội dung bài viết quá ngắn</span>
+        </div>
       </div>
-      <!--                <span style=" color: red">Nội dung quá ngắn, nội dung phải trên 25 kí tự'</span>-->
-
     </div>
 
 
 
-    <div class="row" >
+    <div class="row">
       <div class="col-6 text-end">
-        <button class="btn button-cancel">Huỷ</button>
+        <button class="btn button-cancel" routerLink="/newsDetail/70">Huỷ</button>
       </div>
-      <div class="col-6">
 
-        <button class="btn button-confirm" type="submit">Tạo</button>
+      <div class="col-6">
+        <button [disabled]="createForm.invalid" class="btn button-confirm" type="submit"><span *ngIf="loadingSubmit"  class="spinner-border text-success spinner-border-sm"  aria-hidden="true"></span>Tạo</button>
       </div>
     </div>
   </div>
