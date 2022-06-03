@@ -92,7 +92,7 @@ export class UpdateCustomerComponent implements OnInit {
         this.snackBar.open('Chỉnh sửa thông tin khách hàng thành công!', '', {
           duration: 2000
         });
-        this.router.navigateByUrl("list")
+        this.router.navigateByUrl("/list")
       }, error => {
         console.log(error)
       })
