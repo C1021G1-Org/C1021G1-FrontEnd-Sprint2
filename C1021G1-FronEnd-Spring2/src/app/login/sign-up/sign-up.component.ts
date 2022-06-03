@@ -3,6 +3,10 @@ import {Router} from '@angular/router';
 import {LoginService} from '../login.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Province} from '../../customer/model/province';
+import {CustomerService} from '../../customer/customer.service';
+import {District} from '../../customer/model/district';
+import {Ward} from '../../customer/model/ward';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,12 +19,20 @@ export class SignUpComponent implements OnInit {
   errorPhone: boolean;
   errorEmail: boolean;
   errorIdCard: boolean;
+  listProvince: Province[];
+  listDistrict: District[];
+  listWard: Ward[];
+  idProvince: number;
+  idDistrict: any;
 
   constructor(private router: Router,
               private loginService: LoginService,
-              private _snackBar: MatSnackBar) { }
+              private _snackBar: MatSnackBar,
+              private customerService:CustomerService) { }
 
   ngOnInit(): void {
+    this.getListProvince();
+    console.log("ds "+ this.listDistrict);
     this.signUpForm = new FormGroup ({
       name: new FormControl(''),
       address: new FormControl(''),
@@ -33,6 +45,26 @@ export class SignUpComponent implements OnInit {
       province: new FormControl(''),
       district: new FormControl(''),
       ward: new FormControl('')
+    })
+  }
+
+  getListProvince(){
+    this.customerService.getListProvince().subscribe(value => {
+      this.listProvince = value;
+      console.log(this.listProvince);
+    })
+  }
+  getListDistrictById(){
+    this.customerService.getDistrict(this.idProvince).subscribe(data => {
+      this.listDistrict = data;
+      console.log(this.listDistrict);
+    })
+  }
+
+  getListWardById() {
+    this.customerService.getWard(this.idDistrict).subscribe(value => {
+      this.listWard = value;
+      console.log(this.listWard);
     })
   }
 
@@ -65,4 +97,19 @@ export class SignUpComponent implements OnInit {
 
   }
 
+  getIdProvince(idProvince: any) {
+    let idP = idProvince.value;
+    this.idProvince = idP;
+    console.log("id :" + idP);
+    this.getListDistrictById();
+    console.log("ds huyen :");
+  }
+
+  getIdDistrict(idDistrict: any) {
+    let idD = idDistrict.value;
+    this.idDistrict = idD;
+    console.log("id :" + idD);
+    this.getListWardById();
+    console.log("ds huyen :");
+  }
 }

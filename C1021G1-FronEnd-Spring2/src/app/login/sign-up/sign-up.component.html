@@ -106,8 +106,8 @@
           <label for="province">Thành phố/Tỉnh: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select id="province" class="form-select">
-
+            <select (change)="getIdProvince(idProvince)" id="province" class="form-select" #idProvince>
+              <option  value="{{item.id}}" *ngFor="let item of listProvince">{{item.name}}</option>
             </select>
           </div>
         </div>
@@ -115,8 +115,10 @@
           <label for="district">Quận/Huyện: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select id="district" class="form-select">
-
+            <select (change)="getIdDistrict(idDistrict)" id="district" #idDistrict class="form-select">
+              <option value="{{item.id}}" *ngFor="let item of listDistrict">
+                {{item.name}}
+              </option>
             </select>
           </div>
         </div>
@@ -124,7 +126,10 @@
           <label for="ward">Phường/Xã: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select id="ward" class="form-select">
+            <select  id="ward" class="form-select" >
+              <option *ngFor="let item of listWard">
+                {{item.name}}
+              </option>
             </select>
           </div>
         </div>

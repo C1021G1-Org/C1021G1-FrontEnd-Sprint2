@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {SignInResult} from './model/sign-in-result';
 import {ForgotPass} from './model/forgot-pass';
 import {SignIn} from './model/sign-in';
+import {CustomerService} from '../customer/customer.service';
+import {Ward} from '../customer/model/ward';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,9 @@ export class LoginService {
   SIGN_IN_URL = 'http://localhost:8080/api/signIn';
   SIGN_UP_URL = "http://localhost:8080/api/SignUp";
   FORGET_PASSWORD_URL = "http://localhost:8080/api/forgetPassword";
-  constructor(private httpClient: HttpClient) { }
+  WARD_LIST = "http://localhost:8080/api/customer/ward-list/";
+  constructor(private httpClient: HttpClient,
+              private customerService: CustomerService) { }
 
   signIn(user:SignInResult){
     const header = {'content-type': 'application/json'};
@@ -41,5 +45,6 @@ export class LoginService {
     const body = JSON.stringify(signUpForm);
     return this.httpClient.post(this.SIGN_UP_URL,body,{headers:header})
   }
+
 }
 

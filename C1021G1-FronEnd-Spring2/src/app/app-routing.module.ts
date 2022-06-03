@@ -6,8 +6,15 @@ import {SignUpComponent} from './login/sign-up/sign-up.component';
 import {SignInComponent} from './login/sign-in/sign-in.component';
 
 import {MapListParkingComponent} from "./map-parking/map-list-parking/map-list-parking.component";
-const routes: Routes = [
+import { CustomerRoutingModule } from './customer/customer-routing.module';
 
+const routes: Routes = [
+  {
+    path: 'employee', loadChildren: () => import ('./employee/employee.module').then(module => module.EmployeeModule)
+  },
+  {
+    path:'customer',loadChildren: () => import ('./customer/customer.module').then(module => module.CustomerModule)
+  },
   {
     path: 'ticket', loadChildren: () => import ('./ticket/ticket.module').then(module => module.TicketModule)
   },
@@ -30,7 +37,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), CustomerRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

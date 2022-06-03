@@ -24,7 +24,6 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatBadgeModule} from "@angular/material/badge";
-import {MatIconModule} from "@angular/material/icon";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -32,6 +31,10 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CustomerModule } from './customer/customer.module';
+import {MatIconModule} from '@angular/material/icon';
+
+
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ForgottenPasswordComponent
   ],
   imports: [
+
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -83,6 +87,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     CdkTableModule,
     MatDialogModule,
     MatIconModule,
+    CustomerModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

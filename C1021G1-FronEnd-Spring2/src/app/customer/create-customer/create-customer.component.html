@@ -1,1 +1,177 @@
-<p>create-customer works!</p>
+<div id="container">
+  <form [formGroup]="creatCustomerForm">
+    <div class="layout">
+      <h1>
+        <strong>Thêm mới khách hàng</strong>
+      </h1>
+      <div class="row">
+        <div class="col-6">
+          <label for="name">Họ và tên (<span style="color: red">*</span>): </label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
+            <input type="text" id="name" name="name" class="form-control" required
+                   placeholder="VD: Nguyễn Văn A"><span class="bar"></span></div>
+        </div>
+        <div class="col-6">
+          <label for="email">Email (<span style="color: red">*</span>):</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-envelope"></i></a>
+            <input type="email" class="form-control" id="email" placeholder="VD: codegym@gmail.com">
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label>Giới tính (<span style="color: red">*</span>):</label>
+          <div class="mt-2">
+            <label class="gender">
+              <input type="radio" name="gender" value="gender" checked>
+            </label> Nam <i class="fa-solid fa-mars"></i>
+            <label class="gender">
+              <input type="radio" name="gender" value="gender">
+            </label> Nữ <i class="fa-solid fa-venus"></i>
+            <label class="gender">
+              <input type="radio" name="gender" value="gender">
+            </label> Khác <i class="fa-solid fa-venus-mars"></i>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label for="birthday">Ngày sinh (<span style="color: red">*</span>):</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-cake-candles"></i></a>
+            <input type="date" class="form-control" id="birthday">
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+
+          <label for="phone">Số điện thoại (<span style="color: red">*</span>):</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
+            <input type="tel" class="form-control" id="phone" placeholder="VD: 0909123123">
+
+          </div>
+        </div>
+
+        <div class="col-6">
+
+          <label for="idCard">CMND/CCCD (<span style="color: red">*</span>):</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
+            <input type="text" id="idCard" class="form-control" placeholder="VD: 23658412XXXX">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <label>Thành Phố/Tỉnh <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control" required="" (change)="getDistrictById($event.target.value)">
+              <option value="" selected>Chọn Tỉnh/Thành phố</option>
+              <option  *ngFor="let province of provinces"
+                       value="{{province.id}}">{{province.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label>Quận/Huyện <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control"  required="" (change)="getWardById($event.target.value)">
+              <option value="" selected>Chọn Quận/Huyện</option>
+              <option  *ngFor="let district of districts"
+                       value="{{district.id}}">{{district.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label >Phường/Xã <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control" name="ward" formGroupName="ward" required="">
+              <option value="" selected>Chọn Phường/Xã</option>
+              <option  *ngFor="let ward of wardList" [ngValue]="ward.id"
+                       >{{ward.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label for="address">Số nhà, tên đường (<span style="color: red">*</span>):</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
+            <input type="text" class="form-control" id="address" placeholder="VD: 295 Nguyễn Tất Thành">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group">
+            <label class="title">Xe đã đăng ký:</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="input-group d-flex justify-content-end">
+            <a class="btn btn-primary" (click)="openDialogAddCar()"><i title="Thêm Xe" class="fa-solid fa-circle-plus"></i></a>
+          </div>
+
+        </div>
+      </div>
+      <!--        table-->
+      <!--        <div class="container">-->
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <table class="table table-striped table-hover text-center " style="border: black 1px">
+            <thead class="text-white tb-header">
+            <tr>
+              <th class="col-1">Mã xe</th>
+              <th class="col-2">Tên xe</th>
+              <th class="col-1">Loại vé</th>
+              <th class="col-2">Biển số xe</th>
+              <th class="col-2">Ngày đăng ký</th>
+              <th class="col-2">Ngày hết hạn</th>
+              <th class="col-1">Chức năng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Xe-001</td>
+              <td>Mer C300 AMG</td>
+              <td>Tháng</td>
+              <td>43D1-29441</td>
+              <td>19/05/2022</td>
+              <td>19/06/2022</td>
+              <td>
+
+                <a  class="delete" (click)="openDialogDeleteCar()">
+                  <i class="fa-solid fa-trash-can icon"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--            </div>-->
+      </div>
+      <!--        end table-->
+      <div class="row">
+        <div class="col-6 text-end">
+          <button class="btn button-cancel" routerLink="/customer/list">Huỷ</button>
+
+        </div>
+        <div class="col-6">
+          <button class="btn button-confirm" type="submit">Thêm mới</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

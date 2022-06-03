@@ -1,9 +1,11 @@
-mat-dialog-container {
-  padding: 0px  !important;;
-  background-color: greenyellow !important;
-
-}
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata');
+
+/*mat-dialog-container {*/
+/*  padding: 0px  !important;;*/
+/*  background-color: greenyellow !important;*/
+
+/*}*/
+
 
 /*Modal*/
 /* Định dạng phần form đăng ký */
@@ -38,22 +40,18 @@ mat-dialog-container {
   text-decoration: none;
   cursor: pointer;
 }
-
-
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /*font-family: 'Crimson Pro',sans-serif;*/
+/* You can add global styles to this file, and also import other style files */
+mat-dialog-container{
+  background: rgb(162, 233, 252) !important;
+  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%) !important;
+  border-radius: 1.25rem !important;
 }
-/*body{*/
-/*  display: flex;*/
-/*  height: 100vh;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*  padding: 10px;*/
-/*  background: linear-gradient(135deg, #71b7e6,#9b59b6);*/
+
+
+
+/*mat-dialog-container {*/
+/*  padding: 0px  !important;;*/
+/*  background-color: greenyellow !important;*/
 /*}*/
 .container{
   max-width: 700px;
@@ -219,4 +217,5 @@ p {
   background-size: cover;
   /*background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%) !important;*/
 }
+
 

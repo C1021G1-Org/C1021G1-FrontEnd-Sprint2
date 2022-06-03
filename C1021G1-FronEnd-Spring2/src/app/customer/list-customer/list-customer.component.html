@@ -196,10 +196,77 @@
   <!--            </td>-->
   <!--        </tr>-->
   <!--    </table>-->
+      <h3>Danh Sách Khách Hàng</h3>
+    </div>
+
+
+  <form action="" [formGroup]="formSearchCustomer" (ngSubmit)="search('')" class="mb-3 mt-2 row">
+    <div class="form-box">
+
+      <div class="box-left">
+        <button type="button" routerLink="/customer/create" class="btn btn-primary">
+          <span class="fa fa-plus-circle mt-1"></span>
+        </button>
+      </div>
+
+      <div class="box-right ">
+        <div class="col-right-1">
+          <div class="form-group">
+            <input formControlName="fromDate" class="form-control" type="text" placeholder="sinh từ ngày" onfocus="(this.type = 'date')"
+                   onblur="(this.type = 'text')">
+            </div>
+          </div>
+
+          <div class="col-right-1">
+            <div class="form-group">
+
+              <input formControlName="toDate" class="form-control" type="text" placeholder=" đến ngày" onfocus="(this.type = 'date')"
+                     onblur="(this.type = 'text')">
+            </div>
+          </div>
+
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="code" class="form-control" placeholder="Mã Khách hàng">
+            </div>
+          </div>
+
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="phone"
+                     class="form-control" placeholder="Số Điện Thoại">
+            </div>
+          </div>
+
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text" formControlName="idCard"
+                     class="form-control" placeholder="CMND">
+            </div>
+          </div>
+
+         <div class="col-right-1">
+          <button type="submit" class="btn btn-success " >
+            <span class="fa fa-search"></span>
+          </button>
+
+           <button type="submit" class="btn btn-success " (click)="resetListCustomer()">
+             <span class="fa-solid fa-arrow-rotate-right"></span>
+           </button>
+          </div>
+
+        </div>
+
+    </div>
+  </form>
+
+
+
 
   <table class="table  table-responsive table-striped text-center table-border">
     <thead class="text-white tb-header">
     <tr>
+
       <th>Mã Vé</th>
       <th>Biển số Xe</th>
       <th>Tên Khách Hàng</th>
@@ -208,9 +275,18 @@
       <th>Trạng Thái</th>
       <th colspan="2">Thao Tác</th>
 
+      <th>STT</th>
+      <th>Mã Khách Hàng</th>
+      <th>Tên Khách Hàng</th>
+      <th>Số Điện Thoại</th>
+      <th>CMND</th>
+      <th colspan="3">Thao Tác</th>
+
+
     </tr>
     </thead>
     <tbody class=" table-side-bar">
+
     <tr>
       <td>VS-001</td>
       <td>99-H7 7777</td>
@@ -293,7 +369,8 @@
     </tbody>
 
   </table>
-
+<table>
+  <thead>
   <div class="row text-center">
     <div class="col-md-12">
       <div class="pagination">
@@ -312,12 +389,87 @@
 
       </div>
     </div>
-
-
   </div>
+  </thead>
+  <tbody>
 
-</div>
 
+    <tr *ngFor="let customer of customerList, index as i">
+      <td>{{i+ 1}}</td>
+      <td>{{customer.code}}</td>
+      <td>{{customer.name}}</td>
+      <!--            <td>CS-001</td>-->
+      <td>{{customer.phone}}</td>
+      <td>{{customer.idCard}}</td>
+      <td>
+        <a (click)="openDeleteCustomer(customer.id)"  role="button" ><span
+          class="fa fa-trash text-danger" style="font-size:24px"></span></a>
+      </td>
+
+      <td>
+        <a  role="button" ><span class="fas fa-pencil" style="font-size:24px"></span></a>
+      </td>
+
+      <td>
+        <a (click)="openDetailCustomer(customer.id)"><span class="fas fa-eye" style="font-size:24px"></span></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="customerList == null" class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h2  style="text-align: center" >
+        Không tìm thấy kết quả <a class="btn btn-success" (click)="resetListCustomer()"> Trờ về </a>
+      </h2>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <!--  // phan trang-->
+  <div class="container-fluid">
+    <div class="row">
+
+
+      <div class="col-10" [hidden]="customerList == null">
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="mx-3 col-5" [hidden]="totalPagination == 0">
+              Hiển thị trang thứ <span class="font-monospace">{{indexPage + 1}}</span> trong tổng số <span
+              class="font-monospace">{{totalPagination}}</span> trang
+            </div>
+            <!--            thanh phan trang-->
+            <div class="col-6 pagination ">
+              <button [disabled]="indexPage < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
+              </button>
+              <button [disabled]="indexPage < 1" (click)="back()"><span class="fa fa-angle-left"></span></button>
+              <button [hidden]="indexPage < 2" (click)="loadList(indexPage-1)">
+                {{indexPage - 1}}
+              </button>
+              <button [hidden]="indexPage == 0" (click)="loadList1(indexPage-1)">
+                {{indexPage}}
+              </button>
+              <button class="active">
+                {{indexPage + 1}}
+              </button>
+              <button [hidden]="indexPage >= totalPagination - 1" (click)="loadList2(indexPage+1)">
+                {{indexPage + 2}}
+              </button>
+              <button [hidden]="indexPage >= totalPagination - 2" (click)="movingNext()">{{indexPage + 3}}</button>
+              <button [disabled]="indexPage == totalPagination - 1" (click)="next()"><span
+                class="fa fa-angle-right"></span>
+              </button>
+              <button [disabled]="indexPage == totalPagination - 1" (click)="lastPage()"><span
+                class="fa fa-angle-double-right"></span></button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -356,4 +508,5 @@
     </div>
   </div>
 </div>
+
 
