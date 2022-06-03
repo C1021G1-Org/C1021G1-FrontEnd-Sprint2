@@ -73,7 +73,10 @@ export class ListCustomerComponent implements OnInit {
 
         } else {
           this.customerList = data.content;
-          this.totalPagination = data['totalPages']
+          this.totalPagination = data['totalPages'];
+          this.snackBar.open('Đã tìm thấy ket qua','',{
+            duration: 3000
+          })
         }
 
     }, error => {
@@ -164,7 +167,7 @@ export class ListCustomerComponent implements OnInit {
   openDeleteCustomer(id: number){
       const dialogRef = this.dialog.open(DeleteCustomerComponent, {
         width: '100%',
-        data: id,
+        data: {datal : id},
       })
       dialogRef.afterClosed().subscribe(next =>{
         this.ngOnInit();
