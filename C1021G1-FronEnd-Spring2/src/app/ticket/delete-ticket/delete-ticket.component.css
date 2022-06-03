@@ -58,7 +58,7 @@
 
 ::ng-deep.mat-dialog-container {
   /*display: block;*/
-  padding: 0px 10px;
+  padding: 0;
   /*border-radius: 4px;*/
   /*box-sizing: border-box;*/
   /*overflow: auto;*/

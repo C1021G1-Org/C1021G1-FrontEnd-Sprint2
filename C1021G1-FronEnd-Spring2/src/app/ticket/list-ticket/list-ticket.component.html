@@ -84,30 +84,41 @@
       </tr>
       </thead>
       <tbody class=" table-side-bar">
-      <tr *ngFor="let item of ticketListFirst;index as i">
-        <td>{{item.code}}</td>
-        <td>{{item.car.carPlate}}</td>
-        <td>{{item.car.customer.name}}</td>
-        <td>{{item.car.customer.phone}}</td>
-        <td class="text-center text-danger" *ngIf="item.flagExpire"><span class="fa fa-remove"></span> Đã Hết Hạn</td>
-        <td class="text-center text-success" *ngIf="!item.flagExpire"><span class="fa fa-check"></span> Còn Hạn</td>
-        <td>
-          <a role="button" (click)="openDeleteDialog(item.id)"><span
-            class="fa fa-trash text-danger" style="font-size:24px"></span></a>
+      <ng-container *ngIf="!checkError">
+        <tr *ngFor="let item of ticketListFirst;index as i">
+          <td>{{item.code}}</td>
+          <td>{{item.car.carPlate}}</td>
+          <td>{{item.car.customer.name}}</td>
+          <td>{{item.car.customer.phone}}</td>
+          <td class="text-center text-danger" *ngIf="item.flagExpire"><span class="fa fa-remove"></span> Đã Hết Hạn</td>
+          <td class="text-center text-success" *ngIf="!item.flagExpire"><span class="fa fa-check"></span> Còn Hạn</td>
+          <td>
+            <a role="button" (click)="openDeleteDialog(item.id)"><span
+              class="fa fa-trash text-danger" style="font-size:24px"></span></a>
 
 
-        </td>
-        <td>
-          <a role="button" (click)="openUpdateDialog(item.id)"><span
-            class="fa fa-pencil" style="font-size:24px"></span></a>
-        </td>
+          </td>
+          <td>
+            <a role="button" (click)="openUpdateDialog(item.id)"><span
+              class="fa fa-pencil" style="font-size:24px"></span></a>
+          </td>
 
-      </tr>
+        </tr>
 
-      <tr>
+        <tr>
+          <td colspan="7" class="align-items-center">
+            Hiển thị <span>{{size}}</span> trong số <span>{{totalElements}}</span> kết quả
+            Trang <span>{{number}}</span>/<span>{{totalPages}}</span>
+
+          </td>
+          <!--        <td *ngIf="checkError">-->
+          <!--          không tìm thấy <span><a routerLink="/ticket/list">trở lại</a></span>-->
+          <!--        </td>-->
+        </tr>
+      </ng-container>
+      <tr *ngIf="checkError">
         <td colspan="7" class="align-items-center">
-          Hiển thị <span>{{size}}</span> trong số <span>{{totalElements}}</span> kết quả
-          Trang <span>{{number}}</span>/<span>{{totalPages}}</span>
+          không tìm thấy <span><a (click)="goBack()">trở lại</a></span>
         </td>
       </tr>
       </tbody>
@@ -120,8 +131,8 @@
           <button (click)="firstPage()"><span class="fa fa-angle-double-left"></span></button>
           <button (click)="previousPage()"><span class="fa fa-angle-left"></span></button>
           <button (click)="gotoPage(number)" [class.active]="page+1==number">{{number}}</button>
-          <button (click)="gotoPage(number)">{{number + 1}}</button>
-          <button (click)="gotoPage(number+2)">{{number + 2}}</button>
+          <button (click)="gotoPage(number)" *ngIf="number<totalPages">{{number + 1}}</button>
+          <button (click)="gotoPage(number+2)" *ngIf="number+2<totalPages">{{number + 2}}</button>
           <button (click)="nextPage()"><span class="fa fa-angle-right"></span></button>
           <button (click)="lastPage()"><span class="fa fa-angle-double-right"></span></button>
         </div>
@@ -129,183 +140,5 @@
     </div>
   </div>
 </div>
-<!--<<<<<<< HEAD-->
-<!--</div>-->
-<!--=======-->
-
-<!--  <form [formGroup]="searchForm" class="mb-3 mt-2 row">-->
-<!--    <div class="form-box">-->
-<!--      &lt;!&ndash;            <div class="d-flex justify-content-between">&ndash;&gt;-->
-
-<!--      <div class="box-left">-->
-<!--        <button type="button" class="btn btn-primary">-->
-<!--          <span class="fa fa-plus-circle mt-1"></span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="box-right">-->
-<!--        <div class="col-right-2 col-right-select ">-->
-<!--          <div class="form-group ">-->
-<!--            <select class="form-control" formControlName="floor">-->
-<!--              <option value="" selected disabled>-Tầng-</option>-->
-<!--              <option *ngFor="let floor of listFloor;index as f" [ngValue]="floor.name">{{floor.name}}</option>-->
-<!--            </select>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-right-2 col-right-select">-->
-<!--          <div class="form-group ">-->
-<!--            <select class="form-control" formControlName="ticketTypeName">-->
-<!--              <option value="" disabled selected>-Loại Vé-</option>-->
-<!--              <option *ngFor="let type of listTypeTicket;index as t" [ngValue]="type.name">{{type.name}}</option>-->
-
-<!--            </select>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-right-1">-->
-
-<!--          <div class="form-group">-->
-
-<!--            <input class="form-control" type="text" placeholder="ngày kết thúc" onfocus="(this.type = 'date')"-->
-<!--                   onblur="(this.type = 'text')" formControlName="endDate">-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-right-1">-->
-<!--          <div class="form-group">-->
-<!--            <input type="text"-->
-<!--                   class="form-control" placeholder="Họ và tên" formControlName="nameCustomer">-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-right-1">-->
-<!--          <div class="form-group">-->
-<!--            <input type="text"-->
-<!--                   class="form-control" placeholder="Số Điện Thoại" formControlName="phoneCustomer">-->
-
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="col-right-2">-->
-<!--          <a class="btn btn-success col-right-button" (click)="searchTicket()">-->
-<!--            <span class="fa fa-search"></span>-->
-<!--          </a>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-
-<!--    &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--  </form>-->
-<!--<div class="row justify-content-center">-->
-<!--  <div class="col-auto">-->
-<!--  <table class="table table-responsive table-striped text-center table-border"  >-->
-<!--    <thead class="text-white tb-header">-->
-<!--    <tr></tr>-->
-<!--    <tr></tr>-->
-<!--    <tr>-->
-<!--      <th>Mã Vé</th>-->
-<!--      <th>Biển số Xe</th>-->
-<!--      <th>Tên Khách Hàng</th>-->
-<!--      &lt;!&ndash;            <th>Mã Khách Hàng</th>&ndash;&gt;-->
-<!--      <th>Số Điện Thoại</th>-->
-<!--      <th>Trạng Thái</th>-->
-<!--      <th colspan="2">Thao Tác</th>-->
-
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody class=" table-side-bar">-->
-<!--    <tr *ngFor="let item of ticketListFirst;index as i">-->
-<!--      <td>{{item.code}}</td>-->
-<!--      <td>{{item.car.carPlate}}</td>-->
-<!--      <td>{{item.car.customer.name}}</td>-->
-<!--      <td>{{item.car.customer.phone}}</td>-->
-<!--      <td class="text-center" *ngIf="item.flagExpire"><span class="fa fa-remove"> Đã Hết Hạn</span></td>-->
-<!--      <td class="text-center" *ngIf="!item.flagExpire"><span class="fa fa-check"> Còn Hạn</span></td>-->
-<!--      <td>-->
-<!--        <a role="button" (click)="openDeleteDialog(item.id)"><span-->
-<!--          class="fa fa-trash text-danger" style="font-size:24px"></span></a>-->
-
-
-<!--      </td>-->
-<!--      <td>-->
-<!--        <a role="button" (click)="openUpdateDialog(item.id)"><span-->
-<!--          class="fa fa-pencil" style="font-size:24px"></span></a>-->
-<!--      </td>-->
-
-<!--    </tr>-->
-
-<!--    <tr>-->
-<!--      <td colspan="7" class="text-right">-->
-<!--        Hiển thị <span>{{size}}</span> trong số <span>{{totalElements}}</span> kết quả-->
-<!--        Trang <span>{{number}}</span>/<span>{{totalPages}}</span>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-
-<!--  </table>-->
-<!--  </div>-->
-<!--</div>-->
-<!--  <div class="row text-center">-->
-<!--    <div class="col-md-12">-->
-<!--      <div class="pagination d-inline-flex">-->
-<!--        <button (click)="firstPage()"><span class="fa fa-angle-double-left"></span></button>-->
-<!--        <button (click)="previousPage()"><span class="fa fa-angle-left"></span></button>-->
-<!--        <button (click)="gotoPage(number)" [class.active]="page+1==number">{{number}}</button>-->
-<!--        <button (click)="gotoPage(number)">{{number + 1}}</button>-->
-<!--        <button (click)="gotoPage(number+2)">{{number + 2}}</button>-->
-<!--        <div class="input-group ">-->
-<!--          <input type="number" min="1" [max]="totalPages" class="form-control text-right rounded-0"-->
-<!--                 placeholder="2" aria-label="Username"-->
-<!--                 aria-describedby="basic-addon1" [value]="page+1"-->
-<!--                 (change)="indexPaginationChage($event.target.value)">-->
-<!--          <div class="w-auto max-height">-->
-<!--            <span class="input-group-text" id="basic-addon1">{{totalPages}}</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <button (click)="nextPage()"><span class="fa fa-angle-right"></span></button>-->
-<!--        <button (click)="lastPage()"><span class="fa fa-angle-double-right"></span></button>-->
-
-
-<!--      </div>-->
-<!--    </div>-->
-
-
-<!--  </div>-->
-<!--</div>-->
-
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa vé xe</h5>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel2">Xác nhận xóa vé</h5>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <h3>Bạn có chắc xóa vé xe <span class="text-danger font-weight-normal">SV-001</span> với biển số xe-->
-<!--          <span class="text-danger font-weight-normal">99-H7 7777</span></h3>-->
-<!--        <p class="text-danger font-weight-normal">(Lưu ý thao tác này không thể hoàng tác lại)</p>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn button-cancel" data-bs-dismiss="modal">HỦY</button>-->
-<!--        <button type="button" class="btn button-confirm" data-bs-dismiss="modal">Đồng Ý</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 
 

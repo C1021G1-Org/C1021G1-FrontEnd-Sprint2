@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {TicketService} from "../ticket.service";
-import {Ticket} from "../model/ticket";
-import {FormControl, FormGroup} from "@angular/forms";
-import {Floor} from "../model/floor";
-import {TicketType} from "../model/ticket-type";
-import {Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatDialog} from "@angular/material/dialog";
-import {DeleteTicketComponent} from "../delete-ticket/delete-ticket.component";
-import {UpdateTicketComponent} from "../update-ticket/update-ticket.component";
-import {UserRole} from "../dto/user-role";
+import {TicketService} from '../ticket.service';
+import {Ticket} from '../model/ticket';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Floor} from '../model/floor';
+import {TicketType} from '../model/ticket-type';
+import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
+import {DeleteTicketComponent} from '../delete-ticket/delete-ticket.component';
+import {UpdateTicketComponent} from '../update-ticket/update-ticket.component';
+import {UserRole} from '../dto/user-role';
 
 
 @Component({
@@ -20,30 +20,31 @@ import {UserRole} from "../dto/user-role";
 export class ListTicketComponent implements OnInit {
 
   roleEmail: UserRole;
-  ticketListFirst: Ticket[] = []
+  ticketListFirst: Ticket[] = [];
   page: number = 0;
-  totalPages: number = 0
-  totalElements: number = 0
-  number: number = 0
-  size: number = 0
-  listFloor: Floor[] = []
-  listTypeTicket: TicketType[] = []
+  totalPages: number = 0;
+  totalElements: number = 0;
+  number: number = 0;
+  size: number = 0;
+  checkError: boolean = false;
+  listFloor: Floor[] = [];
+  listTypeTicket: TicketType[] = [];
   searchForm = new FormGroup({
     floor: new FormControl(''),
     ticketTypeName: new FormControl(''),
     endDate: new FormControl(''),
     nameCustomer: new FormControl(''),
     phoneCustomer: new FormControl('')
-  })
+  });
 
-  constructor(private  ticketService: TicketService, private router: Router,
+  constructor(private ticketService: TicketService, private router: Router,
               private snackBar: MatSnackBar,
               private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
 
-    this.roleEmail = {role: sessionStorage.getItem('roles'), email: sessionStorage.getItem('email')}
+    this.roleEmail = {role: sessionStorage.getItem('roles'), email: sessionStorage.getItem('email')};
 
     this.getListTicket();
     this.getListFloor();
@@ -52,15 +53,15 @@ export class ListTicketComponent implements OnInit {
 
   getListTicket() {
     if (this.searchForm.get('nameCustomer').value != '') {
-      this.searchForm.patchValue({nameCustomer: this.searchForm.get('nameCustomer').value.trim()})
+      this.searchForm.patchValue({nameCustomer: this.searchForm.get('nameCustomer').value.trim()});
     }
     if (this.searchForm.get('phoneCustomer').value != '') {
-      this.searchForm.patchValue({phoneCustomer: this.searchForm.get('phoneCustomer').value.trim()})
+      this.searchForm.patchValue({phoneCustomer: this.searchForm.get('phoneCustomer').value.trim()});
 
     }
 
     this.ticketService.getListSearch(this.searchForm.value, this.page).subscribe((data) => {
-      this.ticketListFirst = data.content
+      this.ticketListFirst = data.content;
       for (let ticketObj of this.ticketListFirst) {
         ticketObj.flagExpire = this.isExpire(ticketObj.endDate);
       }
@@ -69,30 +70,37 @@ export class ListTicketComponent implements OnInit {
       this.totalElements = data.totalElements;
       this.size = data.size;
       this.number = data.number + 1;
-    }, (error) => {
-      console.log("có lỗi khi lấy list")
-      console.log(error)
-    })
+      this.checkError = false;
+    }, (errors) => {
+      console.log('có lỗi khi lấy list');
+      console.log(errors);
+      this.snackBar.open(errors.error.messageEros, 'OK', {
+        duration: 3000,
+
+      });
+
+      this.checkError = true;
+    });
   }
 
   isExpire(dateStr: string) {
 
-    let today = new Date().toISOString().split('T')[0]
-    let date = new Date(today).valueOf()
+    let today = new Date().toISOString().split('T')[0];
+    let date = new Date(today).valueOf();
     let endDate = new Date(dateStr).valueOf();
     return ((date - endDate) > 0);
   }
 
 
   firstPage() {
-    this.page = 0
+    this.page = 0;
     this.getListTicket();
   }
 
   previousPage() {
     this.page = this.page - 1;
     if (this.page <= 0) {
-      this.page = 0
+      this.page = 0;
     }
     this.getListTicket();
   }
@@ -102,7 +110,7 @@ export class ListTicketComponent implements OnInit {
     if (this.page >= this.totalPages - 1) {
       this.page = this.totalPages - 1;
     }
-    this.getListTicket()
+    this.getListTicket();
   }
 
   lastPage() {
@@ -113,25 +121,25 @@ export class ListTicketComponent implements OnInit {
   getListFloor() {
     this.ticketService.getAllFloor().subscribe((data) => {
       this.listFloor = data;
-    })
+    });
   }
 
   getListTypeTicket() {
     this.ticketService.getAllTicketType().subscribe((data) => {
       this.listTypeTicket = data;
-    })
+    });
   }
 
   searchTicket() {
-    this.page = 0
+    this.page = 0;
     this.getListTicket();
-    console.log(this.searchForm.value)
+    console.log(this.searchForm.value);
   }
 
   gotoPage(num: number) {
-    this.page = num
+    this.page = num;
     if (this.page <= 0) {
-      this.page = 0
+      this.page = 0;
     } else if (this.page > this.totalPages - 1) {
       this.page = this.totalPages - 1;
     }
@@ -141,7 +149,7 @@ export class ListTicketComponent implements OnInit {
   indexPaginationChage(value: any) {
     this.page = value - 1;
     if (this.page <= 0) {
-      this.page = 0
+      this.page = 0;
     } else if (this.page >= this.totalPages - 1) {
       this.page = this.totalPages - 1;
     }
@@ -152,37 +160,38 @@ export class ListTicketComponent implements OnInit {
 
     if (this.roleEmail.role.includes('EMPLOYEE') || this.roleEmail.role.includes('ADMIN')) {
       this.ticketService.updateUserTicket(this.roleEmail, id).subscribe(data => {
-        console.log(data)
+        console.log(data);
         const x = this.dialog.open(DeleteTicketComponent, {
           width: '900px',
           height: '200px',
           data: {data1: id},
-        })
+        });
         x.afterClosed().subscribe(() => {
-          console.log("dong dailog")
-          this.ticketService.updateNullUser(this.roleEmail, id).subscribe(data => {
-
-          }, (errors) => {
-            this.snackBar.open(errors.error.messageEros, 'OK', {
-              duration: 3000,
-
-            })
-          })
+          console.log('dong dailog');
+          // this.ticketService.updateNullUser(this.roleEmail, id).subscribe(data => {
+          //
+          // }, (errors) => {
+          //   this.snackBar.open(errors.error.message, 'OK', {
+          //     duration: 3000,
+          //
+          //   });
+          // });
+          this.page = 0;
           this.ngOnInit();
-        })
+        });
 
       }, (errors) => {
-        this.snackBar.open(errors.error.messageEros, 'OK', {
+        this.snackBar.open(errors.error.message, 'OK', {
           duration: 3000,
 
-        })
-      })
+        });
+      });
 
     } else {
       this.snackBar.open('Bạn không đủ thẩm quyền để xóa vé', 'OK', {
         duration: 3000,
 
-      })
+      });
     }
 
   }
@@ -190,17 +199,20 @@ export class ListTicketComponent implements OnInit {
   openUpdateDialog(id: number) {
 
     this.ticketService.updateUserTicket(this.roleEmail, id).subscribe(data => {
-      console.log(data)
-      this.ticketService.idTicketUpDate = id
-      this.router.navigateByUrl("/update-ticket")
+      console.log(data);
+      this.ticketService.idTicketUpDate = id;
+      this.router.navigateByUrl('/update-ticket');
     }, (errors) => {
-      this.snackBar.open(errors.error.messageEros, 'OK', {
+      this.snackBar.open(errors.error.message, 'OK', {
         duration: 3000,
 
-      })
-    })
+      });
+    });
 
 
   }
 
+  goBack() {
+    this.router.navigateByUrl('/ticket');
+  }
 }

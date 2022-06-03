@@ -127,7 +127,7 @@ export class UpdateTicketComponent implements OnInit {
 
           })
         })
-        this.router.navigateByUrl('/ticket/list');
+        this.router.navigateByUrl('/ticket');
       }, (errors) => {
         console.log('coslooix khi upste');
         this.snackBar.open(errors.error.messageEros, 'OK', {
