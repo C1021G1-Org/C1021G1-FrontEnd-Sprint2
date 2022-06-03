@@ -1,1 +1,496 @@
-<p>list-employee works!</p>
+<!--container-fluid-->
+<div class="container-fluid">
+  <!--    container-fluid-title-->
+  <div class="row he-tex mt-3 ">
+    <div class="col-md-12 text-center">
+      <h2>Danh sách nhân viên</h2>
+    </div>
+  </div>
+
+
+  <form [formGroup]="searchEmployee" (ngSubmit)="search('')" class="mb-3 mt-2 row">
+    <div class="form-box">
+      <div class="box-left">
+        <button type="button" class="btn btn-primary">
+          <span class="fa fa-plus-circle mt-1"></span>
+        </button>
+      </div>
+      <div class="box-right">
+        <div class="col-right-2 m-1 ">
+          <div class="form-group ">
+            <input type="date"  id="stn" formControlName="formBirthday" placeholder="Sinh từ ngày" class="form-control">
+          </div>
+        </div>
+        <div class="col-right-2 m-1 ">
+          <div class="form-group ">
+            <input type="date" id="dn"  formControlName="toBirthday" placeholder="Đến ngày" class="form-control" >
+          </div>
+        </div>
+
+        <div class="col-right-1 m-1">
+          <div class="form-group">
+            <input type="text" id="hvt" formControlName="name" placeholder="Họ và tên" class="form-control"  >
+          </div>
+        </div>
+        <div class="col-right-1 m-1">
+          <div class="form-group">
+            <input type="text" id="mnv" formControlName="code" placeholder="Mã nhân viên" class="form-control"  >
+          </div>
+        </div>
+        <div class="col-right-1 m-1">
+          <div class="form-group">
+            <input type="text" id="dia" formControlName="address" placeholder="Địa chỉ" class="form-control" >
+
+          </div>
+        </div>
+        <div class="col-right-2 m-1">
+          <button type="submit" class="btn btn-success col-right-button" >
+            <span class="fa fa-search"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <table class="table  table-responsive table-striped text-center table-border">
+    <thead class="tb-header">
+    <tr>
+      <th scope="col" style=" width: 5%;text-align: center">STT</th>
+      <th scope="col" style=" width: 15%;text-align: center">Mã nhân viên</th>
+      <th scope="col" style=" width: 20%;text-align: center">Họ tên</th>
+      <th scope="col" style=" width: 35%;text-align: center">Địa chỉ</th>
+      <th scope="col" style=" width: 15%;text-align: center">Số điện thoại</th>
+      <th scope="col" colspan="3" style="text-align: center">Chức năng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employeeList,index as i">
+      <td class="text-center">{{(i+1) + indexPagination * 5}}</td>
+      <td class="text-center">{{employee.code}}</td>
+      <td class="text-center">{{employee.name}}</td>
+      <td class="text-center">{{employee.ward.province.name}}</td>
+      <td class="text-center">{{employee.phone}}</td>
+      <td class="text-center">
+        <a  (click)="openDialog(employee.id)" ><i class="material-icons" style="font-size:25px;color:red">delete</i></a>
+      </td >
+      <td class="text-center">
+        <a><i class="material-icons" style="font-size:25px;color: mediumblue">edit</i></a>
+      </td>
+      <td>
+        <a (click)="openDetails(employee.id)"><i class='fas fa-eye' style="color: black"></i></a>
+      </td>
+    </tr>
+    <tr>
+      <td *ngIf="checkNull == true" colspan="8" class = "text-center">
+        Không tìm thấy !
+        <span><a routerLink="/employee/list">Trở lại</a></span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="text-center" *ngIf="checkNull == false" >
+        Hiển thị trang <span class="font-monospace">{{indexPagination + 1}}</span> trong tổng số <span
+        class="font-monospace">{{totalPagination}}</span> trang
+      </div>
+    </div>
+    <div class="col-1">
+
+    </div>
+    <div class="col-3">
+      <div class="row">
+        <div align="center" *ngIf="checkNull == false">
+          <div class="mt-3" [class.display]="checkNull">
+            <div class="row d-flex justify-content-center">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a
+                      (click)="firtPage()"
+                      [class.disableButton]="indexPagination <= 0"
+                      class="page-link" style="color: black" aria-label="Firsts">
+                      <span class = "b" aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item b">
+                    <a [class.disableButton]="indexPagination <= 0"
+                       (click)="previousPage()"
+                       class="page-link" style="color: black" aria-label="Previous">
+                      <span class = "b" aria-hidden="true">&lt;</span>
+                    </a>
+                  </li>
+                  <!--             <li class="page-item"><a class="page-link" style="color: black">{{indexPagination + 1}}</a></li>-->
+                  <li class="page-item">
+                    <button class="page-link text-black" [hidden]="indexPagination < 2" (click)="loadList(indexPagination-1)">
+                      {{indexPagination - 1}}
+                    </button>
+                  </li>
+                  <li class="page-item">
+                    <button  class="page-link text-black"  [hidden]="indexPagination == 0" (click)="loadList1(indexPagination-1)">
+                      {{indexPagination}}
+                    </button>
+                  </li>
+
+                  <li class="page-item">
+                    <button  class="page-link text-black"  >
+                      {{indexPagination + 1}}
+                    </button>
+                  </li>
+
+                  <li class="page-item">
+                    <button class="page-link text-black"   [hidden]="indexPagination >= totalPagination - 1 " (click)="loadList2(indexPagination+1)">
+                      {{indexPagination + 2}}
+                    </button>
+                  </li>
+
+                  <li class="page-item">
+                    <button  class="page-link text-black"  [hidden]="indexPagination >= totalPagination - 2  " (click)="movingNext()">{{indexPagination + 3}}</button>
+                  </li>
+
+                  <!--             <li class="page-item"><a class="page-link" style="color: black">{{totalPagination}}</a></li>-->
+
+                  <li class="page-item b">
+                    <a
+                      (click)="nextPage()"
+                      [class.disableButton]="indexPagination >= totalPagination -1"
+                      class="page-link" style="color: black" aria-label="Next">
+                      <span class = "b" aria-hidden="true">&gt;</span>
+                    </a>
+                  </li>
+                  <li class="page-item b">
+                    <a (click)="lastPage()"
+                       [class.disableButton]="indexPagination >= totalPagination -1"
+                       class="page-link" style="color: black" aria-label="LastPage">
+                      <span class = "b" aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-4">
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container-fluid" id="bca">-->
+<!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--    &lt;!&ndash; Container wrapper &ndash;&gt;-->
+<!--    <div class="container-fluid" id="bta">-->
+<!--      &lt;!&ndash; Toggle button &ndash;&gt;-->
+<!--      <button-->
+<!--        class="navbar-toggler"-->
+<!--        type="button"-->
+<!--        data-mdb-toggle="collapse"-->
+<!--        data-mdb-target="#navbarSupportedContent"-->
+<!--        aria-controls="navbarSupportedContent"-->
+<!--        aria-expanded="false"-->
+<!--        aria-label="Toggle navigation"-->
+<!--      >-->
+<!--        <i class="fas fa-bars"></i>-->
+<!--      </button>-->
+
+<!--      &lt;!&ndash; Collapsible wrapper &ndash;&gt;-->
+<!--      <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--        &lt;!&ndash; Navbar brand &ndash;&gt;-->
+<!--        <a class="navbar-brand mt-2 mt-lg-0" href="#">-->
+<!--          <img-->
+<!--            src="https://cdn.iconscout.com/icon/free/png-256/lamborghini-282390.png"-->
+<!--            height="20%"-->
+<!--            width="20%"-->
+<!--            alt="MDB Logo"-->
+<!--            loading="lazy"-->
+<!--          />-->
+<!--        </a>-->
+<!--        &lt;!&ndash; Left links &ndash;&gt;-->
+<!--        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link text-white text-center" href="#">Trang chủ</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link text-white text-center" href="#">Tin tức</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link text-white text-center" href="#">Dịch vụ</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link text-white text-center" href="#">Dự án</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link text-white text-center" href="#">Liên Hệ</a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--        &lt;!&ndash; Left links &ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Collapsible wrapper &ndash;&gt;-->
+
+<!--      &lt;!&ndash; Right elements &ndash;&gt;-->
+<!--      <div class="d-flex align-items-center">-->
+<!--        &lt;!&ndash; Icon &ndash;&gt;-->
+<!--        <a class="text-reset me-3" href="#">-->
+<!--          <i class="fas fa-shopping-cart"></i>-->
+<!--        </a>-->
+
+<!--        &lt;!&ndash; Notifications &ndash;&gt;-->
+<!--        <div class="dropdown">-->
+<!--          <a-->
+<!--            class="text-reset me-3 dropdown-toggle hidden-arrow"-->
+<!--            href="#"-->
+<!--            id="navbarDropdownMenuLink"-->
+<!--            role="button"-->
+<!--            data-mdb-toggle="dropdown"-->
+<!--            aria-expanded="false"-->
+<!--          >-->
+<!--            <i class="fas fa-bell"></i>-->
+<!--            <span class="badge rounded-pill badge-notification bg-danger">1</span>-->
+<!--          </a>-->
+<!--          <ul-->
+<!--            class="dropdown-menu dropdown-menu-end"-->
+<!--            aria-labelledby="navbarDropdownMenuLink"-->
+<!--          >-->
+<!--            <li>-->
+<!--              <a class="dropdown-item" href="#">Some news</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <a class="dropdown-item" href="#">Another news</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <a class="dropdown-item" href="#">Something else here</a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Avatar &ndash;&gt;-->
+<!--        <div class="dropdown">-->
+<!--          <a-->
+<!--            class="dropdown-toggle d-flex align-items-center hidden-arrow"-->
+<!--            href="#"-->
+<!--            id="navbarDropdownMenuAvatar"-->
+<!--            role="button"-->
+<!--            data-mdb-toggle="dropdown"-->
+<!--            aria-expanded="false"-->
+<!--          >-->
+<!--            <img-->
+<!--              src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"-->
+<!--              class="rounded-circle"-->
+<!--              height="25"-->
+<!--              alt="Black and White Portrait of a Man"-->
+<!--              loading="lazy"-->
+<!--            />-->
+<!--          </a>-->
+<!--          <ul-->
+<!--            class="dropdown-menu dropdown-menu-end"-->
+<!--            aria-labelledby="navbarDropdownMenuAvatar"-->
+<!--          >-->
+<!--            <li>-->
+<!--              <a class="dropdown-item" href="#">My profile</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <a class="dropdown-item" href="#">Settings</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--              <a class="dropdown-item" href="#">Logout</a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Right elements &ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Container wrapper &ndash;&gt;-->
+<!--  </nav>-->
+<!--</div>-->
+<!--<div class="wrapper d-flex align-items-stretch" style="margin-top: -40px">-->
+
+
+
+<!--  <div class="layout">-->
+<!--    <div id="content" class="p-4 p-md-5 pt-5 ">-->
+<!--      <h1 class="text-center">Danh sách nhân viên</h1>-->
+<!--      <div class="container-fluid">-->
+<!--        <form [formGroup]="searchEmployee"  (ngSubmit)="search('')">-->
+<!--          <div class="row">-->
+<!--            <div class="col-md-1" style="margin-top: 30px">-->
+<!--              <button class="btn btn-primary"><i class='fas fa-user-plus' style='font-size:23px'></i></button>-->
+<!--            </div>-->
+<!--            <div class="col-md-2">-->
+<!--              <label for="stn">Sinh từ ngày</label>-->
+<!--              <input type="date" id="stn" formControlName="formBirthday" class="form-control">-->
+<!--            </div>-->
+<!--            <div class="col-md-2">-->
+<!--              <label for="dn">Đến ngày</label>-->
+<!--              <input type="date" id="dn"  formControlName="toBirthday" class="form-control">-->
+<!--            </div>-->
+<!--            <div class="col-md-2">-->
+<!--              <label for="hvt">Họ tên</label>-->
+<!--              <input type="text" id="hvt" formControlName="name" class="form-control"  >-->
+<!--            </div>-->
+<!--            <div class="col-md-2">-->
+<!--              <label for="mnv">Mã nhân viên</label>-->
+<!--              <input type="text" id="mnv" formControlName="code" class="form-control"  >-->
+<!--            </div>-->
+<!--            <div class="col-md-2">-->
+<!--              <label for="dia">Địa chỉ</label>-->
+<!--              <input type="text" id="dia" formControlName="address" class="form-control" >-->
+<!--            </div>-->
+<!--            <div class="col-md-1" >-->
+<!--              <button class="btn btn-primary" type="submit"  style="margin-top: 32px" >-->
+<!--                <i class='fas fa-search' style='font-size:23px'></i>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </form>-->
+
+<!--        <br>-->
+<!--        <div class="row">-->
+<!--          <div class="col-2"></div>-->
+<!--          <div class="table-responsive[-sm|-md|-lg|-xl] col-12 table-responsive" >-->
+<!--            <table class="table-bordered border-primary table table-hover">-->
+<!--              <thead class="tb-header">-->
+<!--              <tr>-->
+<!--                  <th scope="col" style=" width: 5%;text-align: center">STT</th>-->
+<!--                  <th scope="col" style=" width: 15%;text-align: center">Mã nhân viên</th>-->
+<!--                <th scope="col" style=" width: 20%;text-align: center">Họ tên</th>-->
+<!--                <th scope="col" style=" width: 35%;text-align: center">Địa chỉ</th>-->
+<!--                <th scope="col" style=" width: 15%;text-align: center">Số điện thoại</th>-->
+<!--                <th scope="col" colspan="2" style="text-align: center">Chức năng</th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--             <tr *ngFor="let employee of employeeList,index as i">-->
+<!--               <td class="text-center">{{(i+1) + indexPagination * 5}}</td>-->
+<!--               <td class="text-center">{{employee.code}}</td>-->
+<!--               <td class="text-center">{{employee.name}}</td>-->
+<!--               <td class="text-center">{{employee.address}}</td>-->
+<!--               <td class="text-center">{{employee.phone}}</td>-->
+<!--               <td class="text-center">-->
+<!--                 <a><i class="material-icons" style="font-size:32px">edit</i></a>-->
+<!--               </td >-->
+<!--               <td class="text-center">-->
+<!--                 <a  (click)="openDialog(employee.id)" ><i class="material-icons" style="font-size:32px;color:red">delete</i></a>-->
+<!--               </td>-->
+<!--             </tr>-->
+<!--&lt;!&ndash;             <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;               <td [class.display]="!checkNull" colspan="8" class = "text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                 Không tìm thấy !&ndash;&gt;-->
+<!--&lt;!&ndash;               </td>&ndash;&gt;-->
+<!--&lt;!&ndash;             </tr>&ndash;&gt;-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--            <div align="center">-->
+<!--              <div class="mt-3" [class.display]="checkNull">-->
+<!--                <div class="row d-flex justify-content-center">-->
+<!--                  <nav aria-label="Page navigation example">-->
+<!--                    <ul class="pagination">-->
+<!--                      <li class="page-item">-->
+<!--                        <a-->
+<!--                          (click)="firtPage()"-->
+<!--                          [class.disableButton]="indexPagination <= 0"-->
+<!--                          class="page-link" style="color: black" aria-label="Firsts">-->
+<!--                          <span class = "b" aria-hidden="true">&laquo;</span>-->
+<!--                        </a>-->
+<!--                      </li>-->
+<!--                      <li class="page-item b">-->
+<!--                        <a [class.disableButton]="indexPagination <= 0"-->
+<!--                           (click)="previousPage()"-->
+<!--                           class="page-link" style="color: black" aria-label="Previous">-->
+<!--                          <span class = "b" aria-hidden="true">&lt;</span>-->
+<!--                        </a>-->
+<!--                      </li>-->
+<!--                      <li class="page-item"><a class="page-link" style="color: black">{{indexPagination + 1}}</a></li>-->
+<!--                      <li class="page-item"><a class="page-link" style="color: black">/</a></li>-->
+<!--                      <li class="page-item"><a class="page-link" style="color: black">{{totalPagination}}</a></li>-->
+
+<!--                      <li class="page-item b">-->
+<!--                        <a-->
+<!--                          (click)="nextPage()"-->
+<!--                          [class.disableButton]="indexPagination >= totalPagination -1"-->
+<!--                          class="page-link" style="color: black" aria-label="Next">-->
+<!--                          <span class = "b" aria-hidden="true">&gt;</span>-->
+<!--                        </a>-->
+<!--                      </li>-->
+<!--                      <li class="page-item b">-->
+<!--                        <a (click)="lastPage()"-->
+<!--                           [class.disableButton]="indexPagination >= totalPagination -1"-->
+<!--                           class="page-link" style="color: black" aria-label="LastPage">-->
+<!--                          <span class = "b" aria-hidden="true">&raquo;</span>-->
+<!--                        </a>-->
+<!--                      </li>-->
+<!--                    </ul>-->
+<!--                  </nav>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-2"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--  <div class="col-3">-->
+<!--      <div align="center">-->
+<!--        <div class="mt-3" [class.display]="checkNull">-->
+<!--          <div class="row d-flex justify-content-center">-->
+<!--            <nav aria-label="Page navigation example">-->
+<!--              <ul class="pagination">-->
+<!--                <li class="page-item">-->
+<!--                  <a-->
+<!--                    (click)="firtPage()"-->
+<!--                    [class.disableButton]="indexPagination <= 0"-->
+<!--                    class="page-link" style="color: black" aria-label="Firsts">-->
+<!--                    <span class = "b" aria-hidden="true">&laquo;</span>-->
+<!--                  </a>-->
+<!--                </li>-->
+<!--                <li class="page-item b">-->
+<!--                  <a [class.disableButton]="indexPagination <= 0"-->
+<!--                     (click)="previousPage()"-->
+<!--                     class="page-link" style="color: black" aria-label="Previous">-->
+<!--                    <span class = "b" aria-hidden="true">&lt;</span>-->
+<!--                  </a>-->
+<!--                </li>-->
+<!--                <li class="page-item"><a class="page-link" style="color: black">{{indexPagination + 1}}</a></li>-->
+<!--                <li class="page-item"><a class="page-link" style="color: black">/</a></li>-->
+<!--                <li class="page-item"><a class="page-link" style="color: black">{{totalPagination}}</a></li>-->
+
+<!--                <li class="page-item b">-->
+<!--                  <a-->
+<!--                    (click)="nextPage()"-->
+<!--                    [class.disableButton]="indexPagination >= totalPagination -1"-->
+<!--                    class="page-link" style="color: black" aria-label="Next">-->
+<!--                    <span class = "b" aria-hidden="true">&gt;</span>-->
+<!--                  </a>-->
+<!--                </li>-->
+<!--                <li class="page-item b">-->
+<!--                  <a (click)="lastPage()"-->
+<!--                     [class.disableButton]="indexPagination >= totalPagination -1"-->
+<!--                     class="page-link" style="color: black" aria-label="LastPage">-->
+<!--                    <span class = "b" aria-hidden="true">&raquo;</span>-->
+<!--                  </a>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </nav>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--  </div>-->

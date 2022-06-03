@@ -1,0 +1,52 @@
+<div class="layout">
+    <span class="close" (click)="closeDialog()">&times;</span>
+    <h1>
+      <strong>Thông tin vị trí</strong>
+    </h1>
+    <div class="row">
+      <div class="col-6">
+        <label>Mã vị trí:</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid fa-qrcode" style="font-size:24px"></i></a>
+          <label class="form-control">{{data.datal.code}}</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <label>Số tầng:</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid fa-star" style="font-size:24px"></i></a>
+          <label class="form-control">{{data.datal.number}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label>Chiều cao:</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid  fa-arrows-v" style="font-size:24px"></i></a>
+          <label class="form-control">{{data.datal.height}}</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <label>Chiều dài:</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid  fa-arrows-h" style="font-size:24px"></i></a>
+          <label class="form-control">{{data.datal.length}}</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <label>Chiều rộng:</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class=" fa-solid  fa-arrows-h" style="font-size:24px"></i></a>
+          <label class="form-control">{{data.datal.width}}</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <label>Ghi chú:</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
+          <label class="form-control" *ngIf="data.datal.description != null">{{data.datal.description}}</label>
+        </div>
+      </div>
+    </div>
+</div>
