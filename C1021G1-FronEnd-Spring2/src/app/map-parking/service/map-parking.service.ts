@@ -18,7 +18,7 @@ export class MapParkingService {
   }
 
   findLocationById(id: number): Observable<MapParking> {
-    return this.http.get<MapParking>(this.URL + 'api/location/map-parking/' + id);
+    return this.http.get<MapParking>(this.URL + 'api/location/' + id);
   }
 
   updateColorLocation(id: number) {

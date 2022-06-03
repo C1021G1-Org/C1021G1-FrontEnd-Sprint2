@@ -13,22 +13,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
-
 import {DragDropModule} from '@angular/cdk/drag-drop';
-
 import {CommonModule} from '@angular/common';
 import {CarManagementModule} from './car-management/car-management.module';
-
-
 import {LocationModule} from './location/location.module';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { MapParkingModule } from './map-parking/map-parking.module';
-
-
-
 
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
@@ -75,7 +67,6 @@ import {TicketModule} from "./ticket/ticket.module";
     CdkTableModule,
     CommonModule,
     CarManagementModule,
-
     LocationModule,
     MapParkingModule,
     TicketModule,
