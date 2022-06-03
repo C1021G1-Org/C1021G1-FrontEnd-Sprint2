@@ -6,7 +6,7 @@ import {LocationService} from '../location.service';
 @Component({
   selector: 'app-delete-location',
   templateUrl: './delete-location.component.html',
-  styleUrls: ['./delete-location.component.css']
+  styleUrls: ["./delete-location.component.css"]
 })
 export class DeleteLocationComponent implements OnInit {
 
@@ -31,11 +31,10 @@ export class DeleteLocationComponent implements OnInit {
     this.dialogRef.close();
 
   }
-  deleteLocation(){
+ deleteLocation(){
     this.locationService.DeleteLocationById(this.id).subscribe(()=>{
       this.snackBar.open("Xóa Thành công!",'ok',{
-        duration:2000,
-        verticalPosition:"top"
+        duration:2000
       })
       this.dialogRef.close();
     },error => {
