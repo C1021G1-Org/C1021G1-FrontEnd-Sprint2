@@ -19,28 +19,31 @@ export class DeleteLocationComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA)
               public data: any,
               public snackBar: MatSnackBar,
-              private locationService: LocationService,) { }
+              private locationService: LocationService,) {
+  }
 
   ngOnInit(): void {
     this.code = this.data.datal.code;
-    this.floorName=this.data.datal.floor.name;
+    this.floorName = this.data.datal.floor.name;
     console.log(this.data.datal);
     this.id = this.data.datal.id;
   }
-  onNoClick(){
+
+  onNoClick() {
     this.dialogRef.close();
 
   }
-  deleteLocation(){
-    this.locationService.DeleteLocationById(this.id).subscribe(()=>{
-      this.snackBar.open("Xóa Thành công!",'ok',{
-        duration:2000,
+
+  deleteLocation() {
+    this.locationService.DeleteLocationById(this.id).subscribe(() => {
+      this.snackBar.open("Xóa Thành công!", 'ok', {
+        duration: 2000,
       })
       this.dialogRef.close();
 
-    },error => {
-      this.snackBar.open("Đang có người ở vị trí này nên không xóa được!",'error',{
-        duration:2000
+    }, error => {
+      this.snackBar.open("Đang có người ở vị trí này nên không xóa được!", 'error', {
+        duration: 2000
       })
       this.dialogRef.close();
     })
