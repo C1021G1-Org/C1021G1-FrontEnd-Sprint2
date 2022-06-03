@@ -1,1 +1,226 @@
-<p>create-employee works!</p>
+<body>
+<div id="container">
+  <form class="form" [formGroup]="createEmployeeForm">
+    <div class="layout layout-active layout-deactivate">
+      <h1 class="title">
+        <strong>Thêm mới nhân viên</strong>
+      </h1>
+      <div class="row">
+        <div class="col-6">
+          <label for="name">Họ tên (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
+            <input type="text" id="name" name="name" class="form-control" required
+                   placeholder="VD: Nguyễn Văn A" formControlName="name"><span class="bar"></span></div>
+          <div *ngIf="createEmployeeForm.controls.name.errors?.required && createEmployeeForm.controls.name.touched"
+               style="color: red">
+            Không được để trống trường này .
+          </div>
+          <div *ngIf="createEmployeeForm.controls.name.errors?.pattern && createEmployeeForm.controls.name.touched"
+               style="color: red">
+            Tối thiểu 6 ký tự và tối đa 40 ký tự.
+          </div>
+        </div>
+        <div class="col-6">
+
+          <label for="code">Mã nhân viên (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
+            <input type="text" id="code" class="form-control"
+                   placeholder="VD: NV-0000" formControlName="code">
+          </div>
+          <div *ngIf="createEmployeeForm.controls.code.errors?.required && createEmployeeForm.controls.code.touched"
+               style="color: red">
+            Không được để trống trường này .
+          </div>
+          <div *ngIf="createEmployeeForm.controls.code.errors?.pattern && createEmployeeForm.controls.code.touched"
+               style="color: red">
+            Mã nhân viên không đúng định dạng NV-XXXX
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label>Giới tính (<span style="color: red">*</span>)</label>
+
+          <label class="gender">
+            <input type="radio" name="gender" value=true formControlName="gender">
+          </label> Nam <i class="fa-solid fa-mars"></i>
+          <label class="gender">
+            <input type="radio" name="gender" value=false formControlName="gender">
+          </label> Nữ <i class="fa-solid fa-venus"></i>
+          <label class="gender">
+            <input type="radio" name="gender" value=null formControlName="gender">
+          </label> Khác <i class="fa-solid fa-venus-mars"></i>
+        </div>
+        <div *ngIf="createEmployeeForm.controls.gender.errors?.required && createEmployeeForm.controls.gender.untouched"
+             style="color: red">
+          Không được để trống trường này .
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="birthday">Ngày sinh (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-cake-candles"></i></a>
+            <input type="date" class="form-control" id="birthday"
+                   value="birthday" formControlName="birthday">
+          </div>
+          <div
+            *ngIf="createEmployeeForm.controls.birthday.errors?.required && createEmployeeForm.controls.birthday.touched"
+            style="color: red">
+            Không được để trống trường này .
+          </div>
+          <div
+            *ngIf="createEmployeeForm.controls.birthday.hasError('ageUnder') && createEmployeeForm.controls.birthday.touched"
+            style="color: red">
+            Tuổi phải lớn hơn 18
+          </div>
+        </div>
+        <div class="col-4">
+
+          <label for="phone">Số điện thoại (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
+            <input type="tel" class="form-control text-end" id="phone"
+                   placeholder="VD: 0909123123" formControlName="phone">
+          </div>
+          <div *ngIf="createEmployeeForm.controls.phone.errors?.required && createEmployeeForm.controls.phone.touched"
+               style="color: red">
+            Không được để trống trường này .
+          </div>
+          <div *ngIf="createEmployeeForm.controls.phone.errors?.pattern && createEmployeeForm.controls.phone.touched"
+               style="color: red">
+            Vui lòng nhập đúng định dạng 09xxxxxxxx hoặc +849xxxxxxxx!
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="position">Chức vụ (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-user-tie"></i></a>
+            <select id="position" class="form-select" formControlName="id_position">
+              <option selected value="">- Chọn -</option>
+              <option *ngFor="let item of listPosition" value="{{item.id}}">{{item.name}}</option>
+            </select>
+          </div>
+          <div
+            *ngIf="createEmployeeForm.controls.id_position.errors?.required && createEmployeeForm.controls.id_position.touched"
+            style="color: red">
+            Không được để trống trường này .
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label for="email">Email (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-envelope"></i></a>
+            <input type="email" class="form-control" id="email"
+                   placeholder="VD: codegym@gmail.com" formControlName="email">
+          </div>
+          <div *ngIf="createEmployeeForm.controls.email.errors?.required && createEmployeeForm.controls.email.touched"
+               style="color: red">
+            Không được để trống trường này .
+          </div>
+          <div *ngIf="createEmployeeForm.controls.email.errors?.email && createEmployeeForm.controls.email.touched"
+               style="color: red">
+            Vui lòng nhập đúng định dạng email!
+          </div>
+        </div>
+
+        <div class="col-6">
+          <label for="password">Mật khẩu (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-key"></i></a>
+            <input type="password" class="form-control" id="password" formControlName="password">
+            <a class="input-group-text" style="background-color: white"
+               (mouseover)="showPassword()" (mouseleave)="hidePassword()">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+          </div>
+          <div
+            *ngIf="createEmployeeForm.controls.password.errors?.required && createEmployeeForm.controls.password.touched"
+            style="color: red">
+            Không được để trống trường này .
+          </div>
+          <div
+            *ngIf="createEmployeeForm.controls.password.errors?.pattern && createEmployeeForm.controls.password.touched"
+            style="color: red">
+            Mật khẩu tối thiểu 8 ký tự bao gồm chữ hoa, chữ thường và số.
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label for="province">Thành phố/Tỉnh (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="province" class="form-select" (change)="getDistrict($event.target.value)">
+              <option selected value="">- Chọn -</option>
+              <option *ngFor="let item of listProvince" value="{{item.id}}">{{item.prefix}} {{item.name}}</option>
+            </select>
+          </div>
+          <div
+            *ngIf="createEmployeeForm.controls.id_ward.errors?.required && createEmployeeForm.controls.id_ward.touched"
+            style="color: red">
+            Không được để trống trường này .
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="district">Quận/Huyện (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="district" class="form-select" (change)="getWard($event.target.value)">
+              <option selected value="">- Chọn -</option>
+              <option *ngFor="let item of listDistrict" value="{{item.id}}">{{item.prefix}} {{item.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <label for="ward">Phường/Xã (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select id="ward" class="form-select" formControlName="id_ward">
+              <option selected value="">- Chọn -</option>
+              <option *ngFor="let item of listWard" value="{{item.id}}">{{item.prefix}} {{item.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <label for="address">Số nhà, tên đường (<span style="color: red">*</span>)</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
+            <input type="text" class="form-control" id="address"
+                   placeholder="VD: 295 Nguyễn Tất Thành" formControlName="address">
+          </div>
+          <div
+            *ngIf="createEmployeeForm.controls.address.errors?.required && createEmployeeForm.controls.address.touched"
+            style="color: red">
+            Không được để trống trường này .
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 text-end">
+          <button class="btn button-cancel">Huỷ</button>
+        </div>
+        <div class="col-6">
+          <button class="btn button-confirm"
+                  type="submit" (click)="createEmployee()">Thêm mới
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</body>

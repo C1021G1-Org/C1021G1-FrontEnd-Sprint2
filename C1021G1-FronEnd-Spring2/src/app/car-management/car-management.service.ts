@@ -9,13 +9,10 @@ import {CarChoose} from '../dto/CarChoose';
 })
 export class CarManagementService {
   private readonly URL = "http://localhost:8080/api/car";
-
   currentTicket: CarChoose;
 
   constructor(private httpClient: HttpClient) {
   }
-
-
   findCar(customerName: string, phoneNumber: string, carPlate: string): Observable<CarTicket[]> {
     console.log(customerName);
     console.log(phoneNumber);
@@ -27,3 +24,7 @@ export class CarManagementService {
     return this.httpClient.get<CarChoose[]>(this.URL + '/chooseCar?plate=' + carPlate)
   }
 }
+
+
+
+
