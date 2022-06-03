@@ -4,11 +4,29 @@
       <h2>Thêm Mới Xe</h2>
 
       <div class="row">
-        <div>
           <label>Hãng Xe <span style="color: red">(*)</span>:</label>
           <div class="input-group">
             <input type="text" class="form-control" formControlName="carCompany" placeholder="Nhập hãng xe">
           </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('carCompany')?.errors?.required &&
+                      createCarForm.get('carCompany').touched">
+          Không được để trống!
+        </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('carCompany')?.errors?.pattern &&
+                      createCarForm.get('carCompany').touched">
+          Vui lòng nhập đúng định dạng!
+        </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('carCompany')?.errors?.minlength &&
+                      createCarForm.get('carCompany').touched">
+          Không được nhập ít hơn 5 ký tự!
+        </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('carCompany')?.errors?.maxlength &&
+                      createCarForm.get('carCompany').touched">
+          Không được nhập nhiều hơn 40 ký tự!
         </div>
       </div>
 
@@ -17,6 +35,21 @@
         <div class="input-group">
           <input type="text" formControlName="name" class="form-control"
                  placeholder="Nhập Tên xe"><span class="bar"></span>
+        </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('name')?.errors?.required &&
+                      createCarForm.get('name').touched">
+          Không được để trống!
+        </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('name')?.errors?.minlength &&
+                      createCarForm.get('name').touched">
+          Không được nhập ít hơn 5 ký tự!
+        </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('name')?.errors?.maxlength &&
+                      createCarForm.get('name').touched">
+          Không được nhập nhiều hơn 40 ký tự!
         </div>
       </div>
 
@@ -28,12 +61,27 @@
             <option *ngFor = "let carType of carTypeList" value="{{carType.id}}">{{carType.name}}</option>
           </select>
         </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('carType')?.errors?.required &&
+                      createCarForm.get('carType').touched">
+          Không được để trống!
+        </div>
       </div>
 
       <div class="row mt-2">
         <label>Biển Số Xe <span style="color: red">(*)</span>:</label>
         <div class="input-group">
-          <input type="text" class="form-control" formControlName="carPlate" placeholder="Nhập biển số xe">
+          <input type="text" class="form-control" formControlName="carPlate" placeholder="Nhập biển số xe. Vd: 43D-09487">
+        </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('carPlate')?.errors?.required &&
+                      createCarForm.get('carPlate').touched">
+          Không được để trống!
+        </div>
+        <div style="color: red"
+             *ngIf ="createCarForm.get('carPlate')?.errors?.pattern &&
+                      createCarForm.get('carPlate').touched">
+          Vui lòng nhập đúng định dạng!
         </div>
       </div>
 

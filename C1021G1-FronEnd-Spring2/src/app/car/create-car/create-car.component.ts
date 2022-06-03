@@ -17,13 +17,12 @@ export class CreateCarComponent implements OnInit {
 
   createCarForm = new FormGroup({
     name: new FormControl('', [Validators.required,
-      Validators.pattern(/^([a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+(\s[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+)*){6,40}$/),
+      Validators.pattern(/^[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+(\s[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+)*$/),
       Validators.maxLength(40),
       Validators.minLength(5)]),
     carPlate: new FormControl('', [Validators.required,
-      Validators.pattern(/^([0-9]{2})+([A-Z])+([-])+([0-9]{3})+([.])+([0-9]{2})$/)]),
+      Validators.pattern(/^([0-9]{2})+([A-Z])+([-])+([0-9]{3})+([0-9]{2})$/)]),
     carCompany: new FormControl('', [Validators.required,
-      Validators.pattern(/^([a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+(\s[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+)*){6,40}$/),
       Validators.maxLength(40),
       Validators.minLength(5)]),
     customer: new FormControl(''),
@@ -41,8 +40,7 @@ export class CreateCarComponent implements OnInit {
               private dialogRef: MatDialogRef<CreateCarComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private router: Router,
-              private snackBar: MatSnackBar,
-              private activatedRoute: ActivatedRoute) {
+              private snackBar: MatSnackBar) {
     this.idCustomer = this.data
     console.log("Id khách hàng :" + this.idCustomer)
     this.createCarForm.patchValue({customer: this.data})
@@ -58,7 +56,7 @@ export class CreateCarComponent implements OnInit {
     console.log(this.createCarForm.value)
     // this.createCarForm.get('customer').setValue(this.idCustomer);
     console.log(this.createCarForm.get('customer').value)
-    console.log(this.createCarForm.value);
+    console.log(this.createCarForm);
     if (!this.createCarForm.invalid) {
       this.carService.createCar(this.createCarForm.value).subscribe( data => {
         console.log(data)
