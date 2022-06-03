@@ -1,0 +1,219 @@
+body {
+
+}
+.container{
+  background-size: auto;
+  margin: 0;
+  padding: 0;
+  /*background-color: #f5f5f5;*/
+  font-weight: 100;
+  justify-content: center;
+  font-family: Bahnschrift, serif;
+  box-sizing: border-box;
+  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);
+  width: 100%;
+}
+
+.tb-header {
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-size: 1.2em;
+  text-align: center;
+
+}
+
+.table-side-bar {
+  background: rgba(219, 216, 216, 0.86);
+  /*color: #004152;*/
+}
+
+
+.table-side-bar tr:hover {
+  background: #DDE6FE;
+  box-shadow: 0 5px #666;
+  transform: translateY(1px);
+
+}
+.button-confirm{
+  height: 100%;
+  width: 150px;
+  outline: none;
+  color: #fff;
+  background: linear-gradient(120deg, #71b7e6,#9b59b6);
+  border: none;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.button-confirm:hover {
+  background: linear-gradient(120deg,#9b59b6, #71b7e6);
+}
+.button-cancel{
+  height: 100%;
+  width: 150px;
+  outline: none;
+  color: black;
+  background: linear-gradient(120deg, white,grey);
+  border: none;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.button-cancel:hover {
+  background: linear-gradient(120deg, darkgrey, whitesmoke);
+}
+
+.fa-check {
+  color: green;
+}
+
+.fa-remove {
+  color: red;
+}
+
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+
+.pagination a.active {
+  background-color: #198754;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  color: white;
+}
+.modal-body {
+  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);
+  width: 100%;
+
+}
+
+
+.box-left {
+  padding: 1em 0;
+  font-size: 15px;
+}
+
+/*.box-right{*/
+/*    padding: 2em 0;*/
+/*    font-size: 15px;*/
+/*}*/
+.col-right-1 {
+  padding: 1em 0;
+  font-size: 15px;
+}
+
+.col-right-2 {
+  padding: 1em 0;
+  font-size: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  /*.tb-header {*/
+  /*    background: linear-gradient(135deg, #65b8ee, #bd64e2);*/
+  /*    text-align: center;*/
+  /*    font-size: 1.2em;*/
+  /*}*/
+  /*.col-right-1 {*/
+  /*    width: 18%;*/
+  /*    padding: 1em 0;*/
+  /*    font-size: 13px;*/
+  /*}*/
+  /*.form-box {*/
+  /*    display: flex;*/
+  /*    justify-content: space-between;*/
+  /*}*/
+  /*.box-left {*/
+  /*    width: 8%;*/
+  /*    font-size: 13px;*/
+  /*}*/
+  /*.box-right {*/
+  /*    width: 90%;*/
+  /*    display: flex;*/
+  /*    justify-content: space-between;*/
+  /*    float: right;*/
+  /*}*/
+  /*.col-right-name{*/
+  /*    width: 15%;*/
+  /*}*/
+  /*.col-right-phone{*/
+  /*    width: 16.5%;*/
+  /*}*/
+  /*.col-right-button {*/
+  /*    width: 100%;*/
+  /*    height: auto;*/
+  /*    text-align: center;*/
+  /*    float: right;*/
+  /*}*/
+  .form-box {
+    display: flex;
+    justify-content: space-between;
+  }
+  .box-right{
+    width: 90.5%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .col-right-1{
+    width: 20.5% ;
+  }
+
+}
+@media screen and (min-width: 800px) {
+  .box-right{
+    width: 85.7%;
+  }
+  body {
+    font-size: 15px;
+
+  }
+
+}
+@media screen and (min-width: 900px) {
+  .box-right{
+    width: 85%;
+  }
+  body {
+    font-size: 15px;
+
+  }
+
+}
+
+@media screen and (min-width: 1000px) {
+  .box-right{
+    width: 75%;
+  }
+  body {
+    font-size: 15px;
+
+  }
+
+}
+@media screen and (min-width: 1200px) {
+  .box-right{
+    width: 65%;
+  }
+  body {
+    font-size: 15px;
+
+  }
+
+}
