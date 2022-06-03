@@ -53,11 +53,11 @@
           </div>
 
          <div class="col-right-1">
-          <button type="submit" class="btn btn-success " >
+          <button type="submit" class="btn btn-success " title="Tìm Kiếm">
             <span class="fa fa-search"></span>
           </button>
 
-           <button type="submit" class="btn btn-success " (click)="resetListCustomer()">
+           <button type="submit" class="btn btn-success " (click)="resetListCustomer()" title="Quay lại">
              <span class="fa-solid fa-arrow-rotate-right"></span>
            </button>
           </div>
@@ -91,16 +91,16 @@
       <td>{{customer.phone}}</td>
       <td>{{customer.idCard}}</td>
       <td>
-        <a (click)="openDeleteCustomer(customer.id)"  role="button" ><span
-          class="fa fa-trash text-danger" style="font-size:24px"></span></a>
+        <a (click)="openDeleteCustomer(customer.id)"  role="button"  ><span
+          class="fa fa-trash text-danger" style="font-size:24px" title="Xóa"></span></a>
       </td>
 
       <td>
-        <a  role="button" ><span class="fas fa-pencil" style="font-size:24px"></span></a>
+        <a  role="button" ><span class="fas fa-pencil" style="font-size:24px" title="Sửa"></span></a>
       </td>
 
       <td>
-        <a (click)="openDetailCustomer(customer.id)"><span class="fas fa-eye" style="font-size:24px"></span></a>
+        <a (click)="openDetailCustomer(customer.id)"><span class="fas fa-eye" style="font-size:24px" title="Thông tin chi tiết"></span></a>
       </td>
     </tr>
     </tbody>
@@ -145,7 +145,7 @@
               <button [hidden]="indexPage >= totalPagination - 1" (click)="loadList2(indexPage+1)">
                 {{indexPage + 2}}
               </button>
-              <button [hidden]="indexPage >= totalPagination - 2" (click)="movingNext()">{{indexPage + 3}}</button>
+              <button [hidden]="indexPage +1 >= totalPagination - 2" (click)="movingNext()">{{indexPage + 3}}</button>
               <button [disabled]="indexPage == totalPagination - 1" (click)="next()"><span
                 class="fa fa-angle-right"></span>
               </button>
