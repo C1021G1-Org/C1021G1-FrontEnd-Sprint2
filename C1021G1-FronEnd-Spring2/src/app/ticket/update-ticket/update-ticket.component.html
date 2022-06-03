@@ -81,7 +81,7 @@
             <select formControlName="location" id="location" class="form-control" *ngIf="locations">
               <option *ngFor="let item of locations" [ngValue]="item.id"
                       [selected]="ticketForm.get('location').value==item.id">
-                {{item.number}}
+                {{item.code}}
             </select>
           </div>
         </div>
