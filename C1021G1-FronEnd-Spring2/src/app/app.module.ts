@@ -19,6 +19,10 @@ import {MatInputModule} from '@angular/material/input';
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
+import {CommonModule} from '@angular/common';
+import {CarManagementModule} from './car-management/car-management.module';
+
+
 import {LocationModule} from './location/location.module';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { MapParkingModule } from './map-parking/map-parking.module';
@@ -37,10 +41,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,17 +71,13 @@ import {TicketModule} from "./ticket/ticket.module";
     MatDatepickerModule,
     MatSnackBarModule,
     NgxPaginationModule,
-
     MatDialogModule,
-
     CdkTableModule,
-
-    MatDialogModule,
+    CommonModule,
+    CarManagementModule,
     LocationModule,
     MapParkingModule,
-
     TicketModule,
-
 
   ],
   providers: [],
