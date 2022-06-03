@@ -9,7 +9,7 @@ export interface INewsDto {
   title?: String
   date?: String; // handleSet
   description?: String;
-  img?: File //fireBase
+  img?: String//fireBase
   delFlag?: boolean // handleSet false
   newsType?: INewsType;
 }

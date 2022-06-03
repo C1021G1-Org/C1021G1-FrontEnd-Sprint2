@@ -8,7 +8,7 @@ import { BodyComponent } from './layout/body/body.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SignInComponent } from './login/sign-in/sign-in.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
@@ -21,6 +21,25 @@ import {CdkTableModule} from "@angular/cdk/table";
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import {CKEditorModule} from "ckeditor4-angular";
 import {NewModule} from "./new/new.module";
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+
+
+
+
+
+
+
+const config = {
+  apiKey: '<your-key>',
+  authDomain: '<your-project-authdomain>',
+  databaseURL: '<your-database-URL>',
+  projectId: '<your-project-id>',
+  storageBucket: '<your-storage-bucket>',
+  messagingSenderId: '<your-messaging-sender-id>'
+};
+
+
+
 
 @NgModule({
   declarations: [
@@ -48,9 +67,22 @@ import {NewModule} from "./new/new.module";
         CdkTableModule,
         CKEditorModule,
         NewModule,
+      ReactiveFormsModule,
 
     ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
+
 export class AppModule { }
+
+
+export class WhiteSpaceValidator {
+  static noWhiteSpace(control: AbstractControl) : ValidationErrors | null {
+    if((control.value as string).indexOf(' ') >= 0){
+      return {noWhiteSpace: true}
+    }
+    return null;
+  }
+}
