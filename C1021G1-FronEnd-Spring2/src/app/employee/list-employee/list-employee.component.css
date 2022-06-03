@@ -616,6 +616,9 @@
 
 
 
+.container-fluid {
+  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);
+}
 
 body {
   background-size: auto;
