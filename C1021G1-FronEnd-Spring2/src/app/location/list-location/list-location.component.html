@@ -9,16 +9,16 @@
           class="fa fa-plus"></span></a>
       </div>
       <div class="col-3" >
-        <input #a (keyup.enter)="search()" (change)="id = $event.target.value" type="search" placeholder="Chọn Tầng"
+        <input #a (keyup.enter)="isStatus=false;search()" (change)="id = $event.target.value" type="search" placeholder="Chọn Tầng"
                class="form-control input-group" list="datalistOptions" id="exampleDataList" (keyup)="index=0">
         <datalist id="datalistOptions" class="w-50">
           <option class="w-50" *ngFor="let s of floorList" [ngValue]="s.id">{{s.name}}</option>
         </datalist>
       </div>
       <div class="col-2  float-start d-flex input-group" style="width: 29%">
-        <input #b (keyup.enter)="search()" (change)="code = $event.target.value" type="search"
+        <input #b (keyup.enter)="isStatus=false;search();" (change)="code = $event.target.value" type="search"
                placeholder="Nhập vị trí" class="form-control w-25" (keyup)="index=0">
-        <span (click)="search()" role="button" class="fa fa-search btn btn-success input-group-text"
+        <span (click)="isStatus=false;search()" role="button" class="fa fa-search btn btn-success input-group-text"
               style="padding-top: 10px;height: 100%"> </span>
       </div>
       <div class="col-2">
