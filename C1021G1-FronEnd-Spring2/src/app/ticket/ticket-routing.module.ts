@@ -5,9 +5,11 @@ import {ListTicketComponent} from "./list-ticket/list-ticket.component";
 import {UpdateTicketComponent} from "./update-ticket/update-ticket.component";
 
 
+
 const routes: Routes = [
-  {path:'',component:ListTicketComponent},
-  {path: 'update-ticket', component: UpdateTicketComponent}
+  {path:'list',component:ListTicketComponent},
+  {path:'update-ticket', component: UpdateTicketComponent},
+
   ]
 
 

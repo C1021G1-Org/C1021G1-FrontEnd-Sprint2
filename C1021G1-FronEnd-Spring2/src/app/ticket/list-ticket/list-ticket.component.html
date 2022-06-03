@@ -14,7 +14,7 @@
         <!--            <div class="d-flex justify-content-between">-->
 
         <div class="box-left">
-          <button type="button" class="btn btn-primary">
+          <button type="button" class="btn btn-primary" routerLink="/car">
             <span class="fa fa-plus-circle mt-1"></span>
           </button>
         </div>
@@ -111,15 +111,13 @@
             Trang <span>{{number}}</span>/<span>{{totalPages}}</span>
 
           </td>
-          <!--        <td *ngIf="checkError">-->
-          <!--          không tìm thấy <span><a routerLink="/ticket/list">trở lại</a></span>-->
-          <!--        </td>-->
+
         </tr>
       </ng-container>
       <tr *ngIf="checkError">
-        <td colspan="7" class="align-items-center">
-          không tìm thấy <span><a (click)="goBack()">trở lại</a></span>
-        </td>
+                <td *ngIf="checkError" colspan="7" class="align-items-center">
+                  không tìm thấy <span><a (click)="goBack()">trở lại</a></span>
+                </td>
       </tr>
       </tbody>
 

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
@@ -14,11 +13,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
-
-
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
@@ -64,11 +60,9 @@ import {TicketModule} from "./ticket/ticket.module";
     MatDatepickerModule,
     MatSnackBarModule,
     NgxPaginationModule,
-
     MatDialogModule,
-
     CdkTableModule,
-    TicketModule,
+
 
   ],
   providers: [],

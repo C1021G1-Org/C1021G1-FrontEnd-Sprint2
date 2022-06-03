@@ -29,7 +29,7 @@ export class UpdateTicketComponent implements OnInit {
   floors: Floor[];
   car: ICar[];
   idTicket: number = 0;
-  day: Date;
+  day: Date = new Date();
   validation_message = {
     sumPrice: [
       {type: 'required', message: 'Vui lòng không để trống'},
@@ -78,8 +78,10 @@ export class UpdateTicketComponent implements OnInit {
       this.ticketForm.patchValue({endDate: this.ticket.endDate});
       this.ticketForm.patchValue({sumPrice: this.ticket.sumPrice});
       this.ticketForm.patchValue({id: this.ticket.id});
+
       console.log(this.ticketForm.value);
       this.getListLocation();
+      this.locations.push(this.ticket.location)
     }, (errors) => {
       console.log(errors)
       this.snackBar.open(errors.error.messageEros, 'OK', {
@@ -102,7 +104,13 @@ export class UpdateTicketComponent implements OnInit {
 
   getListLocation() {
     this.ticketService.getAllLocation().subscribe((data) => {
-      this.locations = data;
+
+      for (let item of data) {
+        if (item.isEmpty == false) {
+          this.locations.push(item);
+        }
+      }
+
     });
   }
 
@@ -120,23 +128,23 @@ export class UpdateTicketComponent implements OnInit {
           duration: 2000
         })
         this.ticketService.updateNullUser(this.roleEmail, this.ticket.id).subscribe(data => {
+          },
+          (errors) => {
+            this.snackBar.open(errors.error.messageEros, 'OK', {
+              duration: 3000,
 
-        }, (errors) => {
-          this.snackBar.open(errors.error.messageEros, 'OK', {
-            duration: 3000,
-
+            })
           })
-        })
-        this.router.navigateByUrl('/ticket');
+        this.router.navigateByUrl('/ticket/list');
       }, (errors) => {
+        console.log(errors)
         console.log('coslooix khi upste');
-        this.snackBar.open(errors.error.messageEros, 'OK', {
+        this.snackBar.open(errors.error.message, 'OK', {
           duration: 3000,
 
         })
 
       }, () => {
-
       });
     }
 
@@ -144,7 +152,7 @@ export class UpdateTicketComponent implements OnInit {
   }
 
   readListLocation() {
-    this.ticketService.getAllLocationByFloor(this.ticketForm.get('floor').value).subscribe((data) => {
+    this.ticketService.getAllLocationByFloor(this.ticketForm.get('floor').value, this.ticketForm.get('location').value).subscribe((data) => {
       this.locations = data;
     });
   }
@@ -156,9 +164,15 @@ export class UpdateTicketComponent implements OnInit {
         if (this.ticketForm.get('ticketType').value == 1) {
           if (item.id == 1) {
             this.ticketForm.patchValue({sumPrice: (this.ticket.car.carType.price + item.price)});
-            let plusDay = new Date().toISOString().split('T')[0];
+            // let plusDay = new Date().toISOString().split('T')[0];
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            let yyyy = today.getFullYear();
+            let plusDay = yyyy + '-' + mm + '-' + dd
             console.log(plusDay);
             this.day = new Date(plusDay);
+            console.log(this.day)
             this.day.setDate(this.day.getDate() + 1);
             console.log(this.day);
             let current = new Date(this.day).toISOString().slice(0, 10);
@@ -171,9 +185,14 @@ export class UpdateTicketComponent implements OnInit {
         } else if (this.ticketForm.get('ticketType').value == 2) {
           if (item.id == 2) {
             this.ticketForm.patchValue({sumPrice: (this.ticket.car.carType.price + item.price)});
-            let plusMonth = new Date().toISOString().split('T')[0];
-            console.log(plusMonth);
-            this.day = new Date(plusMonth);
+
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            let yyyy = today.getFullYear();
+            let plusDay = yyyy + '-' + mm + '-' + dd
+            console.log(plusDay);
+            this.day = new Date(plusDay);
             this.day.setDate(this.day.getDate() + 30);
             console.log(this.day);
             let current = new Date(this.day).toISOString().slice(0, 10);
