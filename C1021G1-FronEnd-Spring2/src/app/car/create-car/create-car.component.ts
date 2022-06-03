@@ -59,7 +59,7 @@ export class CreateCarComponent implements OnInit {
     // this.createCarForm.get('customer').setValue(this.idCustomer);
     console.log(this.createCarForm.get('customer').value)
     console.log(this.createCarForm.value);
-    // if (!this.createCarForm.invalid) {
+    if (!this.createCarForm.invalid) {
       this.carService.createCar(this.createCarForm.value).subscribe( data => {
         console.log(data)
         this.snackBar.open('Thêm mới thông tin xe thành công!', '', {
@@ -69,7 +69,7 @@ export class CreateCarComponent implements OnInit {
       }, error => {
         console.log(error)
       })
-    // }
+    }
   }
 
   closeDialog() {

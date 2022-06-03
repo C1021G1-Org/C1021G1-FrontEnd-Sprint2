@@ -1,7 +1,4 @@
-import {Ward} from "../model/ward";
-
-
-export interface CustomerDtoUpdate {
+export interface CustomerDtoCreate {
   id? : number,
   name? : string,
   birthday? : string,
@@ -10,5 +7,5 @@ export interface CustomerDtoUpdate {
   phone? : string,
   address? : string,
   gender? : Boolean,
-  ward? : Ward
+  ward? : number
 }
