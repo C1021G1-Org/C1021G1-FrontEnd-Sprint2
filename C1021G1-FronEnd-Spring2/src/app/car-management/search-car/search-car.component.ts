@@ -38,10 +38,11 @@ export class SearchCarComponent implements OnInit {
 
     return this.carService.chooseCar(carPlate).subscribe((data) => {
       this.carChoose = data;
-      if(data.length > 0) {
+      if (data.length > 0) {
         this.carService.currentTicket = data[0];
-      }else{
+      } else {
         this.router.navigateByUrl('customer')
       }
+    });
   }
 }
