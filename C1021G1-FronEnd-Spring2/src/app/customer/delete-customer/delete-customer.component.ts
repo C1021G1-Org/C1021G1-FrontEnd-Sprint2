@@ -26,8 +26,8 @@ export class DeleteCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.data.datal;
-    this.customerService.checkCustomerId(this.id).subscribe((data1: Customer) =>{
-      // console.log('data la ' + data);
+    this.customerService.checkCustomerId(this.id).subscribe(data1 =>{
+      console.log('data la ' + data1);
       this.customer = data1;
       console.log(this.customer)
     })
