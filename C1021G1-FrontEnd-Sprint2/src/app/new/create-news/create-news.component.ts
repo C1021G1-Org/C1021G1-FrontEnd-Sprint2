@@ -30,6 +30,7 @@ export class CreateNewsComponent implements OnInit {
                                                       Validators.pattern("^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$")],),
     title: new FormControl("", [Validators.required,
                                                       Validators.minLength(3),
+                                                       Validators.maxLength(255)
     ]),
     description: new FormControl("", [Validators.required,
                                                             Validators.minLength(32),
@@ -42,7 +43,7 @@ export class CreateNewsComponent implements OnInit {
   constructor(private newsService: NewsService,
               private newsTypeService: NewsTypeService,
               private snackBar: MatSnackBar,
-              private router: Router,
+              private router: Router
   ){}
   ngOnInit(): void {
     this.getAllNewsType()
@@ -51,7 +52,7 @@ export class CreateNewsComponent implements OnInit {
 
   create() {
     this.loadingSubmit = true;
-
+    console.log(this.createForm.value)
     // set giá trị mặc định
     let num1: number = Math.floor(Math.random() * 1500 + 1);
     let num2: number = Math.floor(Math.random() * 1500 + 1);
@@ -68,7 +69,6 @@ export class CreateNewsComponent implements OnInit {
     this.createForm.get("author").setValue(this.createForm.get('author').value.trim())
     this.createForm.get("title").setValue(this.createForm.get('title').value.trim())
     this.createForm.get("description").setValue(this.createForm.get('description').value.trim())
-    this.createForm.get("img").setValue(this.createForm.get('img').value.trim())
 
 
 
@@ -101,16 +101,19 @@ export class CreateNewsComponent implements OnInit {
 
   changeImg(value: string) {
     console.log(value)
+    this.thisImg = ""
     this.thisImg = value
     console.log(this.thisImg)
   }
 
   getImg(event: any) {
+    this.thisImg = ""
     let file = event.target.files[0];
     let fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = ev => {
        this.thisImg = fileReader.result as string;
+       this.createForm.get('img').setValue(this.thisImg)
       console.log(this.thisImg)
     }
   }
