@@ -18,14 +18,14 @@ body {
   padding-bottom: 50px;
 }
 .footer_bottom {
-  font-size: 14px;
+  font-size: 25px;
   font-weight: 300;
   line-height: 20px;
   color: #2B2B2B;
   padding: 27px 0px;
 }
 .new_footer_top .company_widget p {
-  font-size: 16px;
+  font-size: 25px;
   font-weight: 300;
   line-height: 28px;
   color: #2B2B2B;
@@ -133,13 +133,19 @@ a{
 .f_600 {
   font-weight: 600;
 }
-.f_size_18 {
-  font-size: 18px;
+.f_size{
+  font-size: 30px;
+}
+.size-icon{
+  position: relative !important;
+  font-size: 40px !important;
+  size: 60px;
 }
 h1, h2, h3, h4, h5, h6 {
   color: #4b505e;
 }
 .new_footer_top .f_widget.about-widget .f_list li a {
+  font-size: 25px;
   color: #6a7695;
 }
 
