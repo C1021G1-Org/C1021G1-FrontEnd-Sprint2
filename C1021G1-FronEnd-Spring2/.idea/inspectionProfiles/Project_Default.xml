@@ -16,7 +16,6 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="9">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -26,6 +25,9 @@
             <item index="6" class="java.lang.String" itemvalue="app-list-location" />
             <item index="7" class="java.lang.String" itemvalue="app-header" />
             <item index="8" class="java.lang.String" itemvalue="router-outlet" />
+            <item index="9" class="java.lang.String" itemvalue="min-device-width" />
+            <item index="10" class="java.lang.String" itemvalue="max-device-width" />
+            <item index="9" class="java.lang.String" itemvalue="app-footer" />
           </list>
         </value>
       </option>

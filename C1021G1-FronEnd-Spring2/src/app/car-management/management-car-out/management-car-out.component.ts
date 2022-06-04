@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CarManagementService} from '../car-management.service';
 
 @Component({
   selector: 'app-management-car-out',

@@ -76,6 +76,7 @@ export class MapListParkingComponent implements OnInit {
         console.log("122222");
         this.check = true;
       })
+
   }
 
   getAllCar() {
@@ -131,5 +132,4 @@ export class MapListParkingComponent implements OnInit {
     this.index = number;
     this.list();
   }
-
 }
