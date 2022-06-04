@@ -43,7 +43,7 @@ export class UpdateMapParkingComponent implements OnInit {
 
   // getAllCar() {
   //   let email = sessionStorage.getItem("email")
-  //   this.mapParkingService.getAllCar(email).subscribe(data => {
+  //   this.mapParkingService.getAllCar(email).subscr ibe(data => {
   //     this.listCar = data;
   //   })
   // }
