@@ -8,6 +8,7 @@ import {District} from "./model/district";
 import {Province} from "./model/province";
 import { Observable } from 'rxjs';
 import {Car} from "../car/model/car";
+import {CustomerDtoCreate} from "./dto/customer-dto-create";
 
 
 @Injectable({
@@ -31,6 +32,9 @@ export class CustomerService {
       'content-type': 'application/json',
     };
     return this.httpClient.patch<CustomerDtoUpdate>(this.API_CUSTOMER + '/update/' + id, JSON.stringify(data),{headers: header});
+  }
+  createCustomer(customer: CustomerDtoCreate){
+    return this.httpClient.post<CustomerDtoCreate>(this.API_CUSTOMER + '/create', customer);
   }
 
   getListProvince() {
@@ -93,6 +97,10 @@ export class CustomerService {
 
   }
 
+  // Bảo lấy xe với id customer null
+  getCarByIdCustomerNull(){
+    return this.httpClient.get<Car[]>(this.URL + "/car/list-car")
+  }
 
 }
 

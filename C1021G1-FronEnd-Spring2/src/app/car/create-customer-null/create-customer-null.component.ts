@@ -27,31 +27,26 @@ export class CreateCustomerNullComponent implements OnInit {
       Validators.pattern(/^[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+(\s[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+)*$/)
     ]),
     carType: new FormControl('', Validators.required),
-
   });
   carTypeList: CarType[];
   car: Car[];
   id;
-  idCustomer;
-
 
   constructor(private carService: CarService,
               private customerService: CustomerService,
               private dialogRef: MatDialogRef<CreateCustomerNullComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
               private router: Router,
               private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
+    console.log(123)
     this.getCarType();
   }
 
 
   createCar() {
-    console.log(this.data)
     console.log(this.createCarForm.value)
-    // this.createCarForm.get('customer').setValue(this.idCustomer);
     console.log(this.createCarForm);
     if (!this.createCarForm.invalid) {
       this.carService.createCar(this.createCarForm.value).subscribe( data => {
