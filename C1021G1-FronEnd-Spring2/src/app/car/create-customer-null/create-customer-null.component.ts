@@ -1,19 +1,19 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {CarType} from "../model/car-type";
-import {CarService} from "../car.service";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CarType} from "../model/car-type";
 import {Car} from "../model/car";
+import {CarService} from "../car.service";
 import {CustomerService} from "../../customer/customer.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-create-car',
-  templateUrl: './create-car.component.html',
-  styleUrls: ['./create-car.component.css']
+  selector: 'app-create-customer-null',
+  templateUrl: './create-customer-null.component.html',
+  styleUrls: ['./create-customer-null.component.css']
 })
-export class CreateCarComponent implements OnInit {
+export class CreateCustomerNullComponent implements OnInit {
 
   createCarForm = new FormGroup({
     name: new FormControl('', [Validators.required,
@@ -26,8 +26,6 @@ export class CreateCarComponent implements OnInit {
       Validators.minLength(5),
       Validators.pattern(/^[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+(\s[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+)*$/)
     ]),
-
-    customer: new FormControl(''),
     carType: new FormControl('', Validators.required),
 
   });
@@ -39,13 +37,10 @@ export class CreateCarComponent implements OnInit {
 
   constructor(private carService: CarService,
               private customerService: CustomerService,
-              private dialogRef: MatDialogRef<CreateCarComponent>,
+              private dialogRef: MatDialogRef<CreateCustomerNullComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private router: Router,
               private snackBar: MatSnackBar) {
-    this.idCustomer = this.data
-    console.log("Id khách hàng :" + this.idCustomer)
-    this.createCarForm.patchValue({customer: this.data})
   }
 
   ngOnInit(): void {
@@ -57,7 +52,6 @@ export class CreateCarComponent implements OnInit {
     console.log(this.data)
     console.log(this.createCarForm.value)
     // this.createCarForm.get('customer').setValue(this.idCustomer);
-    console.log(this.createCarForm.get('customer').value)
     console.log(this.createCarForm);
     if (!this.createCarForm.invalid) {
       this.carService.createCar(this.createCarForm.value).subscribe( data => {
@@ -84,5 +78,4 @@ export class CreateCarComponent implements OnInit {
       console.log(error)
     })
   }
-
 }

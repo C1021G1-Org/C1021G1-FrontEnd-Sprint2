@@ -7,6 +7,7 @@ import {DeleteCarComponent} from "../../car/delete-car/delete-car.component";
 import {Ward} from "../model/ward";
 import {District} from "../model/district";
 import {Province} from "../model/province";
+import {CreateCustomerNullComponent} from "../../car/create-customer-null/create-customer-null.component";
 
 @Component({
   selector: 'app-create-customer',
@@ -49,7 +50,7 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   openDialogAddCar() {
-    const dialogRef = this.dialog.open(CreateCarComponent, {
+    const dialogRef = this.dialog.open(CreateCustomerNullComponent, {
       width: '500px',
     })
     dialogRef.afterClosed().subscribe(next => {
