@@ -106,9 +106,9 @@
           <label for="ticket">Loại Vé: </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-ticket-alt"></i></a>
-            <select formControlName="ticketType" id="ticket" class="form-control" *ngIf="ticketTypes" (change)="changeDate()">
+            <select formControlName="ticketType" id="ticket" class="form-control" *ngIf="ticketTypes" (click)="changeDate()">
               <option   *ngFor="let item of ticketTypes" [ngValue]="item.id"
-                      [selected]="item.id == ticketForm.get('ticketType').value">
+                      [selected]="item.id == ticketForm.get('ticketType').value" >
                 {{item.name}}
             </select>
           </div>
@@ -128,7 +128,7 @@
 
       <div class="row">
         <div class="col-6 text-end">
-          <button class="btn button-cancel" routerLink="/ticket">Huỷ</button>
+          <button class="btn button-cancel" routerLink="/ticket/list">Huỷ</button>
 
         </div>
         <div class="col-6">

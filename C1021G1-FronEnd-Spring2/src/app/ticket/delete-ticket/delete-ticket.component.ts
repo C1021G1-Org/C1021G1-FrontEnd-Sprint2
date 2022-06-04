@@ -56,7 +56,8 @@ export class DeleteTicketComponent implements OnInit {
 
       });
       this.dialogRef.close();
+
     });
-    this.router.navigateByUrl("/ticket")
+
   }
 }
