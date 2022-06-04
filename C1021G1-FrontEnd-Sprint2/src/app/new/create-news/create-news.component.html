@@ -32,8 +32,8 @@
           <div style="width: 100%; color: red"
                *ngIf="createForm.get('title').invalid && createForm.controls.title.touched">
             <span *ngIf="createForm.get('title').errors.required">Vui lòng nhập tiêu đề cho bài viết</span>
-            <span *ngIf="createForm.get('title').errors.minlength">Tiêu đề phải trên 3 kí tự</span>
-<!--            <span *ngIf="createForm.get('title').errors.noWhiteSpace">Tiêu đề không được chứa khoảng trắng</span>-->
+            <span *ngIf="createForm.get('title').errors.minlength">Tiêu đề phải từ 3 đến 255 kí tự</span>
+            <span *ngIf="createForm.get('title').errors.maxlength">Tiêu đề phải từ 3 đến 255 kí tự</span>
           </div>
         </div>
       </div>
@@ -46,11 +46,11 @@
           <a class="input-group-text"><i class="fa-solid fa-images"></i></a>
           <input type="file" (change)="getImg($event)" class="form-control" id="img" formControlName="img">
         </div>
-<!--        <label>Hoặc</label>-->
-<!--        <div class="input-group">-->
-<!--          <a class="input-group-text"><i class="fa-solid fa-images"></i></a>-->
-<!--          <input #input (change)="changeImg(input.value)" id="123" type="text" class="form-control" placeholder="Nhập đường dẫn hình ảnh"  formControlName="img" >-->
-<!--        </div>-->
+        <label>Hoặc</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid fa-images"></i></a>
+          <input #input (change)="changeImg(input.value)" id="123" type="text" class="form-control" placeholder="Nhập đường dẫn hình ảnh"  formControlName="img" >
+        </div>
 
 
         <img [src]="thisImg"  style="width: 200px; height: 200px" alt="">
@@ -92,7 +92,7 @@
 
     <div class="row">
       <div class="col-6 text-end">
-        <button class="btn button-cancel" routerLink="/newsDetail/70">Huỷ</button>
+        <button type="button" class="btn button-cancel" routerLink="/newsDetail/70">Huỷ</button>
       </div>
 
       <div class="col-6">

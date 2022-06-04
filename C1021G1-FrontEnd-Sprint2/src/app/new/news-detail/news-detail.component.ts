@@ -20,7 +20,6 @@ export class NewsDetailComponent implements OnInit {
       console.log(data)
       this.newsService.findNewsById(this.id).subscribe(dataOfNews => {
         this.news = dataOfNews
-        // console.log(this.news.title)
       })
     })
   }

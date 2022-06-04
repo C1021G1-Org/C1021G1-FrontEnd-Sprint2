@@ -17,6 +17,7 @@ export class UpdateNewsComponent implements OnInit {
   news: INewsDto;
   newsTypes: INewsType[];
   thisImg: String ;
+  thisImage: String ;
   loadingSubmit: boolean = false
 
 
@@ -39,7 +40,8 @@ export class UpdateNewsComponent implements OnInit {
                                                       Validators.maxLength(50),
                                                       Validators.pattern("^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$")]),
     title: new FormControl("", [Validators.required,
-                                                       Validators.minLength(3)
+                                                       Validators.minLength(3),
+                                                       Validators.maxLength(255)
     ]),
     description: new FormControl("", [Validators.required,
                                                             Validators.minLength(32)
@@ -56,8 +58,8 @@ export class UpdateNewsComponent implements OnInit {
           this.id = data.get('id')
           this.newsService.findNewsById(this.id).subscribe(data => {
               this.news = data
+              this.thisImg = this.news.img
             console.log(data)
-            this.thisImg = this.news.img
 
             this.updateForm.get("id").setValue(this.news.id);
               this.updateForm.get("code").setValue(this.news.code);
@@ -67,7 +69,7 @@ export class UpdateNewsComponent implements OnInit {
               this.updateForm.get("description").setValue(this.news.description);
               this.updateForm.get("newsType").setValue(this.news.newsType);
               this.updateForm.get("delFlag").setValue(this.news.delFlag);
-            this.updateForm.get('imageInput').setValue(this.news.img)
+
 
 
           })
@@ -99,7 +101,7 @@ export class UpdateNewsComponent implements OnInit {
       this.router.navigateByUrl("/newsDetail/" + this.news.id);
     });
     this.snackBar.open("Chỉnh sửa thành công ", "OK" ,{
-      duration: 2000
+      duration: 3000
     })
   }
 
@@ -117,8 +119,8 @@ export class UpdateNewsComponent implements OnInit {
     let fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = ev => {
-
       this.thisImg = fileReader.result as string;
+      this.thisImage = this.thisImg;``
       console.log(this.thisImg)
     }
   }
