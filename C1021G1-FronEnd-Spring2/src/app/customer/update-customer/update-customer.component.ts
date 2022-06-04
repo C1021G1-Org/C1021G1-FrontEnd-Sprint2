@@ -6,7 +6,7 @@ import {Customer} from "../model/customer";
 import {CustomerService} from "../customer.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, FormGroupName, Validators} from "@angular/forms";
 import {Car} from "../../car/model/car";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CreateCarComponent} from "../../car/create-car/create-car.component";
@@ -36,13 +36,16 @@ export class UpdateCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerService.getListWard().subscribe(data => {
-      this.wardList = data;
+      this.wardList = data
+      console.log(data)
     })
     this.customerService.getListDistrict().subscribe(data => {
       this.districts = data;
+      console.log(data)
     })
     this.customerService.getListProvince().subscribe(data => {
       this.provinces = data;
+      console.log(data)
     })
 
 
@@ -52,6 +55,8 @@ export class UpdateCustomerComponent implements OnInit {
         this.car = value;
         console.log(this.car)
         this.editCustomerForm.patchValue(this.car[0].customer);
+        this.editCustomerForm.patchValue({'ward' : this.car[0].customer.ward.id})
+        console.log(this.car[0].customer.ward);
         this.wards = this.car[0].customer.ward;
         this.idCustomer = this.car[0].customer.id;
 
@@ -73,19 +78,23 @@ export class UpdateCustomerComponent implements OnInit {
     phone: new FormControl('', [Validators.required, Validators.pattern(/^((03)|(08)|(07)|(09))([0-9]){8}$/)]),
     gender: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(40)]),
-    ward: new FormControl('', Validators.required)
+    ward: new FormControl('',Validators.required)
   })
 
 
   updateCustomer() {
-    this.editCustomerForm.patchValue({ward: this.editCustomerForm.get('ward').value.id})
-    console.log(this.editCustomerForm.value)
+    // this.editCustomerForm.patchValue({ward: this.editCustomerForm.get('ward').value.id});
+    console.log(this.editCustomerForm.get('ward').value.id);
+    // console.log(this.editCustomerForm.value)
     if (!this.editCustomerForm.invalid) {
       this.customerService.updateCustomerDto(this.idCustomer, this.editCustomerForm.value).subscribe(data => {
         console.log(data)
         this.snackBar.open('Chỉnh sửa thông tin khách hàng thành công!', '', {
           duration: 2000
         });
+        this.router.navigateByUrl("/list")
+      }, error => {
+        console.log(error)
       })
     }
   }
