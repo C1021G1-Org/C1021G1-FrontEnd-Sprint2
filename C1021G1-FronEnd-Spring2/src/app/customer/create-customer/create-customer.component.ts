@@ -2,14 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../customer.service";
 import {MatDialog} from "@angular/material/dialog";
-import {CreateCarComponent} from "../../car/create-car/create-car.component";
 import {DeleteCarComponent} from "../../car/delete-car/delete-car.component";
 import {Ward} from "../model/ward";
 import {District} from "../model/district";
 import {Province} from "../model/province";
+import {CreateCustomerNullComponent} from "../../car/create-customer-null/create-customer-null.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {Car} from "../../car/model/car";
+
 
 @Component({
   selector: 'app-create-customer',
@@ -61,11 +62,12 @@ export class CreateCustomerComponent implements OnInit {
     })
     this.customerService.getCarByIdCustomerNull().subscribe(data =>{
       this.carList = data;
+      console.log("dsfsđf"+data)
     })
   }
 
   openDialogAddCar() {
-    const dialogRef = this.dialog.open(CreateCarComponent, {
+    const dialogRef = this.dialog.open(CreateCustomerNullComponent, {
       width: '500px',
     })
     dialogRef.afterClosed().subscribe(next => {

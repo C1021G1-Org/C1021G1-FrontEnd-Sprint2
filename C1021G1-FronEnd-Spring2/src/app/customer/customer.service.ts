@@ -97,7 +97,6 @@ export class CustomerService {
 
   }
 
-
   // Bảo lấy xe với id customer null
   getCarByIdCustomerNull(){
     return this.httpClient.get<Car[]>(this.URL + "/car/list-car")

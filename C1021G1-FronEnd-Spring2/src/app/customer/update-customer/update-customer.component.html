@@ -50,6 +50,16 @@
                       editCustomerForm.get('email').touched">
             Vui lòng nhập đúng định dạng. Vd: abc@gmail.com!
           </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('email')?.errors?.minlength &&
+                      editCustomerForm.get('email').touched">
+            Không được nhập ít hơn 5 ký tự!
+          </div>
+          <div style="color: red"
+               *ngIf ="editCustomerForm.get('email')?.errors?.maxlength &&
+                      editCustomerForm.get('email').touched">
+            Không được nhập nhiều hơn 40 ký tự!
+          </div>
         </div>
       </div>
       <div class="row">
@@ -100,7 +110,7 @@
                       editCustomerForm.get('phone').touched">
             Không được để trống!
           </div>
-          <div class="alert alert-danger" role = "alert"
+          <div style="color: red"
                *ngIf ="editCustomerForm.get('phone')?.errors?.pattern &&
                       editCustomerForm.get('phone').touched">
             Vui lòng nhập đúng định dạng.
@@ -119,10 +129,44 @@
                       editCustomerForm.get('idCard').touched">
             Không được để trống!
           </div>
-          <div class="alert alert-danger" role = "alert"
+          <div style="color: red"
                *ngIf ="editCustomerForm.get('idCard')?.errors?.pattern &&
                       editCustomerForm.get('idCard').touched">
             Vui lòng nhập đúng định dạng. CMND/Passport 9 số hoặc 12 số!
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <label>Thành Phố/Tỉnh <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control" required="" (change)="getDistrictById($event.target.value)">
+              <option  *ngFor="let province of provinces"
+                       [selected]="wards.district.province.id == province.id"
+                       value="{{province.id}}">{{province.prefix}} {{province.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label>Quận/Huyện <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control"  required="" (change)="getWardById($event.target.value)">
+              <option  *ngFor="let district of districts"
+                       [selected]="wards.district.id == district.id"
+                       value="{{district.id}}">{{district.prefix}} {{district.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <label >Phường/Xã <span style="color: red">(*)</span>:</label>
+          <div class="input-group">
+            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
+            <select class="form-control" name="ward" formControlName="ward" required="">
+              <option  *ngFor="let ward of wardList" value="{{ward.id}}"> {{ward.prefix}} {{ward.name}}</option>
+            </select>
           </div>
         </div>
       </div>
@@ -147,38 +191,6 @@
                *ngIf ="editCustomerForm.get('address')?.errors?.maxlength &&
                       editCustomerForm.get('address').touched">
             Không được nhập nhiều hơn 40 ký tự!
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <label>Thành Phố/Tỉnh <span style="color: red">(*)</span>:</label>
-          <div class="input-group">
-            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select class="form-control" required="" (change)="getDistrictById($event.target.value)">
-              <option  *ngFor="let province of provinces"
-                       value="{{province.id}}">{{province.prefix}} {{province.name}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-4">
-          <label>Quận/Huyện <span style="color: red">(*)</span>:</label>
-          <div class="input-group">
-            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select class="form-control"  required="" (change)="getWardById($event.target.value)">
-              <option  *ngFor="let district of districts"
-                       value="{{district.id}}">{{district.prefix}} {{district.name}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="col-4">
-          <label >Phường/Xã <span style="color: red">(*)</span>:</label>
-          <div class="input-group">
-            <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select class="form-control" name="ward" formControlName="ward" required="">
-              <option  *ngFor="let ward of wardList" value="{{ward.id}}"> {{ward.prefix}} {{ward.name}}</option>
-            </select>
           </div>
         </div>
       </div>
