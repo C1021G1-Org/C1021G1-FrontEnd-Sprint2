@@ -6,6 +6,7 @@ import {District} from '../model/district';
 import {Ward} from '../model/ward';
 import {Employee} from '../model/employee';
 import {ActivatedRoute} from '@angular/router';
+import { Position } from '../model/position';
 
 @Component({
   selector: 'app-update-employee',

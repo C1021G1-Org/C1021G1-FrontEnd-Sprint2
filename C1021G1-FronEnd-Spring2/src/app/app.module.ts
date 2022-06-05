@@ -15,6 +15,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import {HighchartsChartModule} from "highcharts-angular";
 import {CommonModule} from '@angular/common';
 import {CarManagementModule} from './car-management/car-management.module';

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CarManagementService} from '../car-management.service';
 import {CarTicket} from '../../dto/CarTicket';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -11,24 +11,25 @@ import {Router} from '@angular/router';
   styleUrls: ['./search-car.component.css']
 })
 export class SearchCarComponent implements OnInit {
-  check : boolean = false;
-  carTicket : CarTicket[];
-  carChoose : CarChoose[];
-  formGroup: FormGroup ;
+  check: boolean = false;
+  carTicket: CarTicket[];
+  carChoose: CarChoose[];
+  formGroup: FormGroup;
 
-  constructor( private carService: CarManagementService , private router : Router) { }
+  constructor(private carService: CarManagementService, private router: Router) {
+  }
 
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
-        carPlate: new FormControl(''),
-        customerName: new FormControl(''),
-        phoneNumber: new FormControl('')
+      carPlate: new FormControl(''),
+      customerName: new FormControl(''),
+      phoneNumber: new FormControl('')
     })
   }
 
-  searchCar(customerName: string, phoneNumber: string,carPlate: string) {
-    return this.carService.findCar( customerName.trim() , phoneNumber.trim(),carPlate.trim()).subscribe( data => {
+  searchCar(customerName: string, phoneNumber: string, carPlate: string) {
+    return this.carService.findCar(customerName.trim(), phoneNumber.trim(), carPlate.trim()).subscribe(data => {
       this.carTicket = data;
       console.log(this.carTicket);
     })
@@ -44,5 +45,12 @@ export class SearchCarComponent implements OnInit {
         this.router.navigateByUrl('customer')
       }
     });
+
   }
+
 }
+
+
+
+
+

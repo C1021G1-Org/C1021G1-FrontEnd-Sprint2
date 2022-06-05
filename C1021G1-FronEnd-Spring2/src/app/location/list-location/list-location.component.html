@@ -5,24 +5,25 @@
     <div class="row d-flex">
       <div class="col-2"></div>
       <div class="col-1">
-        <a class="btn btn-secondary text-white" role="button" routerLink="/location-create"><span
-          class="fa fa-plus"></span></a>
+        <button type="button" class="btn btn-primary" routerLink="/location-create">
+          <span class="fa fa-plus-circle mt-1"></span>
+        </button>
       </div>
       <div class="col-3" >
-        <input #a (keyup.enter)="search()" (change)="id = $event.target.value" type="search" placeholder="Chọn Tầng"
+        <input #a (keyup.enter)="isStatus=false;search()" (change)="id = $event.target.value" type="search" placeholder="Chọn Tầng"
                class="form-control input-group" list="datalistOptions" id="exampleDataList" (keyup)="index=0">
         <datalist id="datalistOptions" class="w-50">
           <option class="w-50" *ngFor="let s of floorList" [ngValue]="s.id">{{s.name}}</option>
         </datalist>
       </div>
       <div class="col-2  float-start d-flex input-group" style="width: 29%">
-        <input #b (keyup.enter)="search()" (change)="code = $event.target.value" type="search"
+        <input style="width: 320px" #b (keyup.enter)="isStatus=false;search();" (change)="code = $event.target.value" type="search"
                placeholder="Nhập vị trí" class="form-control w-25" (keyup)="index=0">
-        <span (click)="search()" role="button" class="fa fa-search btn btn-success input-group-text"
+        <span (click)="isStatus=false;search()" role="button" class="fa fa-search btn btn-success input-group-text"
               style="padding-top: 10px;height: 100%"> </span>
       </div>
       <div class="col-2">
-        <button class="btn btn-secondary"
+        <button class="btn btn-primary"
                 (click)="a.value='';b.value='';this.id='';this.code='';isStatus=false;this.search()">
           <span class="fa-solid fa-arrow-rotate-right"></span>
         </button>
@@ -46,7 +47,7 @@
           </thead>
           <tbody class="table-side-bar" [hidden]="isStatus==true">
           <tr *ngFor="let lf of LocationList,index as i">
-            <td>{{i + 1}}</td>
+            <td>{{i+1}}</td>
             <td>{{lf.code}}</td>
             <td>{{lf.floorName}}</td>
             <td class="text-end">
@@ -69,15 +70,11 @@
 
     <br>
     <div class="container-fluid">
-
     <div class="d-flex justify-content-center" *ngIf="isStatus== true">
       <span>Hiện tại không có dữ liệu !</span>
     </div>
     <div class="container-fluid" [hidden]="isStatus==true">
-
       <div class="row">
-
-
         <div class="col-10">
           <div class="container-fluid">
             <div class="row">
