@@ -6,9 +6,9 @@
       <fieldset class="scheduler-border">
         <legend class="scheduler-border float-none w-auto p-2">Thời gian</legend>
         <div class="d-flex justify-content-between">
-          <div class="control-group col-3">
+          <div class="control-group col-1">
           </div>
-          <div class="control-group col-3 ">
+          <div class="control-group col-5 ">
             <label style="font-weight: bold"> Quý:</label>
             <select class="form-control" #quarter (change)="setStatistic(quarter,year)">
               <option value="">Chọn quý</option>
@@ -18,7 +18,7 @@
               <option value="4">Quý 4</option>
             </select>
           </div>
-          <div class="control-group col-3">
+          <div class="control-group col-5">
             <label style="font-weight: bold"> Năm:</label>
             <select class="form-control" #year (change)="setStatistic(quarter,year)">
               <option  value="">Chọn năm</option>
@@ -29,7 +29,7 @@
             </select>
           </div>
 
-          <div class="control-group col-3">
+          <div class="control-group col-1">
 <!--            <label>Biểu đồ:</label>-->
 <!--            <select class="form-control">-->
 <!--              <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Chọn&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
