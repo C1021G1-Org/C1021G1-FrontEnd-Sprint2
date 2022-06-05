@@ -5,4 +5,6 @@ export interface SearchDto {
   endDate: string;
   nameCustomer: string;
   phoneCustomer: string;
+  role: string;
+  email: string;
 }
