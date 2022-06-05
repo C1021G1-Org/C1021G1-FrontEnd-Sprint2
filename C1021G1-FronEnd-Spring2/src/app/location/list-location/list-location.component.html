@@ -5,8 +5,9 @@
     <div class="row d-flex">
       <div class="col-2"></div>
       <div class="col-1">
-        <a class="btn btn-secondary text-white" role="button" routerLink="/location-create"><span
-          class="fa fa-plus"></span></a>
+        <button type="button" class="btn btn-primary" routerLink="/location-create">
+          <span class="fa fa-plus-circle mt-1"></span>
+        </button>
       </div>
       <div class="col-3" >
         <input #a (keyup.enter)="isStatus=false;search()" (change)="id = $event.target.value" type="search" placeholder="Chọn Tầng"
@@ -22,7 +23,7 @@
               style="padding-top: 10px;height: 100%"> </span>
       </div>
       <div class="col-2">
-        <button class="btn btn-secondary"
+        <button class="btn btn-primary"
                 (click)="a.value='';b.value='';this.id='';this.code='';isStatus=false;this.search()">
           <span class="fa-solid fa-arrow-rotate-right"></span>
         </button>
@@ -46,7 +47,7 @@
           </thead>
           <tbody class="table-side-bar" [hidden]="isStatus==true">
           <tr *ngFor="let lf of LocationList,index as i">
-            <td>{{i + 1}}</td>
+            <td>{{i+1}}</td>
             <td>{{lf.code}}</td>
             <td>{{lf.floorName}}</td>
             <td class="text-end">
