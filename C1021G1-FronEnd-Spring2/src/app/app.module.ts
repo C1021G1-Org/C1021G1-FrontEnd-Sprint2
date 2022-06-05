@@ -32,7 +32,11 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
 import {CdkTableModule} from "@angular/cdk/table";
-
+import {TicketModule} from "./ticket/ticket.module";
+import {RouterModule, Routes } from '@angular/router';
+const routes: Routes = [
+  {path: 'statistis',component: StatisticComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +50,7 @@ import {CdkTableModule} from "@angular/cdk/table";
     ]
 ,
   imports: [
+    RouterModule.forRoot(routes),
     HighchartsChartModule,
     BrowserModule,
     BrowserAnimationsModule,
