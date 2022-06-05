@@ -19,6 +19,7 @@ export class MapListParkingComponent implements OnInit {
   number: number = 0;
   totalLocation: number;
   check: boolean = false;
+  listCar: any[];
   searchForm = new FormGroup( {
     value: new FormControl(''),
     value2: new FormControl('')
@@ -31,6 +32,7 @@ export class MapListParkingComponent implements OnInit {
 
   ngOnInit(): void {
     this.list();
+    this.getAllCar();
   }
 
   list() {
@@ -46,7 +48,7 @@ export class MapListParkingComponent implements OnInit {
       this.mapService.findLocationById(item.id).subscribe(data => {
         const dialogRef = this.dialog.open(DetailMapParkingComponent, {
           width: '700px',
-          data: {datal: data}
+          data: {datal: data},
         });
         dialogRef.afterClosed().subscribe(next => {
           this.ngOnInit();
@@ -57,7 +59,7 @@ export class MapListParkingComponent implements OnInit {
       this.mapService.findLocationById(item.id).subscribe(data => {
         const dialogRef = this.dialog.open(UpdateMapParkingComponent, {
           width: '500px',
-          data: {datal: data},
+          data: {datal: data, list: this.listCar},
         });
         dialogRef.afterClosed().subscribe(next => {
           this.ngOnInit();
@@ -74,6 +76,15 @@ export class MapListParkingComponent implements OnInit {
         console.log("122222");
         this.check = true;
       })
+
+  }
+
+  getAllCar() {
+    let email = sessionStorage.getItem("email")
+    this.mapService.getAllCar(email).subscribe(data => {
+      this.listCar = data;
+      console.log(data);
+    })
   }
 
   back() {
@@ -121,5 +132,4 @@ export class MapListParkingComponent implements OnInit {
     this.index = number;
     this.list();
   }
-
 }
