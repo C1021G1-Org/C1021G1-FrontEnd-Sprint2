@@ -7,6 +7,7 @@ import {Price} from "../model/price";
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import {newArray} from "@angular/compiler/src/util";
+import { MinmaxYear } from '../model/minmax-year';
 
 
 @Component({
@@ -21,8 +22,8 @@ export class StatisticComponent implements OnInit {
   isQuarterChecked = false;
   isYearChecked = false;
   listPrice: Price[] = [];
-
-
+  minMaxYear: MinmaxYear={};
+  yearArr: number[] = [];
 
   @ViewChild('pdfTable') pdfTable: ElementRef;
   constructor(
@@ -30,9 +31,18 @@ export class StatisticComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.getReport();
+    this.setMinmaxYear();
   }
 
-
+setMinmaxYear(){
+    this.service.minmax().subscribe(data=>{
+      this.minMaxYear = data;
+      console.log(this.minMaxYear);
+      for(let i =0;i<=data.max-data.min;i++){
+        this.yearArr.push(data.min+i);
+      }
+    })
+}
 
   generatePDF() {
     var data = document.getElementById('contentToConvert');
