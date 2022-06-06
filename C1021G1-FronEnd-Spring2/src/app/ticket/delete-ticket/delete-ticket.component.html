@@ -1,28 +1,5 @@
 <div class="ticket-body" *ngIf="inForTicket">
 
-
-<!--  <div class=" d-flex justify-content-between top-dialog">-->
-
-<!--    <h2>Xác nhận xóa vé</h2>-->
-<!--    <button type="button" class="btn-close" [mat-dialog-close]="true" aria-label="Close"></button>-->
-<!--  </div>-->
-<!--  <div class="body-dialog">-->
-<!--    <div>-->
-<!--      <h3>Bạn có chắc xóa vé xe <span class="text-danger font-weight-normal">{{inForTicket.code}}</span> với biển số xe-->
-<!--        <span class="text-danger font-weight-normal">{{inForTicket.car.carPlate}}</span></h3>-->
-<!--      <p class="text-danger font-weight-normal">(Lưu ý thao tác này không thể hoàn tác lại)</p>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <div class="footer-dialog d-flex justify-content-end">-->
-
-<!--    <button type="button" class="btn button-cancel" (click)="gotoList()">HỦY</button>-->
-<!--    <button type="button" class="btn button-confirm ml-1" (click)="deleteTicket()">Đồng Ý</button>-->
-
-<!--    &lt;!&ndash;  </div>&ndash;&gt;-->
-<!--  </div>-->
-
-
   <table class="table table-bordered">
     <thead class="table-danger">
     <tr>
@@ -44,11 +21,9 @@
     <p style="color: red">Lưu ý: Thao tác này không thể hoàn tác được! </p>
     <div>
       <button type="button" class="btn button-cancel" (click)="gotoList()">HỦY</button>
-      <button type="button" class="btn button-confirm ml-1" (click)="deleteTicket()">Đồng Ý</button>
+      <button type="button" class="btn button-confirm ml-1 mr-1" (click)="deleteTicket()">Đồng Ý</button>
     </div>
 
-
-    <!--  </div>-->
   </div>
 
 </div>

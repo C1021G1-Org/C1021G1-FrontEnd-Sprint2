@@ -16,12 +16,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {HighchartsChartModule} from "highcharts-angular";
 import {CommonModule} from '@angular/common';
 import {CarManagementModule} from './car-management/car-management.module';
 import {LocationModule} from './location/location.module';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import { MapParkingModule } from './map-parking/map-parking.module';
-
+import {MapParkingModule} from './map-parking/map-parking.module';
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -33,6 +33,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
+import {RouterModule, Routes } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,8 +43,10 @@ import {TicketModule} from "./ticket/ticket.module";
     SignInComponent,
     SignUpComponent,
     SidebarComponent,
-  ],
+    ]
+,
   imports: [
+    HighchartsChartModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -69,7 +72,7 @@ import {TicketModule} from "./ticket/ticket.module";
     CarManagementModule,
     LocationModule,
     MapParkingModule,
-    TicketModule,
+
 
   ],
   providers: [],
