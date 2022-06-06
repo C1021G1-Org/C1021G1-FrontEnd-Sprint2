@@ -34,6 +34,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
 import {RouterModule, Routes } from '@angular/router';
+import {StatisticComponent} from './statistic/statistic/statistic.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import {RouterModule, Routes } from '@angular/router';
     SignInComponent,
     SignUpComponent,
     SidebarComponent,
+    StatisticComponent
     ]
 ,
   imports: [
