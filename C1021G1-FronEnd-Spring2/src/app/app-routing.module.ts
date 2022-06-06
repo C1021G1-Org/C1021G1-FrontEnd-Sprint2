@@ -17,7 +17,10 @@ const routes: Routes = [
   {
     path: 'sign-in', component: SignInComponent
   },
+  {path:'home',component:BodyComponent}
 ]
+
+import {BodyComponent} from "./layout/body/body.component";
 
 
 @NgModule({
