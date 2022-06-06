@@ -24,7 +24,9 @@ export class StatisticComponent implements OnInit {
   listPrice: Price[] = [];
   minMaxYear: MinmaxYear={};
   yearArr: number[] = [];
+
   isDisplayContainer: boolean = false;
+
   @ViewChild('pdfTable') pdfTable: ElementRef;
   constructor(
     private service:StatisticServiceService
@@ -170,9 +172,11 @@ export class StatisticComponent implements OnInit {
     }
     Highcharts.chart('container', this.chart);
 
+
   }
 
   hidden() {
     this.isDisplayContainer = false;
+
   }
 }

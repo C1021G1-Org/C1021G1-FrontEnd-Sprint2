@@ -25,11 +25,19 @@
               <option >2020</option>
               <option >2021</option>
               <option >2022</option>
+            </select>
               <!--              <option  *ngFor="let i of yearArr">{{i}}</option>-->
+            <select class="form-control" #year (change)="setStatistic(quarter,year)">
+              <option  value="">Chọn năm</option>
+              <option >2020</option>
+              <option >2021</option>
+              <option >2022</option>
+<!--              <option  *ngFor="let i of yearArr">{{i}}</option>-->
             </select>
           </div>
 
           <div class="control-group col-1">
+
             <!--            <label>Biểu đồ:</label>-->
             <!--            <select class="form-control">-->
             <!--              <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Chọn&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
@@ -38,6 +46,14 @@
             <!--              <option value="hìnhDuong">Hình đường</option>-->
             <!--              <option value=""></option>-->
             <!--            </select>-->
+<!--            <label>Biểu đồ:</label>-->
+<!--            <select class="form-control">-->
+<!--              <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Chọn&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+<!--              <option value="hinhCot">Hình cột</option>-->
+<!--              <option value="hinhTron">Hình tròn</option>-->
+<!--              <option value="hìnhDuong">Hình đường</option>-->
+<!--              <option value=""></option>-->
+<!--            </select>-->
           </div>
         </div>
 

@@ -5,6 +5,7 @@ import {Province} from './model/province';
 import {District} from './model/district';
 import {Ward} from './model/ward';
 import { Observable } from 'rxjs';
+import { Position } from './model/position';
 
 @Injectable({
   providedIn: 'root'

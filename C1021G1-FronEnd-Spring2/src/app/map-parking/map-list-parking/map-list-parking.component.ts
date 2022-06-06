@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {MapParkingService} from '../service/map-parking.service';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {MapWarningComponent} from '../map-warning/map-warning.component';
 import {UpdateMapParkingComponent} from '../update-map-parking/update-map-parking.component';
 import {DetailMapParkingComponent} from '../detail-map-parking/detail-map-parking.component';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -15,12 +14,12 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class MapListParkingComponent implements OnInit {
 
   listLocation: Location[];
-  checkRoleAdmin: boolean;
   public index: number = 0;
   totalPagination: number;
   number: number = 0;
   totalLocation: number;
   check: boolean = false;
+  listCar: any[];
   searchForm = new FormGroup( {
     value: new FormControl(''),
     value2: new FormControl('')
@@ -32,8 +31,8 @@ export class MapListParkingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.checkRoleAdmin = sessionStorage.getItem('email').includes('admin')?true:false;
     this.list();
+    this.getAllCar();
   }
 
   list() {
@@ -49,7 +48,7 @@ export class MapListParkingComponent implements OnInit {
       this.mapService.findLocationById(item.id).subscribe(data => {
         const dialogRef = this.dialog.open(DetailMapParkingComponent, {
           width: '700px',
-          data: {datal: data}
+          data: {datal: data},
         });
         dialogRef.afterClosed().subscribe(next => {
           this.ngOnInit();
@@ -60,7 +59,7 @@ export class MapListParkingComponent implements OnInit {
       this.mapService.findLocationById(item.id).subscribe(data => {
         const dialogRef = this.dialog.open(UpdateMapParkingComponent, {
           width: '500px',
-          data: {datal: data},
+          data: {datal: data, list: this.listCar},
         });
         dialogRef.afterClosed().subscribe(next => {
           this.ngOnInit();
@@ -70,17 +69,21 @@ export class MapListParkingComponent implements OnInit {
   }
   searchLocationCode(value : string, page = 0) {
     this.mapService.searchLocation(value, page).subscribe(data => {
-      if (data == null) {
-        this.listLocation = [];
-        this.check = true;
-        this.snackBar.open('Tìm kiếm không thành công', 'Lỗi', {
-          duration: 2000
-        })
-      } else {
         this.listLocation = data['content'];
-        this.totalPagination = data['totalPages'] - 1;
-        this.check = false;
-      }
+        this.totalPagination = data['totalPages'];
+    },
+      error => {
+        console.log("122222");
+        this.check = true;
+      })
+
+  }
+
+  getAllCar() {
+    let email = sessionStorage.getItem("email")
+    this.mapService.getAllCar(email).subscribe(data => {
+      this.listCar = data;
+      console.log(data);
     })
   }
 
@@ -129,5 +132,4 @@ export class MapListParkingComponent implements OnInit {
     this.index = number;
     this.list();
   }
-
 }

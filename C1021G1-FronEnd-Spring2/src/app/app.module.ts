@@ -15,7 +15,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
-import { StatisticComponent } from './statistic/statistic/statistic.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import {HighchartsChartModule} from "highcharts-angular";
 import {CommonModule} from '@angular/common';
 import {CarManagementModule} from './car-management/car-management.module';
@@ -34,9 +34,6 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
 import {RouterModule, Routes } from '@angular/router';
-const routes: Routes = [
-  {path: 'statistis',component: StatisticComponent}
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,11 +43,9 @@ const routes: Routes = [
     SignInComponent,
     SignUpComponent,
     SidebarComponent,
-    StatisticComponent
     ]
 ,
   imports: [
-    RouterModule.forRoot(routes),
     HighchartsChartModule,
     BrowserModule,
     BrowserAnimationsModule,
