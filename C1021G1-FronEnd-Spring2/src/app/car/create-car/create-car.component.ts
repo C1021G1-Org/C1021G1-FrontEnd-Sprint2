@@ -23,7 +23,7 @@ export class CreateCarComponent implements OnInit {
       Validators.pattern(/^([0-9]{2})+([A-Z])+([-])+([0-9]{3})+([0-9]{2})$/)]),
     carCompany: new FormControl('', [Validators.required,
       Validators.maxLength(40),
-      Validators.minLength(5),
+      Validators.minLength(2),
       Validators.pattern(/^[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+(\s[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]+)*$/)
     ]),
 
@@ -35,6 +35,8 @@ export class CreateCarComponent implements OnInit {
   car: Car[];
   id;
   idCustomer;
+  errorss: any;
+  carPlateError: any;
 
 
   constructor(private carService: CarService,
@@ -68,8 +70,16 @@ export class CreateCarComponent implements OnInit {
         this.dialogRef.close();
       }, error => {
         console.log(error)
+        console.log(this.createCarForm.value)
+        this.errorss = error;
+        this.carPlateError = this.errorss.error.carPlate;
+        console.log(this.errorss.error.carPlate)
       })
     }
+  }
+
+  validateCarPlate() {
+    this.carPlateError = "";
   }
 
   closeDialog() {

@@ -21,7 +21,7 @@
         <div style="color: red"
              *ngIf ="createCarForm.get('carCompany')?.errors?.minlength &&
                       createCarForm.get('carCompany').touched">
-          Không được nhập ít hơn 5 ký tự!
+          Không được nhập ít hơn 2 ký tự!
         </div>
         <div style="color: red"
              *ngIf ="createCarForm.get('carCompany')?.errors?.maxlength &&
@@ -71,7 +71,7 @@
       <div class="row mt-2">
         <label>Biển Số Xe <span style="color: red">(*)</span>:</label>
         <div class="input-group">
-          <input type="text" class="form-control" formControlName="carPlate" placeholder="Nhập biển số xe. Vd: 43D-09487">
+          <input type="text" class="form-control" formControlName="carPlate" (click)="validateCarPlate()" placeholder="Nhập biển số xe. Vd: 43D-09487">
         </div>
         <div style="color: red"
              *ngIf ="createCarForm.get('carPlate')?.errors?.required &&
@@ -83,6 +83,7 @@
                       createCarForm.get('carPlate').touched">
           Vui lòng nhập đúng định dạng!
         </div>
+        <div style="color: red">{{this.carPlateError}}</div>
       </div>
 
       <br>

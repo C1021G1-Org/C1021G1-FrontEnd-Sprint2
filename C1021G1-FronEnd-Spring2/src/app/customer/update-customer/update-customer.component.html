@@ -90,9 +90,9 @@
             Không được để trống!
           </div>
           <div style="color: red"
-               *ngIf ="editCustomerForm.get('birthday').hasError('ageUnder') &&
+               *ngIf ="editCustomerForm.get('birthday').hasError('errorAge') &&
                       editCustomerForm.get('birthday').touched">
-            Bạn chưa đủ 18 tuổi!
+            Bạn phải đủ 18 tuổi hoặc nhỏ hơn 150 tuổi!
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import {Customer} from "../model/customer";
 import {CustomerService} from "../customer.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AbstractControl, FormControl, FormGroup, FormGroupName, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, FormGroupName, ValidationErrors, Validators} from "@angular/forms";
 import {Car} from "../../car/model/car";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CreateCarComponent} from "../../car/create-car/create-car.component";
@@ -77,7 +77,7 @@ export class UpdateCustomerComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email,Validators.maxLength(40),
       Validators.minLength(5)]),
     phone: new FormControl('', [Validators.required, Validators.pattern(/^((03)|(08)|(07)|(09))([0-9]){8}$/)]),
-    gender: new FormControl('', [Validators.required]),
+    gender: new FormControl(''),
     address: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(40)]),
     ward: new FormControl('',Validators.required)
   })
@@ -100,13 +100,17 @@ export class UpdateCustomerComponent implements OnInit {
     }
   }
 
-  checkAge(birthday: AbstractControl) {
-    const birth = new Date(birthday.value);
-    const date = Date.now() - birth.getTime() - 86400000;
-    const time = new Date(date);
-    const age = time.getUTCFullYear() - 1970;
-    if (age < 18) {
-      return {'ageUnder': true};
+  checkAge(birthday: AbstractControl): ValidationErrors{
+    let dayOfBirth = birthday.value;
+    let birthdayToSeconds = new Date(dayOfBirth).getTime();
+    let currentToSeconds = new Date().getTime();
+    let between = currentToSeconds - birthdayToSeconds;
+    let age = between/(60*60*24*1000*365);
+    console.log(age<18|| age>150);
+    if(age<18 || age>150){
+      return {
+        'errorAge': true
+      }
     }
     return null;
   }
@@ -132,7 +136,7 @@ export class UpdateCustomerComponent implements OnInit {
         this.wards = this.car[0].customer.ward;
         this.idCustomer = this.car[0].customer.id;
         const dialogRef = this.matDialog.open(CreateCarComponent, {
-          width: "500px",
+          width: "100%",
           data: this.idCustomer
         });
         dialogRef.afterClosed().subscribe(result => {
