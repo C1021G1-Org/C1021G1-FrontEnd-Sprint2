@@ -6,13 +6,19 @@ import { ListCustomerComponent } from './list-customer/list-customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { DeleteCustomerComponent } from './delete-customer/delete-customer.component';
 import { CreateCustomerComponent } from './create-customer/create-customer.component';
+import { DetailCustomerComponent } from './detail-customer/detail-customer.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [ListCustomerComponent, UpdateCustomerComponent, DeleteCustomerComponent, CreateCustomerComponent],
+  declarations: [ListCustomerComponent, UpdateCustomerComponent, DeleteCustomerComponent, CreateCustomerComponent, DetailCustomerComponent],
+
   imports: [
     CommonModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    ReactiveFormsModule
   ]
+
+
 })
 export class CustomerModule { }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+declare var WOW;
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
 
+  ngOnInit(): void {
+    this.wow();
+  }
+
+  wow() {
+    new WOW().init();
+  }
 }

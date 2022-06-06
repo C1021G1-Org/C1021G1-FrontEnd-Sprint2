@@ -1,99 +1,102 @@
-<div class="container-fluid layout">
-  <h1 align="center">Thống kê</h1>
-  <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-      <fieldset class="scheduler-border">
-        <legend class="scheduler-border float-none w-auto p-2">Thời gian</legend>
-        <div class="d-flex justify-content-between">
-          <div class="control-group col-3">
-            <label>Tháng:</label>
-            <select class="form-control">
-              <option value="">----------Chọn----------</option>
-              <option value="">Tháng 1</option>
-              <option value="">Tháng 2</option>
-              <option value="">Tháng 3</option>
-              <option value="">Tháng 4</option>
-              <option value="">Tháng 5</option>
-              <option value="">Tháng 6</option>
-              <option value="">Tháng 7</option>
-              <option value="">Tháng 8</option>
-              <option value="">Tháng 9</option>
-              <option value="">Tháng 10</option>
-              <option value="">Tháng 11</option>
-              <option value="">Tháng 12</option>
-              <option value=""></option>
-            </select>
-          </div>
-          <div class="control-group col-3 ">
-            <label>Quý:</label>
-            <select class="form-control">
-              <option value="">----------Chọn----------</option>
-              <option value="">Quý 1</option>
-              <option value="">Quý 2</option>
-              <option value="">Quý 3</option>
-              <option value="">Quý 4</option>
-              <option value=""></option>
-            </select>
-          </div>
-          <div class="control-group col-3">
-            <label>Năm:</label>
-            <input class="form-control" type="date" required>
+<div class="container">
+  <div class=" layout">
+    <form class="action" [formGroup]="createCarForm" (ngSubmit)="createCar()">
+      <h2>Thêm Mới Xe</h2>
 
-          </div>
-          <div class="control-group col-3">
-            <label>Biểu đồ:</label>
-            <select class="form-control">
-              <option value="">----------Chọn----------</option>
-              <option value="hinhCot">Hình cột</option>
-              <option value="hinhTron">Hình tròn</option>
-              <option value="hìnhDuong">Hình đường</option>
-              <option value=""></option>
-            </select>
-          </div>
+      <div class="row">
+        <label>Hãng Xe <span style="color: red">(*)</span>:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="carCompany" placeholder="Nhập hãng xe">
         </div>
-
-      </fieldset>
-      <fieldset class="scheduler-border">
-        <legend class="scheduler-border float-none w-auto p-2">Biểu đồ</legend>
-        <figure class="highcharts-figure">
-          <div id="container"></div>
-        </figure>
-      </fieldset>
-    </div>
-    <div class="col-3"></div>
-  </div>
-  <div class="row">
-    <div class="col-12 mb-2">
-      <center>
-        <button class="btn btn-success m-3" type="button">In báo cáo</button>
-        <button data-bs-toggle="modal" href="#exampleModalToggle" role="button" type="button"
-                class="btn btn-primary m-3">Thống kê
-        </button>
-      </center>
-    </div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-     tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h5 align="center" class="modal-title" id="exampleModalToggleLabel">Kết quả thống kê</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div style="color: red"
+             *ngIf="createCarForm.get('carCompany')?.errors?.required &&
+                      createCarForm.get('carCompany').touched">
+          Không được để trống!
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('carCompany')?.errors?.pattern &&
+                      createCarForm.get('carCompany').touched">
+          Vui lòng nhập đúng định dạng!
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('carCompany')?.errors?.minlength &&
+                      createCarForm.get('carCompany').touched">
+          Không được nhập ít hơn 3 ký tự!
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('carCompany')?.errors?.maxlength &&
+                      createCarForm.get('carCompany').touched">
+          Không được nhập nhiều hơn 40 ký tự!
+        </div>
       </div>
-      <div class="modal-body">
-        <p>Thời gian: Từ 01/01/2022 đến: 02/01/2022</p>
-        <div id="container1"></div>
+
+      <div class="row mt-2">
+        <label>Tên Xe <span style="color: red">(*)</span>:</label>
+        <div class="input-group">
+          <input type="text" formControlName="name" class="form-control"
+                 placeholder="Nhập Tên xe"><span class="bar"></span>
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('name')?.errors?.required &&
+                      createCarForm.get('name').touched">
+          Không được để trống!
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('name')?.errors?.minlength &&
+                      createCarForm.get('name').touched">
+          Không được nhập ít hơn 2 ký tự!
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('name')?.errors?.maxlength &&
+                      createCarForm.get('name').touched">
+          Không được nhập nhiều hơn 40 ký tự!
+        </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-                data-bs-dismiss="modal">Xác nhận
-        </button>
+
+      <div class="row mt-2">
+        <label>Loại Xe <span style="color: red">(*)</span>:</label>
+        <div>
+          <select class="form-control" formControlName="carType">
+            <option value="">-- Chọn loại xe --</option>
+            <option *ngFor="let carType of carTypeList" value="{{carType.id}}">{{carType.name}}</option>
+          </select>
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('carType')?.errors?.required &&
+                      createCarForm.get('carType').touched">
+          Không được để trống!
+        </div>
       </div>
-    </div>
+
+      <div class="row mt-2">
+        <label>Biển Số Xe <span style="color: red">(*)</span>:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" formControlName="carPlate"
+                 placeholder="Nhập biển số xe. Vd: 43D-09487">
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('carPlate')?.errors?.required &&
+                      createCarForm.get('carPlate').touched">
+          Không được để trống!
+        </div>
+        <div style="color: red"
+             *ngIf="createCarForm.get('carPlate')?.errors?.pattern &&
+                      createCarForm.get('carPlate').touched">
+          Vui lòng nhập đúng định dạng!
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="button text-end col-6">
+          <button class="btn button-cancel" (click)="closeDialog()">Hủy</button>
+        </div>
+        <div class=" col-6">
+          <button type="submit" class="btn button-confirm">Lưu</button>
+        </div>
+      </div>
+
+    </form>
   </div>
 </div>

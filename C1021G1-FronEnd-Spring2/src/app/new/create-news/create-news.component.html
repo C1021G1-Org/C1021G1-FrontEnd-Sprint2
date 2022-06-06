@@ -1,1 +1,78 @@
-<p>create-news works!</p>
+
+<form class="form" [formGroup]="createForm" (ngSubmit)="create()">
+  <div class="layout">
+    <h1>
+      <strong>Tạo mới tin tức</strong>
+    </h1>
+    <div class="row">
+      <div class="col-12">
+        <label for="name">Tên tác giả (<span style="color: red">*</span>):</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
+          <input type="text" id="name" name="name" class="form-control" required
+                 placeholder="" formControlName="author"><span class="bar" ></span></div>
+        <!--                    <span style="text-align: center; color: red">Tên tác giả phải từ 5 - 50 kí tự</span>-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <label for="bsx">Tiêu đề (<span style="color: red">*</span>):</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fas fa-book"></i></a>
+          <input type="text" class="form-control" id="bsx" formControlName="title">
+        </div>
+        <!--                    <span style="text-align: center; color: red">Tiêu đề phải trên 3 kí tự</span>-->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <label for="date">Hình ảnh mô tả (<span style="color: red">*</span>) :</label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid fa-images"></i></a>
+          <input type="file" class="form-control" id="date" value="" formControlName="img">
+        </div>
+        <!--                    <span style="text-align: center; color: red">Nội dung quá ngắn, nội dung phải trên 25 kí tự'</span>-->
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <label for="newsType">Loại tin (<span style="color: red">*</span>) : </label>
+        <div class="input-group">
+          <a class="input-group-text"><i class="fa-solid fa-caret-down"></i></a>
+          <select name="" id="newsType" class="form-control" formControlName="newsType">
+            <option value="" selected>----Chọn loại tin-----</option>
+            <option *ngFor="let type of newsType" [ngValue]="type">{{type.name}}</option>
+          </select>
+        </div>
+        <!--                    <span style="text-align: center; color: red">Vui lòng chọn loại tin tức</span>-->
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <label>Nội dung (<span style="color: red">*</span>) :</label>
+     <ckeditor formControlName="description"></ckeditor>
+      </div>
+      <!--                <span style=" color: red">Nội dung quá ngắn, nội dung phải trên 25 kí tự'</span>-->
+
+    </div>
+
+
+
+    <div class="row" >
+      <div class="col-6 text-end">
+        <button class="btn button-cancel">Huỷ</button>
+      </div>
+      <div class="col-6">
+
+        <button class="btn button-confirm" type="submit">Tạo</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+
