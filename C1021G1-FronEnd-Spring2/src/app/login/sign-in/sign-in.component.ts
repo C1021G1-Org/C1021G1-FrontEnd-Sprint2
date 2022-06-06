@@ -28,8 +28,7 @@ export class SignInComponent implements OnInit {
               private loginService: LoginService,
               public dialogRef: MatDialogRef<SignInComponent>,
               @Inject(MAT_DIALOG_DATA) public invalid: any,
-              private _snackBar: MatSnackBar,
-              private router: Router) { }
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.email = localStorage.getItem('email');
@@ -74,8 +73,9 @@ export class SignInComponent implements OnInit {
         }else localStorage.setItem('email','');
         console.log(sessionStorage.getItem('email'));
         this.onNoClick()
+        this.openSnackBar();
       },error =>{
-
+        this._snackBar.open("Đăng nhập thất bại", "Not Ok",);
         console.log(error)
         this.loginOk = false;
         try{
@@ -89,8 +89,8 @@ export class SignInComponent implements OnInit {
         }catch (e) {
           console.log(e)
         }
-
-        this.onNoClick();
+        //
+        // this.onNoClick();
       })
     }
   }
@@ -188,6 +188,17 @@ this.dialogRef.close();
   openSnackBar() {
     this._snackBar.open("Đăng nhập thành công", "OK", {
       duration: 1000,
+    });
+  }
+
+  openDialogForgetPass(): void {
+    this.onNoClick();
+    const dialogRef = this.dialog.open(ForgottenPasswordComponent, {
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 }

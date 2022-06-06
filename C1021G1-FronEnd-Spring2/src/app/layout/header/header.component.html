@@ -7,7 +7,7 @@
           <img class="item-logo" src="../../../assets/image/logo-parking.png">
           <nav>
             <div class="nav-items">
-              <a href="/home">Trang chủ</a>
+              <a style="font-size: 15px" href="/home">Trang chủ</a>
               <a href="#new">Tin tức</a>
               <a href="#work">Dự án mẫu</a>
             </div>
@@ -15,8 +15,13 @@
 
             <div class="nav-items">
               <a href="#info">Chức năng</a>
-              <a (click)="openDialogSignIn()"> Đăng nhập </a>
-              <a href="#info">Đăng xuất</a>
+              <a style="cursor:grab " (click)="openDialogSignIn()"> Đăng nhập </a>
+              <span *ngIf="email.includes('@')">
+              <i class="fa fa-user-circle"></i>&nbsp;
+              <a class="link" style="color: white"> {{email}} </a>
+              <span style="color: white">|</span>
+              <span class=""><a class="link" (click)="logOut()"> Đăng xuất </a></span>
+            </span>
             </div>
           </nav>
         </header>

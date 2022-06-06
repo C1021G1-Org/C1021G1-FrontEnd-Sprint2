@@ -12,8 +12,8 @@ import {SignIn} from '../../login/model/sign-in';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  private email: string;
-  private loginOk: boolean;
+  email: string ='';
+  loginOk: boolean;
 
   constructor(private matDialog: MatDialog,
               private router: Router,
@@ -78,4 +78,18 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  logOut() {
+    sessionStorage.setItem('email','');
+    sessionStorage.setItem('roles','');
+    sessionStorage.setItem('token','');
+    localStorage.setItem('email','');
+    localStorage.setItem('roles','');
+    localStorage.setItem('token','');
+    this.email ='';
+    this.loginOk = false;
+    this.router.navigateByUrl('home').then(r => {
+      this._snackBar.open("Đăng xuất thành công", "OK");
+      console.log("suscess");
+    });
+  }
 }

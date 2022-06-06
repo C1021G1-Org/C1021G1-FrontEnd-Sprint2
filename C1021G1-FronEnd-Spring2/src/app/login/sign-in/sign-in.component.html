@@ -69,8 +69,11 @@
               <a class="input-group-text"></a>
               <input type="text" formControlName="email" class="form-control" id="email" placeholder="VD: codegym@gmail.com">
             </div>
+            <p style="color: red"
+               *ngIf="emailNotExist &&!userForm.get('email').errors?.email &&userForm.get('email').value.length>0">Email
+              không tồn tại.</p>
             <p *ngIf="userForm.get('email').errors?.required && userForm.get('email').touched
-            || checkForm &&userForm.get('email').errors?.required" style="color: red" >Trường này không được phép để trống.</p>
+            || checkForm &&userForm.get('email').errors?.required" style="color: red" >Trường này không được để trống.</p>
             <p *ngIf="userForm.get('email').errors?.email && userForm.get('email').touched" style="color: red">
               Vui lòng nhập đúng format email và không chứa ký tự đặc biệt!</p>
             <p *ngIf="errorEmail" style="color: red" >Email này đã được sử dụng.</p>
@@ -82,24 +85,27 @@
             <div class="input-group">
               <input type="password" formControlName="password" class="form-control" placeholder="Mật khẩu">
             </div>
-            <div *ngIf="checkPassword" style="color: red">
-            </div>
+            <p *ngIf="checkPassword" style="color: red">
+                Mật khẩu chưa đúng
+            </p>
             <p *ngIf="userForm.get('password').errors?.required && userForm.get('password').touched
             || checkForm&&userForm.get('password').errors?.required" style="color: red">Trường này không được để trống</p>
             <p *ngIf="userForm.get('password').errors?.errorPs && userForm.get('password').touched" style="color: red">
               Mật khẩu phải từ 8-20 ký tự, có bao gồm số, chữ viết thường và viết hoa</p>
           </div>
           <hr class="mb-4">
-          <div class="mb-3 d-flex justify-content-between">
+          <div class="d-flex justify-content-between">
             <div class="form-group form-check">
               <label class="form-check-label">
-                <input class="form-check-input" #rememberE value="remember" name="remember" type="checkbox"> Ghi nhớ đăng
-                nhập
+                <div class="input-group">
+                  <input class="form-check-input ml-0 mt-1" #rememberE value="remember" name="remember" type="checkbox">
+                  <span class="ml-4 mb-2"> Ghi nhớ đăng nhập </span>
+                </div>
               </label>
             </div>
             <div>
               <button class="dialog" style="color: blue; background: transparent;padding: 0px; border: none"
-                      (click)="openDialog()">Quên mật khẩu</button>
+                      (click)="openDialogForgetPass()">Quên mật khẩu</button>
             </div>
           </div>
           <hr class="mb-4">
@@ -107,7 +113,7 @@
             <div class="d-flex justify-content-center px-5">
               <button (click)="openDialogSignUp()" routerLink="/sign-up" class="dialog btn btn-dark" style="color: blue; background: transparent;padding: 0px; border: none">Đăng ký tài khoản</button>
               <button class="dialog btn btn-danger p-2 m-2" (click)="closeDialog()">Huỷ</button>
-              <button  class="btn btn-primary p-2 m-2" (click)="remember(rememberE); openSnackBar()">Đăng nhập</button>
+              <button  class="btn btn-primary p-2 m-2" (click)="remember(rememberE)">Đăng nhập</button>
             </div>
           </div>
           <hr class="mb-4">
