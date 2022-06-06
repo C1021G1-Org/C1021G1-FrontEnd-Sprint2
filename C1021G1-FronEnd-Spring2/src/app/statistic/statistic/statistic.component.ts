@@ -73,11 +73,16 @@ setMinmaxYear(){
     }
     statistic.year = y;
     statistic.quarter = x;
-    this.service.statistic(statistic).subscribe(data =>{
-      console.log(data);
-      this.listPrice = data;
-      this.getReport();
-    });
+
+    if(y.length==4){
+      alert(y.length);
+      this.service.statistic(statistic).subscribe(data =>{
+        console.log(data);
+        this.listPrice = data;
+        this.getReport();
+      });
+    }
+
 
   }
   getReport(){
@@ -88,11 +93,11 @@ setMinmaxYear(){
       },
       title: {
         align: 'left',
-        text: 'Browser market shares. January, 2018'
+        text: ''
       },
       subtitle: {
         align: 'left',
-        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+        text: 'Biểu đồ doanh thu của công ty></a>'
       },
       accessibility: {
         announceNewData: {
@@ -104,7 +109,7 @@ setMinmaxYear(){
       },
       yAxis: {
         title: {
-          text: 'Total percent market share'
+          text: 'Ti lệ theo từng phần'
         }
 
       },

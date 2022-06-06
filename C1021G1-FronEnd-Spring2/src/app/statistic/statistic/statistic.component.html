@@ -10,7 +10,7 @@
           </div>
           <div class="control-group col-5 ">
             <label style="font-weight: bold"> Quý:</label>
-            <select class="form-control" #quarter (change)="setStatistic(quarter,year)">
+            <select class="form-control" style="  height: 50px !important;" #quarter (change)="setStatistic(quarter,year)">
               <option value="">Chọn quý</option>
               <option value="1">Quý 1</option>
               <option value="2">Quý 2</option>
@@ -20,12 +20,12 @@
           </div>
           <div class="control-group col-5">
             <label style="font-weight: bold"> Năm:</label>
-            <select class="form-control" #year (change)="setStatistic(quarter,year)">
-              <option  value="">Chọn năm</option>
+            <select class="form-control" #year (change)="setStatistic(quarter,year)" style="  height: 50px !important;">
+              <option>Chọn năm</option>
               <option >2020</option>
               <option >2021</option>
               <option >2022</option>
-<!--              <option  *ngFor="let i of yearArr">{{i}}</option>-->
+              <option  *ngFor="let i of yearArr">{{i}}</option>
             </select>
           </div>
 
@@ -54,41 +54,47 @@
     <div class="col-12 mb-2">
       <div class="justify-content-center d-flex">
         <button [disabled]="!isYearChecked" data-bs-toggle="modal" href="#exampleModalToggle" role="button" type="button" (click)="statistic(quarter,year)"
-                class="btn btn-primary m-3" >Thống kê
+                class="btn btn-primary m-3 button-confirm" >Thống kê
         </button>
       </div>
     </div>
 
   </div>
-</div>
-
-<div class="container-fluid">
-  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-       tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-
-        <div class="modal-header" >
-          <h5 align="center" class="modal-title" id="exampleModalToggleLabel">Kết quả thống kê</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="contentToConvert">
-          <div id="container">
-
-          </div>
-        </div>
-        <div>
-          <div class="d-flex justify-content-center">
-
-            <button class="btn btn-danger mx-1" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-                    data-bs-dismiss="modal" >Thoát
-            </button>
-            <button class="btn btn-success mx-1" type="button" (click)="generatePDF()" data-bs-dismiss="modal" >In báo cáo</button>
-          </div>
-
-        </div>
-      </div>
+  <div class="container">
+    <div class="row">
+      <div style="width: 70%" class="m-auto" id="container"></div>
     </div>
   </div>
-
 </div>
+
+
+<!--<div class="container-fluid">-->
+<!--  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"-->
+<!--       tabindex="-1">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--      <div class="modal-content">-->
+
+<!--        <div class="modal-header" >-->
+<!--          <h5 align="center" class="modal-title" id="exampleModalToggleLabel">Kết quả thống kê</h5>-->
+<!--          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--        </div>-->
+<!--        <div class="modal-body" id="contentToConvert">-->
+<!--          <div id="container">-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <div class="d-flex justify-content-center">-->
+
+<!--            <button class="btn btn-danger mx-1 button-cancel" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"-->
+<!--                    data-bs-dismiss="modal">Thoát-->
+<!--            </button>-->
+<!--            <button class="btn btn-success mx-1 button-confirm" type="button" (click)="generatePDF()" data-bs-dismiss="modal" >In báo cáo</button>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</div>-->

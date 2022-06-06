@@ -84,3 +84,34 @@ input[type=date]:focus::-webkit-datetime-edit {
 .highcharts-data-table tr:hover {
   background: #f1f7ff;
 }
+.button-confirm{
+  height: 40px;
+  width: 130px;
+  outline: none;
+  color: #fff;
+  background: linear-gradient(120deg, #71b7e6,#9b59b6);
+  border: none;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+
+}
+.button-confirm:hover {
+  background: linear-gradient(120deg,#9b59b6, #71b7e6);
+}
+
+.button-cancel{
+  height: 40px;
+  width: 130px;
+  outline: none;
+  color: black;
+  background: linear-gradient(120deg, white,grey);
+  border: none;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+
+}
+.button-cancel:hover {
+  background: linear-gradient(120deg, darkgrey, whitesmoke);
+}
