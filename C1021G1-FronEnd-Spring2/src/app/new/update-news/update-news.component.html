@@ -5,68 +5,99 @@
       <strong>Sửa đổi tin tức</strong>
     </h1>
     <div class="row">
-      <div class="col-12">
+      <div class="mb-12">
         <label for="name">Tên tác giả (<span style="color: red">*</span>):</label>
         <div class="input-group">
           <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
           <input type="text" id="name" name="name" class="form-control" required
-                 placeholder="" formControlName="author"><span class="bar" ></span></div>
-        <!--                    <span style="text-align: center; color: red">Tên tác giả phải từ 5 - 50 kí tự</span>-->
+                 placeholder="" formControlName="author"><span class="bar"></span>
+          <div style="width: 100%; color: red"
+               *ngIf="updateForm.get('author').invalid && updateForm.controls.author.touched">
+            <span *ngIf="updateForm.get('author').errors.required">Vui lòng nhập tên tác giả</span>
+            <span *ngIf="updateForm.get('author').errors.minlength">Tên tác giả phải tỪ 5 - 50 kí tự</span>
+            <span *ngIf="updateForm.get('author').errors.maxlength">Tên tác giả phải tỪ 5 - 50 kí tự</span>
+            <span *ngIf="updateForm.get('author').errors.pattern">Tên tác giả không được chứa số và kí tự khoảng trắng</span>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-12">
+      <div class="mb-12">
         <label for="bsx">Tiêu đề (<span style="color: red">*</span>):</label>
         <div class="input-group">
           <a class="input-group-text"><i class="fas fa-book"></i></a>
           <input type="text" class="form-control" id="bsx" formControlName="title">
+          <div style="width: 100%; color: red"
+               *ngIf="updateForm.get('title').invalid && updateForm.controls.title.touched">
+            <span *ngIf="updateForm.get('title').errors.required">Vui lòng nhập tiêu đề cho bài viết</span>
+            <span *ngIf="updateForm.get('title').errors.minlength">Tên tiêu đề phải từ 3 đến 255 kí tự</span>
+            <span *ngIf="updateForm.get('title').errors.maxlength">Tên tiêu đề phải từ 3 đến 255 kí tự</span>
+          </div>
         </div>
-        <!--                    <span style="text-align: center; color: red">Tiêu đề phải trên 3 kí tự</span>-->
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12">
-        <label for="date">Hình ảnh mô tả (<span style="color: red">*</span>) :</label>
+      <div class="mb-auto">
+        <label >Hình ảnh mô tả (<span style="color: red">*</span>) :</label>
+<!--        <div class="input-group">-->
+<!--          <a class="input-group-text"><i class="fa-solid fa-images"></i></a>-->
+<!--          <input (change)="getImg($event)"  type="file" class="form-control" id="date" formControlName="img" >-->
+<!--        </div>-->
+        <label>(Nhập đường dẫn hình ảnh)</label>
         <div class="input-group">
           <a class="input-group-text"><i class="fa-solid fa-images"></i></a>
-          <input type="file" class="form-control" id="date" value="" formControlName="img">
+          <input #input (change)="changeImg(input.value)" [value]="thisImg" type="text" class="form-control" placeholder="Nhập đường dẫn hình ảnh"   formControlName="img">
         </div>
-        <!--                    <span style="text-align: center; color: red">Nội dung quá ngắn, nội dung phải trên 25 kí tự'</span>-->
+        <img style="height: 200px; width: 200px" [src]="thisImg" alt="">
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12">
+        <div style="width: 100%; color: red" *ngIf="updateForm.get('img').invalid && updateForm.controls.img.touched">
+          <span *ngIf="updateForm.get('img').errors.required">Vui lòng chọn hình ảnh mô tả</span>
+        </div>
+
+    <div class="row" >
+      <div class="mb-12">
         <label for="newsType">Loại tin (<span style="color: red">*</span>) : </label>
         <div class="input-group">
           <a class="input-group-text"><i class="fa-solid fa-caret-down"></i></a>
           <select name="" id="newsType" class="form-control" formControlName="newsType">
             <option value="" selected>----Chọn loại tin-----</option>
-            <option *ngFor="let type of newsTypes"   [selected]="type.id===updateForm.get('newsType').value.id"  [ngValue]="type">{{type.name}}</option>
+            <option *ngFor="let type of newsTypes"  [selected]="type.id===updateForm.get('newsType').value.id"  [ngValue]="type">{{type.name}}</option>
           </select>
+          <div style="width: 100%; color: red" *ngIf="updateForm.get('newsType').invalid && updateForm.controls.newsType.touched">
+            <span *ngIf="updateForm.get('newsType').errors.required">Vui lòng chọn loại tin tức</span>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12">
+      <div class="mb-12">
         <label>Nội dung (<span style="color: red">*</span>) :</label>
         <ckeditor formControlName="description"></ckeditor>
+        <div style="width: 100%; color: red"
+             *ngIf="updateForm.get('description').invalid && updateForm.controls.description.touched">
+          <span *ngIf="updateForm.get('description').errors.required">Vui lòng nhập nội dung bài viết</span>
+          <span *ngIf="updateForm.get('description').errors.minlength">Nội dung bài viết quá ngắn</span>
+        </div>
       </div>
-      <!--                <span style=" color: red">Nội dung quá ngắn, nội dung phải trên 25 kí tự'</span>-->
     </div>
 
 
 
 
     <div class="row">
-      <div class="col-6 text-end">
-        <button class="btn button-cancel">Huỷ</button>
+      <div class="col-6 text-end ">
+        <button type="button"  routerLink="/newsDetail/70">
+          Huỷ</button>
       </div>
       <div class="col-6">
 
-        <button class="btn button-confirm" type="submit">Xác nhận sửa</button>
+        <button type="submit" [disabled]="updateForm.invalid">
+          <span *ngIf="loadingSubmit"  class="spinner-border text-success spinner-border-sm" role="status" aria-hidden="true"></span>Xác nhận sửa</button>
       </div>
 
 

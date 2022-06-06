@@ -4,7 +4,7 @@ import {New} from '../../new/model/new';
 
 
 let WOW;
-
+let $;
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
