@@ -3,7 +3,7 @@ import {NewsService} from "../../new/news.service";
 import {New} from "../../new/model/new";
 
 let WOW;
-
+let $;
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
