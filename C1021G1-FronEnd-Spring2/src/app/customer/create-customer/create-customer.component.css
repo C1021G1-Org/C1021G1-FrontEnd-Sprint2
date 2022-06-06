@@ -259,6 +259,27 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
+#container .button-add-car{
+  height: 100%;
+  width: 50px;
+  outline: none;
+  color: #fff;
+  background: linear-gradient(120deg, #71b7e6,#9b59b6);
+  border: none;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+#container .button-add-car  i{
+  font-size: 24px;
+}
+
+#container .button-add-car:hover {
+  background: linear-gradient(-135deg, #71b7e6,#9b59b6);
+}
+#container .button-add-car  i{
+  font-size: 24px;
+}
 
 
 #container .button-add-car{

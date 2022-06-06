@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CarDtoCreate} from "./dto/car-dto-create";
 import {CarType} from "./model/car-type";
+import {Car} from "./model/car";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +25,10 @@ export class CarService {
     return this.httpClient.get<CarType[]>(this.API_CAR + '/carType-list');
   }
 
-
+  deleteCar(id : number){
+    return this.httpClient.delete<Car>(this.API_CAR + '/delete/' + id);
+  }
+  getCarById(id:number){
+    return this.httpClient.get<Car>(this.API_CAR + "/" + id);
+  }
 }

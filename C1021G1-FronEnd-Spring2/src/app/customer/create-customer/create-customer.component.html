@@ -15,7 +15,7 @@
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('name')?.errors?.required &&
                       creatCustomerForm.get('name').touched">
-            Không được để trống!
+            Họ và tên không được để trống!
           </div>
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('name')?.errors?.pattern &&
@@ -43,7 +43,7 @@
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('email')?.errors?.required &&
                       creatCustomerForm.get('email').touched">
-            Không được để trống!
+            Email không được để trống!
           </div>
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('email')?.errors?.email &&
@@ -78,7 +78,7 @@
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('birthday')?.errors?.required &&
                       creatCustomerForm.get('birthday').touched">
-            Không được để trống!
+            Ngày sinh không được để trống!
           </div>
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('birthday').hasError('ageUnder') &&
@@ -100,7 +100,7 @@
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('phone')?.errors?.required&&
                       creatCustomerForm.get('phone').touched">
-            Không được để trống!
+            Số điện thoại không được để trống!
           </div>
           <div class="alert alert-danger" role = "alert"
                *ngIf ="creatCustomerForm.get('phone')?.errors?.pattern &&
@@ -120,7 +120,7 @@
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('idCard')?.errors?.required&&
                       creatCustomerForm.get('idCard').touched">
-            Không được để trống!
+            CMND/CCCD không được để trống!
           </div>
           <div class="alert alert-danger" role = "alert"
                *ngIf ="creatCustomerForm.get('idCard')?.errors?.pattern &&
@@ -174,7 +174,7 @@
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('address')?.errors?.required &&
                       creatCustomerForm.get('address').touched">
-            Không được để trống!
+            Địa chỉ không được để trống!
           </div>
           <div style="color: red"
                *ngIf ="creatCustomerForm.get('address')?.errors?.minlength &&
@@ -230,8 +230,8 @@
               <td>{{car.carType.name}}</td>
               <td>
 
-                <a  class="delete" (click)="openDialogDeleteCar()">
-                  <i class="fa-solid fa-trash-can icon"></i>
+                <a  class="delete" (click)="openDialogDeleteCar(car.id)">
+                  <i class="fa-solid fa-trash-can icon "></i>
                 </a>
               </td>
             </tr>

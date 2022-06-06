@@ -1,1 +1,15 @@
-<p>delete-car works!</p>
+<div class="container-fluid">
+  <h1>Xóa xe </h1>
+  <h3>Bạn có chắc chắn muốn xóa <label style="color: red">{{car.name}}</label> ???</h3>
+  <h5>(Thao tác này k thể hoàn tác)</h5>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <button (click)="delete()" class="btn btn-danger rounded">Delete</button>
+    </div>
+    <div class="col-3">
+      <a (click)="close()" class="btn btn-secondary rounded">Cancel</a>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

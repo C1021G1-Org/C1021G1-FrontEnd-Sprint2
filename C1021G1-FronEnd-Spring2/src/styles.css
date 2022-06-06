@@ -6,17 +6,21 @@ mat-dialog-container{
   border-radius: 1.25rem !important;
 }
 
-
-
-/*mat-dialog-container {*/
-/*  padding: 0px  !important;;*/
-/*  background-color: greenyellow !important;*/
-/*}*/
-
-mat-dialog-container{
-  background: rgb(162, 233, 252) !important;
-  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%) !important;
-  border-radius: 1.25rem !important;
+:root{
+  --background-dark: #2d3548;
+  --text-light: rgba(255,255,255,0.6);
+  --text-lighter: rgba(255,255,255,0.9);
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+  --width-container: 1200px;
 }
 
+/*body{*/
+/*  background-image: url("https://tcgland.vn/storage/upload/%E1%BA%A2nh%20d%E1%BB%B1%20%C3%A1n-02.jpg");*/
+/*  background-size: cover;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
 

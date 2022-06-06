@@ -22,6 +22,7 @@
              *ngIf ="createCarForm.get('carCompany')?.errors?.minlength &&
                       createCarForm.get('carCompany').touched">
           Không được nhập ít hơn 2 ký tự!
+
         </div>
         <div style="color: red"
              *ngIf ="createCarForm.get('carCompany')?.errors?.maxlength &&
