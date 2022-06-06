@@ -1,1 +1,30 @@
-<p>delete-employee works!</p>
+<div class="container-fluid">
+  <table class="table table-bordered">
+    <thead class="table-danger">
+    <tr>
+      <th class="text-center" colspan="2">
+        <h2>Xác nhận xóa </h2>
+      </th>
+    </tr>
+    </thead>
+    <tbody class="table-borderless">
+    <tr>
+      <td colspan="2" class="table-borderless">
+        <span style="color: red">Bạn có muốn xóa nhân viên này không ?</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">Mã Nhân Viên: <strong>{{employee.code}}</strong></td>
+      <td class="text-center">Họ Tên: <strong>{{employee.name}}</strong></td>
+    </tr>
+    <tr>
+      <td colspan="3" class="text-center">
+        <a class="btn btn-dark m-3" (click)="onNoClick()" >Không</a>
+        <a class="btn btn-danger" (click)="deleteEmployee()">Có</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <span style="color: red;text-align: right">*Lưu ý: Thông tin không được hoàn tác</span>
+
+</div>

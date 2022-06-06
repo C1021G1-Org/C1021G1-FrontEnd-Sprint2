@@ -1,16 +1,17 @@
-
 import {Ward} from "./ward";
 
 export interface Customer {
-  id ?:number;
+  id?: number;
   code?: string;
-  name ?: string;
+  name?: string;
   birthday?: string;
-  idCard ?: string;
-  email ?: string ;
+  idCard?: string;
+  email?: string;
   phone?: string;
   address?: string;
-  gender ?: boolean;
-  delFlag ?: boolean;
-  ward ?: Ward
+  gender?: boolean;
+  delFlag?: boolean;
+  ward?: Ward
 }
+
+

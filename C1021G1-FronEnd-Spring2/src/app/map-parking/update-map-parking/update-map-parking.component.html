@@ -1,0 +1,14 @@
+<p  style="font-weight: bold;color: red; font-size: 20px"><span>Vui lòng đăng ký để đặt vị trí!</span></p>
+<p style="color: red; font-size: 21px; font-weight: bold">Vị trí đổ xe có mã: <span>{{this.data.datal.code}}</span></p>
+<input list="car" class="form-control" placeholder="Nhập hoặc chọn xe" style="width: 225px">
+<datalist id="car" >
+  <option *ngFor="let item of addCar" value="{{item.carPlate}}">
+</datalist>
+<div class="row mt-3">
+  <div class="col d-flex">
+    <button mat-dialog-close class="btn button-cancel m-1">Hủy</button>
+    <button mat-dialog-close class="btn button-confirm m-1">Lấy mã</button>
+    <button class="btn button-confirm m-1" (click)="UpdateLocation()">Đăng ký</button>
+  </div>
+</div>
+

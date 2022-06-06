@@ -1,1 +1,134 @@
-<p>list-ticket works!</p>
+<div class="ticket-body">
+  <div class="container">
+    <div class="row he-tex mt-3 ">
+      <div class="col-md-12 text-center">
+        <h3>Danh Sách Vé</h3>
+      </div>
+    </div>
+
+    <form [formGroup]="searchForm" class="mb-3 mt-2 row">
+      <div class="form-box">
+        <div class="box-left">
+          <button type="button" class="btn btn-primary" routerLink="/car">
+            <span class="fa fa-plus-circle mt-1"></span>
+          </button>
+        </div>
+        <div class="box-right">
+          <div class="col-right-2 col-right-select ">
+            <div class="form-group ">
+              <select class="form-control" formControlName="floor">
+                <option value="" selected disabled>-Tầng-</option>
+                <option *ngFor="let floor of listFloor;index as f" [ngValue]="floor.name">{{floor.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-right-2 col-right-select">
+            <div class="form-group ">
+              <select class="form-control" formControlName="ticketTypeName">
+                <option value="" disabled selected>-Loại Vé-</option>
+                <option *ngFor="let type of listTypeTicket;index as t" [ngValue]="type.name">{{type.name}}</option>
+
+              </select>
+            </div>
+          </div>
+          <div class="col-right-1">
+
+            <div class="form-group">
+
+              <input class="form-control" type="text" placeholder="ngày kết thúc" onfocus="(this.type = 'date')"
+                     onblur="(this.type = 'text')" formControlName="endDate">
+
+            </div>
+          </div>
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text"
+                     class="form-control" placeholder="Họ và tên" formControlName="nameCustomer">
+            </div>
+          </div>
+          <div class="col-right-1">
+            <div class="form-group">
+              <input type="text"
+                     class="form-control" placeholder="Số Điện Thoại" formControlName="phoneCustomer">
+
+            </div>
+          </div>
+          <div class="col-right-2">
+            <a class="btn btn-success col-right-button" (click)="searchTicket()">
+              <span class="fa fa-search"></span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+
+    <table class="table table-striped text-center table-border">
+      <thead class="text-white tb-header">
+      <tr>
+        <th class="col-md-2 col-sm-2">Mã Vé</th>
+        <th class="col-md-2 col-sm-2">Biển số Xe</th>
+        <th class="col-md-2 col-sm-2">Tên Khách Hàng</th>
+        <th class="col-md-2 col-sm-2">Số Điện Thoại</th>
+        <th class="col-md-2 col-sm-2">Trạng Thái</th>
+        <th colspan="2" class="col-md-2 col-sm-2">Thao Tác</th>
+      </tr>
+      </thead>
+      <tbody class=" table-side-bar">
+      <ng-container *ngIf="!checkError">
+        <tr *ngFor="let item of ticketListFirst;index as i">
+          <td>{{item.code}}</td>
+          <td>{{item.car.carPlate}}</td>
+          <td>{{item.car.customer.name}}</td>
+          <td>{{item.car.customer.phone}}</td>
+          <td class="text-center text-danger" *ngIf="item.flagExpire"><span class="fa fa-remove"></span> Đã Hết Hạn</td>
+          <td class="text-center text-success" *ngIf="!item.flagExpire"><span class="fa fa-check"></span> Còn Hạn</td>
+          <td>
+            <a role="button" (click)="openDeleteDialog(item.id)"><span
+              class="fa fa-trash text-danger" style="font-size:24px"></span></a>
+
+
+          </td>
+          <td>
+            <a role="button" (click)="openUpdateDialog(item.id)"><span
+              class="fa fa-pencil" style="font-size:24px"></span></a>
+          </td>
+
+        </tr>
+
+        <tr>
+          <td colspan="7" class="align-items-center">
+            Hiển thị <span>{{size}}</span> trong số <span>{{totalElements}}</span> kết quả
+            Trang <span>{{number}}</span>/<span>{{totalPages}}</span>
+
+          </td>
+
+        </tr>
+      </ng-container>
+      <tr *ngIf="checkError">
+        <td *ngIf="checkError" colspan="7" class="align-items-center">
+          không tìm thấy <span><a (click)="goBack()">trở lại</a></span>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+
+    <div class="row text-center ">
+      <div class="col-md-12 mb-3">
+        <div class="pagination d-inline-flex">
+          <button (click)="firstPage()"><span class="fa fa-angle-double-left"></span></button>
+          <button (click)="previousPage()"><span class="fa fa-angle-left"></span></button>
+          <button (click)="gotoPage(number)" [class.active]="page+1==number">{{number}}</button>
+          <button (click)="gotoPage(number)" *ngIf="number<totalPages">{{number + 1}}</button>
+          <button (click)="gotoPage(number+2)" *ngIf="number+2<totalPages">{{number + 2}}</button>
+          <button (click)="nextPage()"><span class="fa fa-angle-right"></span></button>
+          <button (click)="lastPage()"><span class="fa fa-angle-double-right"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
