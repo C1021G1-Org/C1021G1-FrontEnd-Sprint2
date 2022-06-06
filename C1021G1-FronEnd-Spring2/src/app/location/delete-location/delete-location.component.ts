@@ -36,12 +36,12 @@ export class DeleteLocationComponent implements OnInit {
 
  deleteLocation(){
     this.locationService.DeleteLocationById(this.id).subscribe(()=>{
-      this.snackBar.open("Xóa Thành công!",'ok',{
+      this.snackBar.open("Xóa Thành Công!",'OK',{
         duration:2000
       })
       this.dialogRef.close();
     },error => {
-      this.snackBar.open("đang có người ở vị trí này nên không xóa được!",'error',{
+      this.snackBar.open("Đang có người ở vị trí này nên không xóa được!",'OK',{
         duration:2000
 
       })
