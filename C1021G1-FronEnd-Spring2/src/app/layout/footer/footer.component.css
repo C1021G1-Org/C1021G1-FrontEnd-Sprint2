@@ -128,15 +128,20 @@ a{
 .new_footer_top .f_social_icon a + a {
   margin-left: 4px;
 }
+
+
 .new_footer_top .f-title {
   margin-bottom: 30px;
   color: #263b5e;
 }
+
 .f_600 {
   font-weight: 600;
 }
 .f_size_18 {
   font-size: 18px;
+
+}
 .f_size{
   font-size: 30px;
 }

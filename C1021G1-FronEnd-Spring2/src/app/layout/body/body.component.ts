@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsService} from "../../new/news.service";
-declare var WOW;
-import {Component, OnInit} from '@angular/core';
-import {NewsService} from "../../new/news.service";
 import {New} from '../../new/model/new';
+
+
 let WOW;
 
 @Component({
@@ -13,13 +12,16 @@ let WOW;
 })
 export class BodyComponent implements OnInit {
   list8News: New[];
-  constructor(private newsService: NewsService) { }
 
 
   wow() {
     new WOW().init();
-  constructor(private newsService: NewsService) {
+
   }
+  constructor(private newsService: NewsService) {
+
+    }
+
 
   ngOnInit(): void {
     this.getAllNews();

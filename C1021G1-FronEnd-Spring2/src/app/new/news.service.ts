@@ -17,8 +17,5 @@ export class NewsService {
 }
 
 
-  getAllNew(): Observable<any> {
-    return this.http.get<any>(API_NEW + "list");
-  }
 
 }
