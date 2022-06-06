@@ -29,3 +29,7 @@
 .button-cancel:hover {
   background: linear-gradient(120deg, darkgrey, whitesmoke);
 }
+body{
+  font-family: Bahnschrift, serif;
+
+}

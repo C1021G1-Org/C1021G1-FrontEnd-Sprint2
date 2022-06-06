@@ -2,7 +2,7 @@
 <p style="color: red; font-size: 21px; font-weight: bold">Vị trí đổ xe có mã: <span>{{this.data.datal.code}}</span></p>
 <input list="car" class="form-control" placeholder="Nhập hoặc chọn xe" style="width: 225px">
 <datalist id="car" >
-  <option *ngFor="let item of addCar" value="{{item.carPlate}}">
+  <option *ngFor="let item of addCar" value="{{item.name}} | {{item.carPlate}} ">
 </datalist>
 <div class="row mt-3">
   <div class="col d-flex">

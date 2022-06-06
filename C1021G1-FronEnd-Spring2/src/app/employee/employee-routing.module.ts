@@ -6,7 +6,7 @@ import { ListEmployeeComponent } from './list-employee/list-employee.component';
 
 
 const routes: Routes = [
-  {path: '',component: ListEmployeeComponent},
+  {path: 'list',component: ListEmployeeComponent},
   {path: 'create', component: CreateEmployeeComponent},
   {path: 'update/:id', component: UpdateEmployeeComponent}
 ];
