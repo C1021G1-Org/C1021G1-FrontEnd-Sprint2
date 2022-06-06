@@ -122,21 +122,21 @@ export class UpdateTicketComponent implements OnInit {
         this.ticketService.updateNullUser(this.roleEmail, this.ticket.id).subscribe(data => {
 
         }, (errors) => {
-          this.snackBar.open(errors.error.messageEros, 'OK', {
+          this.snackBar.open(errors.message.messageError, 'OK', {
             duration: 3000,
 
           })
         })
         this.router.navigateByUrl('/ticket');
       }, (errors) => {
-        console.log('coslooix khi upste');
-        this.snackBar.open(errors.error.messageEros, 'OK', {
+        console.log('có lỗi khi update');
+        this.snackBar.open("Không thể cập nhật", 'OK', {
           duration: 3000,
 
         })
 
       }, () => {
-
+        console.log('có lỗi khi update');
       });
     }
 
