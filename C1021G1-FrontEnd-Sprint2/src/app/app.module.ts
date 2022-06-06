@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { BodyComponent } from './layout/body/body.component';
-import { HeaderComponent } from './layout/header/header.component';
+
 import { SignInComponent } from './login/sign-in/sign-in.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -18,7 +16,6 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {CdkTableModule} from "@angular/cdk/table";
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import {CKEditorModule} from "ckeditor4-angular";
 import {NewModule} from "./new/new.module";
 import { AbstractControl, ValidationErrors } from '@angular/forms';
@@ -44,13 +41,8 @@ const config = {
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    BodyComponent,
-    HeaderComponent,
     SignInComponent,
-    SignUpComponent,
-    SidebarComponent
-  ],
+    SignUpComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

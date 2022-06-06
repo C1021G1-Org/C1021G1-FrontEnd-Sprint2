@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {INewsDto} from "../dto/i-news-dto";
+import {INews} from "../model/i-news";
 
 
 const API_NEWS = "http://localhost:8080/api/news"
@@ -16,11 +17,12 @@ export class NewsService {
 
   createNews(data){
     console.log("Đã về service create")
+    console.log(data)
     return this.http.post<INewsDto>(`${API_NEWS}` + "/createNews", data)
   }
 
    findNewsById(id: number){
-      return this.http.get<any>(`${API_NEWS}` + `/findNews/` + id)
+      return this.http.get<INews>(`${API_NEWS}` + `/findNews/` + id)
    }
 
    editNews(id: number, data){
