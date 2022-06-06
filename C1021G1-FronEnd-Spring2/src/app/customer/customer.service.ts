@@ -101,7 +101,6 @@ export class CustomerService {
   getCarByIdCustomerNull(){
     return this.httpClient.get<Car[]>(this.URL + "/car/list-car")
   }
-
 }
 
 

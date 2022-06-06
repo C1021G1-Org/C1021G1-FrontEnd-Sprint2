@@ -10,6 +10,7 @@ import {CreateCustomerNullComponent} from "../../car/create-customer-null/create
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {Car} from "../../car/model/car";
+import {CarService} from "../../car/car.service";
 
 
 @Component({
@@ -42,8 +43,9 @@ export class CreateCustomerComponent implements OnInit {
   })
 
   constructor(private customerService: CustomerService,
+              private carService: CarService,
               public dialog: MatDialog,
-              private snackbar : MatSnackBar,
+              private snackbar: MatSnackBar,
               private router: Router) {
   }
 
@@ -60,9 +62,9 @@ export class CreateCustomerComponent implements OnInit {
       this.provinces = data;
       console.log(this.provinces)
     })
-    this.customerService.getCarByIdCustomerNull().subscribe(data =>{
+    this.customerService.getCarByIdCustomerNull().subscribe(data => {
       this.carList = data;
-      console.log("dsfsđf"+data)
+      console.log("dsfsđf" + data)
     })
   }
 
@@ -75,10 +77,11 @@ export class CreateCustomerComponent implements OnInit {
     })
   }
 
-  openDialogDeleteCar() {
+  openDialogDeleteCar(id: any) {
     const dialogRef = this.dialog.open(DeleteCarComponent, {
       width: '500px',
-    })
+      data: id,
+    });
     dialogRef.afterClosed().subscribe(next => {
       this.ngOnInit();
     })
@@ -109,9 +112,9 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   createCustomer() {
-    this.customerService.createCustomer(this.creatCustomerForm.value).subscribe(()=>{
+    this.customerService.createCustomer(this.creatCustomerForm.value).subscribe(() => {
       this.router.navigateByUrl("/customer/list");
-      this.snackbar.open("Thêm mới khách hàng thành công","Đóng",{
+      this.snackbar.open("Thêm mới khách hàng thành công", "Đóng", {
         duration: 2000
       })
     })
