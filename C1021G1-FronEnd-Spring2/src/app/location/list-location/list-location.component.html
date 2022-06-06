@@ -47,17 +47,17 @@
           </thead>
           <tbody class="table-side-bar" [hidden]="isStatus==true">
           <tr *ngFor="let lf of LocationList,index as i">
-            <td>{{i+1}}</td>
+            <td>{{(i+1) + index * 5}}</td>
             <td>{{lf.code}}</td>
             <td>{{lf.floorName}}</td>
             <td class="text-end">
               <a role="button" (click)="openDialog(lf.id)"><span class="fa fa-trash text-danger"
                                                                  style="font-size:24px"></span></a>
             <td class="text-center">
-              <a role="button"><span class="fas fa-pencil" style="font-size:24px"></span></a>
+              <a role="button"><span class="fas fa-pencil text-primary" style="font-size:24px"></span></a>
             </td>
             <td class="text-start">
-              <a role="button" [routerLink]="['/location-detail/',lf.id]"><span class="fas fa-eye"
+              <a role="button" [routerLink]="['/location-detail/',lf.id]"><span class="fas fa-eye text-black"
                                                                                 style="font-size:24px"></span></a>
             </td>
           </tr>
@@ -82,8 +82,8 @@
 
               </div>
               <div class="mx-3 col-3">
-                Hiển thị trang thứ <span class="font-monospace">{{index + 1}}</span> trong tổng số <span
-                class="font-monospace">{{totalPagination}}</span> trang
+                Hiển thị trang <span class="font-monospace">{{index + 1}}</span> / <span
+                class="font-monospace">{{totalPagination}}</span>
               </div>
               <div class="col-6 pagination">
                 <button [disabled]="index < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
