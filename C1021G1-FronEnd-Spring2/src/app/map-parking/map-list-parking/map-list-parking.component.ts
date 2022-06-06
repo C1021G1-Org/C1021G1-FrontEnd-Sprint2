@@ -87,6 +87,7 @@ export class MapListParkingComponent implements OnInit {
     })
   }
 
+
   back() {
     this.index--;
     this.list();
