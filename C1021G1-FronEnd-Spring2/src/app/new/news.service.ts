@@ -1,34 +1,31 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {INewsDto} from "./model/i-news-dto";
+import {INewsDto} from "../dto/i-news-dto";
+import {INews} from "../model/i-news";
 
-const API_NEW = "http://localhost:8080/api/news/"
+
+const API_NEWS = "http://localhost:8080/api/news"
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
+  constructor(private http: HttpClient) { }
 
-  constructor(private http : HttpClient) { }
-
-
-  getAllNew(): Observable<any> {
-    return this.http.get<any>(API_NEW + "list");
-  }
   getAllNews(){
-    return this.http.get<any>(API_NEW + `/list`)
+    return this.http.get<any>(`${API_NEWS}` + `/list`)
   }
 
   createNews(data){
     console.log("Đã về service create")
-    return this.http.post<INewsDto>(API_NEW + "/createNews", data)
+    console.log(data)
+    return this.http.post<INewsDto>(`${API_NEWS}` + "/createNews", data)
   }
 
-  findNewsById(id: number){
-    return this.http.get<any>(API_NEW + `/findNews/` + id)
-  }
+   findNewsById(id: number){
+      return this.http.get<INews>(`${API_NEWS}` + `/findNews/` + id)
+   }
 
-  editNews(id: number, data){
-    return this.http.patch<any>(API_NEW + `/updateNews/` + id, data)
-  }
+   editNews(id: number, data){
+      return this.http.patch<any>(`${API_NEWS}` + `/updateNews/` + id, data)
+   }
 }
