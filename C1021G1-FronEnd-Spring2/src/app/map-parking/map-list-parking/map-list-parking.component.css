@@ -116,7 +116,6 @@ body{
 }
 
 .pagination button:hover:not(.active) {
-
   background-color: #ddd;
   border-radius: 5px;
   color: blue;

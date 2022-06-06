@@ -5,7 +5,7 @@
 }
 ::ng-deep.mat-dialog-container {
   display: block;
-  padding: 0px 10px !important;
+  padding: 0px 0px !important;
   border-radius: 4px;
   box-sizing: border-box;
   overflow: auto;

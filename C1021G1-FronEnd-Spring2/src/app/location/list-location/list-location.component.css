@@ -111,23 +111,24 @@
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
 }
+
 .tb-header {
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
   font-size: 1.2em;
   text-align: center;
 
 }
+
 .table-side-bar {
   background: rgba(219, 216, 216, 0.86);
   /*color: #004152;*/
 }
+
 .table-side-bar tr:hover {
   background: #DDE6FE;
   box-shadow: 0 5px #666;
-  transform: translateY(1px);
+  /*transform: translateY(1px);*/
 }
-
-
 
 
 input {
@@ -142,7 +143,12 @@ input {
   /*   border-bottom: none; */
 }
 
+.container-fluid, br {
 
+  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%);
+  width: 100%;
+
+}
 
 option {
   background-color: white;
@@ -153,7 +159,64 @@ option {
   cursor: pointer;
 }
 
-option:hover,  .active{
+
+option:hover, .active {
   background-color: lightblue;
 }
 
+
+@media only screen and (max-width: 63.9375em) {
+  .form-control {
+    width: 75%;
+  }
+  .w-25 {
+    width: 75%;
+  }
+
+  .pagination {
+    display: inline-block;
+    float: right;
+    width: 50%;
+  }
+}
+
+
+
+@media only screen and (max-width: 46.1875em) {
+  .form-control {
+    width: 75%;
+  }
+  .w-25 {
+    width: 75%;
+  }
+  .pagination {
+    display: inline;
+
+    width: 50%;
+    font-size: 50%;
+
+  }
+  .mx-3{
+    display: none;
+  }
+
+}
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+  .form-control {
+    width: 75%;
+  }
+  .w-25 {
+    width: 75%;
+  }
+  .pagination {
+    display: inline;
+
+    width: 50%;
+    font-size: 50%;
+    text-align: center;
+  }
+  .mx-3{
+    display: none;
+  }
+
+}

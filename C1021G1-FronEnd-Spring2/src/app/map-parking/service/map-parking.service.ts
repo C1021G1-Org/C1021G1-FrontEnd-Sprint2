@@ -10,6 +10,7 @@ export class MapParkingService {
 
   URL = "http://localhost:8080/"
 
+
   constructor(private http: HttpClient) {
   }
 
@@ -18,7 +19,7 @@ export class MapParkingService {
   }
 
   findLocationById(id: number): Observable<MapParking> {
-    return this.http.get<MapParking>(this.URL + 'api/location/map-parking/' + id);
+    return this.http.get<MapParking>(this.URL + 'api/location/' + id);
   }
 
   updateColorLocation(id: number) {
@@ -28,5 +29,7 @@ export class MapParkingService {
   searchLocation(value: string, page: number) {
     return this.http.get(this.URL + 'api/location/searchMap' + '?code=' + value + '&page=' + page);
   }
-
+  getAllCar(email: string):Observable<any[]> {
+    return this.http.get<any[]>(this.URL + 'api/location/carEmailCustomer?email=' + email);
+  }
 }

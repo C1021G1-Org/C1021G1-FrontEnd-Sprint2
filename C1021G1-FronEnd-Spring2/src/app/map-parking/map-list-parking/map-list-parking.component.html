@@ -8,35 +8,40 @@
   <link rel="stylesheet" href="map-list-parking.component.css">
 </head>
 <body>
-<h1 class="d-flex justify-content-center" style="color:#f5deb3;">Bản đồ vị trí Bãi đỗ xe&nbsp;
+<br>
+<h1 class="d-flex justify-content-center" style="color:#610000;">Bản đồ vị trí Bãi đỗ xe&nbsp;
   <i class='fa fa-car' style='font-size:48px;color: red'></i>
 </h1>
 <div class="container" >
   <div style="font-weight: bold; color: white">
     Tổng vị trí: <span>{{totalLocation}}</span>
   </div>
+  <div class="col-3" style="color: #ffffff">Tầng <span class="font-monospace" style="color: #ffffff; font-weight: bold; font-size:22px">{{index + 1}}</span> trong tổng số <span
+    class="font-monospace" style="color: #ffffff; font-weight: bold ; font-size:22px">{{totalPagination}}</span> tầng
+  </div>
   <div class="row mt-2">
-    <div class="m-2" style="border:1px; background-color: #e70000; width: 140px; height: 30px; color: white">
+    <div class="m-2 d-flex justify-content-center align-content-center" style="border:1px; background-color: #e70000; width: 140px; height: 30px; color: white">
       Đã có xe đỗ.
     </div>
-    <div class="m-2" style="border:1px; background-color: #007800 ;width: 140px; height: 30px;color: white ">
+    <div class="m-2 d-flex justify-content-center align-content-center" style="border:1px; background-color: #007800 ;width: 140px; height: 30px;color: white ">
       Còn trống.
     </div>
     <div class="col-3">
       <form [formGroup]="searchForm" class="d-flex justify-content-between">
-        <input #keyword type="text" class="form-control" style="margin-right: 5px" placeholder="Nhập mã vị trí">
+        <input #keyword type="text" class="form-control" style="margin-right: 5px"  placeholder="Nhập mã vị trí">
         <button class="btn btn-success " type="submit"
                 (click)="searchLocationCode(keyword.value)">
           <i class="fas fa-search" aria-hidden="true" ></i></button>
       </form>
     </div>
+    <div class="col-1 btn btn-primary" style="width: 40px; height: 40px" (click)="this.check = false;keyword.value ='';list()">
+      <i class="fa fa-rotate-left" style="font-size:20px"></i>
+    </div>
   </div>
-
-
 </div>
 
 <br>
-<div class="container opacity-75" style="background: #ffffff">
+<div class="container opacity-75" style="background: #ffffff" [hidden]="check == true">
   <div class="row">
     <div class="col-1" *ngFor="let item of listLocation" (click)="openDialog(item, $event)">
       <div class="d-flex align-items-center m-1 ">
@@ -51,24 +56,20 @@
     </div>
   </div>
 </div>
-
+<div class="d-flex justify-content-center" *ngIf="check == true">
+  <td style="font-weight: bold; font-size: 25px; color: #0b2e13">Hiện tại không có dữ liệu !</td>
+</div>
 <br>
 
-<div class="container-fluid">
+<div class="container-fluid" [hidden]="check == true">
   <div class="row">
     <div class="col-10">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-2">
-          </div>
-          <div class="mx-3 col-3" style="color: #ffffff">
-            Tầng <span class="font-monospace" style="color: #ffffff; font-weight: bold; font-size:22px">{{index + 1}}</span> trong tổng số <span
-            class="font-monospace" style="color: #ffffff; font-weight: bold ; font-size:22px">{{totalPagination}}</span> tầng
-          </div>
-          <div class="col-6 pagination">
-            <button [disabled]="index < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
+          <div class="col-6 pagination d-flex justify-content-center" style="margin-left: 500px">
+            <button [hidden]="index < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
             </button>
-            <button [disabled]="index < 1" (click)="back()"><span class="fa fa-angle-left"></span></button>
+            <button [hidden]="index < 1" (click)="back()"><span class="fa fa-angle-left"></span></button>
             <button [hidden]="index < 2" (click)="loadList(index-1)">
               {{index - 1}}
             </button>
@@ -82,10 +83,10 @@
               {{index + 2}}
             </button>
             <button [hidden]="index >= totalPagination - 2" (click)="movingNext()">{{index + 3}}</button>
-            <button [disabled]="index == totalPagination - 1" (click)="next()"><span
+            <button [hidden]="index == totalPagination - 1" (click)="next()"><span
               class="fa fa-angle-right"></span>
             </button>
-            <button [disabled]="index == totalPagination - 1" (click)="lastPage()"><span
+            <button [hidden]="index == totalPagination - 1" (click)="lastPage()"><span
               class="fa fa-angle-double-right"></span></button>
           </div>
         </div>

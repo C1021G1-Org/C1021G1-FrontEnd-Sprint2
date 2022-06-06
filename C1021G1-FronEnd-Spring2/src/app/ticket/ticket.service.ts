@@ -23,7 +23,6 @@ export class TicketService {
   constructor(private httpClient: HttpClient) {
   }
 
-// tam begin
   getListTicket(page:number){
     return this.httpClient.get<DataPageable>(`${this.URL_BE}/check?page=`+page)
   }
@@ -31,7 +30,6 @@ export class TicketService {
   getListSearch(searchDto:SearchDto,page:number){
     return this.httpClient.post<DataPageable>(`${this.URL_BE}/search?page=`+page ,searchDto)
   }
-
 
   updateUserTicket(updateUserEmailDto:UserRole,id:number){
     return this.httpClient.patch<any>(`${this.URL_BE}/updateUserEmail/`+id,updateUserEmailDto)
@@ -47,31 +45,12 @@ export class TicketService {
   updateNullUser(updateUserEmailDto:UserRole,id:number){
     return this.httpClient.patch(`${this.URL_BE}/updateUserNull/`+id,updateUserEmailDto)
   }
-  // getSearchList(searchDto:SearchDto,page:number){
-  //   return this.httpClient.get<DataPageable>(`${this.URL_BE}/search?page=`+page ,searchDto)
-  // }
-  // getListFloor(){
-  //   return this.httpClient.get<Floor[]>(`${this.URL_BE}/getFloor`)
-  // }
 
-  // getListTypeTicket(){
-  //   return this.httpClient.get<TicketType[]>(`${this.URL_BE}/ticketType`)
+  senPathFile(file:string){
 
-  // getListFloor(){
-  //   return this.httpClient.get<Floor[]>(`${this.URL_BE}/getFloor`)
-  // }
-  //
-  // getListTypeTicket(){
-  //   return this.httpClient.get<TicketType[]>(`${this.URL_BE}/getTypeTicket`)
+    return this.httpClient.post(`${this.URL_BE}/check`,{"path":file})
+  }
 
-  // }
-
-  //tam end
-
-
-
-
-  //LongLT
   findById(id: number) {
     return this.httpClient.get<Ticket>(this.URL_BE + '/edit/' + id)
   }
@@ -81,8 +60,8 @@ export class TicketService {
   getAllLocation() {
     return this.httpClient.get<ILocation[]>(this.URL_BE + '/location')
   }
-  getAllLocationByFloor(id:number){
-    return this.httpClient.get<ILocation[]>(this.URL_BE + '/getByFloor/'+id)
+  getAllLocationByFloor(id:number,idLocation:number){
+    return this.httpClient.get<ILocation[]>(this.URL_BE + '/getByFloor/'+id+'/'+idLocation)
   }
   getAllCar() {
     return this.httpClient.get<ICar[]>(this.URL_BE + '/car')
@@ -93,7 +72,4 @@ export class TicketService {
   getAllFloor() {
     return this.httpClient.get<Floor[]>(this.URL_BE + '/floor')
   }
-
-//  LongLT
-
 }
