@@ -22,6 +22,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CommonModule} from '@angular/common';
 import {CarManagementModule} from './car-management/car-management.module';
 
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+
 
 import {LocationModule} from './location/location.module';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
@@ -73,6 +76,9 @@ import {TicketModule} from "./ticket/ticket.module";
     NgxPaginationModule,
     MatDialogModule,
     CdkTableModule,
+
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+
     CommonModule,
     CarManagementModule,
     MatDialogModule,
@@ -84,4 +90,5 @@ import {TicketModule} from "./ticket/ticket.module";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

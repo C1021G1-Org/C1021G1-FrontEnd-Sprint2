@@ -9,8 +9,9 @@ import {MapListParkingComponent} from "./map-parking/map-list-parking/map-list-p
 const routes: Routes = [
   {
     path: 'car', loadChildren: () => import('./car-management/car-management.module').then(mod => mod.CarManagementModule)
-  }
-  ,
+  },
+
+
   {
     path: 'findCar',
     component: SearchCarComponent
