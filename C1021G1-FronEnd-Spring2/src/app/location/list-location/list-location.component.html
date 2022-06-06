@@ -9,7 +9,7 @@
           <span class="fa fa-plus-circle mt-1"></span>
         </button>
       </div>
-      <div class="col-3" >
+      <div class="col-3">
         <input #a (keyup.enter)="isStatus=false;search()" (change)="id = $event.target.value" type="search" placeholder="Chọn Tầng"
                class="form-control input-group" list="datalistOptions" id="exampleDataList" (keyup)="index=0">
         <datalist id="datalistOptions" class="w-50">
@@ -70,16 +70,6 @@
 
     <br>
     <div class="container-fluid">
-    <div class="d-flex justify-content-center" *ngIf="isStatus== true">
-      <span>Hiện tại không có dữ liệu !</span>
-    </div>
-    <div class="container-fluid" [hidden]="isStatus==true">
-      <div class="row">
-        <div class="col-10">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-2">
-
               </div>
               <div class="mx-3 col-3">
                 Hiển thị <span class="font-monospace">{{index + 1}}</span> / <span
@@ -105,14 +95,51 @@
                 </button>
                 <button [disabled]="index == totalPagination - 1" (click)="lastPage()"><span
                   class="fa fa-angle-double-right"></span></button>
+      <div class="d-flex justify-content-center" *ngIf="isStatus== true">
+        <span>Hiện tại không có dữ liệu !</span>
+      </div>
+      <div class="container-fluid" [hidden]="isStatus==true">
+
+        <div class="row">
+
+
+          <div class="col-10">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-2">
+
+                </div>
+                <div class="mx-3 col-3">
+                  Hiển thị trang thứ <span class="font-monospace">{{index + 1}}</span> trong tổng số <span
+                  class="font-monospace">{{totalPagination}}</span> trang
+                </div>
+                <div class="col-6 pagination">
+                  <button [disabled]="index < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
+                  </button>
+                  <button [disabled]="index < 1" (click)="back()"><span class="fa fa-angle-left"></span></button>
+                  <button [hidden]="index < 2" (click)="loadList(index-1)">
+                    {{index - 1}}
+                  </button>
+                  <button [hidden]="index == 0" (click)="loadList1(index-1)">
+                    {{index}}
+                  </button>
+                  <button class="active">
+                    {{index + 1}}
+                  </button>
+                  <button [hidden]="index >= totalPagination - 1" (click)="loadList2(index+1)">{{index + 2}}</button>
+                  <button [hidden]="index >= totalPagination - 2" (click)="movingNext()">{{index + 3}}</button>
+                  <button [disabled]="index == totalPagination - 1" (click)="next()"><span
+                    class="fa fa-angle-right"></span>
+                  </button>
+                  <button [disabled]="index == totalPagination - 1" (click)="lastPage()"><span
+                    class="fa fa-angle-double-right"></span></button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="col-2"></div>
       </div>
-      <div class="col-2"></div>
     </div>
   </div>
-</div>
-
 </div>
