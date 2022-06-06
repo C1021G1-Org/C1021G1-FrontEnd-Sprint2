@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url("https://tcgland.vn/storage/upload/%E1%BA%A2nh%20d%E1%BB%B1%20%C3%A1n-02.jpg");
+  /*background-image: url("https://tcgland.vn/storage/upload/%E1%BA%A2nh%20d%E1%BB%B1%20%C3%A1n-02.jpg");*/
   background-size: cover;
   font-family: Bahnschrift, sans-serif;
   font-size: 18px;
@@ -26,6 +26,7 @@ body {
   margin-bottom: auto;
   background-size: cover;
   position: center;
+  border-radius: 1.25rem;
 }
 .container-fluid-title {
   margin-top: 10px;
