@@ -34,7 +34,9 @@ export class ListTicketComponent implements OnInit {
     ticketTypeName: new FormControl(''),
     endDate: new FormControl(''),
     nameCustomer: new FormControl(''),
-    phoneCustomer: new FormControl('')
+    phoneCustomer: new FormControl(''),
+    role: new FormControl(''),
+    email: new FormControl('')
   });
 
   constructor(private ticketService: TicketService, private router: Router,
@@ -43,9 +45,7 @@ export class ListTicketComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.roleEmail = {role: sessionStorage.getItem('roles'), email: sessionStorage.getItem('email')};
-
     this.getListTicket();
     this.getListFloor();
     this.getListTypeTicket();
@@ -59,28 +59,46 @@ export class ListTicketComponent implements OnInit {
       this.searchForm.patchValue({phoneCustomer: this.searchForm.get('phoneCustomer').value.trim()});
 
     }
+    this.searchForm.patchValue({role: this.roleEmail.role});
+    this.searchForm.patchValue({email: this.roleEmail.email});
+    if (this.roleEmail) {
+      if (this.roleEmail.role.includes('ROLE_EMPLOYEE') || this.roleEmail.role.includes('ROLE_ADMIN')) {
+        this.ticketService.getListSearch(this.searchForm.value, this.page).subscribe((data) => {
+          this.ticketListFirst = data.content;
+          for (let ticketObj of this.ticketListFirst) {
+            ticketObj.flagExpire = this.isExpire(ticketObj.endDate);
+          }
+          console.log(this.ticketListFirst);
+          this.totalPages = data.totalPages;
+          this.totalElements = data.totalElements;
+          this.size = data.size;
+          this.number = data.number + 1;
+          this.checkError = false;
+        }, (errors) => {
+          console.log('có lỗi khi lấy list');
+          console.log(errors);
+          if (errors.error.phoneCustomer) {
+            this.snackBar.open(errors.error.phoneCustomer, 'OK', {
+              duration: 3000,
 
-    this.ticketService.getListSearch(this.searchForm.value, this.page).subscribe((data) => {
-      this.ticketListFirst = data.content;
-      for (let ticketObj of this.ticketListFirst) {
-        ticketObj.flagExpire = this.isExpire(ticketObj.endDate);
+            });
+          } else if (errors.error.nameCustomer) {
+            this.snackBar.open(errors.error.nameCustomer, 'OK', {
+              duration: 3000,
+
+            });
+          }
+          this.checkError = true;
+        });
+      } else {
+        this.snackBar.open('Không đủ quyền đẻ truy cập', 'OK', {
+          duration: 3000,
+
+        });
       }
-      console.log(this.ticketListFirst);
-      this.totalPages = data.totalPages;
-      this.totalElements = data.totalElements;
-      this.size = data.size;
-      this.number = data.number + 1;
-      this.checkError = false;
-    }, (errors) => {
-      console.log('có lỗi khi lấy list');
-      console.log(errors);
-      this.snackBar.open(errors.error.messageEros, 'OK', {
-        duration: 3000,
+    }
 
-      });
 
-      this.checkError = true;
-    });
   }
 
   isExpire(dateStr: string) {
@@ -158,7 +176,7 @@ export class ListTicketComponent implements OnInit {
 
   openDeleteDialog(id: number) {
 
-    if (this.roleEmail.role.includes('EMPLOYEE') || this.roleEmail.role.includes('ADMIN')) {
+    if (this.roleEmail.role.includes('ROLE_EMPLOYEE') || this.roleEmail.role.includes('ROLE_ADMIN')) {
       this.ticketService.updateUserTicket(this.roleEmail, id).subscribe(data => {
         console.log(data);
         const x = this.dialog.open(DeleteTicketComponent, {
@@ -167,15 +185,8 @@ export class ListTicketComponent implements OnInit {
           data: {data1: id},
         });
         x.afterClosed().subscribe(() => {
+
           console.log('dong dailog');
-          // this.ticketService.updateNullUser(this.roleEmail, id).subscribe(data => {
-          //
-          // }, (errors) => {
-          //   this.snackBar.open(errors.error.message, 'OK', {
-          //     duration: 3000,
-          //
-          //   });
-          // });
           this.page = 0;
           this.ngOnInit();
         });
@@ -199,9 +210,11 @@ export class ListTicketComponent implements OnInit {
   openUpdateDialog(id: number) {
 
     this.ticketService.updateUserTicket(this.roleEmail, id).subscribe(data => {
+
       console.log(data);
       this.ticketService.idTicketUpDate = id;
-      this.router.navigateByUrl('/update-ticket');
+      this.router.navigateByUrl('/ticket/update-ticket');
+
     }, (errors) => {
       this.snackBar.open(errors.error.message, 'OK', {
         duration: 3000,
@@ -213,6 +226,8 @@ export class ListTicketComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigateByUrl('/ticket');
+
+      this.router.navigateByUrl('/ticket/list')
+
   }
 }
