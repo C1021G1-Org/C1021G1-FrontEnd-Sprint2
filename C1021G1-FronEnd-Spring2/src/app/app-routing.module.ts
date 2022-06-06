@@ -5,10 +5,15 @@ import {Routes, RouterModule} from '@angular/router';
 import {SearchCarComponent} from './car-management/search-car/search-car.component';
 import {CarManagementRoutingModule} from './car-management/car-management-routing.module';
 import {MapListParkingComponent} from './map-parking/map-list-parking/map-list-parking.component';
-
+import {StatisticComponent} from './statistic/statistic/statistic.component'
 const routes: Routes = [
   {
     path: 'car', loadChildren: () => import('./car-management/car-management.module').then(mod => mod.CarManagementModule)
+  }
+  ,
+  {
+    path: 'statistic',
+    component: StatisticComponent
   }
   ,
   {
