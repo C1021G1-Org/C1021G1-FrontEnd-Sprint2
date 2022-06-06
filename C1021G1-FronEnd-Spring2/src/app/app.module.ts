@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
 import {BodyComponent} from './layout/body/body.component';
 import {HeaderComponent} from './layout/header/header.component';
@@ -19,6 +19,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
+import {CommonModule} from '@angular/common';
+import {CarManagementModule} from './car-management/car-management.module';
 
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
@@ -32,6 +34,7 @@ import {AngularFireModule} from '@angular/fire';
     SignInComponent,
     SignUpComponent,
     SidebarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,9 +50,15 @@ import {AngularFireModule} from '@angular/fire';
     BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+
+    CommonModule,
+    CarManagementModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

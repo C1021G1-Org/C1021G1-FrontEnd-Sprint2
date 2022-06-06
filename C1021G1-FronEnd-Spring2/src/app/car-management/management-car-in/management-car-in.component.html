@@ -1,51 +1,47 @@
-<div id="container">
-
-  <form class="form">
+<div id="container" >
+  <form [formGroup]="formTicket">
     <div class="layout">
       <h1>
         <strong>Quản lý xe vào ra</strong>
       </h1>
       <div class="row">
         <div class="col-5">
-          <label for="name" style="font-weight: bold">Biến số xe:</label>
+          <label style="font-weight: bold">Biến số xe:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
-            <input type="text" id="name" name="name" class="form-control"
-            ><span class="bar"></span></div>
+            <input type="text" #carPlate formControlName="carPlate" class="form-control" ><span class="bar"></span></div>
         </div>
         <div class="col-5">
-
-          <label for="code" style="font-weight: bold">Tên xe:</label>
+          <label for="name" style="font-weight: bold">Tên xe:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
-            <input type="text" id="code" class="form-control" >
+            <input type="text" id="name" class="form-control" formControlName="carName">
           </div>
-
         </div>
-
       </div>
+
       <div class="row">
         <div class="col-5">
           <label for="nameCus" style="font-weight: bold">Tên khách hàng:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
-            <input type="text" class="form-control" id="nameCus">
+            <input type="text" class="form-control" id="nameCus" formControlName="customerName">
           </div>
         </div>
         <div class="col-5">
           <label for="type" style="font-weight: bold">Loại vé:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="material-icons" style="font-size:24px">merge_type</i></a>
-            <select id="type" class="form-select">
-              <option selected>Năm</option>
-              <option>Tháng</option>
-              <option>Ngày</option>
+            <select #ticketType id="type" class="form-select" formControlName="idTicketType" (change)="setTicketType(ticketType)">
+                <option value="" >Loại vé</option>
+                <option value="2" [selected]="formTicket.get('idTicketType').value == 2">Tháng</option>
+                <option value="1" [selected]="formTicket.get('idTicketType').value == 1">Ngày</option>
             </select>
           </div>
         </div>
         <div class="col-2">
           <br>
-          <input type="button" class="form-control" style="background: #71b7e6; color: white" value="Tìm xe">
+          <input type="button" (click)="openDialog(carPlate.value)" class="form-control" style="background: #71b7e6; color: white" value="Tìm xe">
         </div>
       </div>
       <div class="row">
@@ -54,7 +50,7 @@
           <label for="codeCar" style="font-weight: bold">Hãng xe:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-id-card"></i></a>
-            <input type="text" id="codeCar" class="form-control">
+            <input type="text" id="codeCar" class="form-control" formControlName="carCompany">
           </div>
 
         </div>
@@ -62,7 +58,7 @@
           <label for="password" style="font-weight: bold">Số điện thoại:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
-            <input type="tel" class="form-control" id="password">
+            <input type="tel" class="form-control" id="password" formControlName="customerPhone">
           </div>
         </div>
 
@@ -73,7 +69,7 @@
           <label for="birthday" style="font-weight: bold">Thời gian có hiệu lực:</label>
           <div class="input-group">
             <a class="input-group-text"><i class='far fa-clock' style='font-size:24px'></i></a>
-            <input type="datetime-local" class="form-control" id="birthday">
+            <input type="text" class="form-control" id="birthday" formControlName="startDate">
           </div>
 
         </div>
@@ -82,11 +78,10 @@
           <label for="phone" style="font-weight: bold">Thời gian hết hiệu lực:</label>
           <div class="input-group">
             <a class="input-group-text"><i class='far fa-clock' style='font-size:24px'></i></a>
-            <input type="datetime-local" class="form-control text-end" id="phone">
+            <input type="text" class="form-control " id="phone" formControlName="endDate">
           </div>
         </div>
       </div>
-
 
 
       <div class="row">
@@ -94,46 +89,58 @@
           <label for="position" style="font-weight: bold">Tầng:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="material-icons" style="font-size:24px">location_on</i></a>
-            <select id="position" class="form-select">
-              <option selected>1</option>
-              <option>2</option>
-              <option>3</option>
-            </select>
+            <input type="tel" class="form-control" id="position" formControlName="idFloor">
           </div>
         </div>
         <div class="col-5">
           <label for="location" style="font-weight: bold">Vị trí đỗ:</label>
           <div class="input-group">
             <a class="input-group-text"><i class="material-icons" style="font-size:24px">location_on</i></a>
-            <input type="tel" class="form-control" id="location">
+            <input type="tel" class="form-control" id="location" formControlName="idLocation">
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-4" align="center">
-          <i class='fas fa-car' style='font-size:200px'></i>
-<!--          {{employee.genderEmployee ? 'Nam' : employee.genderEmployee == false ? 'Nữ' : 'Khác'}}-->
-          <img style="width: 200px;height: 200px" alt="avatar" id="imageNews" [src]="imageThis">
-          <input style=" border: none; padding: 10px; border-radius: 3px" type ="file"
-                 class = "form-control-file" (change)="showPreview($event)">
+          <div *ngIf="checkImgCarIn != true">
+            <i class='fas fa-car' style='font-size:200px'></i>
+          </div>
+          <img *ngIf="checkImgCarIn == true" style="width: 200px;height: 200px" alt="avatar" id="imageNews" [src]="imageThis">
+          <input #imgIn value="a" style=" border: none; padding: 10px; border-radius: 3px" type="file"
+                 class="form-control-file" (change)=" showPreview($event)" >
+<!--          <button type="button" class="btn btn-primary" (click)="updateImage()"></button>-->
         </div>
-
 
         <div class="col-2" align="center">
           <div style="border: 1px solid black; height: 200px;width: 0px"></div>
         </div>
+
         <div class="col-4" align="center">
-          <i class='fas fa-car' style='font-size:200px'></i>
-          <button style=" border: none; background: #71b7e6; color: white;padding: 10px; border-radius: 3px">Quét ảnh</button>
+          <div *ngIf="checkImgCarOut != true">
+            <i class='fas fa-car' style='font-size:200px'></i>
+          </div>
+          <img *ngIf="checkImgCarOut == true" style="width: 200px;height: 200px; " alt="avatar" id="imageNews1" [src]="imageThis">
+          <button style=" border: none; padding: 10px; border-radius: 3px" type="button" value="hienAnh"
+                 class="form-control-file" >Hiện ảnh</button>
         </div>
+
+
+
+<!--        <div class="col-4" align="center">-->
+<!--          <i class='fas fa-car' style='font-size:200px'></i>-->
+<!--          <button style=" border: none; background: #71b7e6; color: white;padding: 10px; border-radius: 3px" >Quét ảnh-->
+<!--          </button>-->
+<!--        </div>-->
       </div>
 
       <div class="row">
+
         <div class="col-5">
           <label for="inTime" style="font-weight: bold">Thời gian vào:</label>
           <div class="input-group">
             <a class="input-group-text"><i class='far fa-clock' style='font-size:24px'></i></a>
-            <input type="datetime-local" class="form-control" id="inTime">
+            <input type="text" class="form-control" id="inTime" formControlName="timeIn">
           </div>
 
         </div>
@@ -142,7 +149,7 @@
           <label for="outTime" style="font-weight: bold">Thời gian ra:</label>
           <div class="input-group">
             <a class="input-group-text"><i class='far fa-clock' style='font-size:24px'></i></a>
-            <input type="datetime-local" class="form-control text-end" id="outTime">
+            <input type="text" class="form-control text-end" id="outTime" formControlName="timeOut">
           </div>
         </div>
       </div>
@@ -152,8 +159,9 @@
         <div class="col-5 text-end">
           <button class="btn button-cancel">Huỷ</button>
         </div>
-        <div class="col-5">
-          <button class="btn button-confirm" type="submit">Đăng kí đổ xe</button>
+        <div class="col-5" >
+          <button *ngIf="!checkImgCarOut" class="btn button-confirm" type="submit" (click)="register()">Đăng kí đổ xe</button>
+          <button *ngIf="checkImgCarOut" class="btn button-confirm" type="submit" (click)="pay()">Thanh toán</button>
         </div>
       </div>
     </div>
