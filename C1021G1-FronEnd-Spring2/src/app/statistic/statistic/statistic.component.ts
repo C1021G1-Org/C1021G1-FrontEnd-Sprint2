@@ -24,6 +24,9 @@ export class StatisticComponent implements OnInit {
   listPrice: Price[] = [];
   minMaxYear: MinmaxYear={};
   yearArr: number[] = [];
+
+  isDisplayContainer: boolean = false;
+
   @ViewChild('pdfTable') pdfTable: ElementRef;
   constructor(
     private service:StatisticServiceService
@@ -33,7 +36,7 @@ export class StatisticComponent implements OnInit {
     this.setMinmaxYear();
   }
 
-setMinmaxYear(){
+  setMinmaxYear(){
     this.service.minmax().subscribe(data=>{
       this.minMaxYear = data;
       console.log(this.minMaxYear);
@@ -42,7 +45,7 @@ setMinmaxYear(){
         console.log(this.yearArr[i]);
       }
     })
-}
+  }
 
   generatePDF() {
     var data = document.getElementById('contentToConvert');
@@ -73,13 +76,18 @@ setMinmaxYear(){
     }
     statistic.year = y;
     statistic.quarter = x;
-    this.service.statistic(statistic).subscribe(data =>{
-      console.log(data);
-      this.listPrice = data;
-      this.getReport();
-    });
 
-  }
+    if(y.length==4){
+      this.isDisplayContainer = true;
+      this.service.statistic(statistic).subscribe(data =>{
+        console.log(data);
+        this.listPrice = data;
+        this.getReport();
+      });
+    }else this.isDisplayContainer = false;
+
+    }
+
   getReport(){
     // Create the chart
     this.chart = {
@@ -88,11 +96,12 @@ setMinmaxYear(){
       },
       title: {
         align: 'left',
-        text: 'Browser market shares. January, 2018'
+
+        text: 'Bảng thống kê doanh thu'
       },
       subtitle: {
         align: 'left',
-        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+        text: 'Biểu đồ doanh thu của công ty</a>'
       },
       accessibility: {
         announceNewData: {
@@ -104,7 +113,7 @@ setMinmaxYear(){
       },
       yAxis: {
         title: {
-          text: 'Total percent market share'
+          text: 'Ti lệ theo từng phần'
         }
 
       },
@@ -163,5 +172,12 @@ setMinmaxYear(){
       };
     }
     Highcharts.chart('container', this.chart);
+
+
+  }
+
+  hidden() {
+    this.isDisplayContainer = false;
+
   }
 }

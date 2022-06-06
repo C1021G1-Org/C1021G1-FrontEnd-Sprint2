@@ -15,7 +15,13 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+
+import {CdkTableModule} from '@angular/cdk/table';
+import {CustomerModule} from "./customer/customer.module";
+import {CarModule} from "./car/car.module";
+import {ForgottenPasswordComponent} from './login/forgotted-password/forgotten-password.component';
+import {MatIconModule} from '@angular/material/icon';
+
 import {HighchartsChartModule} from "highcharts-angular";
 import {CommonModule} from '@angular/common';
 import {CarManagementModule} from './car-management/car-management.module';
@@ -26,14 +32,11 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatBadgeModule} from "@angular/material/badge";
-import {MatIconModule} from "@angular/material/icon";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
-import {CdkTableModule} from "@angular/cdk/table";
-import {TicketModule} from "./ticket/ticket.module";
-import {RouterModule, Routes } from '@angular/router';
+import {StatisticComponent} from './statistic/statistic/statistic.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +46,10 @@ import {RouterModule, Routes } from '@angular/router';
     SignInComponent,
     SignUpComponent,
     SidebarComponent,
-    ]
-,
+    ForgottenPasswordComponent,
+    StatisticComponent
+  ],
+
   imports: [
     HighchartsChartModule,
     BrowserModule,
@@ -68,10 +73,14 @@ import {RouterModule, Routes } from '@angular/router';
     NgxPaginationModule,
     MatDialogModule,
     CdkTableModule,
+    CustomerModule,
+    CarModule,
+    MatIconModule,
     CommonModule,
     CarManagementModule,
     LocationModule,
     MapParkingModule,
+
 
 
   ],

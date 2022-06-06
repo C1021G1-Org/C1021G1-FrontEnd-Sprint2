@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NewsService} from "../../new/news.service";
 import {New} from '../../new/model/new';
-
-
 let WOW;
 
 @Component({

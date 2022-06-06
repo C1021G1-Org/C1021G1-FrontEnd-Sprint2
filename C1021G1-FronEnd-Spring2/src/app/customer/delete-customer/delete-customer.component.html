@@ -1,1 +1,30 @@
-<p>delete-customer works!</p>
+<div class="container-fluid">
+  <table class="table table-bordered">
+    <thead class="table-danger">
+    <tr>
+      <th class="text-center" colspan="2">
+        <h2>Xác nhận xóa </h2>
+      </th>
+    </tr>
+    </thead>
+    <tbody class="table-borderless">
+    <tr>
+      <td colspan="2" class="table-borderless">
+        <span style="color: red">Bạn có muốn xóa Khách hàng này không ?</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">Mã Khách Hàng: <strong>{{customer.code}}</strong></td>
+      <td class="text-center">Họ Tên: <strong>{{customer.name}}</strong></td>
+    </tr>
+    <tr>
+      <td colspan="3" class="text-center">
+        <a class="btn btn-secondary m-3" (click)="close()" >Không</a>
+        <a class="btn btn-danger" (click)="delete()">Có</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <span style="color: red;text-align: right">*Lưu ý: Thông tin không được hoàn tác</span>
+
+</div>

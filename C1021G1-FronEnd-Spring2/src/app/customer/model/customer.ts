@@ -1,16 +1,17 @@
-import {Car} from "../../car/model/car";
+import {Ward} from "./ward";
 
 export interface Customer {
-  id:number;
-  code:string;
-  name:string;
-  birthday:string;
-  idCard:string;
-  email:string;
-  phone:string;
-  address:string;
-  gender:boolean;
-  delFlag:boolean;
-  car:Car;
-
+  id?: number;
+  code?: string;
+  name?: string;
+  birthday?: string;
+  idCard?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  gender?: boolean;
+  delFlag?: boolean;
+  ward?: Ward
 }
+
+
