@@ -1,23 +1,13 @@
-
 <p  style="font-weight: bold;color: red; font-size: 20px"><span>Vui lòng đăng ký để đặt vị trí!</span></p>
 <p style="color: red; font-size: 21px; font-weight: bold">Vị trí đổ xe có mã: <span>{{this.data.datal.code}}</span></p>
-<!--<select class="form-select" aria-label="Default select example" style="width: 225px">-->
-<!--  <option selected>Chọn loại xe</option>-->
-<!--  <option value="1">HYD-011</option>-->
-<!--  <option value="2">MAZ-013</option>-->
-<!--  <option value="3">MEC-912</option>-->
-<!--</select>-->
-<!--<div>-->
-<!--  <select class="form-select mt-3" aria-label="Default select example" style="width: 225px; ">-->
-<!--    <option selected>Thanh toán theo</option>-->
-<!--    <option style="background-color: #fdecb8" value="1">Paypal</option>-->
-<!--    <option style="background-color: #cf9efd" value="2">Momo</option>-->
-<!--    <option style="background-color: #70beff" value="3">Ví Zalo</option>-->
-<!--  </select>-->
-<!--</div>-->
+<input list="car" class="form-control" placeholder="Nhập hoặc chọn xe" style="width: 225px">
+<datalist id="car" >
+  <option *ngFor="let item of addCar" value="{{item.name}} | {{item.carPlate}} ">
+</datalist>
 <div class="row mt-3">
   <div class="col d-flex">
     <button mat-dialog-close class="btn button-cancel m-1">Hủy</button>
+    <button mat-dialog-close class="btn button-confirm m-1">Lấy mã</button>
     <button class="btn button-confirm m-1" (click)="UpdateLocation()">Đăng ký</button>
   </div>
 </div>
