@@ -167,31 +167,6 @@ button {
 .formgroup b{
   font-size: 20px;
 }
-/* The Modal (background) */
-.modal {
-  display: none; /* mặc định được ẩn đi */
-  /*position: fixed; !* vị trí cố định *!*/
-  z-index: 1; /* Ưu tiên hiển thị trên cùng */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding-top: 100px;
-  width: 50%;
-  height: 60%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 50%;
-}
 
 /* The Close Button */
 .close {
@@ -207,7 +182,16 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
-mat-dialog-container {
-  background-color: greenyellow !important;
+.mat-dialog-container{
+  background-color: #0a58ca !important;
+  padding: 0px;
 }
+
+.container{
+  /*background-image: url("https://tcgland.vn/storage/upload/%E1%BA%A2nh%20d%E1%BB%B1%20%C3%A1n-02.jpg");*/
+  background-size: cover;
+  background: linear-gradient(117deg, rgba(162, 233, 252) 0%, rgba(238, 240, 213) 50%, rgba(241, 247, 166) 99%) !important;
+  width: 1500px;
+}
+
 

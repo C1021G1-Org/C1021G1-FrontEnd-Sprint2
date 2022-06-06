@@ -1,8 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {LoginService} from '../login.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {ForgottenPasswordComponent} from '../forgotted-password/forgotten-password.component';
+import {SignUpComponent} from '../sign-up/sign-up.component';
+import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,18 +21,22 @@ export class SignInComponent implements OnInit {
   roles: any[];
   loginOk: boolean;
   checkRememberMe: any;
+  checkForm: boolean;
+  errorEmail: boolean;
 
   constructor(public dialog: MatDialog,
               private loginService: LoginService,
               public dialogRef: MatDialogRef<SignInComponent>,
-              @Inject(MAT_DIALOG_DATA) public invalid: any,) { }
+              @Inject(MAT_DIALOG_DATA) public invalid: any,
+              private _snackBar: MatSnackBar,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.email = localStorage.getItem('email');
     console.log(this.email);
     this.userForm = new FormGroup({
       email: new FormControl(this.email,[Validators.email,Validators.required]),
-      password: new FormControl('',Validators.required)
+      password: new FormControl('',[Validators.required,this.checkPass])
     })
   }
 
@@ -83,7 +90,7 @@ export class SignInComponent implements OnInit {
           console.log(e)
         }
 
-        // this.onNoClick()
+        this.onNoClick();
       })
     }
   }
@@ -115,6 +122,72 @@ export class SignInComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+    });
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
+
+  }
+
+  openDialogSignUp() {
+this.dialogRef.close();
+
+  }
+
+  checkPass(psInput: AbstractControl): ValidationErrors{
+    let check = true;
+    let password = psInput.value;
+    if(password.length<8&&password.length>0){
+      return{
+        'errorPs': true,
+      }
+    }
+
+    for(let i = 0;i<password.length;i++){
+      if(!isNaN(password[i])){
+        console.log(password[i]);
+        check = true;
+        break;
+      }
+      check = false;
+    }
+    if(!check){
+      return{
+        'errorPs': true,
+      }
+    }
+    for(let i = 0;i<password.length;i++){
+      if((isNaN(password[i]))&&(password[i] == password[i].toUpperCase())){
+        check = true;
+        break;
+      }
+      check = false;
+    }
+    if(!check){
+      return{
+        'errorPs': true,
+      }
+    }
+
+    for(let i = 0;i<password.length;i++){
+      if((isNaN(password[i]))&&(password[i] == password[i].toLowerCase())){
+        check = true;
+        break;
+      }
+      check = false;
+    }
+    if(!check){
+      return{
+        'errorPs': true,
+      }
+    }
+    return null;
+  }
+
+  openSnackBar() {
+    this._snackBar.open("Đăng nhập thành công", "OK", {
+      duration: 1000,
     });
   }
 }

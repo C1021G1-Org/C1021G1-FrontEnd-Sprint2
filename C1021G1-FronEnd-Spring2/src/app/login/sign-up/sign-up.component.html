@@ -13,6 +13,9 @@
             <a class="input-group-text"><i class="fa-solid fa-user"></i></a>
             <input type="text" id="name" name="name" formControlName="name" class="form-control" required
                    placeholder="VD: Nguyễn Văn A"><span class="bar"></span></div>
+          <p style="color: red" *ngIf="signUpForm.get('name').errors?.required && signUpForm.get('name').touched || signUpForm.get('name').errors?.required &&checkForm">Trường này không được phép để trống.</p>
+          <p style="color: red" *ngIf="signUpForm.get('name').errors?.pattern && signUpForm.get('name').touched ">Tên phải có độ dài từ 8 đến 50 kí tự.</p>
+
         </div>
         <div class="col-6">
           <label for="address">Số nhà, tên đường: <span style="color:red">(*)</span> </label>
@@ -20,6 +23,11 @@
             <a class="input-group-text"><i class="fa-solid fa-location-dot"></i></a>
             <input type="text" class="form-control" id="address" formControlName="address" placeholder="VD: 295 Nguyễn Tất Thành">
           </div>
+          <p *ngIf="signUpForm.get('address').errors?.required && signUpForm.get('address').touched
+            || checkForm &&signUpForm.get('address').errors?.required" style="color: red" >Trường này không được phép để trống.</p>
+          <p style="color: red" *ngIf="(signUpForm.get('address').errors?.minlength
+          || signUpForm.get('address').errors?.maxlength) &&  signUpForm.get('address').touched ">
+            Địa chỉ phải có độ dài từ 8 đến 50 kí tự.</p>
         </div>
       </div>
       <div class="row">
@@ -53,83 +61,105 @@
           <label for="birthday">Ngày sinh: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-cake-candles"></i></a>
-            <input type="date" class="form-control" id="birthday">
-          </div>
-
+            <input type="date" formControlName="birthday" class="form-control" id="birthday">
+            <p style="color: red" *ngIf="signUpForm.get('birthday').errors?.required && signUpForm.get('birthday').touched
+            || signUpForm.get('birthday').errors?.required &&checkForm">Trường này không được phép để trống.</p>
+            <p style="color: red" *ngIf="signUpForm.get('birthday').errors?.errorAge && signUpForm.get('birthday').touched ">
+              Tuổi phải có lớn hơn 18 và nhỏ hơn 150.</div>
         </div>
         <div class="col-4">
 
           <label for="phone">Số điện thoại: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-phone"></i></a>
-            <input type="tel" class="form-control text-end" id="phone" placeholder="VD: 0909123123">
+            <input type="tel" class="form-control text-end" formControlName="phone" id="phone" placeholder="VD: 0909123123">
+            <p style="color: red" *ngIf="signUpForm.get('phone').errors?.required && signUpForm.get('phone').touched|| checkForm&&signUpForm.get('phone').errors?.required">Trường này không được phép để trống.</p>
+            <p style="color: red" *ngIf="signUpForm.get('phone').errors?.pattern && signUpForm.get('phone').touched">Số điện thoại phải có định dạng +84/09X-XXXX-XXX.</p>
+            <p *ngIf="errorPhone" style="color: red" >Số điện thoại này đã được sủ dụng.</p>
           </div>
         </div>
 
         <div class="col-4">
-          <label>Id card: <span style="color:red">(*)</span> </label>
+          <label>Hộ chiếu / CMND: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-user-tie"></i></a>
-          <input type="text" class="form-control text-end" id="idCard" placeholder="VD: 201-XXX-XXX">
+          <input type="text" class="form-control text-end" formControlName="idCard" id="idCard" placeholder="VD: 201-XXX-XXX">
+            <p style="color: red" *ngIf="signUpForm.get('idCard').errors?.required && signUpForm.get('idCard').touched
+            || signUpForm.get('idCard').errors?.required &&checkForm">Trường này không được phép để trống.</p>
+            <p style="color: red" *ngIf="signUpForm.get('idCard').errors?.pattern && signUpForm.get('idCard').touched">
+              Trường này phải có dạng XXXX-XXXX-XXXX.</p>
+            <p *ngIf="errorIdCard" style="color: red" >CMND/idCard này đã được sủ dụng.</p>
           </div>
         </div>
       </div>
 
-
-
       <div class="row">
-        <div class="col-7">
+        <div class="col-6">
           <label for="email">Email: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-envelope"></i></a>
-            <input type="email" class="form-control" id="email" placeholder="VD: codegym@gmail.com">
-          </div>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="VD: codegym@gmail.com">
 
+          </div>
+          <p *ngIf="signUpForm.get('email').errors?.required && signUpForm.get('email').touched
+            || checkForm &&signUpForm.get('email').errors?.required" style="color: red" >Trường này không được phép để trống.</p>
+          <p *ngIf="signUpForm.get('email').errors?.email && signUpForm.get('email').touched" style="color: red">
+            Vui lòng nhập đúng format email và không chứa ký tự đặc biệt!</p>
+          <p *ngIf="errorEmail" style="color: red" >Email này đã được sử dụng.</p>
         </div>
 
-        <div class="col-5">
+        <div class="col-6">
           <label for="password">Mật khẩu: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-key"></i></a>
-            <input type="password" class="form-control" id="password" value="123123123">
+            <input type="password" class="form-control" formControlName="password" id="password" value="123123123">
             <a class="input-group-text" style="background-color: white"
                onmouseover="showPassword()" onmouseleave="hidePassword()">
               <i class="fa-solid fa-eye"></i>
             </a>
-          </div>
 
+          </div>
+          <p *ngIf="signUpForm.get('password').errors?.required && signUpForm.get('password').touched
+            || checkForm&&signUpForm.get('password').errors?.required" style="color: red">Trường này không được để trống</p>
+          <p *ngIf="signUpForm.get('password').errors?.errorPs && signUpForm.get('password').touched" style="color: red">
+            Mật khẩu phải từ 8-20 ký tự, có bao gồm số, chữ viết thường và viết hoa</p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-4">
-          <label for="province">Thành phố/Tỉnh: <span style="color:red">(*)</span> </label>
+          <label >Thành phố/Tỉnh: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select (change)="getIdProvince(idProvince)" id="province" class="form-select" #idProvince>
-              <option  value="{{item.id}}" *ngFor="let item of listProvince">{{item.name}}</option>
+            <select class="form-control"  required="" (change)="getDistrictById($event.target.value)">
+              <option value="" selected>Chọn Tỉnh/Thành phố</option>
+              <option  *ngFor="let province of listProvince"
+                       value="{{province.id}}">{{province.name}}</option>
             </select>
           </div>
         </div>
         <div class="col-4">
-          <label for="district">Quận/Huyện: <span style="color:red">(*)</span> </label>
+          <label>Quận/Huyện: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select (change)="getIdDistrict(idDistrict)" id="district" #idDistrict class="form-select">
-              <option value="{{item.id}}" *ngFor="let item of listDistrict">
-                {{item.name}}
-              </option>
+            <select class="form-control"  required="" (change)="getWardById($event.target.value)">
+              <option value="" selected>Chọn Quận/Huyện</option>
+              <option  *ngFor="let district of listDistrict"
+                       value="{{district.id}}">{{district.name}}</option>
             </select>
           </div>
         </div>
         <div class="col-4">
-          <label for="ward">Phường/Xã: <span style="color:red">(*)</span> </label>
+          <label>Phường/Xã: <span style="color:red">(*)</span> </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fa-solid fa-building"></i></a>
-            <select  id="ward" class="form-select" >
-              <option *ngFor="let item of listWard">
-                {{item.name}}
-              </option>
+            <select class="form-control" formControlName="ward" name="ward" required="" (change)="readWard($event.target.value)">
+              <option value="" selected>Chọn Phường/Xã</option>
+              <ng-container *ngIf="listWard">
+                <option  *ngFor="let ward of listWard" value="{{ward.id}}"
+                >{{ward.name}}</option>
+              </ng-container>
+
             </select>
           </div>
         </div>
@@ -140,7 +170,7 @@
           <button class="btn btn-danger">Huỷ</button>
         </div>
         <div class="col-6">
-          <button class="btn btn-dark" type="submit">Thêm mới</button>
+          <button class="btn btn-dark" (click)="openSnackBar()" type="submit">Thêm mới</button>
         </div>
       </div>
     </div>

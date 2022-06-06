@@ -7,6 +7,7 @@ import {SignInComponent} from './login/sign-in/sign-in.component';
 
 import {MapListParkingComponent} from "./map-parking/map-list-parking/map-list-parking.component";
 import { CustomerRoutingModule } from './customer/customer-routing.module';
+import {BodyComponent} from './layout/body/body.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,12 @@ const routes: Routes = [
   },
   {
     path: 'employee', loadChildren: () => import ('./employee/employee.module').then(module => module.EmployeeModule)},
+  {
+    path: 'home',
+    component: BodyComponent
+  },
 ];
+
 
 
 @NgModule({

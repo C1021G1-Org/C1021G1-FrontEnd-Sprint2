@@ -5,13 +5,14 @@ import {ForgotPass} from './model/forgot-pass';
 import {SignIn} from './model/sign-in';
 import {CustomerService} from '../customer/customer.service';
 import {Ward} from '../customer/model/ward';
+import {CustomerAccountDto} from './model/customer-account-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   SIGN_IN_URL = 'http://localhost:8080/api/signIn';
-  SIGN_UP_URL = "http://localhost:8080/api/SignUp";
+  SIGN_UP_URL = "http://localhost:8080/api/signUp";
   FORGET_PASSWORD_URL = "http://localhost:8080/api/forgetPassword";
   WARD_LIST = "http://localhost:8080/api/customer/ward-list/";
   constructor(private httpClient: HttpClient,
@@ -40,10 +41,10 @@ export class LoginService {
     return this.httpClient.post<SignInResult>(this.SIGN_IN_URL,body,{headers: header});
   }
 
-  signUp(signUpForm:any){
+  signUp(customer:CustomerAccountDto){
     const header = { 'content-type': 'application/json'};
-    const body = JSON.stringify(signUpForm);
-    return this.httpClient.post(this.SIGN_UP_URL,body,{headers:header})
+    const body = JSON.stringify(customer);
+    return this.httpClient.post<CustomerAccountDto>(this.SIGN_UP_URL,body,{headers:header})
   }
 
 }

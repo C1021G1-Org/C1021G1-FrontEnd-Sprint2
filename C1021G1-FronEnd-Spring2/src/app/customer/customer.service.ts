@@ -8,6 +8,7 @@ import {District} from "./model/district";
 import {Province} from "./model/province";
 import { Observable } from 'rxjs';
 import {Car} from "../car/model/car";
+import {CustomerDtoCreate} from "./dto/customer-dto-create";
 
 
 @Injectable({
@@ -26,27 +27,35 @@ export class CustomerService {
   }
 
   //TrongHD sửa thông tin khách hàng
-  updateCustomer(id: number, data) {
-    return this.httpClient.patch<CustomerDtoUpdate>(this.API_CUSTOMER + '/update/' + id, data);
+
+  updateCustomerDto(id: number, data) {
+    const header = {
+      'content-type': 'application/json',
+    };
+    return this.httpClient.patch<CustomerDtoUpdate>(this.API_CUSTOMER + '/update/' + id, JSON.stringify(data),{headers: header});
+  }
+  createCustomer(customer: CustomerDtoCreate){
+    return this.httpClient.post<CustomerDtoCreate>(this.API_CUSTOMER + '/create', customer);
   }
 
   getListProvince() {
-
     return this.httpClient.get<Province[]>(this.URL + '/province/province-list');
   }
 
   getListDistrict() {
-    console.log('vao roi');
     return this.httpClient.get<District[]>(this.URL + '/district/district-list');
   }
 
   getListWard() {
-    return this.httpClient.get<Ward[]>(this.URL + '/ward/ward-list');
+    return this.httpClient.get<Ward[]>(this.URL + '/ward/ward-list')
   }
 
   getDistrict(id : number) {
     return this.httpClient.get<District[]>(this.URL + '/district/' + id);
   }
+
+
+
 
   getWard(id : number) {
     return this.httpClient.get<Ward[]>(this.URL + '/ward/' + id)
@@ -77,7 +86,7 @@ export class CustomerService {
     console.log("phone: " + phone);
     console.log("idcard: " + idCard);
 
-    return this.httpClient.get<any>(this.API_CUSTOMER +'/search?startDate=' + startDate +'&endDate=' + endDate +'&code=' +code+ '&phone=' + phone + '&id_card=' + idCard + '&page='+ page)
+    return this.httpClient.get<any>(this.API_CUSTOMER +'/search?startDate=' + startDate +'&endDate=' + endDate +'&code=' +code+ '&phone=' + phone + '&idCard=' + idCard + '&page='+ page)
   }
 
   getCardByIdCustomer(id:number){
@@ -90,6 +99,9 @@ export class CustomerService {
   }
 
 
+  // Bảo lấy xe với id customer null
+  getCarByIdCustomerNull(){
+    return this.httpClient.get<Car[]>(this.URL + "/car/list-car")
+  }
+
 }
-
-

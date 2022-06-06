@@ -43,9 +43,6 @@ export class UpdateCustomerComponent implements OnInit {
     })
 
 
-
-
-
     this.activatedRoute.paramMap.subscribe((data: ParamMap) => {
       this.id = data.get('id');
       this.customerService.getInfo(this.id).subscribe(value => {
@@ -78,7 +75,7 @@ export class UpdateCustomerComponent implements OnInit {
 
   updateCustomer() {
     if (!this.editCustomerForm.invalid) {
-      this.customerService.updateCustomer(this.activatedRoute.snapshot.params.id, this.editCustomerForm.value).subscribe(() => {
+      this.customerService.updateCustomerDto(this.activatedRoute.snapshot.params.id, this.editCustomerForm.value).subscribe(() => {
         this.snackBar.open('Chỉnh sửa thông tin khách hàng thành công!', '', {
           duration: 2000
         });
