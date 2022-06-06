@@ -55,7 +55,7 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   reset(){
-    this.router.navigateByUrl("/employee");
+    this.router.navigateByUrl("/employee/list");
   }
 
 
