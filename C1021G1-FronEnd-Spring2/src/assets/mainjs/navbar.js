@@ -244,5 +244,3 @@ document.querySelectorAll(".projcard-description").forEach(function(box) {
 });
 
 //Card list body
-
-

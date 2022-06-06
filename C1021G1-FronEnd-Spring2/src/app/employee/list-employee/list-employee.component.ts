@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {DeleteEmployeeComponent} from "../delete-employee/delete-employee.component";
 import { DetailsComponent } from '../details/details.component';
+import { Router } from '@angular/router';
 
 
 
@@ -27,12 +28,12 @@ export class ListEmployeeComponent implements OnInit {
   checkNull: Boolean = false;
 
 
-  constructor(private employeeService: EmployeeService,     private formBuilder: FormBuilder,  public dialog: MatDialog,
-              public snackBar: MatSnackBar) {
+  constructor(private employeeService: EmployeeService, private formBuilder: FormBuilder,  public dialog: MatDialog,
+              public snackBar: MatSnackBar,private router : Router) {
   }
 
   ngOnInit(): void {
-    this.isSearch = true;
+    this.checkNull = false;
     this.employeeService.getAllEmployee(0).subscribe(data => {
       // console.log(data)
       this.employeeList = data.content;
@@ -52,6 +53,11 @@ export class ListEmployeeComponent implements OnInit {
       code: [''],
     });
   }
+
+  reset(){
+    this.router.navigateByUrl("/employee/");
+  }
+
 
 
   search(pageNumber: any) {
@@ -135,7 +141,7 @@ export class ListEmployeeComponent implements OnInit {
 
 
   movingNext() {
-    this.indexPagination = 2;
+    this.indexPagination +=2;
     this.getEmployeePerPage(this.indexPagination);
 
   }
@@ -158,6 +164,8 @@ export class ListEmployeeComponent implements OnInit {
     }
 
   }
+  
+  
 
 
   openDialog(id) {

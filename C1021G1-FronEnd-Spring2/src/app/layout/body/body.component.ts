@@ -1,3 +1,6 @@
+import { Component, OnInit } from '@angular/core';
+import {NewsService} from "../../new/news.service";
+declare var WOW;
 import {Component, OnInit} from '@angular/core';
 import {NewsService} from "../../new/news.service";
 import {New} from '../../new/model/new';
@@ -10,7 +13,11 @@ let WOW;
 })
 export class BodyComponent implements OnInit {
   list8News: New[];
+  constructor(private newsService: NewsService) { }
 
+
+  wow() {
+    new WOW().init();
   constructor(private newsService: NewsService) {
   }
 
@@ -19,10 +26,6 @@ export class BodyComponent implements OnInit {
     console.log(this.list8News)
     this.wow();
 
-  }
-
-  wow() {
-    new WOW().init();
   }
 
   getAllNews() {
@@ -36,6 +39,9 @@ export class BodyComponent implements OnInit {
       console.log("image: " + this.list8News[0].img)
     })
 
-  }
 
+  }
+  getAll(){
+
+  }
 }

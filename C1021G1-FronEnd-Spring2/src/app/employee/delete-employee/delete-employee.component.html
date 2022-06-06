@@ -1,15 +1,15 @@
 <div class="container-fluid">
-  <table class="table table-bordered">
-    <thead class="table-danger">
+  <table class="table">
+    <thead>
     <tr>
-      <th class="text-center" colspan="2">
-        <h2>Xác nhận xóa </h2>
+      <th class="text-center" id="title" colspan="2">
+        Xác nhận xóa
       </th>
     </tr>
     </thead>
-    <tbody class="table-borderless">
+    <tbody style="border: 2px">
     <tr>
-      <td colspan="2" class="table-borderless">
+      <td colspan="2">
         <span style="color: red">Bạn có muốn xóa nhân viên này không ?</span>
       </td>
     </tr>
@@ -18,13 +18,16 @@
       <td class="text-center">Họ Tên: <strong>{{employee.name}}</strong></td>
     </tr>
     <tr>
-      <td colspan="3" class="text-center">
-        <a class="btn btn-dark m-3" (click)="onNoClick()" >Không</a>
+      <td colspan="2"><span style="color: red;text-align: right">*Lưu ý: Thông tin không được hoàn tác</span>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <a class="btn btn-dark m-3" (click)="onNoClick()">Không</a>
         <a class="btn btn-danger" (click)="deleteEmployee()">Có</a>
       </td>
     </tr>
     </tbody>
   </table>
-  <span style="color: red;text-align: right">*Lưu ý: Thông tin không được hoàn tác</span>
-
 </div>

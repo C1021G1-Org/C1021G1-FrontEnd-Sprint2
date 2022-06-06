@@ -18,6 +18,7 @@ body {
   padding-bottom: 50px;
 }
 .footer_bottom {
+  font-size: 14px;
   font-size: 25px;
   font-weight: 300;
   line-height: 20px;
@@ -25,6 +26,7 @@ body {
   padding: 27px 0px;
 }
 .new_footer_top .company_widget p {
+  font-size: 16px;
   font-size: 25px;
   font-weight: 300;
   line-height: 28px;
@@ -133,6 +135,8 @@ a{
 .f_600 {
   font-weight: 600;
 }
+.f_size_18 {
+  font-size: 18px;
 .f_size{
   font-size: 30px;
 }

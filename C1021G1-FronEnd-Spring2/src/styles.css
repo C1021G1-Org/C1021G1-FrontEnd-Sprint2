@@ -7,6 +7,7 @@ mat-dialog-container{
   border-radius: 1.25rem !important;
 }
 
+
 :root{
   --background-dark: #2d3548;
   --text-light: rgba(255,255,255,0.6);
@@ -17,6 +18,10 @@ mat-dialog-container{
   --spacing-xl: 32px;
   --spacing-xxl: 64px;
   --width-container: 1200px;
+
+}
+
+
   text-decoration: none;
 }
 

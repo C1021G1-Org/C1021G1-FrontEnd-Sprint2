@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BodyComponent } from './layout/body/body.component';
+import {MapListParkingComponent} from "./map-parking/map-list-parking/map-list-parking.component";
 import {SignUpComponent} from './login/sign-up/sign-up.component';
 import {SignInComponent} from './login/sign-in/sign-in.component';
 import {BodyComponent} from "./layout/body/body.component";
@@ -27,8 +29,9 @@ const routes: Routes = [
   },
   {
     path: 'car', loadChildren: () => import('./car-management/car-management.module').then(mod => mod.CarManagementModule)
-
   },
+    {path: '',component: BodyComponent},
+
   {
     path: 'ticket', loadChildren: () => import ('./ticket/ticket.module').then(module => module.TicketModule)
   },
@@ -38,8 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'location', loadChildren: () => import('./location/location.module').then(module => module.LocationModule)
-  }
-  ,
+  },
   {path: 'statistic',component: StatisticComponent},
   {path:'home',component:BodyComponent},
   {
@@ -47,6 +49,7 @@ const routes: Routes = [
     component: SearchCarComponent
   }
 ]
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), CarManagementRoutingModule, TicketRoutingModule, LocationRoutingModule, EmployeeRoutingModule, CustomerRoutingModule, MapParkingRoutingModule],

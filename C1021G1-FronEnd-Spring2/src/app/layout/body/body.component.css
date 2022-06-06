@@ -16,7 +16,6 @@
   width: 100% !important;
   height: 75vh !important;;
 }
-
 /*Owl carousel*/
 .owl-carousel-inner{
   position: relative;
@@ -99,6 +98,11 @@
 }
 /*Section-devide*/
 .section-divide{
+
+  width: 100%;
+  justify-content: center;
+}
+h2 {
  width: 500px;
   justify-content: center;
 }
@@ -223,12 +227,14 @@ body {
 .projcard-container {
   margin-left: auto;
   margin-right: auto;
+  width: 1000px;
   width: 1400px;
 }
 
 .projcard {
   position: relative;
   width: 100%;
+  height: 300px;
   height: 400px;
   margin-bottom: 40px;
   border-radius: 10px;
@@ -271,6 +277,7 @@ body {
 
 .projcard-img {
   position: absolute;
+  height: 300px;
   height: 396px;
   width: 400px;
   top: 0;
@@ -288,6 +295,7 @@ body {
 }
 
 .projcard:hover .projcard-bar {
+  width: 70px;
   width: 70%;
 }
 
@@ -339,6 +347,7 @@ body {
 
 .projcard-title {
   font-family: 'Voces', 'Open Sans', arial, sans-serif;
+  font-size: 24px;
   font-size: 40px;
 }
 
@@ -349,6 +358,7 @@ body {
 
 .projcard-bar {
   left: -2px;
+  width: 50px;
   width: 10%;
   height: 5px;
   margin: 10px 0;
@@ -455,6 +465,7 @@ body {
 
 .projcard-description {
   z-index: 10;
+  font-size: 15px;
   font-size: 25px;
   color: #424242;
   height: 125px;
@@ -465,6 +476,7 @@ body {
 .projcard-tagbox {
   position: absolute;
   bottom: 3%;
+  font-size: 14px;
   font-size: 25px;
   cursor: default;
   user-select: none;
