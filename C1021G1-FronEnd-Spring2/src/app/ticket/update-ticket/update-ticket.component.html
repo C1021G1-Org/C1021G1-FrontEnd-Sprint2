@@ -78,11 +78,11 @@
           <label for="location">Vị Trí: </label>
           <div class="input-group">
             <a class="input-group-text"><i class="fas fa-parking"></i></a>
-            <select formControlName="location" id="location" class="form-control" *ngIf="locations">
-              <option *ngFor="let item of locations" [ngValue]="item.id"
+            <input list="location" type="text" class="form-control"  [value]="ticket.location.code">
+            <datalist  formControlName="location" id="location"  *ngIf="locations">
+              <option *ngFor="let item of locations" value="{{item.code}}"
                       [selected]="ticketForm.get('location').value==item.id">
-                {{item.code}}
-            </select>
+            </datalist>
           </div>
         </div>
       </div>

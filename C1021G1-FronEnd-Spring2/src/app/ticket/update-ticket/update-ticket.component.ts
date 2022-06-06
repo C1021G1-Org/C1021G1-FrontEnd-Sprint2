@@ -126,18 +126,33 @@ export class UpdateTicketComponent implements OnInit {
             this.snackBar.open(errors.error.messageEros, 'OK', {
               duration: 3000,
 
+
+        }, (errors) => {
+          this.snackBar.open(errors.message.messageError, 'OK', {
+            duration: 3000,
+
+
             })
+
           })
         this.router.navigateByUrl('/ticket/list');
       }, (errors) => {
+
+        console.log('có lỗi khi update');
+        this.snackBar.open("Không thể cập nhật", 'OK', {
+
         console.log(errors)
         console.log('coslooix khi upste');
         this.snackBar.open(errors.error.message, 'OK', {
+
           duration: 3000,
 
         })
 
       }, () => {
+
+        console.log('có lỗi khi update');
+
       });
     }
 

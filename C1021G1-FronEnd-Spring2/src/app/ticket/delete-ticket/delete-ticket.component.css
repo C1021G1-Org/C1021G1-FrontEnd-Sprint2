@@ -32,7 +32,12 @@
 }
 
 
+
+mat-dialog-container {
+  /*display: block;*/
+
 ::ng-deep.mat-dialog-container {
+
   padding: 0;
 
 }
