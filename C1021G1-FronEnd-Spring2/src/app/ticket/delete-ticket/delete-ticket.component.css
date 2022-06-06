@@ -1,0 +1,45 @@
+
+.button-confirm {
+  height: 100%;
+  width: 150px;
+  outline: none;
+  color: #fff;
+  background: linear-gradient(120deg, #71b7e6, #9b59b6);
+  border: none;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.button-confirm:hover {
+  background: linear-gradient(120deg, #9b59b6, #71b7e6);
+}
+
+.button-cancel {
+  height: 100%;
+  width: 150px;
+  outline: none;
+  color: black;
+  background: linear-gradient(120deg, white, grey);
+  border: none;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.button-cancel:hover {
+  background: linear-gradient(120deg, darkgrey, whitesmoke);
+}
+
+
+::ng-deep.mat-dialog-container {
+  padding: 0;
+
+}
+
+
+.text-center1 {
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  position: relative;
+  color: white;
+}

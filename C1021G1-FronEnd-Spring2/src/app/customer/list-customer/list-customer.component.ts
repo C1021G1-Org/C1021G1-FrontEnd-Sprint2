@@ -166,7 +166,7 @@ export class ListCustomerComponent implements OnInit {
 
   openDeleteCustomer(id: number){
       const dialogRef = this.dialog.open(DeleteCustomerComponent, {
-        width: '100%',
+        width: '40%',
         data: {datal : id},
       })
       dialogRef.afterClosed().subscribe(next =>{

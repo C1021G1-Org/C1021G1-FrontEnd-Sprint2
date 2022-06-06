@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
@@ -14,17 +13,30 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+
 import {CdkTableModule} from '@angular/cdk/table';
 import {CustomerModule} from "./customer/customer.module";
 import {CarModule} from "./car/car.module";
 import {ForgottenPasswordComponent} from './login/forgotted-password/forgotten-password.component';
 import {MatIconModule} from '@angular/material/icon';
 
-
+import {HighchartsChartModule} from "highcharts-angular";
+import {CommonModule} from '@angular/common';
+import {CarManagementModule} from './car-management/car-management.module';
+import {LocationModule} from './location/location.module';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MapParkingModule} from './map-parking/map-parking.module';
+import {MatButtonModule} from "@angular/material/button";
+import {MatListModule} from "@angular/material/list";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatSliderModule} from "@angular/material/slider";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatTabsModule} from "@angular/material/tabs";
+import {StatisticComponent} from './statistic/statistic/statistic.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,25 +46,43 @@ import {MatIconModule} from '@angular/material/icon';
     SignInComponent,
     SignUpComponent,
     SidebarComponent,
-    ForgottenPasswordComponent
+    ForgottenPasswordComponent,
+    StatisticComponent
   ],
+
   imports: [
+    HighchartsChartModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    MatSnackBarModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
+    MatButtonToggleModule,
+    MatTabsModule,
+    MatSliderModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatBadgeModule,
     MatInputModule,
-    DragDropModule,
-    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatSnackBarModule,
     NgxPaginationModule,
+    MatDialogModule,
     CdkTableModule,
     CustomerModule,
     CarModule,
-    MatIconModule
+    MatIconModule,
+    CommonModule,
+    CarManagementModule,
+    LocationModule,
+    MapParkingModule,
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

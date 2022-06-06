@@ -11,7 +11,7 @@
     <div class="form-box">
 
       <div class="box-left">
-        <button type="button" routerLink="/create" class="btn btn-primary">
+        <button type="button" routerLink="/customer/create" class="btn btn-primary" title="Thêm mới">
           <span class="fa fa-plus-circle mt-1"></span>
         </button>
       </div>
@@ -53,15 +53,15 @@
         </div>
 
 
-         <div class="col-right-1">
+        <div class="col-right-1">
           <button type="submit" class="btn btn-success " title="Tìm Kiếm">
             <span class="fa fa-search"></span>
           </button>
 
-           <button type="submit" class="btn btn-success " (click)="resetListCustomer()" title="Quay lại">
-             <span class="fa-solid fa-arrow-rotate-right"></span>
-           </button>
-          </div>
+          <button type="submit" class="btn btn-primary " (click)="resetListCustomer()" title="Quay lại">
+            <span class="fa-solid fa-arrow-rotate-right"></span>
+          </button>
+        </div>
 
       </div>
 
@@ -69,8 +69,10 @@
   </form>
 
 
+  <div class="row">
 
-  <table class="table  table-responsive table-striped text-center table-border">
+
+    <table class="table  table-responsive table-striped text-center table-border">
     <thead class="text-white tb-header">
     <tr>
       <th>STT</th>
@@ -98,7 +100,7 @@
 
       <td>
 
-        <a  role="button" [routerLink]="['/update', customer.id]"><span class="fas fa-pencil" style="font-size:24px" title="Sửa"></span></a>
+        <a  role="button" [routerLink]="['/customer/update', customer.id]"><span class="fas fa-pencil" style="font-size:24px" title="Sửa"></span></a>
 
       </td>
 
@@ -108,7 +110,7 @@
     </tr>
     </tbody>
   </table>
-
+  </div>
   <div *ngIf="customerList == null" class="row">
     <div class="col-3"></div>
     <div class="col-6">
@@ -128,7 +130,7 @@
           <div class="row">
 
             <div class="mx-3 col-5" [hidden]="totalPagination == 0">
-              Hiển thị trang thứ <span class="font-monospace">{{indexPage + 1}}</span> trong tổng số <span
+              Hiển thị <span class="font-monospace">{{indexPage + 1}}</span> / <span
               class="font-monospace">{{totalPagination}}</span> trang
             </div>
             <!--            thanh phan trang-->

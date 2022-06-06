@@ -53,9 +53,6 @@ export class CustomerService {
     return this.httpClient.get<District[]>(this.URL + '/district/' + id);
   }
 
-
-
-
   getWard(id : number) {
     return this.httpClient.get<Ward[]>(this.URL + '/ward/' + id)
   }

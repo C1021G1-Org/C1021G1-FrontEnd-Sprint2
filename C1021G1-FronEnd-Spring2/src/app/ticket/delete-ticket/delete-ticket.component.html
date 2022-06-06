@@ -1,1 +1,30 @@
-<p>delete-ticket works!</p>
+<div class="ticket-body" *ngIf="inForTicket">
+
+  <table class="table table-bordered">
+    <thead class="table-danger">
+    <tr>
+      <th class="text-center1" colspan="2">
+        <h2 style="color: red">Cảnh Báo!</h2>
+      </th>
+    </tr>
+    </thead>
+    <tbody class="table-borderless">
+    <tr>
+      <td colspan="2" class="table-borderless">
+        <h3>Bạn có chắc xóa vé xe <span class="text-danger font-weight-normal">{{inForTicket.code}}</span> với biển số
+          xe
+          <span class="text-danger font-weight-normal">{{inForTicket.car.carPlate}}</span></h3>
+      </td>
+    </tr>
+  </table>
+  <div class="footer-dialog d-flex justify-content-between">
+    <p style="color: red">Lưu ý: Thao tác này không thể hoàn tác được! </p>
+    <div>
+      <button type="button" class="btn button-cancel" (click)="gotoList()">HỦY</button>
+      <button type="button" class="btn button-confirm ml-1 mr-1" (click)="deleteTicket()">Đồng Ý</button>
+    </div>
+
+  </div>
+
+</div>
+
