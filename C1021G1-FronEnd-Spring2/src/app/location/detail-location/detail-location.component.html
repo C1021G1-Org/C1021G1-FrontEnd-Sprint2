@@ -105,11 +105,11 @@
             </div>
             <label for="name" class="col-sm-2 col-form-label menu"><b>Tên khách hàng</b></label>
             <div class="col-sm-3">
-              <input type="text" readonly class="form-control-plaintext" id="name" value="{{locationDetail?.nameCustomer}}">
+              <input type="text" readonly class="form-control-plaintext" id="name" value="{{locationDetail?.nameCustomer }}">
             </div>
             <label for="birthday" class="col-sm-2 col-form-label menu"><b>Ngày sinh</b></label>
             <div class="col-sm-3">
-              <input type="text" readonly class="form-control-plaintext" id="birthday" value="{{locationDetail?.birthday}}">
+              <input type="text" readonly class="form-control-plaintext" id="birthday" value="{{locationDetail?.birthday | date}}">
             </div>
           </div>
           <div class="row">

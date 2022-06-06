@@ -16,8 +16,8 @@
           <option class="w-50" *ngFor="let s of floorList" [ngValue]="s.id">{{s.name}}</option>
         </datalist>
       </div>
-      <div class="col-2  float-start d-flex input-group" style="width: 29%">
-        <input style="width: 320px" #b (keyup.enter)="isStatus=false;search();" (change)="code = $event.target.value" type="search"
+      <div class="col-2  float-start d-flex input-group" style="width: 29%;">
+        <input  #b (keyup.enter)="isStatus=false;search();" (change)="code = $event.target.value" type="search"
                placeholder="Nhập vị trí" class="form-control w-25" (keyup)="index=0">
         <span (click)="isStatus=false;search()" role="button" class="fa fa-search btn btn-success input-group-text"
               style="padding-top: 10px;height: 100%"> </span>
@@ -82,8 +82,8 @@
 
               </div>
               <div class="mx-3 col-3">
-                Hiển thị trang <span class="font-monospace">{{index + 1}}</span> / <span
-                class="font-monospace">{{totalPagination}}</span>
+                Hiển thị <span class="font-monospace">{{index + 1}}</span> / <span
+                class="font-monospace">{{totalPagination}}</span> trang
               </div>
               <div class="col-6 pagination">
                 <button [disabled]="index < 1" (click)="previousPage()"><span class="fa fa-angle-double-left"></span>
