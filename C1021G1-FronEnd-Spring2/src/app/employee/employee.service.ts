@@ -45,12 +45,12 @@ export class EmployeeService {
     return this.httpClient.post(this.employeeURL + '/create', employee, {headers: header});
   }
 
-  updateEmployee(employee: Employee) {
+  updateEmployee(id: number, employee: Employee) {
     const token = sessionStorage.getItem('token');
     const header = {
       'content-type': 'application/json',
       'Authorization': `Bearer${token}`};
-    return this.httpClient.post(this.employeeURL + employee,{headers: header})
+    return this.httpClient.patch(this.employeeURL + '/update/' + id, employee,{headers: header})
   }
 
   findById(id: number) {

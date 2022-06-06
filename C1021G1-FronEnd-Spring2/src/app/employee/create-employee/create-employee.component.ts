@@ -5,7 +5,7 @@ import {Province} from '../model/province';
 import {District} from '../model/district';
 import {Ward} from '../model/ward';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {min} from 'rxjs/operators';
+import { Position } from '../model/position';
 
 @Component({
   selector: 'app-create-employee',
@@ -86,12 +86,10 @@ export class CreateEmployeeComponent implements OnInit {
         horizontalPosition: 'right', //'start' | 'center' | 'end' | 'left' | 'right'
         panelClass: ['red-snackbar'],
       });
-      console.log(error);
     })
   }
 
   checkAge(birthday : AbstractControl){
-    console.log(birthday.value);
     const dayOfBirthObj = new Date(birthday.value)
     const dayOfBirth = Date.now() - dayOfBirthObj.getTime() - 8640000;
     const time = new Date(dayOfBirth);
