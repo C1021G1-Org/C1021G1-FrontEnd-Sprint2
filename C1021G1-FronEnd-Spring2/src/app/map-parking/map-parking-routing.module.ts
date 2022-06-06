@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { MapListParkingComponent } from './map-list-parking/map-list-parking.component';
-
-
+import {MapListParkingComponent} from './map-list-parking/map-list-parking.component';
 
 
 

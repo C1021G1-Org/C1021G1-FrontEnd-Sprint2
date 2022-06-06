@@ -92,6 +92,29 @@
             <input type="text" readonly class="form-control-plaintext" id="flo"  value="{{locationDetail?.nameFloor}}">
           </div>
         </div>
+
+        <hr style="background: linear-gradient(120deg,#9b59b6, #71b7e6);">
+        <div class="col-md-12">
+          <table class="table">
+            <tfoot class="body1">
+            <tr>
+              <div class="title1">
+                Chi tiết thông tin khách hàng và xe
+              </div>
+            </tr>
+            </tfoot>
+          </table>
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <label for="name" class="col-sm-2 col-form-label menu"><b>Tên khách hàng</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="name" value="{{locationDetail?.nameCustomer }}">
+            </div>
+            <label for="birthday" class="col-sm-2 col-form-label menu"><b>Ngày sinh</b></label>
+            <div class="col-sm-3">
+              <input type="text" readonly class="form-control-plaintext" id="birthday" value="{{locationDetail?.birthday | date}}">
+
       </div>
       <hr style="background: linear-gradient(120deg,#9b59b6, #71b7e6);">
       <div class="col-md-12">
@@ -100,6 +123,7 @@
           <tr>
             <div class="title1">
               Chi tiết thông tin khách hàng và xe
+
             </div>
           </tr>
           </tfoot>
