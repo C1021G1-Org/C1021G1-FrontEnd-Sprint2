@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NewsService} from "../service/news.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {INewsType} from "../model/i-news-type";
-import {NewsTypeService} from "../service/news-type.service";
+import {NewsService} from "../news.service";
+import {NewsTypeService} from "../news-type.service";
 
 
 @Component({

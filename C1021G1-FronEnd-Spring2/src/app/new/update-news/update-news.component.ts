@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {NewsService} from "../service/news.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {INewsDto} from "../dto/i-news-dto";
 import {FormControl, FormGroup} from "@angular/forms";
-import {INews} from "../model/i-news";
 import {INewsType} from "../model/i-news-type";
-import {NewsTypeService} from "../service/news-type.service";
+import {NewsService} from "../news.service";
+import {NewsTypeService} from "../news-type.service";
+import {INewsDto} from "../model/i-news-dto";
 
 @Component({
   selector: 'app-update-news',
@@ -43,7 +42,7 @@ export class UpdateNewsComponent implements OnInit {
     })
     this.activatedRouted.paramMap.subscribe(data => {
           this.id = data.get('id')
-          this.newsService.findTicketById(this.id).subscribe(data => {
+          this.newsService.findNewsById(this.id).subscribe(data => {
               this.news = data
 
             // var parser = new DOMParser();
