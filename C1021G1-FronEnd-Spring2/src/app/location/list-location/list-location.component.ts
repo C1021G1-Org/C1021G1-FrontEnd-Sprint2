@@ -42,7 +42,7 @@ export class ListLocationComponent implements OnInit {
     this.locationService.getAllLocationAndFloor(this.code.trim(), this.id.trim(), this.index).subscribe(data => {
       this.LocationList = data['content'];
       this.totalPagination = data['totalPages'];
-      if (this.code != '' || this.id != '' && this.index==0){
+      if (this.index==0 && this.code != '' || this.id != '' && this.index==0){
         this.snackBar.open("Tìm kiếm thành công có " + data['totalElements'] + " kết quả!", "OK", {duration: 2000})
       }
     }, error => {

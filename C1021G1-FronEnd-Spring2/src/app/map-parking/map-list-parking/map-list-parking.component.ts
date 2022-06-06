@@ -87,13 +87,6 @@ export class MapListParkingComponent implements OnInit {
     })
   }
 
-  getAllCar() {
-    let email = sessionStorage.getItem("email")
-    this.mapService.getAllCar(email).subscribe(data => {
-      this.listCar = data;
-      console.log(data);
-    })
-  }
 
   back() {
     this.index--;
