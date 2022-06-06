@@ -22,11 +22,12 @@
             <label style="font-weight: bold"> Năm:</label>
             <select class="form-control" #year (change)="setStatistic(quarter,year)" style="height: 50px !important;">
               <option>Chọn năm</option>
-              <option >2020</option>
-              <option >2021</option>
-              <option >2022</option>
+<!--              <option >2020</option>-->
+<!--              <option >2021</option>-->
+<!--              <option >2022</option>-->
+              <option  *ngFor="let i of yearArr">{{i}}</option>
             </select>
-              <!--              <option  *ngFor="let i of yearArr">{{i}}</option>-->
+
           </div>
 
           <div class="control-group col-1">
