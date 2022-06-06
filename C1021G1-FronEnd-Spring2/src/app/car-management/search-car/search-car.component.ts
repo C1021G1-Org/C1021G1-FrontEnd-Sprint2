@@ -67,12 +67,11 @@ export class SearchCarComponent implements OnInit {
 
   closeDialog() {
     this.dialog.close()
-    // this.flightService.deleteFlight(this.id).subscribe(() => {
-    //     this.dialog.close()
-    //     this.snackBar.open('Đã xóa chuyến bay thành công', 'OK');
-    //   },() =>{
-    //     this.snackBar.open('Chuyến bay này đã có người đặt, nên không thể xóa được', 'error');
+    //   if (data.length > 0) {
+    //     this.carService.currentTicket = data[0];
+    //   } else {
+    //     this.router.navigateByUrl('customer')
     //   }
-    // )
+    // });
   }
 }

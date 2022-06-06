@@ -17,17 +17,13 @@ private readonly URL = "http://localhost:8080/api/car";
   plate: string ='';
   constructor(private httpClient: HttpClient ) { }
 
-
-  findCar(customerName: string, phoneNumber: string,carPlate: string): Observable<CarTicket[]> {
+  findCar(customerName: string, phoneNumber: string, carPlate: string): Observable<CarTicket[]> {
     console.log(customerName);
     console.log(phoneNumber);
     console.log(carPlate);
     return this.httpClient.get<CarTicket[]>(this.URL + '/findModal?name=' + customerName  + '&phone=' + phoneNumber+ '&plate=' + carPlate)
   }
-  chooseCar(carPlate: string ) : Observable<CarChoose[]>{
-    console.log(carPlate);
-    return this.httpClient.get<CarChoose[]>( this.URL + '/chooseCar?plate='+carPlate)
-  }
+
   senPathFile(file:string){
 
     return this.httpClient.post<PlateCar>(`${this.URL_BE}/checkImage`,{"path":file})
@@ -45,9 +41,13 @@ private readonly URL = "http://localhost:8080/api/car";
 
   pay(value: any) {
     console.log("thanhtoan");
-    return this.httpClient.post(this.URL_BE + '/updateTime',value);
+    return this.httpClient.post(this.URL_BE + '/updateTime', value);
+  }
+  chooseCar(carPlate: string): Observable<CarChoose[]> {
+    return this.httpClient.get<CarChoose[]>(this.URL + '/chooseCar?plate=' + carPlate)
   }
 }
+
 
 
 
