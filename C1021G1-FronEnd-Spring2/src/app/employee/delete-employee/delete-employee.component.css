@@ -1,0 +1,9 @@
+#title {
+  font-size: 30px;
+  color: white;
+  background: rgb(221, 23, 23);
+}
+.table{
+  table-border-color-dark: red;
+  border: 10px solid red;
+}

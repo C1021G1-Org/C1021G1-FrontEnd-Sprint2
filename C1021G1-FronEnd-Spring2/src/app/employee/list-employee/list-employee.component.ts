@@ -55,7 +55,7 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   reset(){
-    this.router.navigateByUrl("/employee/list");
+    this.router.navigateByUrl("/employee/");
   }
 
 
@@ -141,7 +141,7 @@ export class ListEmployeeComponent implements OnInit {
 
 
   movingNext() {
-    this.indexPagination = 2;
+    this.indexPagination +=2;
     this.getEmployeePerPage(this.indexPagination);
 
   }
@@ -164,6 +164,8 @@ export class ListEmployeeComponent implements OnInit {
     }
 
   }
+  
+  
 
 
   openDialog(id) {

@@ -32,7 +32,7 @@ export class DeleteEmployeeComponent implements OnInit {
   deleteEmployee() {
     this.employeeService.deleteEmployee(this.id).subscribe(() => {
         this.dialog.close()
-        this.snackBar.open('Đã xóa nhân viên thất bại !', 'OK');
+        this.snackBar.open('Đã xóa nhân viên thành công !', 'OK');
       },() =>{
         this.snackBar.open('Xóa không thành công!', 'error');
       }
