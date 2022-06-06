@@ -26,10 +26,10 @@ legend.scheduler-border {
   padding:0 10px; /* To give a bit of padding on the left and right */
   border-bottom:none;
 }
-input[type=date]:required:invalid::-webkit-datetime-edit {
+input[type=date]:required:invalid {
   color: transparent;
 }
-input[type=date]:focus::-webkit-datetime-edit {
+input[type=date]:focus{
   color: black !important;
 }
 
@@ -84,7 +84,6 @@ input[type=date]:focus::-webkit-datetime-edit {
 .highcharts-data-table tr:hover {
   background: #f1f7ff;
 }
-
 .button-confirm{
   height: 40px;
   width: 130px;

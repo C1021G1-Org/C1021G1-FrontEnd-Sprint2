@@ -86,8 +86,8 @@ export class StatisticComponent implements OnInit {
       });
     }else this.isDisplayContainer = false;
 
+    }
 
-  }
   getReport(){
     // Create the chart
     this.chart = {
@@ -96,11 +96,12 @@ export class StatisticComponent implements OnInit {
       },
       title: {
         align: 'left',
+
         text: 'Bảng thống kê doanh thu'
       },
       subtitle: {
         align: 'left',
-        text: ''
+        text: 'Biểu đồ doanh thu của công ty</a>'
       },
       accessibility: {
         announceNewData: {
@@ -112,7 +113,7 @@ export class StatisticComponent implements OnInit {
       },
       yAxis: {
         title: {
-          text: 'Tỉ lệ từng phần'
+          text: 'Ti lệ theo từng phần'
         }
 
       },
