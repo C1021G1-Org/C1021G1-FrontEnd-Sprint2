@@ -82,7 +82,7 @@ export class CreateNewsComponent implements OnInit {
               })
               this.loadingSubmit = false;
             }, () => {
-              this.router.navigateByUrl("/newsDetail/70");
+              this.router.navigateByUrl("/updateNews/" + 4);
             });
           this.snackBar.open("Thêm mới tin tức thành công", "OK", {
             duration: 2000
@@ -101,20 +101,18 @@ export class CreateNewsComponent implements OnInit {
 
   changeImg(value: string) {
     console.log(value)
-    this.thisImg = ""
     this.thisImg = value
     console.log(this.thisImg)
   }
 
   getImg(event: any) {
-    this.thisImg = ""
     let file = event.target.files[0];
     let fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = ev => {
        this.thisImg = fileReader.result as string;
-       this.createForm.get('img').setValue(this.thisImg)
-      console.log(this.thisImg)
+        this.createForm.get('img').setValue(this.thisImg)
+
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsService} from "../service/news.service";
 import {ActivatedRoute} from "@angular/router";
-import {INewsDto} from "../dto/i-news-dto";
+import {INews} from "../model/i-news";
 
 @Component({
   selector: 'app-news-detail',
@@ -9,7 +9,8 @@ import {INewsDto} from "../dto/i-news-dto";
   styleUrls: ['./news-detail.component.css']
 })
 export class NewsDetailComponent implements OnInit {
-  news : INewsDto;
+  listNews: INews[]
+  news : INews;
   id : number;
   constructor(private newsService :NewsService,
               private activatedRouted: ActivatedRoute ) { }
@@ -19,9 +20,17 @@ export class NewsDetailComponent implements OnInit {
       this.id = Number(data.get('id'));
       console.log(data)
       this.newsService.findNewsById(this.id).subscribe(dataOfNews => {
-        this.news = dataOfNews
+        this.news = dataOfNews;
       })
+    })
+
+    this.newsService.getAllNews().subscribe(data => {
+      this.listNews = data;
+      console.log(this.listNews)
     })
   }
 
+
+
 }
+

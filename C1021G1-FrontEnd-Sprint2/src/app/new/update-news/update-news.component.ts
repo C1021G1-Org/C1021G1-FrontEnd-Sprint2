@@ -69,6 +69,7 @@ export class UpdateNewsComponent implements OnInit {
               this.updateForm.get("description").setValue(this.news.description);
               this.updateForm.get("newsType").setValue(this.news.newsType);
               this.updateForm.get("delFlag").setValue(this.news.delFlag);
+              this.updateForm.get("img").setValue(this.news.img)
 
 
 
@@ -120,7 +121,7 @@ export class UpdateNewsComponent implements OnInit {
     fileReader.readAsDataURL(file);
     fileReader.onload = ev => {
       this.thisImg = fileReader.result as string;
-      this.thisImage = this.thisImg;``
+      this.thisImage = this.thisImg;
       console.log(this.thisImg)
     }
   }

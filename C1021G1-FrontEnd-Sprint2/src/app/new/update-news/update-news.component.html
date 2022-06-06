@@ -41,11 +41,11 @@
     <div class="row">
       <div class="mb-auto">
         <label >Hình ảnh mô tả (<span style="color: red">*</span>) :</label>
-        <div class="input-group">
-          <a class="input-group-text"><i class="fa-solid fa-images"></i></a>
-          <input (change)="getImg($event)"  type="file" class="form-control" id="date" formControlName="img" >
-        </div>
-        <label>Hoặc (Nhập đường dẫn hình ảnh)</label>
+<!--        <div class="input-group">-->
+<!--          <a class="input-group-text"><i class="fa-solid fa-images"></i></a>-->
+<!--          <input (change)="getImg($event)"  type="file" class="form-control" id="date" formControlName="img" >-->
+<!--        </div>-->
+        <label>(Nhập đường dẫn hình ảnh)</label>
         <div class="input-group">
           <a class="input-group-text"><i class="fa-solid fa-images"></i></a>
           <input #input (change)="changeImg(input.value)" [value]="thisImg" type="text" class="form-control" placeholder="Nhập đường dẫn hình ảnh"   formControlName="img">
