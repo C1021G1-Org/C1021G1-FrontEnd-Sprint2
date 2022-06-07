@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FooterComponent} from './layout/footer/footer.component';
 import {BodyComponent} from './layout/body/body.component';
@@ -21,7 +20,6 @@ import {CustomerModule} from "./customer/customer.module";
 import {CarModule} from "./car/car.module";
 import {ForgottenPasswordComponent} from './login/forgotted-password/forgotten-password.component';
 import {MatIconModule} from '@angular/material/icon';
-
 import {HighchartsChartModule} from "highcharts-angular";
 import {CommonModule} from '@angular/common';
 import {CarManagementModule} from './car-management/car-management.module';
@@ -37,6 +35,8 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTabsModule} from "@angular/material/tabs";
 import {StatisticComponent} from './statistic/statistic/statistic.component'
+import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +80,7 @@ import {StatisticComponent} from './statistic/statistic/statistic.component'
     CarManagementModule,
     LocationModule,
     MapParkingModule,
-
+    RouterModule,
 
 
   ],
